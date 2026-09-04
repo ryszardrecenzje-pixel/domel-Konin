@@ -132,13 +132,15 @@ for plik_html, dane in kategorie_do_aktualizacji.items():
         with open(plik_produktu, "w", encoding="utf-8") as f_prod:
             f_prod.write(szablon_podstrony)
 
-        produkty_html += (
-            "\n            <div class=\"product-card\">\n"
-            "                <h3>" + p['tytul'] + "</h3>\n"
-            "                <p>" + p['opis'] + "</p>\n"
-            "                <p style=\"font-weight: bold; color: #1a4b84; margin: 0.8rem 0;\">Cena: " + p['cena'] + "</p>\n"
-            "                <a href=\"" + plik_produktu + "\" class=\"btn\">Sprawdź szczegóły</a>\n"
-            "            </div>"
+            # 2. Generowanie kodu HTML kafelka na liście kategorii (z linkiem do nowej podstrony)
+            produkty_html += f"""
+                        <div class="product-card">
+                            <h3>{p['tytul']}</h3>
+                            <p class="opis">{p['opis']}</p>
+                            <span class="cena">{p['cena']}</span>
+                            <a href="{plik_produktu}" class="btn">Więcej informacji</a>
+                        </div>
+            """
         )
 
     if os.path.exists(plik_html):
