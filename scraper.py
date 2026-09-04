@@ -1,4 +1,3 @@
-#scraper.py
 import os
 import re
 import requests
@@ -6,7 +5,6 @@ from bs4 import BeautifulSoup
 
 # Funkcja do zamiany nazwy produktu na czysty, bezpieczny adres URL (tzw. slug)
 def stworz_nazwe_pliku(nazwa):
-    # Zamienia polskie znaki, usuwa spacje i znaki specjalne
     zamiany = {
         'ą': 'a', 'ć': 'c', 'ę': 'e', 'ł': 'l', 'ń': 'n', 'ó': 'o', 'ś': 's', 'ź': 'z', 'ż': 'z',
         'Ą': 'A', 'Ć': 'C', 'Ę': 'E', 'Ł': 'L', 'Ń': 'N', 'Ó': 'O', 'Ś': 'S', 'Ź': 'Z', 'Ż': 'Z'
@@ -86,7 +84,7 @@ for plik_html, dane in kategorie_do_aktualizacji.items():
     except Exception as e:
         print(f"Błąd pobierania {plik_html}: {e}")
 
-    # Fallback (dane domyślne, jeśli strona źródłowa nie odpowiedziała)
+    # Fallback (dane domyślne, jeśli strona źródłowa nie odpowiedziała lub zablokowała bota)
     if not pobrane_produkty:
         pobrane_produkty = [
             {"tytul": f"Model {dane['tytul_strony']} Pro 1", "opis": "Zaawansowane urządzenie z technologią inteligentnego oszczędzania energii.", "cena": "1999 zł"},
@@ -96,10 +94,8 @@ for plik_html, dane in kategorie_do_aktualizacji.items():
 
     produkty_html = ""
     for p in pobrane_produkty:
-        # Generujemy unikalną nazwę pliku dla każdego produktu (np. model-lodowki-pro-1.html)
         plik_produktu = stworz_nazwe_pliku(p['tytul'])
         
-        # 1. Tworzenie osobnej podstrony szczegółów dla produktu
         szablon_podstrony = f"""<!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -146,10 +142,32 @@ for plik_html, dane in kategorie_do_aktualizacji.items():
 </body>
 </html>
 """
-        # Zapisanie pliku szczegółów na dysk
         with open(plik_produktu, "w", encoding="utf-8") as f_prod:
             f_prod.write(szablon_podstrony)
 
-        # 2. Generowanie kodu HTML kafelka na liście kategorii (z linkiem do nowej podstrony)
         produkty_html += f"""
             <div class="product-card">
+                <h3>{p['tytul']}</h3>
+                <p>{p['opis']}</p>
+                <p style="font-weight: bold; color: #1a4b84; margin: 0.8rem 0;">Cena: {p['cena']}</p>
+                <a href="{plik_produktu}" class="btn">Sprawdź szczegóły</a>
+            </div>"""
+
+    if os.path.exists(plik_html):
+        with open(plik_html, "r", encoding="utf-8") as f:
+            zawartosc_strony = f.read()
+
+        start_komentarz = "<!-- POCZATEK_PRODUKTOW -->"
+        koniec_komentarz = "<!-- KONIEC_PRODUKTOW -->"
+
+        if start_komentarz in zawartosc_strony and koniec_komentarz in zawartosc_strony:
+            czesc_przed = zawartosc_strony.split(start_komentarz)[0]
+            czesc_po = zawartosc_strony.split(koniec_komentarz)[1]
+            
+            nowa_zawartosc = czesc_przed + start_komentarz + "\n" + produkty_html + "\n" + czesc_po + koniec_komentarz
+            
+            with open(plik_html, "w", encoding="utf-8") as f:
+                f.write(nowa_zawartosc)
+            print(f"Zaktualizowano kategorię i wygenerowano podstrony dla: {plik_html}")
+
+print("Cały proces aktualizacji zakończony pomyślnie!")
