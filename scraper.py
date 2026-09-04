@@ -1,4 +1,3 @@
-#scraper.py
 import os
 import re
 import requests
@@ -71,18 +70,20 @@ for plik_html, dane in kategorie_do_aktualizacji.items():
             kafle = soup.find_all("div", class_="produkt-item")[:3]
             
             for kafelek in kafle:
-                tytul = kafelek.find("h2").get_text(strip=True)
-                opis = kafelek.find("p", class_="opis").get_text(strip=True)
-                cena = kafelek.find("span", class_="cena").get_text(strip=True)
+                tytul_elem = kafelek.find("h2")
+                opis_elem = kafelek.find("p", class_="opis")
+                cena_elem = kafelek.find("span", class_="cena")
                 
-                pobrane_produkty.append({
-                    "tytul": tytul,
-                    "opis": opis,
-                    "cena": cena
-                })
+                if tytul_elem and opis_elem and cena_elem:
+                    pobrane_produkty.append({
+                        "tytul": tytul_elem.get_text(strip=True),
+                        "opis": opis_elem.get_text(strip=True),
+                        "cena": cena_elem.get_text(strip=True)
+                    })
     except Exception as e:
         print("Błąd pobierania: " + str(e))
 
+    # Fallback – gdy nie udało się pobrać prawdziwych produktów
     if not pobrane_produkty:
         pobrane_produkty = [
             {"tytul": "Model " + dane['tytul_strony'] + " Pro 1", "opis": "Zaawansowane urządzenie z technologią inteligentnego oszczędzania energii.", "cena": "1999 zł"},
@@ -165,7 +166,14 @@ for plik_html, dane in kategorie_do_aktualizacji.items():
             czesc_przed = zawartosc_strony.split(start_komentarz)[0]
             czesc_po = zawartosc_strony.split(koniec_komentarz)[1]
             
-            nowa_zawartosc = czesc_przed + start_komentarz + "\n" + produkty_html + "\n" + czesc_po + koniec_komentarz
+            # Poprawiona kolejność – komentarz zamykający musi być przed resztą strony
+            nowa_zawartosc = (
+                czesc_przed 
+                + start_komentarz + "\n" 
+                + produkty_html + "\n" 
+                + koniec_komentarz 
+                + czesc_po
+            )
             
             with open(plik_html, "w", encoding="utf-8") as f:
                 f.write(nowa_zawartosc)
