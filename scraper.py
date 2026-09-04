@@ -21,39 +21,39 @@ def stworz_nazwe_pliku(nazwa):
 # Słownik kategorii i źródeł
 kategorie_do_aktualizacji = {
     "lodowki.html": {
-        "url": "https://example.com/kategoria/lodowki",
+        "url": "https://www.mediaexpert.pl/agd/lodowki-i-zamrazarki",
         "tytul_strony": "Lodówki"
     },
     "zamrazarki.html": {
-        "url": "https://example.com/kategoria/zamrazarki",
+        "url": "https://www.mediaexpert.pl/agd/lodowki-i-zamrazarki",
         "tytul_strony": "Zamrażarki"
     },
     "pralki.html": {
-        "url": "https://example.com/kategoria/pralki",
+        "url": "https://www.mediaexpert.pl/agd/pralki-i-suszarki",
         "tytul_strony": "Pralki"
     },
     "suszarki.html": {
-        "url": "https://example.com/kategoria/suszarki",
+        "url": "https://www.mediaexpert.pl/agd/pralki-i-suszarki",
         "tytul_strony": "Suszarki do ubrań"
     },
     "zmywarki.html": {
-        "url": "https://example.com/kategoria/zmywarki",
+        "url": "https://www.mediaexpert.pl/agd/zmywarki-i-akcesoria",
         "tytul_strony": "Zmywarki"
     },
     "kuchenki.html": {
-        "url": "https://example.com/kategoria/kuchenki",
+        "url": "https://www.mediaexpert.pl/agd/kuchnie",
         "tytul_strony": "Kuchenki"
     },
     "plyty_grzewcze.html": {
-        "url": "https://example.com/kategoria/plyty-grzewcze",
+        "url": "https://www.mediaexpert.pl/agd-do-zabudowy/plyty-do-zabudowy",
         "tytul_strony": "Płyty Grzewcze"
     },
     "piekarniki.html": {
-        "url": "https://example.com/kategoria/piekarniki",
+        "url": "https://www.mediaexpert.pl/agd-do-zabudowy",
         "tytul_strony": "Piekarniki"
     },
     "male_AGD.html": {
-        "url": "https://example.com/kategoria/male-agd",
+        "url": "https://www.mediaexpert.pl/agd-male",
         "tytul_strony": "Małe AGD"
     }
 }
