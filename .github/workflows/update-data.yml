@@ -1,0 +1,35 @@
+name: Auto Scraper i Aktualizacja Strony
+
+on:
+  schedule:
+    - cron: '0 6 * * *' # Uruchamia się codziennie o 6:00 rano (lub możesz wywołać ręcznie)
+  workflow_dispatch: # Pozwala też włączyć scraper ręcznie przyciskiem na GitHubie
+
+permissions:
+  contents: write
+
+jobs:
+  run-scraper:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Pobranie kodu repozytorium
+        uses: actions/checkout@v4
+
+      - name: Konfiguracja Pythona
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Instalacja bibliotek (np. requests, beautifulsoup4)
+        run: |
+          pip install requests beautifulsoup4
+
+      - name: Uruchomienie skryptu scrapera
+        run: python scraper.py
+
+      - name: Zapisanie i wysłanie zmian z powrotem na GitHuba
+        run: |
+          git config --global user.name "GitHub Actions Bot"
+          git config --global user.email "bot@users.noreply.github.com"
+          git add .
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Automatyczna aktualizacja danych produktów przez scraper" && git push)
