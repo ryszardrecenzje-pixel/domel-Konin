@@ -14,7 +14,7 @@ def stworz_nazwe_pliku(nazwa):
     nazwa = nazwa.lower()
     nazwa = re.sub(r'[^a-z0-9]+', '-', nazwa)
     nazwa = nazwa.strip('-')
-    return f"{nazwa}.html"
+    return nazwa + ".html"
 
 kategorie_do_aktualizacji = {
     "lodowki.html": {
@@ -60,7 +60,7 @@ headers = {
 }
 
 for plik_html, dane in kategorie_do_aktualizacji.items():
-    print(f"Przetwarzam kategorię: {dane['tytul_strony']}...")
+    print("Przetwarzam kategorię: " + dane['tytul_strony'] + "...")
     
     pobrane_produkty = []
     try:
@@ -80,7 +80,7 @@ for plik_html, dane in kategorie_do_aktualizacji.items():
                     "cena": cena
                 })
     except Exception as e:
-        print(f"Błąd pobierania {plik_html}: {e}")
+        print("Błąd pobierania: " + str(e))
 
     if not pobrane_produkty:
         pobrane_produkty = [
@@ -94,7 +94,9 @@ for plik_html, dane in kategorie_do_aktualizacji.items():
         plik_produktu = stworz_nazwe_pliku(p['tytul'])
         
         szablon_podstrony = (
-            "<!DOCTYPE html>\n<html lang=\"pl\">\n<head>\n"
+            "<!DOCTYPE html>\n"
+            "<html lang=\"pl\">\n"
+            "<head>\n"
             "    <meta charset=\"UTF-8\">\n"
             "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n"
             "    <title>" + p['tytul'] + " - Domel Konin</title>\n"
@@ -112,35 +114,43 @@ for plik_html, dane in kategorie_do_aktualizacji.items():
             "        .info-box { background: #f9f9f9; padding: 1rem; border-left: 4px solid #1a4b84; margin-bottom: 2rem; }\n"
             "        .btn { display: inline-block; background-color: #1a4b84; color: #fff; padding: 0.6rem 1.2rem; border-radius: 4px; text-decoration: none; font-weight: bold; }\n"
             "        .btn:hover { background-color: #13355f; }\n"
-            "    </style>\n</head>\n<body>\n"
-            "    <div class=\"top-bar\">\n        <div>Tu jesteśmy: al. 1 Maja 15, Konin | 📞 63 242 17 99</div>\n    </div>\n"
-            "    <header>\n        <a href=\"index.html\"><img src=\"images/logo.png\" alt=\"Domel Konin\" class=\"logo-img\"></a>\n"
+            "    </style>\n"
+            "</head>\n"
+            "<body>\n"
+            "    <div class=\"top-bar\">\n"
+            "        <div>Tu jesteśmy: al. 1 Maja 15, Konin | 📞 63 242 17 99</div>\n"
+            "    </div>\n"
+            "    <header>\n"
+            "        <a href=\"index.html\"><img src=\"images/logo.png\" alt=\"Domel Konin\" class=\"logo-img\"></a>\n"
             "        <a href=\"" + plik_html + "\" class=\"btn\" style=\"background-color: #666;\">← Wróć do kategorii</a>\n"
             "    </header>\n"
             "    <div class=\"container\">\n"
             "        <h1>" + p['tytul'] + "</h1>\n"
             "        <div class=\"price\">Cena: " + p['cena'] + "</div>\n"
-            "        <div class=\"desc\">\n            <h3>Opis produktu:</h3>\n            <p>" + p['opis'] + "</p>\n        </div>\n"
+            "        <div class=\"desc\">\n"
+            "            <h3>Opis produktu:</h3>\n"
+            "            <p>" + p['opis'] + "</p>\n"
+            "        </div>\n"
             "        <div class=\"info-box\">\n"
             "            <p><strong>Dostępność w salonie:</strong> Dostępne od ręki w naszym sklepie stacjonarnym w Koninie.</p>\n"
             "            <p>Masz pytania? Zadzwoń do nas lub odwiedź nas osobiście!</p>\n"
             "        </div>\n"
             "        <a href=\"index.html#kontakt\" class=\"btn\">Zapytaj o ten produkt</a>\n"
-            "    </div>\n</body>\n</html>"
+            "    </div>\n"
+            "</body>\n"
+            "</html>"
         )
 
         with open(plik_produktu, "w", encoding="utf-8") as f_prod:
             f_prod.write(szablon_podstrony)
 
-            # 2. Generowanie kodu HTML kafelka na liście kategorii (z linkiem do nowej podstrony)
-            produkty_html += f"""
-                        <div class="product-card">
-                            <h3>{p['tytul']}</h3>
-                            <p class="opis">{p['opis']}</p>
-                            <span class="cena">{p['cena']}</span>
-                            <a href="{plik_produktu}" class="btn">Więcej informacji</a>
-                        </div>
-            """
+        produkty_html += (
+            "<div class=\"product-card\">\n"
+            "    <h3>" + p['tytul'] + "</h3>\n"
+            "    <p class=\"opis\">" + p['opis'] + "</p>\n"
+            "    <span class=\"cena\">" + p['cena'] + "</span>\n"
+            "    <a href=\"" + plik_produktu + "\" class=\"btn\">Więcej informacji</a>\n"
+            "</div>\n"
         )
 
     if os.path.exists(plik_html):
@@ -158,6 +168,6 @@ for plik_html, dane in kategorie_do_aktualizacji.items():
             
             with open(plik_html, "w", encoding="utf-8") as f:
                 f.write(nowa_zawartosc)
-            print(f"Zaktualizowano kategorię i wygenerowano podstrony dla: {plik_html}")
+            print("Zaktualizowano kategorię i wygenerowano podstrony dla: " + plik_html)
 
 print("Cały proces aktualizacji zakończony pomyślnie!")
