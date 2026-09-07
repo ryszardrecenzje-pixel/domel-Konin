@@ -15,7 +15,6 @@ def stworz_nazwe_pliku(nazwa):
     nazwa = nazwa.strip('-')
     return nazwa + ".html"
 
-# Wczytanie bazy produktów z pliku JSON
 if os.path.exists("produkty.json"):
     with open("produkty.json", "r", encoding="utf-8") as f:
         baza_produktow = json.load(f)
@@ -29,7 +28,15 @@ for plik_html, produkty in baza_produktow.items():
     for p in produkty:
         plik_produktu = stworz_nazwe_pliku(p['tytul'])
         
-        # Szablon podstrony szczegółowej produktu
+        # Pobieramy zdjęcia z listy (zabezpieczenie, gdyby ktoś podał jedno lub zero)
+        lista_zdjec = p.get('zdjecia', [])
+        glowne_zdjecie = lista_zdjec[0] if len(lista_zdjec) > 0 else ""
+        
+        # Generowanie HTML dla dodatkowych zdjęć na podstronie szczegółowej
+        galeria_html = ""
+        for zdj in lista_zdjec:
+            galeria_html += f"<img src=\"{zdj}\" alt=\"{p['tytul']}\" class=\"product-detail-img\">\n"
+
         szablon_podstrony = (
             "<!DOCTYPE html>\n"
             "<html lang=\"pl\">\n"
@@ -45,7 +52,8 @@ for plik_html, produkty in baza_produktow.items():
             "        header { background-color: #fff; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #ddd; }\n"
             "        .logo-img { max-height: 50px; display: block; }\n"
             "        .container { max-width: 900px; margin: 2rem auto; padding: 2rem; background: #fff; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }\n"
-            "        .product-detail-img { width: 100%; max-height: 350px; object-fit: contain; margin-bottom: 1.5rem; border-radius: 6px; }\n"
+            "        .images-container { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.5rem; justify-content: center; }\n"
+            "        .product-detail-img { width: calc(50% - 0.5rem); max-height: 280px; object-fit: contain; border-radius: 6px; background: #fafafa; border: 1px solid #eee; padding: 5px; }\n"
             "        h1 { color: #1a4b84; margin-bottom: 1rem; font-size: 1.8rem; }\n"
             "        .price { font-size: 1.8rem; color: #d9534f; font-weight: bold; margin-bottom: 1.5rem; }\n"
             "        .desc { font-size: 1.1rem; margin-bottom: 2rem; color: #555; }\n"
@@ -63,7 +71,9 @@ for plik_html, produkty in baza_produktow.items():
             "        <a href=\"" + plik_html + "\" class=\"btn\" style=\"background-color: #666;\">← Wróć do kategorii</a>\n"
             "    </header>\n"
             "    <div class=\"container\">\n"
-            "        <img src=\"" + p['zdjecie'] + "\" alt=\"" + p['tytul'] + "\" class=\"product-detail-img\">\n"
+            "        <div class=\"images-container\">\n"
+            "            " + galeria_html + "\n"
+            "        </div>\n"
             "        <h1>" + p['tytul'] + "</h1>\n"
             "        <div class=\"price\">Cena: " + p['cena'] + "</div>\n"
             "        <div class=\"desc\">\n"
@@ -83,11 +93,11 @@ for plik_html, produkty in baza_produktow.items():
         with open(plik_produktu, "w", encoding="utf-8") as f_prod:
             f_prod.write(szablon_podstrony)
 
-        # Kafelek na stronie kategorii
+        # Kafelek kategorii używa pierwszego zdjęcia jako miniatury
         produkty_html += (
             "<div class=\"product-card\" style=\"display: flex; flex-direction: column; justify-content: space-between;\">\n"
             "    <div>\n"
-            "        <img src=\"" + p['zdjecie'] + "\" alt=\"" + p['tytul'] + "\" style=\"width: 100%; height: 180px; object-fit: contain; margin-bottom: 1rem; border-radius: 4px;\">\n"
+            "        <img src=\"" + glowne_zdjecie + "\" alt=\"" + p['tytul'] + "\" style=\"width: 100%; height: 180px; object-fit: contain; margin-bottom: 1rem; border-radius: 4px;\">\n"
             "        <h3>" + p['tytul'] + "</h3>\n"
             "        <p class=\"opis\">" + p['opis'] + "</p>\n"
             "    </div>\n"
