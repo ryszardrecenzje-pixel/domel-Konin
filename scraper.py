@@ -1,4 +1,5 @@
 import os
+import json
 import re
 
 def stworz_nazwe_pliku(nazwa):
@@ -14,88 +15,21 @@ def stworz_nazwe_pliku(nazwa):
     nazwa = nazwa.strip('-')
     return nazwa + ".html"
 
-# Baza konkretnych modeli AGD z prawdziwymi zdjęciami i opisami
-baza_produktow = {
-    "lodowki.html": {
-        "tytul_strony": "Lodówki",
-        "produkty": [
-            {
-                "tytul": "Lodówka WHIRLPOOL WHK26363XBR5E No frost",
-                "opis": "Pojemność 316 l, pełny Dual NoFrost, cicha praca 35 dB, kompresor inwerterowy.",
-                "cena": "2 099,99 zł",
-                "zdjecie": "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=500&q=80"
-            },
-            {
-                "tytul": "Lodówka SAMSUNG Brrr Inverter NoFrost",
-                "opis": "Technologia SpaceMax, szuflada Chef Zone, elegancki panel wykończenia inox.",
-                "cena": "2 499,00 zł",
-                "zdjecie": "https://images.unsplash.com/photo-1571175336579-bc4a54c44d5a?auto=format&fit=crop&w=500&q=80"
-            },
-            {
-                "tytul": "Lodówka BOSCH EcoFresh Duo",
-                "opis": "System VitaFresh utrzymuje świeżość produktów do dwóch razy dłużej.",
-                "cena": "2 899,00 zł",
-                "zdjecie": "https://images.unsplash.com/photo-1536353284636-d245963493e8?auto=format&fit=crop&w=500&q=80"
-            }
-        ]
-    },
-    "pralki.html": {
-        "tytul_strony": "Pralki",
-        "produkty": [
-            {
-                "tytul": "Pralka BOSCH Serie 6 WGG2440SPL",
-                "opis": "Pojemność 9 kg, 1400 obr/min, silnik EcoSilence Drive z 10-letnią gwarancją.",
-                "cena": "2 199,00 zł",
-                "zdjecie": "https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?auto=format&fit=crop&w=500&q=80"
-            },
-            {
-                "tytul": "Pralka SAMSUNG WW90T534DAE AI Control",
-                "opis": "Technologia EcoBubble - pranie w niskich temperaturach, sterowanie smartfonem.",
-                "cena": "2 399,00 zł",
-                "zdjecie": "https://images.unsplash.com/photo-1517646287270-a5a9ca602e5c?auto=format&fit=crop&w=500&q=80"
-            },
-            {
-                "tytul": "Pralka BEKO SteamCure Slim",
-                "opis": "Głębokość tylko 45 cm, funkcja parowa usuwająca zagniecenia i alergeny.",
-                "cena": "1 699,00 zł",
-                "zdjecie": "https://images.unsplash.com/photo-1582735689369-4fe89db7114c?auto=format&fit=crop&w=500&q=80"
-            }
-        ]
-    },
-    "zmywarki.html": {
-        "tytul_strony": "Zmywarki",
-        "produkty": [
-            {
-                "tytul": "Zmywarka BOSCH SMV4HVX31E Do zabudowy",
-                "opis": "Szerokość 60 cm, Home Connect, Extra Dry - dokładne suszenie trudnych naczyń.",
-                "cena": "2 299,00 zł",
-                "zdjecie": "https://images.unsplash.com/photo-1585670149060-873d6d56d22a?auto=format&fit=crop&w=500&q=80"
-            },
-            {
-                "tytul": "Zmywarka BEKO DIN28435",
-                "opis": "Technologia CornerIntense dla idealnego dotarcia wody w każdy kąt komory.",
-                "cena": "1 899,00 zł",
-                "zdjecie": "https://images.unsplash.com/photo-1581622558663-b2e33377dfb2?auto=format&fit=crop&w=500&q=80"
-            },
-            {
-                "tytul": "Zmywarka WHIRLPOOL WSIC 3M17 C",
-                "opis": "Szerokość 45 cm, technologia 6. Zmysł automatycznie dobiera parametry zmywania.",
-                "cena": "1 599,00 zł",
-                "zdjecie": "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=500&q=80"
-            }
-        ]
-    }
-}
+# Wczytanie bazy produktów z pliku JSON
+if os.path.exists("produkty.json"):
+    with open("produkty.json", "r", encoding="utf-8") as f:
+        baza_produktow = json.load(f)
+else:
+    baza_produktow = {}
 
-for plik_html, dane in baza_produktow.items():
-    print("Generowanie kategorii: " + dane['tytul_strony'] + "...")
-    pobrane_produkty = dane['produkty']
+for plik_html, produkty in baza_produktow.items():
+    print("Przetwarzanie kategorii: " + plik_html)
 
     produkty_html = ""
-    for p in pobrane_produkty:
+    for p in produkty:
         plik_produktu = stworz_nazwe_pliku(p['tytul'])
         
-        # Szablon podstrony szczegółów produktu
+        # Szablon podstrony szczegółowej produktu
         szablon_podstrony = (
             "<!DOCTYPE html>\n"
             "<html lang=\"pl\">\n"
@@ -149,7 +83,7 @@ for plik_html, dane in baza_produktow.items():
         with open(plik_produktu, "w", encoding="utf-8") as f_prod:
             f_prod.write(szablon_podstrony)
 
-        # Kafel na stronie kategorii ze zdjęciem
+        # Kafelek na stronie kategorii
         produkty_html += (
             "<div class=\"product-card\" style=\"display: flex; flex-direction: column; justify-content: space-between;\">\n"
             "    <div>\n"
@@ -179,6 +113,6 @@ for plik_html, dane in baza_produktow.items():
             
             with open(plik_html, "w", encoding="utf-8") as f:
                 f.write(nowa_zawartosc)
-            print("Zaktualizowano plik: " + plik_html)
+            print("Zaktualizowano plik kategorii: " + plik_html)
 
-print("Wszystko gotowe i zaktualizowane!")
+print("Aktualizacja zakończona sukcesem!")
