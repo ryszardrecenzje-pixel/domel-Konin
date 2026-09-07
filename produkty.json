@@ -1,0 +1,24 @@
+{
+    "lodowki.html": [
+        {
+            "tytul": "Lodówka Whirlpool WHK26363XBR5E",
+            "opis": "Pojemność 316 l, pełny Dual NoFrost, cicha praca 35 dB.",
+            "cena": "2 099,00 zł",
+            "zdjecie": "images/lodowka-whirlpool.jpg"
+        },
+        {
+            "tytul": "Lodówka Samsung NoFrost Inverter",
+            "opis": "Technologia SpaceMax, elegancki panel inox.",
+            "cena": "2 499,00 zł",
+            "zdjecie": "images/lodowka-samsung.jpg"
+        }
+    ],
+    "pralki.html": [
+        {
+            "tytul": "Pralka Bosch Serie 6 WGG2440SPL",
+            "opis": "Pojemność 9 kg, 1400 obr/min, silnik EcoSilence Drive.",
+            "cena": "2 199,00 zł",
+            "zdjecie": "images/pralka-bosch.jpg"
+        }
+    ]
+}
