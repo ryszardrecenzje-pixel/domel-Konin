@@ -53,16 +53,148 @@
         </div>
     </header>
 
-    <!-- Sekcja powitalna (Hero) -->
-    <section id="slider">
-        <div class="slider-overlay">
-            <div class="container slider-content">
-                <h1>SPRZEDAŻ I PROFESJONALNY SERWIS AGD W KONINIE</h1>
-                <p>Twój zaufany partner w zakupie nowego sprzętu domowego oraz szybkich, rzetelnych naprawach pralek, lodówek, zmywarek i piekarników.</p>
-                <a href="#repair" class="btn-main">Zamów serwis / wycenę</a>
+<!-- RUCHOMY BILBORD (SLIDER) - ZASTĄPIŁ DAWNY STATYCZNY SLIDER -->
+    <div class="bilbord-slider">
+        
+        <!-- SLAJD 1: Zakup AGD -->
+        <div class="slajd aktywny" style="background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=1400&q=80');">
+            <div class="slajd-tresc">
+                <h2>Nowoczesny sprzęt AGD</h2>
+                <p>Sprawdź szeroki wybór lodówek, pralek, zmywarek i innych urządzeń w świetnych cenach.</p>
+                <a href="sprzedaz.html" class="btn-slider">Sprawdź asortyment</a>
             </div>
         </div>
-    </section>
+        
+        <!-- SLAJD 2: Serwis i Naprawa -->
+        <div class="slajd" style="background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('https://images.unsplash.com/photo-1581622558663-b2e33377dfb2?auto=format&fit=crop&w=1400&q=80');">
+            <div class="slajd-tresc">
+                <h2>Serwis i Naprawa AGD</h2>
+                <p>Twój sprzęt uległ awarii? Oferujemy szybką diagnozę oraz profesjonalne naprawy.</p>
+                <a href="#repair" class="btn-slider">Zgłoś naprawę</a>
+            </div>
+        </div>
+
+        <!-- SLAJD 3: Zaproszenie do sklepu -->
+        <div class="slajd" style="background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1400&q=80');">
+            <div class="slajd-tresc">
+                <h2>Odwiedź nasz salon w Koninie</h2>
+                <p>Zobacz urządzenia na żywo i skorzystaj z fachowej porady doradców. Zapraszamy!</p>
+                <a href="#contact" class="btn-slider">al. 1 Maja 15, Konin</a>
+            </div>
+        </div>
+
+        <!-- Przyciski przewijania (strzałki) -->
+        <button class="slider-btn prev" onclick="zmienSlajd(-1)">&#10094;</button>
+        <button class="slider-btn next" onclick="zmienSlajd(1)">&#10095;</button>
+    </div>
+
+    <!-- STYLE CSS DLA BILBORDU (możesz też przenieść do pliku style.css) -->
+    <style>
+        .bilbord-slider {
+            position: relative;
+            width: 100%;
+            height: 450px;
+            overflow: hidden;
+            background-color: #222;
+        }
+        .slajd {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out;
+            z-index: 1;
+        }
+        .slajd.aktywny {
+            opacity: 1;
+            z-index: 2;
+        }
+        .slajd-tresc {
+            color: #fff;
+            max-width: 800px;
+            padding: 0 1rem;
+        }
+        .slajd-tresc h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+        }
+        .slajd-tresc p {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
+        }
+        .btn-slider {
+            display: inline-block;
+            background-color: #1a4b84;
+            color: #fff;
+            padding: 0.75rem 1.6rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: background 0.3s, transform 0.2s;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+        }
+        .btn-slider:hover {
+            background-color: #13355f;
+            transform: translateY(-2px);
+        }
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0,0,0,0.4);
+            color: white;
+            border: none;
+            font-size: 1.5rem;
+            padding: 12px 16px;
+            cursor: pointer;
+            z-index: 10;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+        .slider-btn:hover {
+            background-color: rgba(0,0,0,0.8);
+        }
+        .slider-btn.prev { left: 20px; }
+        .slider-btn.next { right: 20px; }
+
+        @media (max-width: 768px) {
+            .bilbord-slider { height: 350px; }
+            .slajd-tresc h2 { font-size: 1.7rem; }
+            .slajd-tresc p { font-size: 0.95rem; }
+        }
+    </style>
+
+    <!-- SKRYPT JAVASCRIPT DO AUTOMATYCZNEGO PRZEWIJANIA -->
+    <script>
+        let aktualnyIndex = 0;
+        const slajdy = document.querySelectorAll('.slajd');
+
+        function pokazSlajd(index) {
+            slajdy.forEach(slajd => slajd.classList.remove('aktywny'));
+            aktualnyIndex = (index + slajdy.length) % slajdy.length;
+            slajdy[aktualnyIndex].classList.add('aktywny');
+        }
+
+        function zmienSlajd(kierunek) {
+            pokazSlajd(aktualnyIndex + kierunek);
+        }
+
+        // Automatyczna zmiana slajdu co 6 sekund
+        setInterval(() => {
+            zmienSlajd(1);
+        }, 6000);
+    </script>
 
     <!-- O nas -->
     <section id="about" class="section-padding">
