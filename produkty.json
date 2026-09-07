@@ -4,7 +4,9 @@
             "tytul": "Lodówka Whirlpool WHK26363XBR5E",
             "opis": "Pojemność 316 l, pełny Dual NoFrost, cicha praca 35 dB.",
             "cena": "2 099,00 zł",
-            "zdjecie": "images/lodowka-whirlpool.jpg"
+            "zdjecia": [
+                "images/lodowka-whirlpool-1.jpg",
+                "images/lodowka-whirlpool-2.jpg"
         },
         {
             "tytul": "Lodówka Samsung NoFrost Inverter",
@@ -21,4 +23,5 @@
             "zdjecie": "images/pralka-bosch.jpg"
         }
     ]
+    
 }
