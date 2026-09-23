@@ -7,6 +7,27 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* Styl dla obrazków w kafelkach kategorii */
+        .box-img-placeholder {
+            width: 100%;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            overflow: hidden;
+            border-radius: 4px;
+            background: #f0f0f0;
+        }
+        .box-img-placeholder img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        .box-img-placeholder i {
+            font-size: 40px;
+            color: #0b3d6d;
+        }
         /* Styl dla listy rozwijanej podpowiedzi wyszukiwania */
         .search-wrapper {
             position: relative;
@@ -107,56 +128,82 @@
             <div class="grid-boxes" id="productGrid">
                 
                 <a href="lodowki.html" class="box product-item" data-keywords="lodówka lodowka amica samsung beko bosch" style="text-decoration: none; color: inherit;">
-                    <div class="box-img-placeholder"><i class="fa-solid fa-temperature-arrow-down"></i></div>
+                    <div class="box-img-placeholder">
+                        <img src="images/categories/lodowki.jpg" alt="Lodówki" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                        <i class="fa-solid fa-temperature-arrow-down" style="display:none;"></i>
+                    </div>
                     <h3>Lodówki</h3>
                     <p>Nowoczesne lodówki wolnostojące i do zabudowy o wysokiej klasie energetycznej.</p>
                 </a>
 
                 <a href="zamrazarki.html" class="box product-item" data-keywords="zamrażarka zamrazarka amica beko" style="text-decoration: none; color: inherit;">
-                    <div class="box-img-placeholder"><i class="fa-solid fa-snowflake"></i></div>
+                    <div class="box-img-placeholder">
+                        <img src="images/categories/zamrazarki.jpg" alt="Zamrażarki" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                        <i class="fa-solid fa-snowflake" style="display:none;"></i>
+                    </div>
                     <h3>Zamrażarki</h3>
                     <p>Zamrażarki szufladowe oraz skrzyniowe idealne do domowych zapasów.</p>
                 </a>
 
-                <!-- ZMIANA TUTAJ: Zamiast lodówko-zamrażarek są suszarki -->
                 <a href="suszarki.html" class="box product-item" data-keywords="suszarka suszarki do ubrań bochen samsung beko" style="text-decoration: none; color: inherit;">
-                    <div class="box-img-placeholder"><i class="fa-solid fa-wind"></i></div>
+                    <div class="box-img-placeholder">
+                        <img src="images/categories/suszarki.jpg" alt="Suszarki do ubrań" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                        <i class="fa-solid fa-wind" style="display:none;"></i>
+                    </div>
                     <h3>Suszarki do ubrań</h3>
-                    <p>Energooszczędne suszarki bębnowe z pompą ciepła dla idealnie miękkich ubrań.</p>
+                    <p>Energooszczędne suszarki bębnowe z pompą ciepła dla idealnie miękkości ubrań.</p>
                 </a>
 
                 <a href="pralki.html" class="box product-item" data-keywords="pralka pralki amica bosch beko whirlpool samsung" style="text-decoration: none; color: inherit;">
-                    <div class="box-img-placeholder"><i class="fa-solid fa-shirt"></i></div>
+                    <div class="box-img-placeholder">
+                        <img src="images/categories/pralki.jpg" alt="Pralki" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                        <i class="fa-solid fa-shirt" style="display:none;"></i>
+                    </div>
                     <h3>Pralki</h3>
                     <p>Pralki ładowane od przodu i od góry, z zaawansowanymi programami parowymi.</p>
                 </a>
 
                 <a href="zmywarki.html" class="box product-item" data-keywords="zmywarka zmywarki amica bosch beko whirlpool" style="text-decoration: none; color: inherit;">
-                    <div class="box-img-placeholder"><i class="fa-solid fa-utensils"></i></div>
+                    <div class="box-img-placeholder">
+                        <img src="images/categories/zmywarki.jpg" alt="Zmywarki" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                        <i class="fa-solid fa-utensils" style="display:none;"></i>
+                    </div>
                     <h3>Zmywarki</h3>
                     <p>Zmywarki do zabudowy oraz wolnostojące o szerokości 45 cm i 60 cm.</p>
                 </a>
 
                 <a href="piekarniki.html" class="box product-item" data-keywords="piekarnik piekarniki amica bosch mastercook" style="text-decoration: none; color: inherit;">
-                    <div class="box-img-placeholder"><i class="fa-solid fa-fire-burner"></i></div>
+                    <div class="box-img-placeholder">
+                        <img src="images/categories/piekarniki.jpg" alt="Piekarniki" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                        <i class="fa-solid fa-fire-burner" style="display:none;"></i>
+                    </div>
                     <h3>Piekarniki</h3>
                     <p>Piekarniki elektryczne z funkcją termoobiegu i pyrolizy.</p>
                 </a>
 
                 <a href="kuchenki.html" class="box product-item" data-keywords="kuchenka kuchenki wolnostojące amica gazowa elektryczna" style="text-decoration: none; color: inherit;">
-                    <div class="box-img-placeholder"><i class="fa-solid fa-kitchen-set"></i></div>
+                    <div class="box-img-placeholder">
+                        <img src="images/categories/kuchenki.jpg" alt="Kuchenki" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                        <i class="fa-solid fa-kitchen-set" style="display:none;"></i>
+                    </div>
                     <h3>Kuchenki</h3>
                     <p>Kuchenki gazowo-elektryczne oraz tradycyjne zestawy do gotowania.</p>
                 </a>
 
                 <a href="plyty_grzewcze.html" class="box product-item" data-keywords="płyta grzewcza plyta indukcyjna ceramiczna gazowa amica bosch" style="text-decoration: none; color: inherit;">
-                    <div class="box-img-placeholder"><i class="fa-solid fa-square"></i></div>
+                    <div class="box-img-placeholder">
+                        <img src="images/categories/plyty-grzewcze.jpg" alt="Płyty Grzewcze" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                        <i class="fa-solid fa-square" style="display:none;"></i>
+                    </div>
                     <h3>Płyty Grzewcze</h3>
                     <p>Płyty indukcyjne, ceramiczne oraz gazowe w szkle – nowoczesny design.</p>
                 </a>
 
                 <a href="male_agd.html" class="box product-item" data-keywords="małe agd mikrofalówka mikrofala ekspres do kawy amica delonghi" style="text-decoration: none; color: inherit;">
-                    <div class="box-img-placeholder"><i class="fa-solid fa-mug-hot"></i></div>
+                    <div class="box-img-placeholder">
+                        <img src="images/categories/male-agd.jpg" alt="Małe AGD" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                        <i class="fa-solid fa-mug-hot" style="display:none;"></i>
+                    </div>
                     <h3>Małe AGD</h3>
                     <p>Kuchenki mikrofalowe, ciśnieniowe ekspresy do kawy oraz inne akcesoria.</p>
                 </a>
