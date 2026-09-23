@@ -9,55 +9,56 @@ def stworz_nazwe_pliku(nazwa):
     }
     for pl, en in zamiany.items():
         nazwa = nazwa.replace(pl, en)
-    
     nazwa = nazwa.lower()
     nazwa = re.sub(r'[^a-z0-9]+', '-', nazwa)
     nazwa = nazwa.strip('-')
     return nazwa + ".html"
 
-if os.path.exists("produkty.json"):
-    with open("produkty.json", "r", encoding="utf-8") as f:
-        baza_produktow = json.load(f)
-else:
-    baza_produktow = {}
+CAT_BACK = {
+    "lodowki.html": ("lodowki.html", "Lodówki"),
+    "pralki.html": ("pralki.html", "Pralki"),
+    "zmywarki.html": ("zmywarki.html", "Zmywarki"),
+    "piekarniki.html": ("piekarniki.html", "Piekarniki"),
+    "male_AGD.html": ("male_AGD.html", "Małe AGD"),
+    "kuchenki.html": ("kuchenki.html", "Kuchenki"),
+    "suszarki.html": ("suszarki.html", "Suszarki"),
+    "zamrazarki.html": ("zamrazarki.html", "Zamrażarki"),
+    "plyty_grzewcze.html": ("plyty_grzewcze.html", "Płyty grzewcze"),
+}
 
-for plik_html, produkty in baza_produktow.items():
-    print("Przetwarzanie kategorii: " + plik_html)
-    produkty_html = ""
-    for p in produkty:
-        plik_produktu = stworz_nazwe_pliku(p['tytul'])
-        
-        # Pobieramy zdjęcia z listy (zabezpieczenie, gdyby ktoś podał jedno lub zero)
-        lista_zdjec = p.get('zdjecia', [])
-        glowne_zdjecie = lista_zdjec[0] if len(lista_zdjec) > 0 else ""
-        
-        # Generowanie HTML dla dodatkowych zdjęć na podstronie szczegółowej
-        galeria_html = ""
-        for zdj in lista_zdjec:
-            galeria_html += f'<img src="{zdj}" alt="{p["tytul"]}" class="product-detail-img">\n'
-        
-        szablon_podstrony = f"""<!DOCTYPE html>
+def detail_html(p, back_href, back_label):
+    imgs = p.get("zdjecia", [])
+    if not imgs and p.get("zdjecie"):
+        imgs = [p["zdjecie"]]
+    galeria = ""
+    for zdj in imgs:
+        galeria += '            <img src="%s" alt="%s" class="product-detail-img">\n' % (zdj, p["tytul"])
+    if not galeria:
+        galeria = "            <p>Brak zdjęcia</p>\n"
+    return """<!DOCTYPE html>
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{p['tytul']} - Domel Konin</title>
+    <title>%s - Domel Konin</title>
     <style>
-        * {{ box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif; }}
-        body {{ background-color: #f4f4f4; color: #333; line-height: 1.6; }}
-        .top-bar {{ background-color: #1a4b84; color: #fff; padding: 0.5rem 2rem; display: flex; justify-content: space-between; font-size: 0.9rem; }}
-        .top-bar a {{ color: #fff; text-decoration: none; }}
-        header {{ background-color: #fff; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #ddd; }}
-        .logo-img {{ max-height: 50px; display: block; }}
-        .container {{ max-width: 900px; margin: 2rem auto; padding: 2rem; background: #fff; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }}
-        .images-container {{ display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.5rem; justify-content: center; }}
-        .product-detail-img {{ width: calc(50% - 0.5rem); max-height: 280px; object-fit: contain; border-radius: 6px; background: #fafafa; border: 1px solid #eee; padding: 5px; }}
-        h1 {{ color: #1a4b84; margin-bottom: 1rem; font-size: 1.8rem; }}
-        .price {{ font-size: 1.8rem; color: #d9534f; font-weight: bold; margin-bottom: 1.5rem; }}
-        .desc {{ font-size: 1.1rem; margin-bottom: 2rem; color: #555; }}
-        .info-box {{ background: #f9f9f9; padding: 1rem; border-left: 4px solid #1a4b84; margin-bottom: 2rem; }}
-        .btn {{ display: inline-block; background-color: #1a4b84; color: #fff; padding: 0.6rem 1.2rem; border-radius: 4px; text-decoration: none; font-weight: bold; }}
-        .btn:hover {{ background-color: #13355f; }}
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif; }
+        body { background-color: #f4f4f4; color: #333; line-height: 1.6; }
+        .top-bar { background-color: #1a4b84; color: #fff; padding: 0.5rem 2rem; display: flex; justify-content: space-between; font-size: 0.9rem; }
+        .top-bar a { color: #fff; text-decoration: none; }
+        header { background-color: #fff; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #ddd; }
+        .logo-img { max-height: 50px; display: block; }
+        .container { max-width: 900px; margin: 2rem auto; padding: 2rem; background: #fff; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .images-container { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.5rem; justify-content: center; }
+        .product-detail-img { width: calc(50%% - 0.5rem); max-height: 320px; object-fit: contain; border-radius: 8px; background: #f9f9f9; }
+        @media (max-width: 600px) { .product-detail-img { width: 100%%; } }
+        h1 { color: #1a4b84; margin-bottom: 1rem; }
+        .price { font-size: 1.8rem; color: #d9534f; font-weight: bold; margin-bottom: 1.5rem; }
+        .desc { font-size: 1.1rem; margin-bottom: 2rem; color: #555; }
+        .info-box { background: #f9f9f9; padding: 1rem; border-left: 4px solid #1a4b84; margin-bottom: 2rem; }
+        .btn { display: inline-block; background-color: #1a4b84; color: #fff; padding: 0.6rem 1.2rem; border-radius: 4px; text-decoration: none; font-weight: bold; }
+        .btn:hover { background-color: #13355f; }
+        .btn-back { background-color: #666; }
     </style>
 </head>
 <body>
@@ -66,58 +67,80 @@ for plik_html, produkty in baza_produktow.items():
     </div>
     <header>
         <a href="index.html"><img src="images/logo.png" alt="Domel Konin" class="logo-img"></a>
-        <a href="{plik_html}" class="btn" style="background-color: #666;">← Wróć do kategorii</a>
+        <a href="%s" class="btn btn-back">← Wróć do %s</a>
     </header>
     <div class="container">
         <div class="images-container">
-            {galeria_html}
-        </div>
-        <h1>{p['tytul']}</h1>
-        <div class="price">Cena: {p['cena']}</div>
+%s        </div>
+        <h1>%s</h1>
+        <div class="price">%s</div>
         <div class="desc">
             <h3>Opis produktu:</h3>
-            <p>{p['opis']}</p>
+            <p>%s</p>
         </div>
         <div class="info-box">
-            <p><strong>Dostępność w salonie:</strong> Dostępne od ręki w naszym sklepie stacjonarnym w Koninie.</p>
-            <p>Masz pytania? Zadzwoń do nas lub odwiedź nas osobiście!</p>
+            <p><strong>Dostępność w salonie:</strong> Sprawdź dostępność w naszym sklepie stacjonarnym w Koninie.</p>
+            <p>Masz pytania? Zadzwoń: <strong>63 242 17 99</strong> lub odwiedź nas osobiście!</p>
         </div>
         <a href="index.html#kontakt" class="btn">Zapytaj o ten produkt</a>
     </div>
 </body>
-</html>"""
-        
-        with open(plik_produktu, "w", encoding="utf-8") as f_prod:
-            f_prod.write(szablon_podstrony)
-        
-        # Kafelek kategorii używa pierwszego zdjęcia jako miniatury
-        produkty_html += f"""
-            <div class="product-card" style="display: flex; flex-direction: column; justify-content: space-between;">
-                <div>
-                    <img src="{glowne_zdjecie}" alt="{p['tytul']}" style="width: 100%; height: 180px; object-fit: contain; margin-bottom: 1rem; border-radius: 4px;">
-                    <h3>{p['tytul']}</h3>
-                    <p class="opis">{p['opis']}</p>
-                </div>
-                <div>
-                    <span class="cena" style="display: block; font-size: 1.3rem; font-weight: bold; color: #d9534f; margin: 0.8rem 0;">{p['cena']}</span>
-                    <a href="{plik_produktu}" class="btn">Sprawdź szczegóły</a>
-                </div>
-            </div>
-"""
-    
-    if os.path.exists(plik_html):
-        with open(plik_html, "r", encoding="utf-8") as f:
-            zawartosc_strony = f.read()
-        start_komentarz = "<!-- POCZATEK_PRODUKTOW -->"
-        koniec_komentarz = "<!-- KONIEC_PRODUKTOW -->"
-        if start_komentarz in zawartosc_strony and koniec_komentarz in zawartosc_strony:
-            czesc_przed = zawartosc_strony.split(start_komentarz)[0]
-            czesc_po = zawartosc_strony.split(koniec_komentarz)[1]
-            
-            nowa_zawartosc = czesc_przed + start_komentarz + "\n" + produkty_html + "\n" + koniec_komentarz + czesc_po
-            
-            with open(plik_html, "w", encoding="utf-8") as f:
-                f.write(nowa_zawartosc)
-            print("Zaktualizowano plik kategorii: " + plik_html)
+</html>
+""" % (p["tytul"], back_href, back_label, galeria, p["tytul"], p.get("cena", "Cena na zapytanie"), p.get("opis", ""))
 
-print("Aktualizacja zakończona sukcesem!")
+def card_html(p, plik_produktu):
+    imgs = p.get("zdjecia", [])
+    if not imgs and p.get("zdjecie"):
+        imgs = [p["zdjecie"]]
+    img_src = imgs[0] if imgs else ""
+    img_block = ""
+    if img_src:
+        img_block = '''
+                <div class="product-card-image">
+                    <img src="%s" alt="%s" onerror="this.style.display='none'">
+                </div>''' % (img_src, p["tytul"])
+    return '''
+            <div class="product-card">
+%s
+                <h3>%s</h3>
+                <p class="opis">%s</p>
+                <span class="cena">%s</span>
+                <a href="%s" class="btn">Więcej informacji</a>
+            </div>
+''' % (img_block, p["tytul"], p.get("opis", ""), p.get("cena", "Cena na zapytanie"), plik_produktu)
+
+if not os.path.exists("produkty.json"):
+    print("Brak produkty.json")
+    raise SystemExit(1)
+
+with open("produkty.json", "r", encoding="utf-8") as f:
+    baza = json.load(f)
+
+for plik_html, produkty in baza.items():
+    print("Przetwarzanie kategorii:", plik_html)
+    back_href, back_label = CAT_BACK.get(plik_html, (plik_html, "kategorii"))
+    produkty_html = ""
+    for p in produkty:
+        plik_produktu = stworz_nazwe_pliku(p["tytul"])
+        with open(plik_produktu, "w", encoding="utf-8") as out:
+            out.write(detail_html(p, back_href, back_label))
+        produkty_html += card_html(p, plik_produktu)
+        print("  +", plik_produktu)
+
+    if not os.path.exists(plik_html):
+        print("  ! Brak pliku", plik_html)
+        continue
+    content = open(plik_html, encoding="utf-8").read()
+    start_m = "<!-- POCZATEK_PRODUKTOW -->"
+    end_m = "<!-- KONIEC_PRODUKTOW -->"
+    if start_m in content and end_m in content:
+        before = content.split(start_m)[0]
+        after = content.split(end_m)[1]
+        new_content = before + start_m + "\n" + produkty_html + "\n" + end_m + after
+        with open(plik_html, "w", encoding="utf-8") as out:
+            out.write(new_content)
+        print("  Zaktualizowano", plik_html)
+    else:
+        print("  ! Brak markerów w", plik_html)
+
+print("Gotowe.")

@@ -1,27 +1,215 @@
 {
-    "lodowki.html": [
-        {
-            "tytul": "Lodówka Whirlpool WHK26363XBR5E",
-            "opis": "Pojemność 316 l, pełny Dual NoFrost, cicha praca 35 dB.",
-            "cena": "2 099,00 zł",
-            "zdjecia": [
-                "images/lodowka-whirlpool-1.jpg",
-                "images/lodowka-whirlpool-2.jpg"
-        },
-        {
-            "tytul": "Lodówka Samsung NoFrost Inverter",
-            "opis": "Technologia SpaceMax, elegancki panel inox.",
-            "cena": "2 499,00 zł",
-            "zdjecie": "images/lodowka-samsung.jpg"
-        }
-    ],
-    "pralki.html": [
-        {
-            "tytul": "Pralka Bosch Serie 6 WGG2440SPL",
-            "opis": "Pojemność 9 kg, 1400 obr/min, silnik EcoSilence Drive.",
-            "cena": "2 199,00 zł",
-            "zdjecie": "images/pralka-bosch.jpg"
-        }
-    ]
-    
+  "lodowki.html": [
+    {
+      "tytul": "Candy CCG1L314EW",
+      "opis": "Produkt Candy CCG1L314EW dostępny w salonie Domel Konin. Zapraszamy do kontaktu po szczegóły i aktualną cenę.",
+      "cena": "Cena na zapytanie",
+      "zdjecia": [
+        "images/zdjęcia produktów/lodówki/Candy CCG1L314EW.jpg"
+      ]
+    },
+    {
+      "tytul": "Kernau KFRC 13153.3 LF W",
+      "opis": "Produkt Kernau KFRC 13153.3 LF W dostępny w salonie Domel Konin. Zapraszamy do kontaktu po szczegóły i aktualną cenę.",
+      "cena": "Cena na zapytanie",
+      "zdjecia": [
+        "images/zdjęcia produktów/lodówki/Kernau KFRC 13153.3 LF W/Kernau KFRC 13153.3 LF W1.jpg",
+        "images/zdjęcia produktów/lodówki/Kernau KFRC 13153.3 LF W/Kernau KFRC 13153.3 LF W2.jpg",
+        "images/zdjęcia produktów/lodówki/Kernau KFRC 13153.3 LF W/Kernau KFRC 13153.3 LF W3.jpg"
+      ]
+    },
+    {
+      "tytul": "Kernau KFRC 18153 W",
+      "opis": "Produkt Kernau KFRC 18153 W dostępny w salonie Domel Konin. Zapraszamy do kontaktu po szczegóły i aktualną cenę.",
+      "cena": "Cena na zapytanie",
+      "zdjecia": [
+        "images/zdjęcia produktów/lodówki/Kernau KFRC 18153 W.jpg"
+      ]
+    },
+    {
+      "tytul": "SAMSUNG RB38C605CB1",
+      "opis": "Produkt SAMSUNG RB38C605CB1 dostępny w salonie Domel Konin. Zapraszamy do kontaktu po szczegóły i aktualną cenę.",
+      "cena": "Cena na zapytanie",
+      "zdjecia": [
+        "images/zdjęcia produktów/lodówki/SAMSUNG RB38C605CB1.jpg"
+      ]
+    },
+    {
+      "tytul": "Samsung Combi Max RB53DG706AB1EO",
+      "opis": "Produkt Samsung Combi Max RB53DG706AB1EO dostępny w salonie Domel Konin. Zapraszamy do kontaktu po szczegóły i aktualną cenę.",
+      "cena": "Cena na zapytanie",
+      "zdjecia": [
+        "images/zdjęcia produktów/lodówki/Samsung Combi Max RB53DG706AB1EO.jpg"
+      ]
+    },
+    {
+      "tytul": "Samsung French Door",
+      "opis": "Produkt Samsung French Door dostępny w salonie Domel Konin. Zapraszamy do kontaktu po szczegóły i aktualną cenę.",
+      "cena": "Cena na zapytanie",
+      "zdjecia": [
+        "images/zdjęcia produktów/lodówki/Samsung French Door.png"
+      ]
+    },
+    {
+      "tytul": "Samsung RB33B610EWW",
+      "opis": "Produkt Samsung RB33B610EWW dostępny w salonie Domel Konin. Zapraszamy do kontaktu po szczegóły i aktualną cenę.",
+      "cena": "Cena na zapytanie",
+      "zdjecia": [
+        "images/zdjęcia produktów/lodówki/Samsung RB33B610EWW..jpg",
+        "images/zdjęcia produktów/lodówki/Samsung RB33B610EWW.jpg"
+      ]
+    },
+    {
+      "tytul": "Samsung RB38C776CB1EF",
+      "opis": "Produkt Samsung RB38C776CB1EF dostępny w salonie Domel Konin. Zapraszamy do kontaktu po szczegóły i aktualną cenę.",
+      "cena": "Cena na zapytanie",
+      "zdjecia": [
+        "images/zdjęcia produktów/lodówki/Samsung RB38C776CB1EF.jpg"
+      ]
+    },
+    {
+      "tytul": "Samsung RB7300T Rb38C762CWW",
+      "opis": "Produkt Samsung RB7300T Rb38C762CWW dostępny w salonie Domel Konin. Zapraszamy do kontaktu po szczegóły i aktualną cenę.",
+      "cena": "Cena na zapytanie",
+      "zdjecia": [
+        "images/zdjęcia produktów/lodówki/Samsung RB7300T Rb38C762CWW.jpg"
+      ]
+    },
+    {
+      "tytul": "samsung RB38C776CB1",
+      "opis": "Produkt samsung RB38C776CB1 dostępny w salonie Domel Konin. Zapraszamy do kontaktu po szczegóły i aktualną cenę.",
+      "cena": "Cena na zapytanie",
+      "zdjecia": [
+        "images/zdjęcia produktów/lodówki/samsung RB38C776CB1.jpg"
+      ]
+    }
+  ],
+  "pralki.html": [
+    {
+      "tytul": "HISENSE SERIA 5i WF5I1045BWQ",
+      "opis": "Produkt HISENSE SERIA 5i WF5I1045BWQ dostępny w salonie Domel Konin. Zapraszamy do kontaktu po szczegóły i aktualną cenę.",
+      "cena": "Cena na zapytanie",
+      "zdjecia": [
+        "images/zdjęcia produktów/pralki/HISENSE SERIA 5i WF5I1045BWQ.jpg"
+      ]
+    },
+    {
+      "tytul": "Pralka Candy (kompaktowa)",
+      "opis": "Produkt Pralka Candy (kompaktowa) dostępny w salonie Domel Konin. Zapraszamy do kontaktu po szczegóły i aktualną cenę.",
+      "cena": "Cena na zapytanie",
+      "zdjecia": [
+        "images/zdjęcia produktów/pralki/Pralka Candy (kompaktowa).jpg"
+      ]
+    },
+    {
+      "tytul": "Pralka Whirlpool (ładowana od góry)",
+      "opis": "Produkt Pralka Whirlpool (ładowana od góry) dostępny w salonie Domel Konin. Zapraszamy do kontaktu po szczegóły i aktualną cenę.",
+      "cena": "Cena na zapytanie",
+      "zdjecia": [
+        "images/zdjęcia produktów/pralki/Pralka Whirlpool (ładowana od góry).jpg"
+      ]
+    },
+    {
+      "tytul": "SAMSUNG SLIM WD 8NK 52 E3AW",
+      "opis": "Produkt SAMSUNG SLIM WD 8NK 52 E3AW dostępny w salonie Domel Konin. Zapraszamy do kontaktu po szczegóły i aktualną cenę.",
+      "cena": "Cena na zapytanie",
+      "zdjecia": [
+        "images/zdjęcia produktów/pralki/SAMSUNG SLIM WD 8NK 52 E3AW.jpg"
+      ]
+    },
+    {
+      "tytul": "SAMSUNG WW90DG5G34AEEO",
+      "opis": "Produkt SAMSUNG WW90DG5G34AEEO dostępny w salonie Domel Konin. Zapraszamy do kontaktu po szczegóły i aktualną cenę.",
+      "cena": "Cena na zapytanie",
+      "zdjecia": [
+        "images/zdjęcia produktów/pralki/SAMSUNG WW90DG5G34AEEO.jpg"
+      ]
+    },
+    {
+      "tytul": "Samsung BESPOKE AI WW11BB534DAW",
+      "opis": "Produkt Samsung BESPOKE AI WW11BB534DAW dostępny w salonie Domel Konin. Zapraszamy do kontaktu po szczegóły i aktualną cenę.",
+      "cena": "Cena na zapytanie",
+      "zdjecia": [
+        "images/zdjęcia produktów/pralki/Samsung BESPOKE AI WW11BB534DAW.jpg"
+      ]
+    },
+    {
+      "tytul": "WHIRPOOL TDOLRB 6252BS EU",
+      "opis": "Produkt WHIRPOOL TDOLRB 6252BS EU dostępny w salonie Domel Konin. Zapraszamy do kontaktu po szczegóły i aktualną cenę.",
+      "cena": "Cena na zapytanie",
+      "zdjecia": [
+        "images/zdjęcia produktów/pralki/WHIRPOOL TDOLRB 6252BS EU.jpg"
+      ]
+    }
+  ],
+  "zmywarki.html": [
+    {
+      "tytul": "DO ZABUDOWY BEKO BDIN38543P",
+      "opis": "Produkt DO ZABUDOWY BEKO BDIN38543P dostępny w salonie Domel Konin. Zapraszamy do kontaktu po szczegóły i aktualną cenę.",
+      "cena": "Cena na zapytanie",
+      "zdjecia": [
+        "images/zdjęcia produktów/zmywarki/DO ZABUDOWY BEKO BDIN38543P.jpg"
+      ]
+    },
+    {
+      "tytul": "Electrolux ESA421105W",
+      "opis": "Produkt Electrolux ESA421105W dostępny w salonie Domel Konin. Zapraszamy do kontaktu po szczegóły i aktualną cenę.",
+      "cena": "Cena na zapytanie",
+      "zdjecia": [
+        "images/zdjęcia produktów/zmywarki/Electrolux ESA421105W.jpg"
+      ]
+    },
+    {
+      "tytul": "SAMSUNG DW50DG450FSR",
+      "opis": "Produkt SAMSUNG DW50DG450FSR dostępny w salonie Domel Konin. Zapraszamy do kontaktu po szczegóły i aktualną cenę.",
+      "cena": "Cena na zapytanie",
+      "zdjecia": [
+        "images/zdjęcia produktów/zmywarki/SAMSUNG DW50DG450FSR.jpg"
+      ]
+    },
+    {
+      "tytul": "Zmywarka Electrolux",
+      "opis": "Produkt Zmywarka Electrolux dostępny w salonie Domel Konin. Zapraszamy do kontaktu po szczegóły i aktualną cenę.",
+      "cena": "Cena na zapytanie",
+      "zdjecia": [
+        "images/zdjęcia produktów/zmywarki/Zmywarka Electrolux.jpg"
+      ]
+    }
+  ],
+  "piekarniki.html": [
+    {
+      "tytul": "Amica 6018GG4.43HZpFQ(Xx)",
+      "opis": "Produkt Amica 6018GG4.43HZpFQ(Xx) dostępny w salonie Domel Konin. Zapraszamy do kontaktu po szczegóły i aktualną cenę.",
+      "cena": "Cena na zapytanie",
+      "zdjecia": [
+        "images/zdjęcia produktów/piekarniki/Amica 6018GG4.43HZpFQ(Xx).jpg"
+      ]
+    },
+    {
+      "tytul": "Electrolux LKK640221W",
+      "opis": "Produkt Electrolux LKK640221W dostępny w salonie Domel Konin. Zapraszamy do kontaktu po szczegóły i aktualną cenę.",
+      "cena": "Cena na zapytanie",
+      "zdjecia": [
+        "images/zdjęcia produktów/piekarniki/Electrolux LKK640221W.jpg"
+      ]
+    },
+    {
+      "tytul": "Gorenje GKS5C71XF (G600)",
+      "opis": "Produkt Gorenje GKS5C71XF (G600) dostępny w salonie Domel Konin. Zapraszamy do kontaktu po szczegóły i aktualną cenę.",
+      "cena": "Cena na zapytanie",
+      "zdjecia": [
+        "images/zdjęcia produktów/piekarniki/Gorenje GKS5C71XF (G600).jpg"
+      ]
+    }
+  ],
+  "male_AGD.html": [
+    {
+      "tytul": "SIEMENS EQ 700 CLASSIC",
+      "opis": "Produkt SIEMENS EQ 700 CLASSIC dostępny w salonie Domel Konin. Zapraszamy do kontaktu po szczegóły i aktualną cenę.",
+      "cena": "Cena na zapytanie",
+      "zdjecia": [
+        "images/zdjęcia produktów/MAŁE AGD/SIEMENS EQ 700 CLASSIC.jpg"
+      ]
+    }
+  ]
 }
