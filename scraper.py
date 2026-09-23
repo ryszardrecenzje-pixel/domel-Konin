@@ -1,9 +1,6 @@
-# scraper.py
 import os
+import json
 import re
-import requests
-from bs4 import BeautifulSoup
-from urllib.parse import urljoin
 
 def stworz_nazwe_pliku(nazwa):
     zamiany = {
@@ -18,164 +15,27 @@ def stworz_nazwe_pliku(nazwa):
     nazwa = nazwa.strip('-')
     return nazwa + ".html"
 
+if os.path.exists("produkty.json"):
+    with open("produkty.json", "r", encoding="utf-8") as f:
+        baza_produktow = json.load(f)
+else:
+    baza_produktow = {}
 
-def stworz_nazwe_obrazka(nazwa):
-    """Tworzy nazwę pliku obrazka na podstawie nazwy produktu."""
-    zamiany = {
-        'ą': 'a', 'ć': 'c', 'ę': 'e', 'ł': 'l', 'ń': 'n', 'ó': 'o', 'ś': 's', 'ź': 'z', 'ż': 'z',
-        'Ą': 'A', 'Ć': 'C', 'Ę': 'E', 'Ł': 'L', 'Ń': 'N', 'Ó': 'O', 'Ś': 'S', 'Ź': 'Z', 'Ż': 'Z'
-    }
-    for pl, en in zamiany.items():
-        nazwa = nazwa.replace(pl, en)
-    
-    nazwa = nazwa.lower()
-    nazwa = re.sub(r'[^a-z0-9]+', '-', nazwa)
-    nazwa = nazwa.strip('-')
-    return nazwa + ".jpg"
-
-
-def pobierz_obrazek(url_obrazka, nazwa_produktu):
-    """Pobiera obrazek produktu i zapisuje go w folderze images/products/."""
-    if not url_obrazka:
-        return None
-    
-    katalog_obrazkow = os.path.join("images", "products")
-    os.makedirs(katalog_obrazkow, exist_ok=True)
-    
-    nazwa_pliku = stworz_nazwe_obrazka(nazwa_produktu)
-    sciezka = os.path.join(katalog_obrazkow, nazwa_pliku)
-    
-    # Nie pobieraj ponownie, jeśli już istnieje
-    if os.path.exists(sciezka):
-        return "images/products/" + nazwa_pliku
-    
-    try:
-        r = requests.get(url_obrazka, headers=headers, timeout=10)
-        if r.status_code == 200:
-            with open(sciezka, "wb") as f:
-                f.write(r.content)
-            print("  Pobrano obrazek: " + sciezka)
-            return "images/products/" + nazwa_pliku
-    except Exception as e:
-        print("  Błąd pobierania obrazka: " + str(e))
-    
-    return None
-
-
-kategorie_do_aktualizacji = {
-    "lodowki.html": {
-        "url": "https://www.mediaexpert.pl/agd/lodowki-i-zamrazarki",
-        "tytul_strony": "Lodówki"
-    },
-    "zamrazarki.html": {
-        "url": "https://www.mediaexpert.pl/agd/lodowki-i-zamrazarki",
-        "tytul_strony": "Zamrażarki"
-    },
-    "pralki.html": {
-        "url": "https://www.mediaexpert.pl/agd/pralki-i-suszarki",
-        "tytul_strony": "Pralki"
-    },
-    "suszarki.html": {
-        "url": "https://www.mediaexpert.pl/agd/pralki-i-suszarki",
-        "tytul_strony": "Suszarki do ubrań"
-    },
-    "zmywarki.html": {
-        "url": "https://www.mediaexpert.pl/agd/zmywarki-i-akcesoria",
-        "tytul_strony": "Zmywarki"
-    },
-    "kuchenki.html": {
-        "url": "https://www.mediaexpert.pl/agd/kuchnie",
-        "tytul_strony": "Kuchenki"
-    },
-    "plyty_grzewcze.html": {
-        "url": "https://www.mediaexpert.pl/agd-do-zabudowy/plyty-do-zabudowy",
-        "tytul_strony": "Płyty Grzewcze"
-    },
-    "piekarniki.html": {
-        "url": "https://www.mediaexpert.pl/agd-do-zabudowy",
-        "tytul_strony": "Piekarniki"
-    },
-    "male_AGD.html": {
-        "url": "https://www.mediaexpert.pl/agd-male",
-        "tytul_strony": "Małe AGD"
-    }
-}
-
-headers = {
-    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
-}
-
-for plik_html, dane in kategorie_do_aktualizacji.items():
-    print("Przetwarzam kategorię: " + dane['tytul_strony'] + "...")
-    
-    pobrane_produkty = []
-    try:
-        response = requests.get(dane["url"], headers=headers, timeout=15)
-        if response.status_code == 200:
-            soup = BeautifulSoup(response.text, "html.parser")
-            
-            # Próbujemy znaleźć produkty – selektory mogą się zmieniać
-            kafle = soup.find_all("div", class_="produkt-item")[:3]
-            
-            for kafelek in kafle:
-                tytul_elem = kafelek.find("h2") or kafelek.find("h3") or kafelek.find("a", class_="name")
-                opis_elem = kafelek.find("p", class_="opis") or kafelek.find("div", class_="opis")
-                cena_elem = kafelek.find("span", class_="cena") or kafelek.find("div", class_="price")
-                obrazek_elem = kafelek.find("img")
-                
-                if tytul_elem:
-                    tytul = tytul_elem.get_text(strip=True)
-                    opis = opis_elem.get_text(strip=True) if opis_elem else "Wysokiej jakości urządzenie AGD."
-                    cena = cena_elem.get_text(strip=True) if cena_elem else "Sprawdź cenę"
-                    
-                    # Pobierz URL obrazka
-                    url_obrazka = None
-                    if obrazek_elem and obrazek_elem.get("src"):
-                        url_obrazka = urljoin(dane["url"], obrazek_elem["src"])
-                    
-                    pobrane_produkty.append({
-                        "tytul": tytul,
-                        "opis": opis,
-                        "cena": cena,
-                        "obrazek_url": url_obrazka
-                    })
-    except Exception as e:
-        print("Błąd pobierania z MediaExpert: " + str(e))
-
-    # Fallback – gdy nie udało się pobrać prawdziwych produktów
-    if not pobrane_produkty:
-        pobrane_produkty = [
-            {
-                "tytul": "Model " + dane['tytul_strony'] + " Pro 1",
-                "opis": "Zaawansowane urządzenie z technologią inteligentnego oszczędzania energii.",
-                "cena": "1999 zł",
-                "obrazek_url": None
-            },
-            {
-                "tytul": "Model " + dane['tytul_strony'] + " Eco 2",
-                "opis": "Nowoczesny design, cicha praca i duża pojemność użytkowa.",
-                "cena": "2499 zł",
-                "obrazek_url": None
-            },
-            {
-                "tytul": "Model " + dane['tytul_strony'] + " Max 3",
-                "opis": "Najwyższa jakość wykonania z przedłużoną gwarancją producenta.",
-                "cena": "2999 zł",
-                "obrazek_url": None
-            }
-        ]
-
+for plik_html, produkty in baza_produktow.items():
+    print("Przetwarzanie kategorii: " + plik_html)
     produkty_html = ""
-    
-    for p in pobrane_produkty:
+    for p in produkty:
         plik_produktu = stworz_nazwe_pliku(p['tytul'])
         
-        # Pobierz obrazek produktu
-        sciezka_obrazka = pobierz_obrazek(p.get('obrazek_url'), p['tytul'])
-        if not sciezka_obrazka:
-            sciezka_obrazka = "images/logo.png"  # fallback do logo
+        # Pobieramy zdjęcia z listy (zabezpieczenie, gdyby ktoś podał jedno lub zero)
+        lista_zdjec = p.get('zdjecia', [])
+        glowne_zdjecie = lista_zdjec[0] if len(lista_zdjec) > 0 else ""
         
-        # ---------- PODSTRONA PRODUKTU ----------
+        # Generowanie HTML dla dodatkowych zdjęć na podstronie szczegółowej
+        galeria_html = ""
+        for zdj in lista_zdjec:
+            galeria_html += f'<img src="{zdj}" alt="{p["tytul"]}" class="product-detail-img">\n'
+        
         szablon_podstrony = f"""<!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -190,9 +50,9 @@ for plik_html, dane in kategorie_do_aktualizacji.items():
         header {{ background-color: #fff; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #ddd; }}
         .logo-img {{ max-height: 50px; display: block; }}
         .container {{ max-width: 900px; margin: 2rem auto; padding: 2rem; background: #fff; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }}
-        .product-image {{ text-align: center; margin-bottom: 1.5rem; }}
-        .product-image img {{ max-width: 100%; max-height: 300px; object-fit: contain; border-radius: 8px; }}
-        h1 {{ color: #1a4b84; margin-bottom: 1rem; }}
+        .images-container {{ display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.5rem; justify-content: center; }}
+        .product-detail-img {{ width: calc(50% - 0.5rem); max-height: 280px; object-fit: contain; border-radius: 6px; background: #fafafa; border: 1px solid #eee; padding: 5px; }}
+        h1 {{ color: #1a4b84; margin-bottom: 1rem; font-size: 1.8rem; }}
         .price {{ font-size: 1.8rem; color: #d9534f; font-weight: bold; margin-bottom: 1.5rem; }}
         .desc {{ font-size: 1.1rem; margin-bottom: 2rem; color: #555; }}
         .info-box {{ background: #f9f9f9; padding: 1rem; border-left: 4px solid #1a4b84; margin-bottom: 2rem; }}
@@ -209,8 +69,8 @@ for plik_html, dane in kategorie_do_aktualizacji.items():
         <a href="{plik_html}" class="btn" style="background-color: #666;">← Wróć do kategorii</a>
     </header>
     <div class="container">
-        <div class="product-image">
-            <img src="{sciezka_obrazka}" alt="{p['tytul']}" onerror="this.style.display='none'">
+        <div class="images-container">
+            {galeria_html}
         </div>
         <h1>{p['tytul']}</h1>
         <div class="price">Cena: {p['cena']}</div>
@@ -226,50 +86,38 @@ for plik_html, dane in kategorie_do_aktualizacji.items():
     </div>
 </body>
 </html>"""
-
+        
         with open(plik_produktu, "w", encoding="utf-8") as f_prod:
             f_prod.write(szablon_podstrony)
-
-        # ---------- KAFEL NA LIŚCIE KATEGORII ----------
+        
+        # Kafelek kategorii używa pierwszego zdjęcia jako miniatury
         produkty_html += f"""
-            <div class="product-card">
-                <div class="product-card-image">
-                    <img src="{sciezka_obrazka}" alt="{p['tytul']}" onerror="this.style.display='none'">
+            <div class="product-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                    <img src="{glowne_zdjecie}" alt="{p['tytul']}" style="width: 100%; height: 180px; object-fit: contain; margin-bottom: 1rem; border-radius: 4px;">
+                    <h3>{p['tytul']}</h3>
+                    <p class="opis">{p['opis']}</p>
                 </div>
-                <h3>{p['tytul']}</h3>
-                <p class="opis">{p['opis']}</p>
-                <span class="cena">{p['cena']}</span>
-                <a href="{plik_produktu}" class="btn">Więcej informacji</a>
+                <div>
+                    <span class="cena" style="display: block; font-size: 1.3rem; font-weight: bold; color: #d9534f; margin: 0.8rem 0;">{p['cena']}</span>
+                    <a href="{plik_produktu}" class="btn">Sprawdź szczegóły</a>
+                </div>
             </div>
 """
-
-    # ---------- AKTUALIZACJA PLIKU KATEGORII ----------
+    
     if os.path.exists(plik_html):
         with open(plik_html, "r", encoding="utf-8") as f:
             zawartosc_strony = f.read()
-
         start_komentarz = "<!-- POCZATEK_PRODUKTOW -->"
         koniec_komentarz = "<!-- KONIEC_PRODUKTOW -->"
-
         if start_komentarz in zawartosc_strony and koniec_komentarz in zawartosc_strony:
             czesc_przed = zawartosc_strony.split(start_komentarz)[0]
             czesc_po = zawartosc_strony.split(koniec_komentarz)[1]
             
-            nowa_zawartosc = (
-                czesc_przed 
-                + start_komentarz + "\n" 
-                + produkty_html 
-                + "\n" + koniec_komentarz 
-                + czesc_po
-            )
+            nowa_zawartosc = czesc_przed + start_komentarz + "\n" + produkty_html + "\n" + koniec_komentarz + czesc_po
             
             with open(plik_html, "w", encoding="utf-8") as f:
                 f.write(nowa_zawartosc)
-            
-            print("Zaktualizowano kategorię i wygenerowano podstrony dla: " + plik_html)
-        else:
-            print("Uwaga: Nie znaleziono markerów <!-- POCZATEK_PRODUKTOW --> w pliku " + plik_html)
-    else:
-        print("Uwaga: Plik " + plik_html + " nie istnieje.")
+            print("Zaktualizowano plik kategorii: " + plik_html)
 
-print("Cały proces aktualizacji zakończony pomyślnie!")
+print("Aktualizacja zakończona sukcesem!")
