@@ -3,6 +3,7 @@ import os
 import re
 import requests
 from bs4 import BeautifulSoup
+from urllib.parse import urljoin
 
 def stworz_nazwe_pliku(nazwa):
     zamiany = {
@@ -16,6 +17,49 @@ def stworz_nazwe_pliku(nazwa):
     nazwa = re.sub(r'[^a-z0-9]+', '-', nazwa)
     nazwa = nazwa.strip('-')
     return nazwa + ".html"
+
+
+def stworz_nazwe_obrazka(nazwa):
+    """Tworzy nazwę pliku obrazka na podstawie nazwy produktu."""
+    zamiany = {
+        'ą': 'a', 'ć': 'c', 'ę': 'e', 'ł': 'l', 'ń': 'n', 'ó': 'o', 'ś': 's', 'ź': 'z', 'ż': 'z',
+        'Ą': 'A', 'Ć': 'C', 'Ę': 'E', 'Ł': 'L', 'Ń': 'N', 'Ó': 'O', 'Ś': 'S', 'Ź': 'Z', 'Ż': 'Z'
+    }
+    for pl, en in zamiany.items():
+        nazwa = nazwa.replace(pl, en)
+    
+    nazwa = nazwa.lower()
+    nazwa = re.sub(r'[^a-z0-9]+', '-', nazwa)
+    nazwa = nazwa.strip('-')
+    return nazwa + ".jpg"
+
+
+def pobierz_obrazek(url_obrazka, nazwa_produktu):
+    """Pobiera obrazek produktu i zapisuje go w folderze images/products/."""
+    if not url_obrazka:
+        return None
+    
+    katalog_obrazkow = os.path.join("images", "products")
+    os.makedirs(katalog_obrazkow, exist_ok=True)
+    
+    nazwa_pliku = stworz_nazwe_obrazka(nazwa_produktu)
+    sciezka = os.path.join(katalog_obrazkow, nazwa_pliku)
+    
+    # Nie pobieraj ponownie, jeśli już istnieje
+    if os.path.exists(sciezka):
+        return "images/products/" + nazwa_pliku
+    
+    try:
+        r = requests.get(url_obrazka, headers=headers, timeout=10)
+        if r.status_code == 200:
+            with open(sciezka, "wb") as f:
+                f.write(r.content)
+            print("  Pobrano obrazek: " + sciezka)
+            return "images/products/" + nazwa_pliku
+    except Exception as e:
+        print("  Błąd pobierania obrazka: " + str(e))
+    
+    return None
 
 
 kategorie_do_aktualizacji = {
@@ -77,16 +121,23 @@ for plik_html, dane in kategorie_do_aktualizacji.items():
                 tytul_elem = kafelek.find("h2") or kafelek.find("h3") or kafelek.find("a", class_="name")
                 opis_elem = kafelek.find("p", class_="opis") or kafelek.find("div", class_="opis")
                 cena_elem = kafelek.find("span", class_="cena") or kafelek.find("div", class_="price")
+                obrazek_elem = kafelek.find("img")
                 
                 if tytul_elem:
                     tytul = tytul_elem.get_text(strip=True)
                     opis = opis_elem.get_text(strip=True) if opis_elem else "Wysokiej jakości urządzenie AGD."
                     cena = cena_elem.get_text(strip=True) if cena_elem else "Sprawdź cenę"
                     
+                    # Pobierz URL obrazka
+                    url_obrazka = None
+                    if obrazek_elem and obrazek_elem.get("src"):
+                        url_obrazka = urljoin(dane["url"], obrazek_elem["src"])
+                    
                     pobrane_produkty.append({
                         "tytul": tytul,
                         "opis": opis,
-                        "cena": cena
+                        "cena": cena,
+                        "obrazek_url": url_obrazka
                     })
     except Exception as e:
         print("Błąd pobierania z MediaExpert: " + str(e))
@@ -97,17 +148,20 @@ for plik_html, dane in kategorie_do_aktualizacji.items():
             {
                 "tytul": "Model " + dane['tytul_strony'] + " Pro 1",
                 "opis": "Zaawansowane urządzenie z technologią inteligentnego oszczędzania energii.",
-                "cena": "1999 zł"
+                "cena": "1999 zł",
+                "obrazek_url": None
             },
             {
                 "tytul": "Model " + dane['tytul_strony'] + " Eco 2",
                 "opis": "Nowoczesny design, cicha praca i duża pojemność użytkowa.",
-                "cena": "2499 zł"
+                "cena": "2499 zł",
+                "obrazek_url": None
             },
             {
                 "tytul": "Model " + dane['tytul_strony'] + " Max 3",
                 "opis": "Najwyższa jakość wykonania z przedłużoną gwarancją producenta.",
-                "cena": "2999 zł"
+                "cena": "2999 zł",
+                "obrazek_url": None
             }
         ]
 
@@ -115,6 +169,11 @@ for plik_html, dane in kategorie_do_aktualizacji.items():
     
     for p in pobrane_produkty:
         plik_produktu = stworz_nazwe_pliku(p['tytul'])
+        
+        # Pobierz obrazek produktu
+        sciezka_obrazka = pobierz_obrazek(p.get('obrazek_url'), p['tytul'])
+        if not sciezka_obrazka:
+            sciezka_obrazka = "images/logo.png"  # fallback do logo
         
         # ---------- PODSTRONA PRODUKTU ----------
         szablon_podstrony = f"""<!DOCTYPE html>
@@ -131,6 +190,8 @@ for plik_html, dane in kategorie_do_aktualizacji.items():
         header {{ background-color: #fff; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #ddd; }}
         .logo-img {{ max-height: 50px; display: block; }}
         .container {{ max-width: 900px; margin: 2rem auto; padding: 2rem; background: #fff; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }}
+        .product-image {{ text-align: center; margin-bottom: 1.5rem; }}
+        .product-image img {{ max-width: 100%; max-height: 300px; object-fit: contain; border-radius: 8px; }}
         h1 {{ color: #1a4b84; margin-bottom: 1rem; }}
         .price {{ font-size: 1.8rem; color: #d9534f; font-weight: bold; margin-bottom: 1.5rem; }}
         .desc {{ font-size: 1.1rem; margin-bottom: 2rem; color: #555; }}
@@ -148,6 +209,9 @@ for plik_html, dane in kategorie_do_aktualizacji.items():
         <a href="{plik_html}" class="btn" style="background-color: #666;">← Wróć do kategorii</a>
     </header>
     <div class="container">
+        <div class="product-image">
+            <img src="{sciezka_obrazka}" alt="{p['tytul']}" onerror="this.style.display='none'">
+        </div>
         <h1>{p['tytul']}</h1>
         <div class="price">Cena: {p['cena']}</div>
         <div class="desc">
@@ -169,6 +233,9 @@ for plik_html, dane in kategorie_do_aktualizacji.items():
         # ---------- KAFEL NA LIŚCIE KATEGORII ----------
         produkty_html += f"""
             <div class="product-card">
+                <div class="product-card-image">
+                    <img src="{sciezka_obrazka}" alt="{p['tytul']}" onerror="this.style.display='none'">
+                </div>
                 <h3>{p['tytul']}</h3>
                 <p class="opis">{p['opis']}</p>
                 <span class="cena">{p['cena']}</span>
