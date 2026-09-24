@@ -55,7 +55,7 @@ LIGHTBOX_HTML = """
     </script>
 """
 
-def card_html(p):
+def card_html(p, is_local=True):
     imgs = p.get("zdjecia", [])
     if not imgs and p.get("zdjecie"):
         imgs = [p["zdjecie"]]
@@ -66,14 +66,19 @@ def card_html(p):
                 <div class="product-card-image">
                     <img src="%s" alt="%s" onclick="openLightbox(this.src)" onerror="this.style.display='none'">
                 </div>''' % (img_src, p["tytul"])
+    if is_local:
+        avail = '''<div class="availability"><span class="availability-dot dot-local"></span> Dostępny lokalnie</div>'''
+    else:
+        avail = '''<div class="availability"><span class="availability-dot dot-warehouse"></span> Dostępny na magazynie</div>'''
     return '''
-            <div class="product-card">
+            <div class="product-card" data-title="%s" data-keywords="%s">
 %s
+                %s
                 <h3>%s</h3>
                 <p class="opis">%s</p>
                 <span class="cena">%s</span>
             </div>
-''' % (img_block, p["tytul"], p.get("opis", ""), p.get("cena", "Cena na zapytanie"))
+''' % (p["tytul"].lower(), (p["tytul"] + " " + p.get("opis", "")).lower(), img_block, avail, p["tytul"], p.get("opis", ""), p.get("cena", "Cena na zapytanie"))
 
 if not os.path.exists("produkty.json"):
     print("Brak produkty.json")
@@ -84,7 +89,7 @@ with open("produkty.json", "r", encoding="utf-8") as f:
 
 for plik_html, produkty in baza.items():
     print("Przetwarzanie:", plik_html)
-    produkty_html = "".join(card_html(p) for p in produkty)
+    produkty_html = "".join(card_html(p, is_local=True) for p in produkty)
 
     if not os.path.exists(plik_html):
         print("  ! Brak pliku", plik_html)

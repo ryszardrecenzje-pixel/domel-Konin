@@ -193,6 +193,8 @@
         .product-card-image img:hover { opacity: 0.85; }
 
     </style>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
@@ -230,36 +232,46 @@
 
     <!-- Zawartość podstrony -->
     <div class="container">
-        <h2 class="page-title">Piekarniki</h2> <!-- Zmień ten nagłówek w innych plikach kategorii (np. Pralki, Zamrażarki) -->
+        <h2 class="page-title">Piekarniki</h2>
+
+        <div class="category-search">
+            <input type="text" id="catSearchInput" placeholder="Szukaj produktu w tej kategorii..." oninput="filterCatProducts()" autocomplete="off">
+            <button onclick="filterCatProducts()"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
+        <div id="noResults" class="no-results">Brak pasujących produktów</div>
+ <!-- Zmień ten nagłówek w innych plikach kategorii (np. Pralki, Zamrażarki) -->
         
         <div class="products-grid">
             <!-- POCZATEK_PRODUKTOW -->
 
-            <div class="product-card">
+            <div class="product-card" data-title="amica 6018gg4.43hzpfq(xx)" data-keywords="amica 6018gg4.43hzpfq(xx) produkt amica 6018gg4.43hzpfq(xx) dostępny w salonie domel konin. zapraszamy do kontaktu po szczegóły i aktualną cenę.">
 
                 <div class="product-card-image">
                     <img src="images/zdjęcia produktów/piekarniki/Amica 6018GG4.43HZpFQ(Xx).jpg" alt="Amica 6018GG4.43HZpFQ(Xx)" onclick="openLightbox(this.src)" onerror="this.style.display='none'">
                 </div>
+                <div class="availability"><span class="availability-dot dot-local"></span> Dostępny lokalnie</div>
                 <h3>Amica 6018GG4.43HZpFQ(Xx)</h3>
                 <p class="opis">Produkt Amica 6018GG4.43HZpFQ(Xx) dostępny w salonie Domel Konin. Zapraszamy do kontaktu po szczegóły i aktualną cenę.</p>
                 <span class="cena">Cena na zapytanie</span>
             </div>
 
-            <div class="product-card">
+            <div class="product-card" data-title="electrolux lkk640221w" data-keywords="electrolux lkk640221w produkt electrolux lkk640221w dostępny w salonie domel konin. zapraszamy do kontaktu po szczegóły i aktualną cenę.">
 
                 <div class="product-card-image">
                     <img src="images/zdjęcia produktów/piekarniki/Electrolux LKK640221W.jpg" alt="Electrolux LKK640221W" onclick="openLightbox(this.src)" onerror="this.style.display='none'">
                 </div>
+                <div class="availability"><span class="availability-dot dot-local"></span> Dostępny lokalnie</div>
                 <h3>Electrolux LKK640221W</h3>
                 <p class="opis">Produkt Electrolux LKK640221W dostępny w salonie Domel Konin. Zapraszamy do kontaktu po szczegóły i aktualną cenę.</p>
                 <span class="cena">Cena na zapytanie</span>
             </div>
 
-            <div class="product-card">
+            <div class="product-card" data-title="gorenje gks5c71xf (g600)" data-keywords="gorenje gks5c71xf (g600) produkt gorenje gks5c71xf (g600) dostępny w salonie domel konin. zapraszamy do kontaktu po szczegóły i aktualną cenę.">
 
                 <div class="product-card-image">
                     <img src="images/zdjęcia produktów/piekarniki/Gorenje GKS5C71XF (G600).jpg" alt="Gorenje GKS5C71XF (G600)" onclick="openLightbox(this.src)" onerror="this.style.display='none'">
                 </div>
+                <div class="availability"><span class="availability-dot dot-local"></span> Dostępny lokalnie</div>
                 <h3>Gorenje GKS5C71XF (G600)</h3>
                 <p class="opis">Produkt Gorenje GKS5C71XF (G600) dostępny w salonie Domel Konin. Zapraszamy do kontaktu po szczegóły i aktualną cenę.</p>
                 <span class="cena">Cena na zapytanie</span>

@@ -193,6 +193,8 @@
         .product-card-image img:hover { opacity: 0.85; }
 
     </style>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
@@ -230,76 +232,90 @@
 
     <!-- Zawartość podstrony -->
     <div class="container">
-        <h2 class="page-title">Pralki</h2> <!-- Zmień ten nagłówek w innych plikach kategorii (np. Pralki, Zamrażarki) -->
+        <h2 class="page-title">Pralki</h2>
+
+        <div class="category-search">
+            <input type="text" id="catSearchInput" placeholder="Szukaj produktu w tej kategorii..." oninput="filterCatProducts()" autocomplete="off">
+            <button onclick="filterCatProducts()"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
+        <div id="noResults" class="no-results">Brak pasujących produktów</div>
+ <!-- Zmień ten nagłówek w innych plikach kategorii (np. Pralki, Zamrażarki) -->
         
         <div class="products-grid">
             <!-- POCZATEK_PRODUKTOW -->
 
-            <div class="product-card">
+            <div class="product-card" data-title="hisense seria 5i wf5i1045bwq" data-keywords="hisense seria 5i wf5i1045bwq produkt hisense seria 5i wf5i1045bwq dostępny w salonie domel konin. zapraszamy do kontaktu po szczegóły i aktualną cenę.">
 
                 <div class="product-card-image">
                     <img src="images/zdjęcia produktów/pralki/HISENSE SERIA 5i WF5I1045BWQ.jpg" alt="HISENSE SERIA 5i WF5I1045BWQ" onclick="openLightbox(this.src)" onerror="this.style.display='none'">
                 </div>
+                <div class="availability"><span class="availability-dot dot-local"></span> Dostępny lokalnie</div>
                 <h3>HISENSE SERIA 5i WF5I1045BWQ</h3>
                 <p class="opis">Produkt HISENSE SERIA 5i WF5I1045BWQ dostępny w salonie Domel Konin. Zapraszamy do kontaktu po szczegóły i aktualną cenę.</p>
                 <span class="cena">Cena na zapytanie</span>
             </div>
 
-            <div class="product-card">
+            <div class="product-card" data-title="pralka candy (kompaktowa)" data-keywords="pralka candy (kompaktowa) produkt pralka candy (kompaktowa) dostępny w salonie domel konin. zapraszamy do kontaktu po szczegóły i aktualną cenę.">
 
                 <div class="product-card-image">
                     <img src="images/zdjęcia produktów/pralki/Pralka Candy (kompaktowa).jpg" alt="Pralka Candy (kompaktowa)" onclick="openLightbox(this.src)" onerror="this.style.display='none'">
                 </div>
+                <div class="availability"><span class="availability-dot dot-local"></span> Dostępny lokalnie</div>
                 <h3>Pralka Candy (kompaktowa)</h3>
                 <p class="opis">Produkt Pralka Candy (kompaktowa) dostępny w salonie Domel Konin. Zapraszamy do kontaktu po szczegóły i aktualną cenę.</p>
                 <span class="cena">Cena na zapytanie</span>
             </div>
 
-            <div class="product-card">
+            <div class="product-card" data-title="pralka whirlpool (ładowana od góry)" data-keywords="pralka whirlpool (ładowana od góry) produkt pralka whirlpool (ładowana od góry) dostępny w salonie domel konin. zapraszamy do kontaktu po szczegóły i aktualną cenę.">
 
                 <div class="product-card-image">
                     <img src="images/zdjęcia produktów/pralki/Pralka Whirlpool (ładowana od góry).jpg" alt="Pralka Whirlpool (ładowana od góry)" onclick="openLightbox(this.src)" onerror="this.style.display='none'">
                 </div>
+                <div class="availability"><span class="availability-dot dot-local"></span> Dostępny lokalnie</div>
                 <h3>Pralka Whirlpool (ładowana od góry)</h3>
                 <p class="opis">Produkt Pralka Whirlpool (ładowana od góry) dostępny w salonie Domel Konin. Zapraszamy do kontaktu po szczegóły i aktualną cenę.</p>
                 <span class="cena">Cena na zapytanie</span>
             </div>
 
-            <div class="product-card">
+            <div class="product-card" data-title="samsung slim wd 8nk 52 e3aw" data-keywords="samsung slim wd 8nk 52 e3aw produkt samsung slim wd 8nk 52 e3aw dostępny w salonie domel konin. zapraszamy do kontaktu po szczegóły i aktualną cenę.">
 
                 <div class="product-card-image">
                     <img src="images/zdjęcia produktów/pralki/SAMSUNG SLIM WD 8NK 52 E3AW.jpg" alt="SAMSUNG SLIM WD 8NK 52 E3AW" onclick="openLightbox(this.src)" onerror="this.style.display='none'">
                 </div>
+                <div class="availability"><span class="availability-dot dot-local"></span> Dostępny lokalnie</div>
                 <h3>SAMSUNG SLIM WD 8NK 52 E3AW</h3>
                 <p class="opis">Produkt SAMSUNG SLIM WD 8NK 52 E3AW dostępny w salonie Domel Konin. Zapraszamy do kontaktu po szczegóły i aktualną cenę.</p>
                 <span class="cena">Cena na zapytanie</span>
             </div>
 
-            <div class="product-card">
+            <div class="product-card" data-title="samsung ww90dg5g34aeeo" data-keywords="samsung ww90dg5g34aeeo produkt samsung ww90dg5g34aeeo dostępny w salonie domel konin. zapraszamy do kontaktu po szczegóły i aktualną cenę.">
 
                 <div class="product-card-image">
                     <img src="images/zdjęcia produktów/pralki/SAMSUNG WW90DG5G34AEEO.jpg" alt="SAMSUNG WW90DG5G34AEEO" onclick="openLightbox(this.src)" onerror="this.style.display='none'">
                 </div>
+                <div class="availability"><span class="availability-dot dot-local"></span> Dostępny lokalnie</div>
                 <h3>SAMSUNG WW90DG5G34AEEO</h3>
                 <p class="opis">Produkt SAMSUNG WW90DG5G34AEEO dostępny w salonie Domel Konin. Zapraszamy do kontaktu po szczegóły i aktualną cenę.</p>
                 <span class="cena">Cena na zapytanie</span>
             </div>
 
-            <div class="product-card">
+            <div class="product-card" data-title="samsung bespoke ai ww11bb534daw" data-keywords="samsung bespoke ai ww11bb534daw produkt samsung bespoke ai ww11bb534daw dostępny w salonie domel konin. zapraszamy do kontaktu po szczegóły i aktualną cenę.">
 
                 <div class="product-card-image">
                     <img src="images/zdjęcia produktów/pralki/Samsung BESPOKE AI WW11BB534DAW.jpg" alt="Samsung BESPOKE AI WW11BB534DAW" onclick="openLightbox(this.src)" onerror="this.style.display='none'">
                 </div>
+                <div class="availability"><span class="availability-dot dot-local"></span> Dostępny lokalnie</div>
                 <h3>Samsung BESPOKE AI WW11BB534DAW</h3>
                 <p class="opis">Produkt Samsung BESPOKE AI WW11BB534DAW dostępny w salonie Domel Konin. Zapraszamy do kontaktu po szczegóły i aktualną cenę.</p>
                 <span class="cena">Cena na zapytanie</span>
             </div>
 
-            <div class="product-card">
+            <div class="product-card" data-title="whirpool tdolrb 6252bs eu" data-keywords="whirpool tdolrb 6252bs eu produkt whirpool tdolrb 6252bs eu dostępny w salonie domel konin. zapraszamy do kontaktu po szczegóły i aktualną cenę.">
 
                 <div class="product-card-image">
                     <img src="images/zdjęcia produktów/pralki/WHIRPOOL TDOLRB 6252BS EU.jpg" alt="WHIRPOOL TDOLRB 6252BS EU" onclick="openLightbox(this.src)" onerror="this.style.display='none'">
                 </div>
+                <div class="availability"><span class="availability-dot dot-local"></span> Dostępny lokalnie</div>
                 <h3>WHIRPOOL TDOLRB 6252BS EU</h3>
                 <p class="opis">Produkt WHIRPOOL TDOLRB 6252BS EU dostępny w salonie Domel Konin. Zapraszamy do kontaktu po szczegóły i aktualną cenę.</p>
                 <span class="cena">Cena na zapytanie</span>

@@ -193,6 +193,8 @@
         .product-card-image img:hover { opacity: 0.85; }
 
     </style>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
@@ -230,7 +232,14 @@
 
     <!-- Zawartość podstrony -->
     <div class="container">
-        <h2 class="page-title">Zamrażarki</h2> <!-- Zmień ten nagłówek w innych plikach kategorii (np. Pralki, Zamrażarki) -->
+        <h2 class="page-title">Zamrażarki</h2>
+
+        <div class="category-search">
+            <input type="text" id="catSearchInput" placeholder="Szukaj produktu w tej kategorii..." oninput="filterCatProducts()" autocomplete="off">
+            <button onclick="filterCatProducts()"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
+        <div id="noResults" class="no-results">Brak pasujących produktów</div>
+ <!-- Zmień ten nagłówek w innych plikach kategorii (np. Pralki, Zamrażarki) -->
         
         <div class="products-grid">
             <!-- POCZATEK_PRODUKTOW -->

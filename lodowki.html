@@ -193,6 +193,8 @@
         .product-card-image img:hover { opacity: 0.85; }
 
     </style>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
@@ -230,106 +232,123 @@
 
     <!-- Zawartość podstrony -->
     <div class="container">
-        <h2 class="page-title">Lodówki</h2> <!-- Zmień ten nagłówek w innych plikach kategorii (np. Pralki, Zamrażarki) -->
+        <h2 class="page-title">Lodówki</h2>
+
+        <div class="category-search">
+            <input type="text" id="catSearchInput" placeholder="Szukaj produktu w tej kategorii..." oninput="filterCatProducts()" autocomplete="off">
+            <button onclick="filterCatProducts()"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
+        <div id="noResults" class="no-results">Brak pasujących produktów</div>
+ <!-- Zmień ten nagłówek w innych plikach kategorii (np. Pralki, Zamrażarki) -->
         
         <div class="products-grid">
             <!-- POCZATEK_PRODUKTOW -->
 
-            <div class="product-card">
+            <div class="product-card" data-title="candy ccg1l314ew" data-keywords="candy ccg1l314ew produkt candy ccg1l314ew dostępny w salonie domel konin. zapraszamy do kontaktu po szczegóły i aktualną cenę.">
 
                 <div class="product-card-image">
                     <img src="images/zdjęcia produktów/lodówki/Candy CCG1L314EW.jpg" alt="Candy CCG1L314EW" onclick="openLightbox(this.src)" onerror="this.style.display='none'">
                 </div>
+                <div class="availability"><span class="availability-dot dot-local"></span> Dostępny lokalnie</div>
                 <h3>Candy CCG1L314EW</h3>
                 <p class="opis">Produkt Candy CCG1L314EW dostępny w salonie Domel Konin. Zapraszamy do kontaktu po szczegóły i aktualną cenę.</p>
                 <span class="cena">Cena na zapytanie</span>
             </div>
 
-            <div class="product-card">
+            <div class="product-card" data-title="kernau kfrc 13153.3 lf w" data-keywords="kernau kfrc 13153.3 lf w produkt kernau kfrc 13153.3 lf w dostępny w salonie domel konin. zapraszamy do kontaktu po szczegóły i aktualną cenę.">
 
                 <div class="product-card-image">
                     <img src="images/zdjęcia produktów/lodówki/Kernau KFRC 13153.3 LF W/Kernau KFRC 13153.3 LF W1.jpg" alt="Kernau KFRC 13153.3 LF W" onclick="openLightbox(this.src)" onerror="this.style.display='none'">
                 </div>
+                <div class="availability"><span class="availability-dot dot-local"></span> Dostępny lokalnie</div>
                 <h3>Kernau KFRC 13153.3 LF W</h3>
                 <p class="opis">Produkt Kernau KFRC 13153.3 LF W dostępny w salonie Domel Konin. Zapraszamy do kontaktu po szczegóły i aktualną cenę.</p>
                 <span class="cena">Cena na zapytanie</span>
             </div>
 
-            <div class="product-card">
+            <div class="product-card" data-title="kernau kfrc 18153 w" data-keywords="kernau kfrc 18153 w produkt kernau kfrc 18153 w dostępny w salonie domel konin. zapraszamy do kontaktu po szczegóły i aktualną cenę.">
 
                 <div class="product-card-image">
                     <img src="images/zdjęcia produktów/lodówki/Kernau KFRC 18153 W.jpg" alt="Kernau KFRC 18153 W" onclick="openLightbox(this.src)" onerror="this.style.display='none'">
                 </div>
+                <div class="availability"><span class="availability-dot dot-local"></span> Dostępny lokalnie</div>
                 <h3>Kernau KFRC 18153 W</h3>
                 <p class="opis">Produkt Kernau KFRC 18153 W dostępny w salonie Domel Konin. Zapraszamy do kontaktu po szczegóły i aktualną cenę.</p>
                 <span class="cena">Cena na zapytanie</span>
             </div>
 
-            <div class="product-card">
+            <div class="product-card" data-title="samsung rb38c605cb1" data-keywords="samsung rb38c605cb1 produkt samsung rb38c605cb1 dostępny w salonie domel konin. zapraszamy do kontaktu po szczegóły i aktualną cenę.">
 
                 <div class="product-card-image">
                     <img src="images/zdjęcia produktów/lodówki/SAMSUNG RB38C605CB1.jpg" alt="SAMSUNG RB38C605CB1" onclick="openLightbox(this.src)" onerror="this.style.display='none'">
                 </div>
+                <div class="availability"><span class="availability-dot dot-local"></span> Dostępny lokalnie</div>
                 <h3>SAMSUNG RB38C605CB1</h3>
                 <p class="opis">Produkt SAMSUNG RB38C605CB1 dostępny w salonie Domel Konin. Zapraszamy do kontaktu po szczegóły i aktualną cenę.</p>
                 <span class="cena">Cena na zapytanie</span>
             </div>
 
-            <div class="product-card">
+            <div class="product-card" data-title="samsung combi max rb53dg706ab1eo" data-keywords="samsung combi max rb53dg706ab1eo produkt samsung combi max rb53dg706ab1eo dostępny w salonie domel konin. zapraszamy do kontaktu po szczegóły i aktualną cenę.">
 
                 <div class="product-card-image">
                     <img src="images/zdjęcia produktów/lodówki/Samsung Combi Max RB53DG706AB1EO.jpg" alt="Samsung Combi Max RB53DG706AB1EO" onclick="openLightbox(this.src)" onerror="this.style.display='none'">
                 </div>
+                <div class="availability"><span class="availability-dot dot-local"></span> Dostępny lokalnie</div>
                 <h3>Samsung Combi Max RB53DG706AB1EO</h3>
                 <p class="opis">Produkt Samsung Combi Max RB53DG706AB1EO dostępny w salonie Domel Konin. Zapraszamy do kontaktu po szczegóły i aktualną cenę.</p>
                 <span class="cena">Cena na zapytanie</span>
             </div>
 
-            <div class="product-card">
+            <div class="product-card" data-title="samsung french door" data-keywords="samsung french door produkt samsung french door dostępny w salonie domel konin. zapraszamy do kontaktu po szczegóły i aktualną cenę.">
 
                 <div class="product-card-image">
                     <img src="images/zdjęcia produktów/lodówki/Samsung French Door.png" alt="Samsung French Door" onclick="openLightbox(this.src)" onerror="this.style.display='none'">
                 </div>
+                <div class="availability"><span class="availability-dot dot-local"></span> Dostępny lokalnie</div>
                 <h3>Samsung French Door</h3>
                 <p class="opis">Produkt Samsung French Door dostępny w salonie Domel Konin. Zapraszamy do kontaktu po szczegóły i aktualną cenę.</p>
                 <span class="cena">Cena na zapytanie</span>
             </div>
 
-            <div class="product-card">
+            <div class="product-card" data-title="samsung rb33b610eww" data-keywords="samsung rb33b610eww produkt samsung rb33b610eww dostępny w salonie domel konin. zapraszamy do kontaktu po szczegóły i aktualną cenę.">
 
                 <div class="product-card-image">
                     <img src="images/zdjęcia produktów/lodówki/Samsung RB33B610EWW..jpg" alt="Samsung RB33B610EWW" onclick="openLightbox(this.src)" onerror="this.style.display='none'">
                 </div>
+                <div class="availability"><span class="availability-dot dot-local"></span> Dostępny lokalnie</div>
                 <h3>Samsung RB33B610EWW</h3>
                 <p class="opis">Produkt Samsung RB33B610EWW dostępny w salonie Domel Konin. Zapraszamy do kontaktu po szczegóły i aktualną cenę.</p>
                 <span class="cena">Cena na zapytanie</span>
             </div>
 
-            <div class="product-card">
+            <div class="product-card" data-title="samsung rb38c776cb1ef" data-keywords="samsung rb38c776cb1ef produkt samsung rb38c776cb1ef dostępny w salonie domel konin. zapraszamy do kontaktu po szczegóły i aktualną cenę.">
 
                 <div class="product-card-image">
                     <img src="images/zdjęcia produktów/lodówki/Samsung RB38C776CB1EF.jpg" alt="Samsung RB38C776CB1EF" onclick="openLightbox(this.src)" onerror="this.style.display='none'">
                 </div>
+                <div class="availability"><span class="availability-dot dot-local"></span> Dostępny lokalnie</div>
                 <h3>Samsung RB38C776CB1EF</h3>
                 <p class="opis">Produkt Samsung RB38C776CB1EF dostępny w salonie Domel Konin. Zapraszamy do kontaktu po szczegóły i aktualną cenę.</p>
                 <span class="cena">Cena na zapytanie</span>
             </div>
 
-            <div class="product-card">
+            <div class="product-card" data-title="samsung rb7300t rb38c762cww" data-keywords="samsung rb7300t rb38c762cww produkt samsung rb7300t rb38c762cww dostępny w salonie domel konin. zapraszamy do kontaktu po szczegóły i aktualną cenę.">
 
                 <div class="product-card-image">
                     <img src="images/zdjęcia produktów/lodówki/Samsung RB7300T Rb38C762CWW.jpg" alt="Samsung RB7300T Rb38C762CWW" onclick="openLightbox(this.src)" onerror="this.style.display='none'">
                 </div>
+                <div class="availability"><span class="availability-dot dot-local"></span> Dostępny lokalnie</div>
                 <h3>Samsung RB7300T Rb38C762CWW</h3>
                 <p class="opis">Produkt Samsung RB7300T Rb38C762CWW dostępny w salonie Domel Konin. Zapraszamy do kontaktu po szczegóły i aktualną cenę.</p>
                 <span class="cena">Cena na zapytanie</span>
             </div>
 
-            <div class="product-card">
+            <div class="product-card" data-title="samsung rb38c776cb1" data-keywords="samsung rb38c776cb1 produkt samsung rb38c776cb1 dostępny w salonie domel konin. zapraszamy do kontaktu po szczegóły i aktualną cenę.">
 
                 <div class="product-card-image">
                     <img src="images/zdjęcia produktów/lodówki/samsung RB38C776CB1.jpg" alt="samsung RB38C776CB1" onclick="openLightbox(this.src)" onerror="this.style.display='none'">
                 </div>
+                <div class="availability"><span class="availability-dot dot-local"></span> Dostępny lokalnie</div>
                 <h3>samsung RB38C776CB1</h3>
                 <p class="opis">Produkt samsung RB38C776CB1 dostępny w salonie Domel Konin. Zapraszamy do kontaktu po szczegóły i aktualną cenę.</p>
                 <span class="cena">Cena na zapytanie</span>

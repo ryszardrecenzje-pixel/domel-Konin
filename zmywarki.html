@@ -193,6 +193,8 @@
         .product-card-image img:hover { opacity: 0.85; }
 
     </style>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
@@ -230,46 +232,57 @@
 
     <!-- Zawartość podstrony -->
     <div class="container">
-        <h2 class="page-title">Zmywarki</h2> <!-- Zmień ten nagłówek w innych plikach kategorii (np. Pralki, Zamrażarki) -->
+        <h2 class="page-title">Zmywarki</h2>
+
+        <div class="category-search">
+            <input type="text" id="catSearchInput" placeholder="Szukaj produktu w tej kategorii..." oninput="filterCatProducts()" autocomplete="off">
+            <button onclick="filterCatProducts()"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
+        <div id="noResults" class="no-results">Brak pasujących produktów</div>
+ <!-- Zmień ten nagłówek w innych plikach kategorii (np. Pralki, Zamrażarki) -->
         
         <div class="products-grid">
             <!-- POCZATEK_PRODUKTOW -->
 
-            <div class="product-card">
+            <div class="product-card" data-title="do zabudowy beko bdin38543p" data-keywords="do zabudowy beko bdin38543p produkt do zabudowy beko bdin38543p dostępny w salonie domel konin. zapraszamy do kontaktu po szczegóły i aktualną cenę.">
 
                 <div class="product-card-image">
                     <img src="images/zdjęcia produktów/zmywarki/DO ZABUDOWY BEKO BDIN38543P.jpg" alt="DO ZABUDOWY BEKO BDIN38543P" onclick="openLightbox(this.src)" onerror="this.style.display='none'">
                 </div>
+                <div class="availability"><span class="availability-dot dot-local"></span> Dostępny lokalnie</div>
                 <h3>DO ZABUDOWY BEKO BDIN38543P</h3>
                 <p class="opis">Produkt DO ZABUDOWY BEKO BDIN38543P dostępny w salonie Domel Konin. Zapraszamy do kontaktu po szczegóły i aktualną cenę.</p>
                 <span class="cena">Cena na zapytanie</span>
             </div>
 
-            <div class="product-card">
+            <div class="product-card" data-title="electrolux esa421105w" data-keywords="electrolux esa421105w produkt electrolux esa421105w dostępny w salonie domel konin. zapraszamy do kontaktu po szczegóły i aktualną cenę.">
 
                 <div class="product-card-image">
                     <img src="images/zdjęcia produktów/zmywarki/Electrolux ESA421105W.jpg" alt="Electrolux ESA421105W" onclick="openLightbox(this.src)" onerror="this.style.display='none'">
                 </div>
+                <div class="availability"><span class="availability-dot dot-local"></span> Dostępny lokalnie</div>
                 <h3>Electrolux ESA421105W</h3>
                 <p class="opis">Produkt Electrolux ESA421105W dostępny w salonie Domel Konin. Zapraszamy do kontaktu po szczegóły i aktualną cenę.</p>
                 <span class="cena">Cena na zapytanie</span>
             </div>
 
-            <div class="product-card">
+            <div class="product-card" data-title="samsung dw50dg450fsr" data-keywords="samsung dw50dg450fsr produkt samsung dw50dg450fsr dostępny w salonie domel konin. zapraszamy do kontaktu po szczegóły i aktualną cenę.">
 
                 <div class="product-card-image">
                     <img src="images/zdjęcia produktów/zmywarki/SAMSUNG DW50DG450FSR.jpg" alt="SAMSUNG DW50DG450FSR" onclick="openLightbox(this.src)" onerror="this.style.display='none'">
                 </div>
+                <div class="availability"><span class="availability-dot dot-local"></span> Dostępny lokalnie</div>
                 <h3>SAMSUNG DW50DG450FSR</h3>
                 <p class="opis">Produkt SAMSUNG DW50DG450FSR dostępny w salonie Domel Konin. Zapraszamy do kontaktu po szczegóły i aktualną cenę.</p>
                 <span class="cena">Cena na zapytanie</span>
             </div>
 
-            <div class="product-card">
+            <div class="product-card" data-title="zmywarka electrolux" data-keywords="zmywarka electrolux produkt zmywarka electrolux dostępny w salonie domel konin. zapraszamy do kontaktu po szczegóły i aktualną cenę.">
 
                 <div class="product-card-image">
                     <img src="images/zdjęcia produktów/zmywarki/Zmywarka Electrolux.jpg" alt="Zmywarka Electrolux" onclick="openLightbox(this.src)" onerror="this.style.display='none'">
                 </div>
+                <div class="availability"><span class="availability-dot dot-local"></span> Dostępny lokalnie</div>
                 <h3>Zmywarka Electrolux</h3>
                 <p class="opis">Produkt Zmywarka Electrolux dostępny w salonie Domel Konin. Zapraszamy do kontaktu po szczegóły i aktualną cenę.</p>
                 <span class="cena">Cena na zapytanie</span>
