@@ -382,5 +382,29 @@
         });
     </script>
 
+
+    <script>
+        function filterCatProducts() {
+            const input = document.getElementById('catSearchInput');
+            if (!input) return;
+            const val = input.value.toLowerCase().trim();
+            const cards = document.querySelectorAll('.product-card');
+            let visible = 0;
+            cards.forEach(card => {
+                const title = (card.getAttribute('data-title') || (card.querySelector('h3') ? card.querySelector('h3').innerText : '') || '').toLowerCase();
+                const keywords = (card.getAttribute('data-keywords') || '').toLowerCase();
+                const text = title + ' ' + keywords;
+                if (!val || text.includes(val)) {
+                    card.style.display = '';
+                    visible++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+            const noRes = document.getElementById('noResults');
+            if (noRes) noRes.style.display = (visible === 0 && val) ? 'block' : 'none';
+        }
+    </script>
+
 </body>
 </html>
