@@ -9,6 +9,8 @@
     <style>
         .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.2rem; }
         .product-card { background: #fff; border-radius: 8px; padding: 1.2rem; box-shadow: 0 2px 5px rgba(0,0,0,0.1); text-align: center; position: relative; }
+        .product-card-image { width: 100%; height: 180px; display: flex; align-items: center; justify-content: center; margin-bottom: 0.8rem; overflow: hidden; border-radius: 4px; background: #f5f5f5; }
+        .product-card-image img { max-width: 100%; max-height: 100%; object-fit: contain; }
         .legend { display: flex; gap: 20px; justify-content: center; margin-bottom: 1.5rem; flex-wrap: wrap; }
         .legend-item { display: flex; align-items: center; gap: 6px; font-size: 0.95rem; }
         .product-count { text-align: center; color: #666; margin-bottom: 1rem; }
@@ -46,7 +48,7 @@
     <section class="section-padding">
         <div class="container">
             <h2 class="page-title">Produkty dostępne na magazynie</h2>
-            <p class="section-desc">Pełna lista unikalnych urządzeń dostępnych w magazynie (duplikaty usunięte). Złota kropka = dostępny na magazynie. Zielona kropka na stronach kategorii = dostępny lokalnie w salonie.</p>
+            <p class="section-desc">Pełna lista unikalnych urządzeń dostępnych w magazynie (duplikaty usunięte). Każdy produkt ma zdjęcie zapisane lokalnie. Złota kropka = dostępny na magazynie.</p>
             <div class="legend">
                 <div class="legend-item"><span class="availability-dot dot-local"></span> Dostępny lokalnie (w salonie)</div>
                 <div class="legend-item"><span class="availability-dot dot-warehouse"></span> Dostępny na magazynie</div>
@@ -62,7 +64,7 @@
             <div class="product-card" data-title="samsung nv75b5675kak" data-keywords="samsung nv75b5675kak piekarnik do zabudowy samsung">
                 <div class="availability"><span class="availability-dot dot-warehouse"></span> Dostępny na magazynie</div>
                 <div class="product-card-image">
-                    <img src="images/zdjęcia produktów/magazyn/piekarnik_demo.jpg" alt="Samsung NV75B5675KAK" loading="lazy" onerror="this.src='images/logo.png'">
+                    <img src="images/zdjęcia produktów/magazyn/oven1.jpg" alt="Samsung NV75B5675KAK" loading="lazy" onerror="this.src='images/logo.png'">
                 </div>
                 <h3>Samsung NV75B5675KAK</h3>
                 <p class="opis">Piekarnik do zabudowy. Wymiary: 59.5 x 59.6 x 57 cm. Klasa energetyczna: A+.</p>
@@ -89,7 +91,7 @@
             <div class="product-card" data-title="samsung nv75b597yrk" data-keywords="samsung nv75b597yrk piekarnik do zabudowy samsung">
                 <div class="availability"><span class="availability-dot dot-warehouse"></span> Dostępny na magazynie</div>
                 <div class="product-card-image">
-                    <img src="images/zdjęcia produktów/magazyn/piekarnik_demo.jpg" alt="Samsung NV75B597YRK" loading="lazy" onerror="this.src='images/logo.png'">
+                    <img src="images/zdjęcia produktów/magazyn/oven1.jpg" alt="Samsung NV75B597YRK" loading="lazy" onerror="this.src='images/logo.png'">
                 </div>
                 <h3>Samsung NV75B597YRK</h3>
                 <p class="opis">Piekarnik do zabudowy. Wymiary: 59.5 x 59.6 x 57 cm. Klasa energetyczna: A+.</p>
@@ -98,7 +100,7 @@
             <div class="product-card" data-title="samsung nv70m6658bk" data-keywords="samsung nv70m6658bk piekarnik do zabudowy samsung">
                 <div class="availability"><span class="availability-dot dot-warehouse"></span> Dostępny na magazynie</div>
                 <div class="product-card-image">
-                    <img src="images/zdjęcia produktów/magazyn/piekarnik_demo.jpg" alt="Samsung NV70M6658BK" loading="lazy" onerror="this.src='images/logo.png'">
+                    <img src="images/zdjęcia produktów/magazyn/oven2.jpg" alt="Samsung NV70M6658BK" loading="lazy" onerror="this.src='images/logo.png'">
                 </div>
                 <h3>Samsung NV70M6658BK</h3>
                 <p class="opis">Piekarnik do zabudowy. Wymiary: 59.5 x 45.5 x 57 cm. Klasa energetyczna: B.</p>
@@ -116,7 +118,7 @@
             <div class="product-card" data-title="samsung nv75b5675rak" data-keywords="samsung nv75b5675rak piekarnik do zabudowy dual cook samsung">
                 <div class="availability"><span class="availability-dot dot-warehouse"></span> Dostępny na magazynie</div>
                 <div class="product-card-image">
-                    <img src="images/zdjęcia produktów/magazyn/piekarnik_demo.jpg" alt="Samsung NV75B5675RAK" loading="lazy" onerror="this.src='images/logo.png'">
+                    <img src="images/zdjęcia produktów/magazyn/oven1.jpg" alt="Samsung NV75B5675RAK" loading="lazy" onerror="this.src='images/logo.png'">
                 </div>
                 <h3>Samsung NV75B5675RAK</h3>
                 <p class="opis">Piekarnik do zabudowy Dual Cook. Wymiary: 59.5 x 59.6 x 57 cm. Klasa energetyczna: A+.</p>
@@ -125,7 +127,7 @@
             <div class="product-card" data-title="samsung nv70a4522ak" data-keywords="samsung nv70a4522ak piekarnik do zabudowy samsung">
                 <div class="availability"><span class="availability-dot dot-warehouse"></span> Dostępny na magazynie</div>
                 <div class="product-card-image">
-                    <img src="images/zdjęcia produktów/magazyn/piekarnik_demo.jpg" alt="Samsung NV70A4522AK" loading="lazy" onerror="this.src='images/logo.png'">
+                    <img src="images/zdjęcia produktów/magazyn/oven2.jpg" alt="Samsung NV70A4522AK" loading="lazy" onerror="this.src='images/logo.png'">
                 </div>
                 <h3>Samsung NV70A4522AK</h3>
                 <p class="opis">Piekarnik do zabudowy. Wymiary: 59.5 x 59.6 x 57 cm. Klasa energetyczna: A+.</p>
@@ -152,7 +154,7 @@
             <div class="product-card" data-title="samsung nq5b4513gbk" data-keywords="samsung nq5b4513gbk kuchenka mikrofalowa do zabudowy samsung">
                 <div class="availability"><span class="availability-dot dot-warehouse"></span> Dostępny na magazynie</div>
                 <div class="product-card-image">
-                    <img src="images/categories/kuchenki.jpg" alt="Samsung NQ5B4513GBK" loading="lazy" onerror="this.src='images/logo.png'">
+                    <img src="images/zdjęcia produktów/magazyn/oven1.jpg" alt="Samsung NQ5B4513GBK" loading="lazy" onerror="this.src='images/logo.png'">
                 </div>
                 <h3>Samsung NQ5B4513GBK</h3>
                 <p class="opis">Kuchenka mikrofalowa do zabudowy. Wymiary: 59.5 x 45.5 x 57 cm. Klasa energetyczna: B.</p>
@@ -170,7 +172,7 @@
             <div class="product-card" data-title="samsung nv75k5410be/eo" data-keywords="samsung nv75k5410be/eo piekarnik do zabudowy dual cook samsung">
                 <div class="availability"><span class="availability-dot dot-warehouse"></span> Dostępny na magazynie</div>
                 <div class="product-card-image">
-                    <img src="images/zdjęcia produktów/magazyn/piekarnik_demo.jpg" alt="Samsung NV75K5410BE/EO" loading="lazy" onerror="this.src='images/logo.png'">
+                    <img src="images/zdjęcia produktów/magazyn/oven1.jpg" alt="Samsung NV75K5410BE/EO" loading="lazy" onerror="this.src='images/logo.png'">
                 </div>
                 <h3>Samsung NV75K5410BE/EO</h3>
                 <p class="opis">Piekarnik do zabudowy Dual Cook. Wymiary: 59.5 x 59.6 x 57 cm. Klasa energetyczna: A+.</p>
@@ -179,7 +181,7 @@
             <div class="product-card" data-title="samsung nv70k2340rb/eo" data-keywords="samsung nv70k2340rb/eo piekarnik do zabudowy samsung">
                 <div class="availability"><span class="availability-dot dot-warehouse"></span> Dostępny na magazynie</div>
                 <div class="product-card-image">
-                    <img src="images/zdjęcia produktów/magazyn/piekarnik_demo.jpg" alt="Samsung NV70K2340RB/EO" loading="lazy" onerror="this.src='images/logo.png'">
+                    <img src="images/zdjęcia produktów/magazyn/oven2.jpg" alt="Samsung NV70K2340RB/EO" loading="lazy" onerror="this.src='images/logo.png'">
                 </div>
                 <h3>Samsung NV70K2340RB/EO</h3>
                 <p class="opis">Piekarnik do zabudowy. Wymiary: 59.5 x 59.6 x 57 cm. Klasa energetyczna: A.</p>
@@ -188,7 +190,7 @@
             <div class="product-card" data-title="samsung nq50k3130bs" data-keywords="samsung nq50k3130bs kuchenka mikrofalowa do zabudowy samsung">
                 <div class="availability"><span class="availability-dot dot-warehouse"></span> Dostępny na magazynie</div>
                 <div class="product-card-image">
-                    <img src="images/categories/kuchenki.jpg" alt="Samsung NQ50K3130BS" loading="lazy" onerror="this.src='images/logo.png'">
+                    <img src="images/zdjęcia produktów/magazyn/oven1.jpg" alt="Samsung NQ50K3130BS" loading="lazy" onerror="this.src='images/logo.png'">
                 </div>
                 <h3>Samsung NQ50K3130BS</h3>
                 <p class="opis">Kuchenka mikrofalowa do zabudowy. Wymiary: 59.5 x 45.1 x 57 cm. Klasa energetyczna: B.</p>
@@ -206,7 +208,7 @@
             <div class="product-card" data-title="siemens hb572a0s0" data-keywords="siemens hb572a0s0 piekarnik do zabudowy siemens">
                 <div class="availability"><span class="availability-dot dot-warehouse"></span> Dostępny na magazynie</div>
                 <div class="product-card-image">
-                    <img src="images/zdjęcia produktów/magazyn/piekarnik_demo.jpg" alt="Siemens HB572A0S0" loading="lazy" onerror="this.src='images/logo.png'">
+                    <img src="images/zdjęcia produktów/magazyn/oven2.jpg" alt="Siemens HB572A0S0" loading="lazy" onerror="this.src='images/logo.png'">
                 </div>
                 <h3>Siemens HB572A0S0</h3>
                 <p class="opis">Piekarnik do zabudowy. Wymiary: 59.4 x 59.5 x 54.8 cm. Klasa energetyczna: A.</p>
@@ -224,7 +226,7 @@
             <div class="product-card" data-title="whirlpool akz9 6230 ix" data-keywords="whirlpool akz9 6230 ix piekarnik do zabudowy whirlpool">
                 <div class="availability"><span class="availability-dot dot-warehouse"></span> Dostępny na magazynie</div>
                 <div class="product-card-image">
-                    <img src="images/zdjęcia produktów/magazyn/piekarnik_demo.jpg" alt="Whirlpool AKZ9 6230 IX" loading="lazy" onerror="this.src='images/logo.png'">
+                    <img src="images/zdjęcia produktów/magazyn/oven1.jpg" alt="Whirlpool AKZ9 6230 IX" loading="lazy" onerror="this.src='images/logo.png'">
                 </div>
                 <h3>Whirlpool AKZ9 6230 IX</h3>
                 <p class="opis">Piekarnik do zabudowy. Wymiary: 59.5 x 59.5 x 56.4 cm. Klasa energetyczna: A.</p>
@@ -233,7 +235,7 @@
             <div class="product-card" data-title="electrolux eod5c70x" data-keywords="electrolux eod5c70x piekarnik do zabudowy steambake electrolux">
                 <div class="availability"><span class="availability-dot dot-warehouse"></span> Dostępny na magazynie</div>
                 <div class="product-card-image">
-                    <img src="images/zdjęcia produktów/magazyn/piekarnik_demo.jpg" alt="Electrolux EOD5C70X" loading="lazy" onerror="this.src='images/logo.png'">
+                    <img src="images/zdjęcia produktów/magazyn/oven2.jpg" alt="Electrolux EOD5C70X" loading="lazy" onerror="this.src='images/logo.png'">
                 </div>
                 <h3>Electrolux EOD5C70X</h3>
                 <p class="opis">Piekarnik do zabudowy SteamBake. Wymiary: 59.6 x 59.4 x 56.9 cm. Klasa energetyczna: A.</p>
@@ -251,7 +253,7 @@
             <div class="product-card" data-title="amica ed75388ba x-type steam" data-keywords="amica ed75388ba x-type steam piekarnik do zabudowy parowy amica">
                 <div class="availability"><span class="availability-dot dot-warehouse"></span> Dostępny na magazynie</div>
                 <div class="product-card-image">
-                    <img src="images/zdjęcia produktów/magazyn/piekarnik_demo.jpg" alt="Amica ED75388BA X-TYPE STEAM" loading="lazy" onerror="this.src='images/logo.png'">
+                    <img src="images/zdjęcia produktów/magazyn/oven1.jpg" alt="Amica ED75388BA X-TYPE STEAM" loading="lazy" onerror="this.src='images/logo.png'">
                 </div>
                 <h3>Amica ED75388BA X-TYPE STEAM</h3>
                 <p class="opis">Piekarnik do zabudowy Parowy. Wymiary: 59.5 x 59.5 x 57.5 cm. Klasa energetyczna: A.</p>
@@ -260,7 +262,7 @@
             <div class="product-card" data-title="electrolux eod6p77wx" data-keywords="electrolux eod6p77wx piekarnik do zabudowy 700 sensecook electrolux">
                 <div class="availability"><span class="availability-dot dot-warehouse"></span> Dostępny na magazynie</div>
                 <div class="product-card-image">
-                    <img src="images/zdjęcia produktów/magazyn/piekarnik_demo.jpg" alt="Electrolux EOD6P77WX" loading="lazy" onerror="this.src='images/logo.png'">
+                    <img src="images/zdjęcia produktów/magazyn/oven2.jpg" alt="Electrolux EOD6P77WX" loading="lazy" onerror="this.src='images/logo.png'">
                 </div>
                 <h3>Electrolux EOD6P77WX</h3>
                 <p class="opis">Piekarnik do zabudowy 700 SenseCook. Wymiary: 59.6 x 59.4 x 56.9 cm. Klasa energetyczna: A+.</p>
@@ -278,7 +280,7 @@
             <div class="product-card" data-title="amica eb65212 fine" data-keywords="amica eb65212 fine piekarnik do zabudowy amica">
                 <div class="availability"><span class="availability-dot dot-warehouse"></span> Dostępny na magazynie</div>
                 <div class="product-card-image">
-                    <img src="images/zdjęcia produktów/magazyn/piekarnik_demo.jpg" alt="Amica EB65212 FINE" loading="lazy" onerror="this.src='images/logo.png'">
+                    <img src="images/zdjęcia produktów/magazyn/oven1.jpg" alt="Amica EB65212 FINE" loading="lazy" onerror="this.src='images/logo.png'">
                 </div>
                 <h3>Amica EB65212 FINE</h3>
                 <p class="opis">Piekarnik do zabudowy. Wymiary: 59.5 x 59.5 x 57.5 cm. Klasa energetyczna: A.</p>
@@ -287,7 +289,7 @@
             <div class="product-card" data-title="whirlpool akp 473/ix" data-keywords="whirlpool akp 473/ix piekarnik do zabudowy whirlpool">
                 <div class="availability"><span class="availability-dot dot-warehouse"></span> Dostępny na magazynie</div>
                 <div class="product-card-image">
-                    <img src="images/zdjęcia produktów/magazyn/piekarnik_demo.jpg" alt="Whirlpool AKP 473/IX" loading="lazy" onerror="this.src='images/logo.png'">
+                    <img src="images/zdjęcia produktów/magazyn/oven2.jpg" alt="Whirlpool AKP 473/IX" loading="lazy" onerror="this.src='images/logo.png'">
                 </div>
                 <h3>Whirlpool AKP 473/IX</h3>
                 <p class="opis">Piekarnik do zabudowy. Wymiary: 59.5 x 59.5 x 56.4 cm. Klasa energetyczna: A.</p>
@@ -305,7 +307,7 @@
             <div class="product-card" data-title="gorenje bo6737e13bg" data-keywords="gorenje bo6737e13bg piekarnik do zabudowy classico gorenje">
                 <div class="availability"><span class="availability-dot dot-warehouse"></span> Dostępny na magazynie</div>
                 <div class="product-card-image">
-                    <img src="images/zdjęcia produktów/magazyn/piekarnik_demo.jpg" alt="Gorenje BO6737E13BG" loading="lazy" onerror="this.src='images/logo.png'">
+                    <img src="images/zdjęcia produktów/magazyn/oven1.jpg" alt="Gorenje BO6737E13BG" loading="lazy" onerror="this.src='images/logo.png'">
                 </div>
                 <h3>Gorenje BO6737E13BG</h3>
                 <p class="opis">Piekarnik do zabudowy Classico. Wymiary: 59.5 x 59.5 x 56.4 cm. Klasa energetyczna: A.</p>
@@ -314,7 +316,7 @@
             <div class="product-card" data-title="gorenje bo6735e02bg" data-keywords="gorenje bo6735e02bg piekarnik do zabudowy gorenje">
                 <div class="availability"><span class="availability-dot dot-warehouse"></span> Dostępny na magazynie</div>
                 <div class="product-card-image">
-                    <img src="images/zdjęcia produktów/magazyn/piekarnik_demo.jpg" alt="Gorenje BO6735E02BG" loading="lazy" onerror="this.src='images/logo.png'">
+                    <img src="images/zdjęcia produktów/magazyn/oven2.jpg" alt="Gorenje BO6735E02BG" loading="lazy" onerror="this.src='images/logo.png'">
                 </div>
                 <h3>Gorenje BO6735E02BG</h3>
                 <p class="opis">Piekarnik do zabudowy. Wymiary: 59.5 x 59.5 x 56.4 cm. Klasa energetyczna: A.</p>
@@ -332,7 +334,7 @@
             <div class="product-card" data-title="whirlpool woi5s8hm1sba" data-keywords="whirlpool woi5s8hm1sba piekarnik do zabudowy w collection whirlpool">
                 <div class="availability"><span class="availability-dot dot-warehouse"></span> Dostępny na magazynie</div>
                 <div class="product-card-image">
-                    <img src="images/zdjęcia produktów/magazyn/piekarnik_demo.jpg" alt="Whirlpool WOI5S8HM1SBA" loading="lazy" onerror="this.src='images/logo.png'">
+                    <img src="images/zdjęcia produktów/magazyn/oven1.jpg" alt="Whirlpool WOI5S8HM1SBA" loading="lazy" onerror="this.src='images/logo.png'">
                 </div>
                 <h3>Whirlpool WOI5S8HM1SBA</h3>
                 <p class="opis">Piekarnik do zabudowy W Collection. Wymiary: 59.5 x 59.5 x 56.4 cm. Klasa energetyczna: A+.</p>
@@ -341,7 +343,7 @@
             <div class="product-card" data-title="gorenje bsa6747a04x" data-keywords="gorenje bsa6747a04x piekarnik do zabudowy optibake gorenje">
                 <div class="availability"><span class="availability-dot dot-warehouse"></span> Dostępny na magazynie</div>
                 <div class="product-card-image">
-                    <img src="images/zdjęcia produktów/magazyn/piekarnik_demo.jpg" alt="Gorenje BSA6747A04X" loading="lazy" onerror="this.src='images/logo.png'">
+                    <img src="images/zdjęcia produktów/magazyn/oven2.jpg" alt="Gorenje BSA6747A04X" loading="lazy" onerror="this.src='images/logo.png'">
                 </div>
                 <h3>Gorenje BSA6747A04X</h3>
                 <p class="opis">Piekarnik do zabudowy OptiBake. Wymiary: 59.5 x 59.5 x 56.4 cm. Klasa energetyczna: A+.</p>
@@ -359,7 +361,7 @@
             <div class="product-card" data-title="teka hlb 8400" data-keywords="teka hlb 8400 piekarnik do zabudowy teka">
                 <div class="availability"><span class="availability-dot dot-warehouse"></span> Dostępny na magazynie</div>
                 <div class="product-card-image">
-                    <img src="images/zdjęcia produktów/magazyn/piekarnik_demo.jpg" alt="Teka HLB 8400" loading="lazy" onerror="this.src='images/logo.png'">
+                    <img src="images/zdjęcia produktów/magazyn/oven1.jpg" alt="Teka HLB 8400" loading="lazy" onerror="this.src='images/logo.png'">
                 </div>
                 <h3>Teka HLB 8400</h3>
                 <p class="opis">Piekarnik do zabudowy. Wymiary: 59.5 x 59.5 x 55.9 cm. Klasa energetyczna: A.</p>
@@ -368,7 +370,7 @@
             <div class="product-card" data-title="amica eb652ba+in" data-keywords="amica eb652ba+in piekarnik do zabudowy amica">
                 <div class="availability"><span class="availability-dot dot-warehouse"></span> Dostępny na magazynie</div>
                 <div class="product-card-image">
-                    <img src="images/zdjęcia produktów/magazyn/piekarnik_demo.jpg" alt="Amica EB652BA+IN" loading="lazy" onerror="this.src='images/logo.png'">
+                    <img src="images/zdjęcia produktów/magazyn/oven2.jpg" alt="Amica EB652BA+IN" loading="lazy" onerror="this.src='images/logo.png'">
                 </div>
                 <h3>Amica EB652BA+IN</h3>
                 <p class="opis">Piekarnik do zabudowy. Wymiary: 59.5 x 59.5 x 57.5 cm. Klasa energetyczna: A.</p>
@@ -386,7 +388,7 @@
             <div class="product-card" data-title="mpm mms-15-kec-30" data-keywords="mpm mms-15-kec-30 kuchenka wolnostojąca ceramiczna mpm">
                 <div class="availability"><span class="availability-dot dot-warehouse"></span> Dostępny na magazynie</div>
                 <div class="product-card-image">
-                    <img src="images/categories/kuchenki.jpg" alt="MPM MMS-15-KEC-30" loading="lazy" onerror="this.src='images/logo.png'">
+                    <img src="images/zdjęcia produktów/magazyn/oven1.jpg" alt="MPM MMS-15-KEC-30" loading="lazy" onerror="this.src='images/logo.png'">
                 </div>
                 <h3>MPM MMS-15-KEC-30</h3>
                 <p class="opis">Kuchenka wolnostojąca ceramiczna. Wymiary: 50 x 85 x 60 cm. Klasa energetyczna: A.</p>
@@ -404,7 +406,7 @@
             <div class="product-card" data-title="beko fsm57320dx" data-keywords="beko fsm57320dx kuchenka wolnostojąca gazowo-elektryczna beko">
                 <div class="availability"><span class="availability-dot dot-warehouse"></span> Dostępny na magazynie</div>
                 <div class="product-card-image">
-                    <img src="images/categories/kuchenki.jpg" alt="Beko FSM57320DX" loading="lazy" onerror="this.src='images/logo.png'">
+                    <img src="images/zdjęcia produktów/magazyn/oven1.jpg" alt="Beko FSM57320DX" loading="lazy" onerror="this.src='images/logo.png'">
                 </div>
                 <h3>Beko FSM57320DX</h3>
                 <p class="opis">Kuchenka wolnostojąca gazowo-elektryczna. Wymiary: 50 x 85 x 60 cm. Klasa energetyczna: A.</p>
@@ -422,7 +424,7 @@
             <div class="product-card" data-title="indesit is5g4jsw" data-keywords="indesit is5g4jsw kuchenka wolnostojąca gazowa indesit">
                 <div class="availability"><span class="availability-dot dot-warehouse"></span> Dostępny na magazynie</div>
                 <div class="product-card-image">
-                    <img src="images/categories/kuchenki.jpg" alt="Indesit IS5G4JSW" loading="lazy" onerror="this.src='images/logo.png'">
+                    <img src="images/zdjęcia produktów/magazyn/oven1.jpg" alt="Indesit IS5G4JSW" loading="lazy" onerror="this.src='images/logo.png'">
                 </div>
                 <h3>Indesit IS5G4JSW</h3>
                 <p class="opis">Kuchenka wolnostojąca gazowa. Wymiary: 50 x 85 x 60 cm. Klasa energetyczna: A.</p>
@@ -440,7 +442,7 @@
             <div class="product-card" data-title="gorenje gk5c41bf" data-keywords="gorenje gk5c41bf kuchenka wolnostojąca gazowo-elektryczna gorenje">
                 <div class="availability"><span class="availability-dot dot-warehouse"></span> Dostępny na magazynie</div>
                 <div class="product-card-image">
-                    <img src="images/categories/kuchenki.jpg" alt="Gorenje GK5C41BF" loading="lazy" onerror="this.src='images/logo.png'">
+                    <img src="images/zdjęcia produktów/magazyn/oven1.jpg" alt="Gorenje GK5C41BF" loading="lazy" onerror="this.src='images/logo.png'">
                 </div>
                 <h3>Gorenje GK5C41BF</h3>
                 <p class="opis">Kuchenka wolnostojąca gazowo-elektryczna. Wymiary: 50 x 85 x 60 cm. Klasa energetyczna: A.</p>
@@ -476,7 +478,7 @@
             <div class="product-card" data-title="candy ro16106dwmct/1-s" data-keywords="candy ro16106dwmct/1-s pralka wolnostojąca 10kg candy">
                 <div class="availability"><span class="availability-dot dot-warehouse"></span> Dostępny na magazynie</div>
                 <div class="product-card-image">
-                    <img src="images/zdjęcia produktów/magazyn/pralka_demo.jpg" alt="Candy RO16106DWMCT/1-S" loading="lazy" onerror="this.src='images/logo.png'">
+                    <img src="images/zdjęcia produktów/magazyn/Candy_RO16106DWMCT.jpg" alt="Candy RO16106DWMCT/1-S" loading="lazy" onerror="this.src='images/logo.png'">
                 </div>
                 <h3>Candy RO16106DWMCT/1-S</h3>
                 <p class="opis">Pralka wolnostojąca 10kg. Wymiary: 60 x 85 x 58 cm. Klasa energetyczna: A.</p>
@@ -485,7 +487,7 @@
             <div class="product-card" data-title="haier hw70-b1229s-s" data-keywords="haier hw70-b1229s-s pralka wolnostojąca 7kg haier">
                 <div class="availability"><span class="availability-dot dot-warehouse"></span> Dostępny na magazynie</div>
                 <div class="product-card-image">
-                    <img src="images/zdjęcia produktów/magazyn/pralka_demo.jpg" alt="Haier HW70-B1229S-S" loading="lazy" onerror="this.src='images/logo.png'">
+                    <img src="images/zdjęcia produktów/magazyn/Candy_RO16106DWMCT.jpg" alt="Haier HW70-B1229S-S" loading="lazy" onerror="this.src='images/logo.png'">
                 </div>
                 <h3>Haier HW70-B1229S-S</h3>
                 <p class="opis">Pralka wolnostojąca 7kg. Wymiary: 60 x 85 x 45 cm. Klasa energetyczna: A.</p>
@@ -494,7 +496,7 @@
             <div class="product-card" data-title="beko wdb740546wbe" data-keywords="beko wdb740546wbe pralka-suszarka 7/4kg beko">
                 <div class="availability"><span class="availability-dot dot-warehouse"></span> Dostępny na magazynie</div>
                 <div class="product-card-image">
-                    <img src="images/zdjęcia produktów/magazyn/pralka_demo.jpg" alt="Beko WDB740546WBE" loading="lazy" onerror="this.src='images/logo.png'">
+                    <img src="images/zdjęcia produktów/magazyn/washer1.jpg" alt="Beko WDB740546WBE" loading="lazy" onerror="this.src='images/logo.png'">
                 </div>
                 <h3>Beko WDB740546WBE</h3>
                 <p class="opis">Pralka-suszarka 7/4kg. Wymiary: 60 x 85 x 50 cm. Klasa energetyczna: E.</p>
@@ -503,7 +505,7 @@
             <div class="product-card" data-title="beko htv7733xw0" data-keywords="beko htv7733xw0 pralka-suszarka 7/5kg beko">
                 <div class="availability"><span class="availability-dot dot-warehouse"></span> Dostępny na magazynie</div>
                 <div class="product-card-image">
-                    <img src="images/zdjęcia produktów/magazyn/pralka_demo.jpg" alt="Beko HTV7733XW0" loading="lazy" onerror="this.src='images/logo.png'">
+                    <img src="images/zdjęcia produktów/magazyn/washer2.jpg" alt="Beko HTV7733XW0" loading="lazy" onerror="this.src='images/logo.png'">
                 </div>
                 <h3>Beko HTV7733XW0</h3>
                 <p class="opis">Pralka-suszarka 7/5kg. Wymiary: 60 x 85 x 50 cm. Klasa energetyczna: E.</p>
@@ -521,7 +523,7 @@
             <div class="product-card" data-title="hoover hwp414amb/1-s" data-keywords="hoover hwp414amb/1-s pralka wolnostojąca 14kg hoover">
                 <div class="availability"><span class="availability-dot dot-warehouse"></span> Dostępny na magazynie</div>
                 <div class="product-card-image">
-                    <img src="images/zdjęcia produktów/magazyn/pralka_demo.jpg" alt="Hoover HWP414AMB/1-S" loading="lazy" onerror="this.src='images/logo.png'">
+                    <img src="images/zdjęcia produktów/magazyn/Candy_RO16106DWMCT.jpg" alt="Hoover HWP414AMB/1-S" loading="lazy" onerror="this.src='images/logo.png'">
                 </div>
                 <h3>Hoover HWP414AMB/1-S</h3>
                 <p class="opis">Pralka wolnostojąca 14kg. Wymiary: 60 x 85 x 67 cm. Klasa energetyczna: A.</p>
@@ -530,7 +532,7 @@
             <div class="product-card" data-title="candy ro14127dwmct/1-s" data-keywords="candy ro14127dwmct/1-s pralka wolnostojąca 12kg candy">
                 <div class="availability"><span class="availability-dot dot-warehouse"></span> Dostępny na magazynie</div>
                 <div class="product-card-image">
-                    <img src="images/zdjęcia produktów/magazyn/pralka_demo.jpg" alt="Candy RO14127DWMCT/1-S" loading="lazy" onerror="this.src='images/logo.png'">
+                    <img src="images/zdjęcia produktów/magazyn/washer1.jpg" alt="Candy RO14127DWMCT/1-S" loading="lazy" onerror="this.src='images/logo.png'">
                 </div>
                 <h3>Candy RO14127DWMCT/1-S</h3>
                 <p class="opis">Pralka wolnostojąca 12kg. Wymiary: 60 x 85 x 45 cm. Klasa energetyczna: A.</p>
@@ -539,7 +541,7 @@
             <div class="product-card" data-title="samsung ww81m6420pw" data-keywords="samsung ww81m6420pw pralka wolnostojąca 8kg samsung">
                 <div class="availability"><span class="availability-dot dot-warehouse"></span> Dostępny na magazynie</div>
                 <div class="product-card-image">
-                    <img src="images/zdjęcia produktów/magazyn/pralka_demo.jpg" alt="Samsung WW81M6420PW" loading="lazy" onerror="this.src='images/logo.png'">
+                    <img src="images/zdjęcia produktów/magazyn/washer2.jpg" alt="Samsung WW81M6420PW" loading="lazy" onerror="this.src='images/logo.png'">
                 </div>
                 <h3>Samsung WW81M6420PW</h3>
                 <p class="opis">Pralka wolnostojąca 8kg. Wymiary: 60 x 85 x 45 cm. Klasa energetyczna: A.</p>
@@ -557,7 +559,7 @@
             <div class="product-card" data-title="samsung wd80m64a0ox" data-keywords="samsung wd80m64a0ox pralka-suszarka 8/5kg samsung">
                 <div class="availability"><span class="availability-dot dot-warehouse"></span> Dostępny na magazynie</div>
                 <div class="product-card-image">
-                    <img src="images/zdjęcia produktów/magazyn/pralka_demo.jpg" alt="Samsung WD80M64A0OX" loading="lazy" onerror="this.src='images/logo.png'">
+                    <img src="images/zdjęcia produktów/magazyn/Candy_RO16106DWMCT.jpg" alt="Samsung WD80M64A0OX" loading="lazy" onerror="this.src='images/logo.png'">
                 </div>
                 <h3>Samsung WD80M64A0OX</h3>
                 <p class="opis">Pralka-suszarka 8/5kg. Wymiary: 60 x 85 x 60 cm. Klasa energetyczna: E.</p>
@@ -566,7 +568,7 @@
             <div class="product-card" data-title="candy roh4964dwmc/1-s" data-keywords="candy roh4964dwmc/1-s pralka-suszarka 9/6kg candy">
                 <div class="availability"><span class="availability-dot dot-warehouse"></span> Dostępny na magazynie</div>
                 <div class="product-card-image">
-                    <img src="images/zdjęcia produktów/magazyn/pralka_demo.jpg" alt="Candy ROH4964DWMC/1-S" loading="lazy" onerror="this.src='images/logo.png'">
+                    <img src="images/zdjęcia produktów/magazyn/washer1.jpg" alt="Candy ROH4964DWMC/1-S" loading="lazy" onerror="this.src='images/logo.png'">
                 </div>
                 <h3>Candy ROH4964DWMC/1-S</h3>
                 <p class="opis">Pralka-suszarka 9/6kg. Wymiary: 60 x 85 x 58 cm. Klasa energetyczna: E.</p>
@@ -575,7 +577,7 @@
             <div class="product-card" data-title="whirlpool ffdn8649b9pl" data-keywords="whirlpool ffdn8649b9pl pralka wolnostojąca 8kg whirlpool">
                 <div class="availability"><span class="availability-dot dot-warehouse"></span> Dostępny na magazynie</div>
                 <div class="product-card-image">
-                    <img src="images/zdjęcia produktów/magazyn/pralka_demo.jpg" alt="Whirlpool FFDN8649B9PL" loading="lazy" onerror="this.src='images/logo.png'">
+                    <img src="images/zdjęcia produktów/magazyn/washer2.jpg" alt="Whirlpool FFDN8649B9PL" loading="lazy" onerror="this.src='images/logo.png'">
                 </div>
                 <h3>Whirlpool FFDN8649B9PL</h3>
                 <p class="opis">Pralka wolnostojąca 8kg. Wymiary: 60 x 85 x 54 cm. Klasa energetyczna: D.</p>
@@ -602,7 +604,7 @@
             <div class="product-card" data-title="gorenje d2r82aus" data-keywords="gorenje d2r82aus suszarka do ubrań 8kg perfectcare gorenje">
                 <div class="availability"><span class="availability-dot dot-warehouse"></span> Dostępny na magazynie</div>
                 <div class="product-card-image">
-                    <img src="images/categories/suszarki.jpg" alt="Gorenje D2R82AUS" loading="lazy" onerror="this.src='images/logo.png'">
+                    <img src="images/zdjęcia produktów/magazyn/dryer1.jpg" alt="Gorenje D2R82AUS" loading="lazy" onerror="this.src='images/logo.png'">
                 </div>
                 <h3>Gorenje D2R82AUS</h3>
                 <p class="opis">Suszarka do ubrań 8kg PerfectCare. Wymiary: 59.6 x 85 x 63.8 cm. Klasa energetyczna: A+++.</p>
@@ -620,7 +622,7 @@
             <div class="product-card" data-title="electrolux ew7h5494e" data-keywords="electrolux ew7h5494e suszarka do ubrań 9kg perfectcare electrolux">
                 <div class="availability"><span class="availability-dot dot-warehouse"></span> Dostępny na magazynie</div>
                 <div class="product-card-image">
-                    <img src="images/categories/suszarki.jpg" alt="Electrolux EW7H5494E" loading="lazy" onerror="this.src='images/logo.png'">
+                    <img src="images/zdjęcia produktów/magazyn/dryer1.jpg" alt="Electrolux EW7H5494E" loading="lazy" onerror="this.src='images/logo.png'">
                 </div>
                 <h3>Electrolux EW7H5494E</h3>
                 <p class="opis">Suszarka do ubrań 9kg PerfectCare. Wymiary: 59.6 x 85 x 63.8 cm. Klasa energetyczna: A+++.</p>
@@ -638,7 +640,7 @@
             <div class="product-card" data-title="beko ds8434gx" data-keywords="beko ds8434gx suszarka do ubrań 8kg beko">
                 <div class="availability"><span class="availability-dot dot-warehouse"></span> Dostępny na magazynie</div>
                 <div class="product-card-image">
-                    <img src="images/categories/suszarki.jpg" alt="Beko DS8434GX" loading="lazy" onerror="this.src='images/logo.png'">
+                    <img src="images/zdjęcia produktów/magazyn/dryer1.jpg" alt="Beko DS8434GX" loading="lazy" onerror="this.src='images/logo.png'">
                 </div>
                 <h3>Beko DS8434GX</h3>
                 <p class="opis">Suszarka do ubrań 8kg. Wymiary: 60 x 85 x 60 cm. Klasa energetyczna: A+++.</p>
@@ -665,7 +667,7 @@
             <div class="product-card" data-title="samsung wd10n64a0ax" data-keywords="samsung wd10n64a0ax pralka-suszarka 10/6kg samsung">
                 <div class="availability"><span class="availability-dot dot-warehouse"></span> Dostępny na magazynie</div>
                 <div class="product-card-image">
-                    <img src="images/zdjęcia produktów/magazyn/pralka_demo.jpg" alt="Samsung WD10N64A0AX" loading="lazy" onerror="this.src='images/logo.png'">
+                    <img src="images/zdjęcia produktów/magazyn/Candy_RO16106DWMCT.jpg" alt="Samsung WD10N64A0AX" loading="lazy" onerror="this.src='images/logo.png'">
                 </div>
                 <h3>Samsung WD10N64A0AX</h3>
                 <p class="opis">Pralka-suszarka 10/6kg. Wymiary: 60 x 85 x 60 cm. Klasa energetyczna: E.</p>
@@ -674,7 +676,7 @@
             <div class="product-card" data-title="samsung ww90t6849ax/su" data-keywords="samsung ww90t6849ax/su pralka wolnostojąca 9kg quickdrive samsung">
                 <div class="availability"><span class="availability-dot dot-warehouse"></span> Dostępny na magazynie</div>
                 <div class="product-card-image">
-                    <img src="images/zdjęcia produktów/magazyn/pralka_demo.jpg" alt="Samsung WW90T6849AX/SU" loading="lazy" onerror="this.src='images/logo.png'">
+                    <img src="images/zdjęcia produktów/magazyn/washer1.jpg" alt="Samsung WW90T6849AX/SU" loading="lazy" onerror="this.src='images/logo.png'">
                 </div>
                 <h3>Samsung WW90T6849AX/SU</h3>
                 <p class="opis">Pralka wolnostojąca 9kg QuickDrive. Wymiary: 60 x 85 x 60 cm. Klasa energetyczna: A.</p>
@@ -683,7 +685,7 @@
             <div class="product-card" data-title="candy cstg27tmv5/1-s" data-keywords="candy cstg27tmv5/1-s pralka ładowana od góry 7kg candy">
                 <div class="availability"><span class="availability-dot dot-warehouse"></span> Dostępny na magazynie</div>
                 <div class="product-card-image">
-                    <img src="images/zdjęcia produktów/magazyn/pralka_demo.jpg" alt="Candy CSTG27TMV5/1-S" loading="lazy" onerror="this.src='images/logo.png'">
+                    <img src="images/zdjęcia produktów/magazyn/washer2.jpg" alt="Candy CSTG27TMV5/1-S" loading="lazy" onerror="this.src='images/logo.png'">
                 </div>
                 <h3>Candy CSTG27TMV5/1-S</h3>
                 <p class="opis">Pralka ładowana od góry 7kg. Wymiary: 41 x 86 x 60 cm. Klasa energetyczna: A.</p>
@@ -701,7 +703,7 @@
             <div class="product-card" data-title="aeg l7xeg54ep" data-keywords="aeg l7xeg54ep pralka ładowana od góry 6kg aeg">
                 <div class="availability"><span class="availability-dot dot-warehouse"></span> Dostępny na magazynie</div>
                 <div class="product-card-image">
-                    <img src="images/zdjęcia produktów/magazyn/pralka_demo.jpg" alt="AEG L7XEG54EP" loading="lazy" onerror="this.src='images/logo.png'">
+                    <img src="images/zdjęcia produktów/magazyn/Candy_RO16106DWMCT.jpg" alt="AEG L7XEG54EP" loading="lazy" onerror="this.src='images/logo.png'">
                 </div>
                 <h3>AEG L7XEG54EP</h3>
                 <p class="opis">Pralka ładowana od góry 6kg. Wymiary: 40 x 89 x 60 cm. Klasa energetyczna: C.</p>
@@ -710,7 +712,7 @@
             <div class="product-card" data-title="candy cstg47tmce" data-keywords="candy cstg47tmce pralka ładowana od góry 7kg candy">
                 <div class="availability"><span class="availability-dot dot-warehouse"></span> Dostępny na magazynie</div>
                 <div class="product-card-image">
-                    <img src="images/zdjęcia produktów/magazyn/pralka_demo.jpg" alt="Candy CSTG47TMCE" loading="lazy" onerror="this.src='images/logo.png'">
+                    <img src="images/zdjęcia produktów/magazyn/washer1.jpg" alt="Candy CSTG47TMCE" loading="lazy" onerror="this.src='images/logo.png'">
                 </div>
                 <h3>Candy CSTG47TMCE</h3>
                 <p class="opis">Pralka ładowana od góry 7kg. Wymiary: 41 x 86 x 60 cm. Klasa energetyczna: B.</p>
@@ -719,7 +721,7 @@
             <div class="product-card" data-title="electrolux ew7t1064esw" data-keywords="electrolux ew7t1064esw pralka ładowana od góry 6kg electrolux">
                 <div class="availability"><span class="availability-dot dot-warehouse"></span> Dostępny na magazynie</div>
                 <div class="product-card-image">
-                    <img src="images/zdjęcia produktów/magazyn/pralka_demo.jpg" alt="Electrolux EW7T1064ESW" loading="lazy" onerror="this.src='images/logo.png'">
+                    <img src="images/zdjęcia produktów/magazyn/washer2.jpg" alt="Electrolux EW7T1064ESW" loading="lazy" onerror="this.src='images/logo.png'">
                 </div>
                 <h3>Electrolux EW7T1064ESW</h3>
                 <p class="opis">Pralka ładowana od góry 6kg. Wymiary: 40 x 89 x 60 cm. Klasa energetyczna: C.</p>
@@ -728,7 +730,7 @@
             <div class="product-card" data-title="whirlpool wsoe 1034 pfx" data-keywords="whirlpool wsoe 1034 pfx zmywarka do zabudowy 45cm whirlpool">
                 <div class="availability"><span class="availability-dot dot-warehouse"></span> Dostępny na magazynie</div>
                 <div class="product-card-image">
-                    <img src="images/categories/zmywarki.jpg" alt="Whirlpool WSOE 1034 PFX" loading="lazy" onerror="this.src='images/logo.png'">
+                    <img src="images/zdjęcia produktów/magazyn/dishwasher1.jpg" alt="Whirlpool WSOE 1034 PFX" loading="lazy" onerror="this.src='images/logo.png'">
                 </div>
                 <h3>Whirlpool WSOE 1034 PFX</h3>
                 <p class="opis">Zmywarka do zabudowy 45cm. Wymiary: 45 x 82 x 55 cm. Klasa energetyczna: E.</p>
@@ -746,7 +748,7 @@
             <div class="product-card" data-title="samsung dw60m6050bb" data-keywords="samsung dw60m6050bb zmywarka do zabudowy 60cm samsung">
                 <div class="availability"><span class="availability-dot dot-warehouse"></span> Dostępny na magazynie</div>
                 <div class="product-card-image">
-                    <img src="images/categories/zmywarki.jpg" alt="Samsung DW60M6050BB" loading="lazy" onerror="this.src='images/logo.png'">
+                    <img src="images/zdjęcia produktów/magazyn/dishwasher1.jpg" alt="Samsung DW60M6050BB" loading="lazy" onerror="this.src='images/logo.png'">
                 </div>
                 <h3>Samsung DW60M6050BB</h3>
                 <p class="opis">Zmywarka do zabudowy 60cm. Wymiary: 59.8 x 81.5 x 55 cm. Klasa energetyczna: B.</p>
@@ -764,7 +766,7 @@
             <div class="product-card" data-title="samsung dw60a6090bb" data-keywords="samsung dw60a6090bb zmywarka do zabudowy 60cm samsung">
                 <div class="availability"><span class="availability-dot dot-warehouse"></span> Dostępny na magazynie</div>
                 <div class="product-card-image">
-                    <img src="images/categories/zmywarki.jpg" alt="Samsung DW60A6090BB" loading="lazy" onerror="this.src='images/logo.png'">
+                    <img src="images/zdjęcia produktów/magazyn/dishwasher1.jpg" alt="Samsung DW60A6090BB" loading="lazy" onerror="this.src='images/logo.png'">
                 </div>
                 <h3>Samsung DW60A6090BB</h3>
                 <p class="opis">Zmywarka do zabudowy 60cm. Wymiary: 59.8 x 81.5 x 55 cm. Klasa energetyczna: E.</p>
@@ -809,7 +811,7 @@
             <div class="product-card" data-title="le sommelier ls34a" data-keywords="le sommelier ls34a chłodziarka do wina le sommelier">
                 <div class="availability"><span class="availability-dot dot-warehouse"></span> Dostępny na magazynie</div>
                 <div class="product-card-image">
-                    <img src="images/categories/lodowki.jpg" alt="Le Sommelier LS34A" loading="lazy" onerror="this.src='images/logo.png'">
+                    <img src="images/zdjęcia produktów/magazyn/fridge1.jpg" alt="Le Sommelier LS34A" loading="lazy" onerror="this.src='images/logo.png'">
                 </div>
                 <h3>Le Sommelier LS34A</h3>
                 <p class="opis">Chłodziarka do wina. Wymiary: 48 x 85 x 43 cm. Klasa energetyczna: G.</p>
@@ -818,7 +820,7 @@
             <div class="product-card" data-title="beko rcsa300k40sn" data-keywords="beko rcsa300k40sn lodówka beko">
                 <div class="availability"><span class="availability-dot dot-warehouse"></span> Dostępny na magazynie</div>
                 <div class="product-card-image">
-                    <img src="images/categories/lodowki.jpg" alt="Beko RCSA300K40SN" loading="lazy" onerror="this.src='images/logo.png'">
+                    <img src="images/zdjęcia produktów/magazyn/fridge1.jpg" alt="Beko RCSA300K40SN" loading="lazy" onerror="this.src='images/logo.png'">
                 </div>
                 <h3>Beko RCSA300K40SN</h3>
                 <p class="opis">Lodówka. Wymiary: 54 x 181.3 x 57.4 cm. Klasa energetyczna: E.</p>
@@ -827,7 +829,7 @@
             <div class="product-card" data-title="bomann kg320" data-keywords="bomann kg320 lodówka bomann">
                 <div class="availability"><span class="availability-dot dot-warehouse"></span> Dostępny na magazynie</div>
                 <div class="product-card-image">
-                    <img src="images/categories/lodowki.jpg" alt="Bomann KG320" loading="lazy" onerror="this.src='images/logo.png'">
+                    <img src="images/zdjęcia produktów/magazyn/fridge2.jpg" alt="Bomann KG320" loading="lazy" onerror="this.src='images/logo.png'">
                 </div>
                 <h3>Bomann KG320</h3>
                 <p class="opis">Lodówka. Wymiary: 49.5 x 143 x 56.2 cm. Klasa energetyczna: E.</p>
@@ -845,7 +847,7 @@
             <div class="product-card" data-title="bosch kgn36t17" data-keywords="bosch kgn36t17 lodówka bosch">
                 <div class="availability"><span class="availability-dot dot-warehouse"></span> Dostępny na magazynie</div>
                 <div class="product-card-image">
-                    <img src="images/categories/lodowki.jpg" alt="Bosch KGN36T17" loading="lazy" onerror="this.src='images/logo.png'">
+                    <img src="images/zdjęcia produktów/magazyn/fridge1.jpg" alt="Bosch KGN36T17" loading="lazy" onerror="this.src='images/logo.png'">
                 </div>
                 <h3>Bosch KGN36T17</h3>
                 <p class="opis">Lodówka. Wymiary: 60 x 186 x 66.5 cm. Klasa energetyczna: D.</p>
@@ -854,7 +856,7 @@
             <div class="product-card" data-title="bosch kgn49a81" data-keywords="bosch kgn49a81 lodówka bosch">
                 <div class="availability"><span class="availability-dot dot-warehouse"></span> Dostępny na magazynie</div>
                 <div class="product-card-image">
-                    <img src="images/categories/lodowki.jpg" alt="Bosch KGN49A81" loading="lazy" onerror="this.src='images/logo.png'">
+                    <img src="images/zdjęcia produktów/magazyn/fridge2.jpg" alt="Bosch KGN49A81" loading="lazy" onerror="this.src='images/logo.png'">
                 </div>
                 <h3>Bosch KGN49A81</h3>
                 <p class="opis">Lodówka. Wymiary: 70 x 203 x 66.7 cm. Klasa energetyczna: D.</p>
@@ -872,7 +874,7 @@
             <div class="product-card" data-title="bosch kgv36vw45" data-keywords="bosch kgv36vw45 lodówka bosch">
                 <div class="availability"><span class="availability-dot dot-warehouse"></span> Dostępny na magazynie</div>
                 <div class="product-card-image">
-                    <img src="images/categories/lodowki.jpg" alt="Bosch KGV36VW45" loading="lazy" onerror="this.src='images/logo.png'">
+                    <img src="images/zdjęcia produktów/magazyn/fridge1.jpg" alt="Bosch KGV36VW45" loading="lazy" onerror="this.src='images/logo.png'">
                 </div>
                 <h3>Bosch KGV36VW45</h3>
                 <p class="opis">Lodówka. Wymiary: 60 x 191 x 65 cm. Klasa energetyczna: E.</p>
@@ -881,7 +883,7 @@
             <div class="product-card" data-title="bosch kis87af30" data-keywords="bosch kis87af30 lodówka bosch">
                 <div class="availability"><span class="availability-dot dot-warehouse"></span> Dostępny na magazynie</div>
                 <div class="product-card-image">
-                    <img src="images/categories/lodowki.jpg" alt="Bosch KIS87AF30" loading="lazy" onerror="this.src='images/logo.png'">
+                    <img src="images/zdjęcia produktów/magazyn/fridge2.jpg" alt="Bosch KIS87AF30" loading="lazy" onerror="this.src='images/logo.png'">
                 </div>
                 <h3>Bosch KIS87AF30</h3>
                 <p class="opis">Lodówka. Wymiary: 54.1 x 177.2 x 54.8 cm. Klasa energetyczna: E.</p>
@@ -899,7 +901,7 @@
             <div class="product-card" data-title="cecotec bolero coolmarket combi 356 l" data-keywords="cecotec bolero coolmarket combi 356 l lodówka cecotec">
                 <div class="availability"><span class="availability-dot dot-warehouse"></span> Dostępny na magazynie</div>
                 <div class="product-card-image">
-                    <img src="images/categories/lodowki.jpg" alt="Cecotec Bolero CoolMarket Combi 356 L" loading="lazy" onerror="this.src='images/logo.png'">
+                    <img src="images/zdjęcia produktów/magazyn/fridge1.jpg" alt="Cecotec Bolero CoolMarket Combi 356 L" loading="lazy" onerror="this.src='images/logo.png'">
                 </div>
                 <h3>Cecotec Bolero CoolMarket Combi 356 L</h3>
                 <p class="opis">Lodówka. Wymiary: 55 x 180 x 55 cm. Klasa energetyczna: E.</p>
@@ -908,7 +910,7 @@
             <div class="product-card" data-title="cecotec bolero coolmarket combi 409 black" data-keywords="cecotec bolero coolmarket combi 409 black lodówka cecotec">
                 <div class="availability"><span class="availability-dot dot-warehouse"></span> Dostępny na magazynie</div>
                 <div class="product-card-image">
-                    <img src="images/categories/lodowki.jpg" alt="Cecotec Bolero CoolMarket Combi 409 Black" loading="lazy" onerror="this.src='images/logo.png'">
+                    <img src="images/zdjęcia produktów/magazyn/fridge2.jpg" alt="Cecotec Bolero CoolMarket Combi 409 Black" loading="lazy" onerror="this.src='images/logo.png'">
                 </div>
                 <h3>Cecotec Bolero CoolMarket Combi 409 Black</h3>
                 <p class="opis">Lodówka. Wymiary: 60 x 200 x 60 cm. Klasa energetyczna: E.</p>
@@ -926,7 +928,7 @@
             <div class="product-card" data-title="cecotec bolero coolmarket origin 30c" data-keywords="cecotec bolero coolmarket origin 30c lodówka cecotec">
                 <div class="availability"><span class="availability-dot dot-warehouse"></span> Dostępny na magazynie</div>
                 <div class="product-card-image">
-                    <img src="images/categories/lodowki.jpg" alt="Cecotec Bolero CoolMarket Origin 30C" loading="lazy" onerror="this.src='images/logo.png'">
+                    <img src="images/zdjęcia produktów/magazyn/fridge1.jpg" alt="Cecotec Bolero CoolMarket Origin 30C" loading="lazy" onerror="this.src='images/logo.png'">
                 </div>
                 <h3>Cecotec Bolero CoolMarket Origin 30C</h3>
                 <p class="opis">Lodówka. Wymiary: 55 x 180 x 55 cm. Klasa energetyczna: E.</p>
@@ -935,7 +937,7 @@
             <div class="product-card" data-title="cecotec bolero coolmarket fd 420" data-keywords="cecotec bolero coolmarket fd 420 lodówka cecotec">
                 <div class="availability"><span class="availability-dot dot-warehouse"></span> Dostępny na magazynie</div>
                 <div class="product-card-image">
-                    <img src="images/categories/lodowki.jpg" alt="Cecotec Bolero CoolMarket FD 420" loading="lazy" onerror="this.src='images/logo.png'">
+                    <img src="images/zdjęcia produktów/magazyn/fridge2.jpg" alt="Cecotec Bolero CoolMarket FD 420" loading="lazy" onerror="this.src='images/logo.png'">
                 </div>
                 <h3>Cecotec Bolero CoolMarket FD 420</h3>
                 <p class="opis">Lodówka. Wymiary: 60 x 185 x 60 cm. Klasa energetyczna: E.</p>
@@ -953,7 +955,7 @@
             <div class="product-card" data-title="cecotec retro bolero coolmarket tt" data-keywords="cecotec retro bolero coolmarket tt lodówka cecotec">
                 <div class="availability"><span class="availability-dot dot-warehouse"></span> Dostępny na magazynie</div>
                 <div class="product-card-image">
-                    <img src="images/categories/lodowki.jpg" alt="Cecotec Retro Bolero CoolMarket TT" loading="lazy" onerror="this.src='images/logo.png'">
+                    <img src="images/zdjęcia produktów/magazyn/fridge1.jpg" alt="Cecotec Retro Bolero CoolMarket TT" loading="lazy" onerror="this.src='images/logo.png'">
                 </div>
                 <h3>Cecotec Retro Bolero CoolMarket TT</h3>
                 <p class="opis">Lodówka. Wymiary: 45 x 85 x 60 cm. Klasa energetyczna: E.</p>
@@ -962,7 +964,7 @@
             <div class="product-card" data-title="cecotec bolero coolmarket tt origin" data-keywords="cecotec bolero coolmarket tt origin lodówka cecotec">
                 <div class="availability"><span class="availability-dot dot-warehouse"></span> Dostępny na magazynie</div>
                 <div class="product-card-image">
-                    <img src="images/categories/lodowki.jpg" alt="Cecotec Bolero CoolMarket TT Origin" loading="lazy" onerror="this.src='images/logo.png'">
+                    <img src="images/zdjęcia produktów/magazyn/fridge2.jpg" alt="Cecotec Bolero CoolMarket TT Origin" loading="lazy" onerror="this.src='images/logo.png'">
                 </div>
                 <h3>Cecotec Bolero CoolMarket TT Origin</h3>
                 <p class="opis">Lodówka. Wymiary: 48 x 85 x 60 cm. Klasa energetyczna: E.</p>
@@ -980,7 +982,7 @@
             <div class="product-card" data-title="comfee rcw49wh1e" data-keywords="comfee rcw49wh1e lodówka comfee">
                 <div class="availability"><span class="availability-dot dot-warehouse"></span> Dostępny na magazynie</div>
                 <div class="product-card-image">
-                    <img src="images/categories/lodowki.jpg" alt="Comfee RCW49WH1E" loading="lazy" onerror="this.src='images/logo.png'">
+                    <img src="images/zdjęcia produktów/magazyn/fridge1.jpg" alt="Comfee RCW49WH1E" loading="lazy" onerror="this.src='images/logo.png'">
                 </div>
                 <h3>Comfee RCW49WH1E</h3>
                 <p class="opis">Lodówka. Wymiary: 55 x 175 x 55 cm. Klasa energetyczna: E.</p>
@@ -989,7 +991,7 @@
             <div class="product-card" data-title="gorenje nrr9185exl" data-keywords="gorenje nrr9185exl lodówka gorenje">
                 <div class="availability"><span class="availability-dot dot-warehouse"></span> Dostępny na magazynie</div>
                 <div class="product-card-image">
-                    <img src="images/categories/lodowki.jpg" alt="Gorenje NRR9185EXL" loading="lazy" onerror="this.src='images/logo.png'">
+                    <img src="images/zdjęcia produktów/magazyn/fridge2.jpg" alt="Gorenje NRR9185EXL" loading="lazy" onerror="this.src='images/logo.png'">
                 </div>
                 <h3>Gorenje NRR9185EXL</h3>
                 <p class="opis">Lodówka. Wymiary: 91.5 x 178.6 x 70 cm. Klasa energetyczna: E.</p>
@@ -1007,7 +1009,7 @@
             <div class="product-card" data-title="hisense rs890n4bc1" data-keywords="hisense rs890n4bc1 lodówka hisense">
                 <div class="availability"><span class="availability-dot dot-warehouse"></span> Dostępny na magazynie</div>
                 <div class="product-card-image">
-                    <img src="images/categories/lodowki.jpg" alt="Hisense RS890N4BC1" loading="lazy" onerror="this.src='images/logo.png'">
+                    <img src="images/zdjęcia produktów/magazyn/fridge1.jpg" alt="Hisense RS890N4BC1" loading="lazy" onerror="this.src='images/logo.png'">
                 </div>
                 <h3>Hisense RS890N4BC1</h3>
                 <p class="opis">Lodówka. Wymiary: 90 x 180 x 59 cm. Klasa energetyczna: E.</p>
@@ -1016,7 +1018,7 @@
             <div class="product-card" data-title="bomann kg759" data-keywords="bomann kg759 lodówka-zamrażarka bomann">
                 <div class="availability"><span class="availability-dot dot-warehouse"></span> Dostępny na magazynie</div>
                 <div class="product-card-image">
-                    <img src="images/categories/lodowki.jpg" alt="Bomann KG759" loading="lazy" onerror="this.src='images/logo.png'">
+                    <img src="images/zdjęcia produktów/magazyn/fridge2.jpg" alt="Bomann KG759" loading="lazy" onerror="this.src='images/logo.png'">
                 </div>
                 <h3>Bomann KG759</h3>
                 <p class="opis">Lodówka-zamrażarka. Wymiary: 55 x 180 x 60 cm. Klasa energetyczna: E.</p>
@@ -1025,7 +1027,7 @@
             <div class="product-card" data-title="hisense mwg2216-e" data-keywords="hisense mwg2216-e mikrofala hisense">
                 <div class="availability"><span class="availability-dot dot-warehouse"></span> Dostępny na magazynie</div>
                 <div class="product-card-image">
-                    <img src="images/categories/male-agd.jpg" alt="Hisense MWG2216-E" loading="lazy" onerror="this.src='images/logo.png'">
+                    <img src="images/zdjęcia produktów/magazyn/oven2.jpg" alt="Hisense MWG2216-E" loading="lazy" onerror="this.src='images/logo.png'">
                 </div>
                 <h3>Hisense MWG2216-E</h3>
                 <p class="opis">Mikrofala. Wymiary: 50 x 30 x 40 cm. Klasa energetyczna: E.</p>
@@ -1043,7 +1045,7 @@
             <div class="product-card" data-title="beko bbis17500bcs b100" data-keywords="beko bbis17500bcs b100 piekarnik beko">
                 <div class="availability"><span class="availability-dot dot-warehouse"></span> Dostępny na magazynie</div>
                 <div class="product-card-image">
-                    <img src="images/zdjęcia produktów/magazyn/piekarnik_demo.jpg" alt="Beko BBIS17500BCS b100" loading="lazy" onerror="this.src='images/logo.png'">
+                    <img src="images/zdjęcia produktów/magazyn/oven2.jpg" alt="Beko BBIS17500BCS b100" loading="lazy" onerror="this.src='images/logo.png'">
                 </div>
                 <h3>Beko BBIS17500BCS b100</h3>
                 <p class="opis">Piekarnik. Wymiary: 60 x 60 x 55 cm. Klasa energetyczna: A.</p>
@@ -1061,7 +1063,7 @@
             <div class="product-card" data-title="cecotec ro hera m2600 glass w" data-keywords="cecotec ro hera m2600 glass w piekarnik cecotec">
                 <div class="availability"><span class="availability-dot dot-warehouse"></span> Dostępny na magazynie</div>
                 <div class="product-card-image">
-                    <img src="images/zdjęcia produktów/magazyn/piekarnik_demo.jpg" alt="Cecotec RO Hera M2600 Glass W" loading="lazy" onerror="this.src='images/logo.png'">
+                    <img src="images/zdjęcia produktów/magazyn/oven1.jpg" alt="Cecotec RO Hera M2600 Glass W" loading="lazy" onerror="this.src='images/logo.png'">
                 </div>
                 <h3>Cecotec RO Hera M2600 Glass W</h3>
                 <p class="opis">Piekarnik. Wymiary: 60 x 55 x 55 cm. Klasa energetyczna: A.</p>
@@ -1070,7 +1072,7 @@
             <div class="product-card" data-title="hisense b16421fx" data-keywords="hisense b16421fx piekarnik hisense">
                 <div class="availability"><span class="availability-dot dot-warehouse"></span> Dostępny na magazynie</div>
                 <div class="product-card-image">
-                    <img src="images/zdjęcia produktów/magazyn/piekarnik_demo.jpg" alt="Hisense B16421FX" loading="lazy" onerror="this.src='images/logo.png'">
+                    <img src="images/zdjęcia produktów/magazyn/oven2.jpg" alt="Hisense B16421FX" loading="lazy" onerror="this.src='images/logo.png'">
                 </div>
                 <h3>Hisense B16421FX</h3>
                 <p class="opis">Piekarnik. Wymiary: 60 x 60 x 55 cm. Klasa energetyczna: A+.</p>
@@ -1097,7 +1099,7 @@
             <div class="product-card" data-title="bosch wan28209fr" data-keywords="bosch wan28209fr pralka bosch">
                 <div class="availability"><span class="availability-dot dot-warehouse"></span> Dostępny na magazynie</div>
                 <div class="product-card-image">
-                    <img src="images/zdjęcia produktów/magazyn/pralka_demo.jpg" alt="Bosch WAN28209FR" loading="lazy" onerror="this.src='images/logo.png'">
+                    <img src="images/zdjęcia produktów/magazyn/Candy_RO16106DWMCT.jpg" alt="Bosch WAN28209FR" loading="lazy" onerror="this.src='images/logo.png'">
                 </div>
                 <h3>Bosch WAN28209FR</h3>
                 <p class="opis">Pralka. Wymiary: 59.8 x 84.5 x 59 cm. Klasa energetyczna: A.</p>
@@ -1106,7 +1108,7 @@
             <div class="product-card" data-title="bosch wgg2440fr" data-keywords="bosch wgg2440fr pralka bosch">
                 <div class="availability"><span class="availability-dot dot-warehouse"></span> Dostępny na magazynie</div>
                 <div class="product-card-image">
-                    <img src="images/zdjęcia produktów/magazyn/pralka_demo.jpg" alt="Bosch WGG2440FR" loading="lazy" onerror="this.src='images/logo.png'">
+                    <img src="images/zdjęcia produktów/magazyn/washer1.jpg" alt="Bosch WGG2440FR" loading="lazy" onerror="this.src='images/logo.png'">
                 </div>
                 <h3>Bosch WGG2440FR</h3>
                 <p class="opis">Pralka. Wymiary: 60 x 85 x 60 cm. Klasa energetyczna: A.</p>
@@ -1115,7 +1117,7 @@
             <div class="product-card" data-title="bosch wgg254fr" data-keywords="bosch wgg254fr pralka bosch">
                 <div class="availability"><span class="availability-dot dot-warehouse"></span> Dostępny na magazynie</div>
                 <div class="product-card-image">
-                    <img src="images/zdjęcia produktów/magazyn/pralka_demo.jpg" alt="Bosch WGG254FR" loading="lazy" onerror="this.src='images/logo.png'">
+                    <img src="images/zdjęcia produktów/magazyn/washer2.jpg" alt="Bosch WGG254FR" loading="lazy" onerror="this.src='images/logo.png'">
                 </div>
                 <h3>Bosch WGG254FR</h3>
                 <p class="opis">Pralka. Wymiary: 60 x 85 x 60 cm. Klasa energetyczna: A.</p>
@@ -1133,7 +1135,7 @@
             <div class="product-card" data-title="candy cw08658iax" data-keywords="candy cw08658iax pralka candy">
                 <div class="availability"><span class="availability-dot dot-warehouse"></span> Dostępny na magazynie</div>
                 <div class="product-card-image">
-                    <img src="images/zdjęcia produktów/magazyn/pralka_demo.jpg" alt="Candy CW08658IAX" loading="lazy" onerror="this.src='images/logo.png'">
+                    <img src="images/zdjęcia produktów/magazyn/Candy_RO16106DWMCT.jpg" alt="Candy CW08658IAX" loading="lazy" onerror="this.src='images/logo.png'">
                 </div>
                 <h3>Candy CW08658IAX</h3>
                 <p class="opis">Pralka. Wymiary: 60 x 85 x 55 cm. Klasa energetyczna: A.</p>
@@ -1142,7 +1144,7 @@
             <div class="product-card" data-title="candy tcas284tm4-s" data-keywords="candy tcas284tm4-s pralka candy">
                 <div class="availability"><span class="availability-dot dot-warehouse"></span> Dostępny na magazynie</div>
                 <div class="product-card-image">
-                    <img src="images/zdjęcia produktów/magazyn/pralka_demo.jpg" alt="Candy TCAS284TM4-S" loading="lazy" onerror="this.src='images/logo.png'">
+                    <img src="images/zdjęcia produktów/magazyn/washer1.jpg" alt="Candy TCAS284TM4-S" loading="lazy" onerror="this.src='images/logo.png'">
                 </div>
                 <h3>Candy TCAS284TM4-S</h3>
                 <p class="opis">Pralka. Wymiary: 41 x 86 x 60 cm. Klasa energetyczna: B.</p>
@@ -1151,7 +1153,7 @@
             <div class="product-card" data-title="cecotec dresscode 10800 inverter" data-keywords="cecotec dresscode 10800 inverter pralka cecotec">
                 <div class="availability"><span class="availability-dot dot-warehouse"></span> Dostępny na magazynie</div>
                 <div class="product-card-image">
-                    <img src="images/zdjęcia produktów/magazyn/pralka_demo.jpg" alt="Cecotec DressCode 10800 inverter" loading="lazy" onerror="this.src='images/logo.png'">
+                    <img src="images/zdjęcia produktów/magazyn/washer2.jpg" alt="Cecotec DressCode 10800 inverter" loading="lazy" onerror="this.src='images/logo.png'">
                 </div>
                 <h3>Cecotec DressCode 10800 inverter</h3>
                 <p class="opis">Pralka. Wymiary: 60 x 85 x 55 cm. Klasa energetyczna: A.</p>
@@ -1169,7 +1171,7 @@
             <div class="product-card" data-title="cecotec dresscode 7410 inverter" data-keywords="cecotec dresscode 7410 inverter pralka cecotec">
                 <div class="availability"><span class="availability-dot dot-warehouse"></span> Dostępny na magazynie</div>
                 <div class="product-card-image">
-                    <img src="images/zdjęcia produktów/magazyn/pralka_demo.jpg" alt="Cecotec DressCode 7410 inverter" loading="lazy" onerror="this.src='images/logo.png'">
+                    <img src="images/zdjęcia produktów/magazyn/Candy_RO16106DWMCT.jpg" alt="Cecotec DressCode 7410 inverter" loading="lazy" onerror="this.src='images/logo.png'">
                 </div>
                 <h3>Cecotec DressCode 7410 inverter</h3>
                 <p class="opis">Pralka. Wymiary: 60 x 85 x 50 cm. Klasa energetyczna: A.</p>
@@ -1178,7 +1180,7 @@
             <div class="product-card" data-title="cecotec dresscode 7500 inverter" data-keywords="cecotec dresscode 7500 inverter pralka cecotec">
                 <div class="availability"><span class="availability-dot dot-warehouse"></span> Dostępny na magazynie</div>
                 <div class="product-card-image">
-                    <img src="images/zdjęcia produktów/magazyn/pralka_demo.jpg" alt="Cecotec DressCode 7500 inverter" loading="lazy" onerror="this.src='images/logo.png'">
+                    <img src="images/zdjęcia produktów/magazyn/washer1.jpg" alt="Cecotec DressCode 7500 inverter" loading="lazy" onerror="this.src='images/logo.png'">
                 </div>
                 <h3>Cecotec DressCode 7500 inverter</h3>
                 <p class="opis">Pralka. Wymiary: 60 x 85 x 50 cm. Klasa energetyczna: A.</p>
@@ -1187,7 +1189,7 @@
             <div class="product-card" data-title="comfee cfelzew90-w" data-keywords="comfee cfelzew90-w pralka comfee">
                 <div class="availability"><span class="availability-dot dot-warehouse"></span> Dostępny na magazynie</div>
                 <div class="product-card-image">
-                    <img src="images/zdjęcia produktów/magazyn/pralka_demo.jpg" alt="Comfee CFELZEW90-W" loading="lazy" onerror="this.src='images/logo.png'">
+                    <img src="images/zdjęcia produktów/magazyn/washer2.jpg" alt="Comfee CFELZEW90-W" loading="lazy" onerror="this.src='images/logo.png'">
                 </div>
                 <h3>Comfee CFELZEW90-W</h3>
                 <p class="opis">Pralka. Wymiary: 60 x 85 x 55 cm. Klasa energetyczna: A.</p>
@@ -1205,7 +1207,7 @@
             <div class="product-card" data-title="first one fll71200wh" data-keywords="first one fll71200wh pralka first one">
                 <div class="availability"><span class="availability-dot dot-warehouse"></span> Dostępny na magazynie</div>
                 <div class="product-card-image">
-                    <img src="images/zdjęcia produktów/magazyn/pralka_demo.jpg" alt="FIRST ONE FLL71200WH" loading="lazy" onerror="this.src='images/logo.png'">
+                    <img src="images/zdjęcia produktów/magazyn/Candy_RO16106DWMCT.jpg" alt="FIRST ONE FLL71200WH" loading="lazy" onerror="this.src='images/logo.png'">
                 </div>
                 <h3>FIRST ONE FLL71200WH</h3>
                 <p class="opis">Pralka. Wymiary: 60 x 85 x 55 cm. Klasa energetyczna: A.</p>
@@ -1214,7 +1216,7 @@
             <div class="product-card" data-title="first one fllb1400wh" data-keywords="first one fllb1400wh pralka first one">
                 <div class="availability"><span class="availability-dot dot-warehouse"></span> Dostępny na magazynie</div>
                 <div class="product-card-image">
-                    <img src="images/zdjęcia produktów/magazyn/pralka_demo.jpg" alt="FIRST ONE FLLB1400WH" loading="lazy" onerror="this.src='images/logo.png'">
+                    <img src="images/zdjęcia produktów/magazyn/washer1.jpg" alt="FIRST ONE FLLB1400WH" loading="lazy" onerror="this.src='images/logo.png'">
                 </div>
                 <h3>FIRST ONE FLLB1400WH</h3>
                 <p class="opis">Pralka. Wymiary: 60 x 85 x 55 cm. Klasa energetyczna: A.</p>
@@ -1223,7 +1225,7 @@
             <div class="product-card" data-title="vedette lfv6124w" data-keywords="vedette lfv6124w pralka vedette">
                 <div class="availability"><span class="availability-dot dot-warehouse"></span> Dostępny na magazynie</div>
                 <div class="product-card-image">
-                    <img src="images/zdjęcia produktów/magazyn/pralka_demo.jpg" alt="Vedette LFV6124W" loading="lazy" onerror="this.src='images/logo.png'">
+                    <img src="images/zdjęcia produktów/magazyn/washer2.jpg" alt="Vedette LFV6124W" loading="lazy" onerror="this.src='images/logo.png'">
                 </div>
                 <h3>Vedette LFV6124W</h3>
                 <p class="opis">Pralka. Wymiary: 60 x 85 x 55 cm. Klasa energetyczna: A.</p>
@@ -1232,7 +1234,7 @@
             <div class="product-card" data-title="bosch wqg13500fr" data-keywords="bosch wqg13500fr suszarka bosch">
                 <div class="availability"><span class="availability-dot dot-warehouse"></span> Dostępny na magazynie</div>
                 <div class="product-card-image">
-                    <img src="images/categories/suszarki.jpg" alt="Bosch WQG13500FR" loading="lazy" onerror="this.src='images/logo.png'">
+                    <img src="images/zdjęcia produktów/magazyn/dryer1.jpg" alt="Bosch WQG13500FR" loading="lazy" onerror="this.src='images/logo.png'">
                 </div>
                 <h3>Bosch WQG13500FR</h3>
                 <p class="opis">Suszarka. Wymiary: 59.8 x 84.2 x 61.3 cm. Klasa energetyczna: A+++.</p>
@@ -1250,7 +1252,7 @@
             <div class="product-card" data-title="candy csehbaales" data-keywords="candy csehbaales suszarka candy">
                 <div class="availability"><span class="availability-dot dot-warehouse"></span> Dostępny na magazynie</div>
                 <div class="product-card-image">
-                    <img src="images/categories/suszarki.jpg" alt="Candy CSEHBAALES" loading="lazy" onerror="this.src='images/logo.png'">
+                    <img src="images/zdjęcia produktów/magazyn/dryer1.jpg" alt="Candy CSEHBAALES" loading="lazy" onerror="this.src='images/logo.png'">
                 </div>
                 <h3>Candy CSEHBAALES</h3>
                 <p class="opis">Suszarka. Wymiary: 60 x 85 x 58.5 cm. Klasa energetyczna: A+.</p>
@@ -1268,7 +1270,7 @@
             <div class="product-card" data-title="bosch smishcbime series 4" data-keywords="bosch smishcbime series 4 zmywarka bosch">
                 <div class="availability"><span class="availability-dot dot-warehouse"></span> Dostępny na magazynie</div>
                 <div class="product-card-image">
-                    <img src="images/categories/zmywarki.jpg" alt="Bosch SMISHCBIME series 4" loading="lazy" onerror="this.src='images/logo.png'">
+                    <img src="images/zdjęcia produktów/magazyn/dishwasher1.jpg" alt="Bosch SMISHCBIME series 4" loading="lazy" onerror="this.src='images/logo.png'">
                 </div>
                 <h3>Bosch SMISHCBIME series 4</h3>
                 <p class="opis">Zmywarka. Wymiary: 60 x 81.5 x 55 cm. Klasa energetyczna: D.</p>
@@ -1286,7 +1288,7 @@
             <div class="product-card" data-title="bosch smv2itx18e" data-keywords="bosch smv2itx18e zmywarka bosch">
                 <div class="availability"><span class="availability-dot dot-warehouse"></span> Dostępny na magazynie</div>
                 <div class="product-card-image">
-                    <img src="images/categories/zmywarki.jpg" alt="Bosch SMV2ITX18E" loading="lazy" onerror="this.src='images/logo.png'">
+                    <img src="images/zdjęcia produktów/magazyn/dishwasher1.jpg" alt="Bosch SMV2ITX18E" loading="lazy" onerror="this.src='images/logo.png'">
                 </div>
                 <h3>Bosch SMV2ITX18E</h3>
                 <p class="opis">Zmywarka. Wymiary: 60 x 81.5 x 55 cm. Klasa energetyczna: E.</p>
@@ -1304,7 +1306,7 @@
             <div class="product-card" data-title="cecotec bolero aguazero 6210" data-keywords="cecotec bolero aguazero 6210 zmywarka cecotec">
                 <div class="availability"><span class="availability-dot dot-warehouse"></span> Dostępny na magazynie</div>
                 <div class="product-card-image">
-                    <img src="images/categories/zmywarki.jpg" alt="Cecotec BOLERO Aguazero 6210" loading="lazy" onerror="this.src='images/logo.png'">
+                    <img src="images/zdjęcia produktów/magazyn/dishwasher1.jpg" alt="Cecotec BOLERO Aguazero 6210" loading="lazy" onerror="this.src='images/logo.png'">
                 </div>
                 <h3>Cecotec BOLERO Aguazero 6210</h3>
                 <p class="opis">Zmywarka. Wymiary: 60 x 85 x 60 cm. Klasa energetyczna: E.</p>
@@ -1322,7 +1324,7 @@
             <div class="product-card" data-title="cecotec aguazero 6520 full-bi black" data-keywords="cecotec aguazero 6520 full-bi black zmywarka cecotec">
                 <div class="availability"><span class="availability-dot dot-warehouse"></span> Dostępny na magazynie</div>
                 <div class="product-card-image">
-                    <img src="images/categories/zmywarki.jpg" alt="Cecotec Aguazero 6520 Full-BI Black" loading="lazy" onerror="this.src='images/logo.png'">
+                    <img src="images/zdjęcia produktów/magazyn/dishwasher1.jpg" alt="Cecotec Aguazero 6520 Full-BI Black" loading="lazy" onerror="this.src='images/logo.png'">
                 </div>
                 <h3>Cecotec Aguazero 6520 Full-BI Black</h3>
                 <p class="opis">Zmywarka. Wymiary: 60 x 82 x 55 cm. Klasa energetyczna: D.</p>
@@ -1340,7 +1342,7 @@
             <div class="product-card" data-title="comfee cowpb1215p6-eu" data-keywords="comfee cowpb1215p6-eu zmywarka comfee">
                 <div class="availability"><span class="availability-dot dot-warehouse"></span> Dostępny na magazynie</div>
                 <div class="product-card-image">
-                    <img src="images/categories/zmywarki.jpg" alt="Comfee COWPB1215P6-EU" loading="lazy" onerror="this.src='images/logo.png'">
+                    <img src="images/zdjęcia produktów/magazyn/dishwasher1.jpg" alt="Comfee COWPB1215P6-EU" loading="lazy" onerror="this.src='images/logo.png'">
                 </div>
                 <h3>Comfee COWPB1215P6-EU</h3>
                 <p class="opis">Zmywarka. Wymiary: 60 x 85 x 60 cm. Klasa energetyczna: E.</p>
@@ -1358,7 +1360,7 @@
             <div class="product-card" data-title="comfee cowpf203ps" data-keywords="comfee cowpf203ps zmywarka comfee">
                 <div class="availability"><span class="availability-dot dot-warehouse"></span> Dostępny na magazynie</div>
                 <div class="product-card-image">
-                    <img src="images/categories/zmywarki.jpg" alt="Comfee COWPF203PS" loading="lazy" onerror="this.src='images/logo.png'">
+                    <img src="images/zdjęcia produktów/magazyn/dishwasher1.jpg" alt="Comfee COWPF203PS" loading="lazy" onerror="this.src='images/logo.png'">
                 </div>
                 <h3>Comfee COWPF203PS</h3>
                 <p class="opis">Zmywarka. Wymiary: 59.8 x 84.5 x 60 cm. Klasa energetyczna: E.</p>
@@ -1376,7 +1378,7 @@
             <div class="product-card" data-title="comfee kwh-td60ze-w-fr" data-keywords="comfee kwh-td60ze-w-fr zmywarka comfee">
                 <div class="availability"><span class="availability-dot dot-warehouse"></span> Dostępny na magazynie</div>
                 <div class="product-card-image">
-                    <img src="images/categories/zmywarki.jpg" alt="Comfee KWH-TD60ZE-W-FR" loading="lazy" onerror="this.src='images/logo.png'">
+                    <img src="images/zdjęcia produktów/magazyn/dishwasher1.jpg" alt="Comfee KWH-TD60ZE-W-FR" loading="lazy" onerror="this.src='images/logo.png'">
                 </div>
                 <h3>Comfee KWH-TD60ZE-W-FR</h3>
                 <p class="opis">Zmywarka. Wymiary: 60 x 85 x 60 cm. Klasa energetyczna: E.</p>
