@@ -55,6 +55,7 @@ LIGHTBOX_HTML = """
     </script>
 """
 
+
 def card_html(p, is_local=True):
     imgs = p.get("zdjecia", [])
     if not imgs and p.get("zdjecie"):
@@ -62,23 +63,64 @@ def card_html(p, is_local=True):
     img_src = imgs[0] if imgs else ""
     img_block = ""
     if img_src:
-        img_block = '''
-                <div class="product-card-image">
-                    <img src="%s" alt="%s" onclick="openLightbox(this.src)" onerror="this.style.display='none'">
-                </div>''' % (img_src, p["tytul"])
+        img_block = (
+            '\n                <div class="product-card-image">\n'
+            '                    <img src="%s" alt="%s" onclick="openLightbox(this.src)" '
+            'onerror="this.style.display=\'none\'">\n'
+            "                </div>"
+        ) % (img_src, p["tytul"])
     if is_local:
-        avail = '''<div class="availability"><span class="availability-dot dot-local"></span> Dostępny lokalnie</div>'''
+        avail = (
+            '<div class="availability"><span class="availability-dot dot-local"></span> '
+            "Dostępny lokalnie</div>"
+        )
+        status_txt = "Dostępny lokalnie"
     else:
-        avail = '''<div class="availability"><span class="availability-dot dot-warehouse"></span> Dostępny na magazynie</div>'''
-    return '''
-            <div class="product-card" data-title="%s" data-keywords="%s">
-%s
-                %s
-                <h3>%s</h3>
-                <p class="opis">%s</p>
-                <span class="cena">%s</span>
-            </div>
-''' % (p["tytul"].lower(), (p["tytul"] + " " + p.get("opis", "")).lower(), img_block, avail, p["tytul"], p.get("opis", ""), p.get("cena", "Cena na zapytanie"))
+        avail = (
+            '<div class="availability"><span class="availability-dot dot-warehouse"></span> '
+            "Dostępny na magazynie</div>"
+        )
+        status_txt = "Dostępny na magazynie"
+
+    title = p.get("tytul", "")
+    cena = p.get("cena", "Cena na zapytanie")
+    pid = re.sub(r"\s+", "-", title.lower())
+    pid = re.sub(r"[^\w\-]", "", pid, flags=re.UNICODE)
+
+    btn = (
+        '<button type="button" class="btn-add-quote" data-id="%s" data-title="%s" '
+        'data-status="%s" data-cena="%s">Dodaj do wyceny</button>'
+    ) % (
+        pid.replace('"', ""),
+        title.replace('"', "&quot;"),
+        status_txt.replace('"', ""),
+        cena.replace('"', ""),
+    )
+
+    return (
+        '\n            <div class="product-card" data-id="%s" data-title="%s" data-keywords="%s">'
+        "%s\n                %s\n                <h3>%s</h3>\n"
+        '                <p class="opis">%s</p>\n'
+        '                <span class="cena">%s</span>\n'
+        "                %s\n            </div>\n"
+    ) % (
+        pid.replace('"', ""),
+        title.lower().replace('"', ""),
+        (title + " " + p.get("opis", "")).lower().replace('"', ""),
+        img_block,
+        avail,
+        title,
+        p.get("opis", ""),
+        cena,
+        btn,
+    )
+
+
+def ensure_koszyk(content):
+    if "koszyk.js" not in content and "</body>" in content:
+        content = content.replace("</body>", '    <script src="koszyk.js"></script>\n</body>', 1)
+    return content
+
 
 if not os.path.exists("produkty.json"):
     print("Brak produkty.json")
@@ -105,10 +147,11 @@ for plik_html, produkty in baza.items():
             content = content.replace("</style>", LIGHTBOX_CSS + "\n    </style>", 1)
         if 'id="lightbox"' not in content and "</body>" in content:
             content = content.replace("</body>", LIGHTBOX_HTML + "\n</body>", 1)
+        content = ensure_koszyk(content)
         with open(plik_html, "w", encoding="utf-8") as out:
             out.write(content)
         print("  OK,", len(produkty), "produktów")
     else:
         print("  ! Brak markerów")
 
-print("Gotowe. (bez osobnych podstron produktów)")
+print("Gotowe.")
