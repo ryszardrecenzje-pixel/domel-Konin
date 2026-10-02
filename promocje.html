@@ -3,21 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Domel Konin - Promocje dnia (29 szt.)</title>
+    <title>Domel Konin - Promocje dnia (30 szt.)</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.2rem; }
         .product-card { background: #fff; border-radius: 8px; padding: 1.2rem; box-shadow: 0 2px 5px rgba(0,0,0,0.1); text-align: center; position: relative; }
-        .product-card-image { width: 100%; height: 180px; display: flex; align-items: center; justify-content: center; margin-bottom: 0.8rem; overflow: hidden; border-radius: 4px; background: #f5f5f5; }
-        .product-card-image img { max-width: 100%; max-height: 100%; object-fit: contain; }
+        .product-card-image { width: 100%; height: 200px; display: flex; align-items: center; justify-content: center; margin-bottom: 0.8rem; overflow: hidden; border-radius: 4px; background: #f5f5f5; }
+        .product-card-image img { max-width: 100%; max-height: 100%; object-fit: contain; cursor: zoom-in; transition: transform .2s; }
+        .product-card-image a:hover img { transform: scale(1.04); }
+        .product-card h3 { font-size: 0.98rem; line-height: 1.35; min-height: 2.7em; }
+        .opis { font-size: 0.88rem; color: #555; margin: 0.3rem 0 0.5rem; }
         .legend { display: flex; gap: 20px; justify-content: center; margin-bottom: 1.5rem; flex-wrap: wrap; }
         .legend-item { display: flex; align-items: center; gap: 6px; font-size: 0.95rem; }
-        .product-count { text-align: center; color: #666; margin-bottom: 1rem; }
         .availability-dot.dot-promo { background: #e11d48; box-shadow: 0 0 0 2px rgba(225,29,72,0.25); }
         .cena-stara { text-decoration: line-through; color: #999; font-size: 0.95rem; margin-right: 0.4rem; }
         .cena-wrap { margin-top: 0.4rem; }
         .promo-note { max-width: 720px; margin: 0 auto 1.5rem; text-align: center; color: #555; font-size: 0.95rem; }
+        /* lightbox */
+        #lightbox { display: none; position: fixed; z-index: 9999; inset: 0; background: rgba(0,0,0,.85); align-items: center; justify-content: center; padding: 1rem; }
+        #lightbox.open { display: flex; }
+        #lightbox img { max-width: min(96vw, 1000px); max-height: 90vh; object-fit: contain; border-radius: 6px; box-shadow: 0 8px 40px rgba(0,0,0,.5); }
+        #lightbox .lb-close { position: absolute; top: 16px; right: 22px; color: #fff; font-size: 2rem; cursor: pointer; line-height: 1; }
+        #lightbox .lb-caption { position: absolute; bottom: 18px; left: 50%; transform: translateX(-50%); color: #fff; background: rgba(0,0,0,.55); padding: 0.4rem 0.9rem; border-radius: 6px; max-width: 90vw; text-align: center; font-size: 0.95rem; }
     </style>
 </head>
 <body>
@@ -57,13 +65,11 @@
     <section class="section-padding">
         <div class="container">
             <h2 class="page-title">Promocje dnia</h2>
-            <p class="section-desc">Oferty dnia z hurtowni partnerskiej. Ceny detaliczne = cena hurtowa + 200 zł marży.</p>
-            <p class="promo-note">Aktualizacja danych: <strong>2026-10-02</strong> · Liczba pozycji: <strong>29</strong><br>
-            Ostateczna dostępność i cena – potwierdź telefonicznie: <a href="tel:696085262">696 085 262</a></p>
+            <p class="section-desc">Aktualne promocje AGD. Kliknij zdjęcie, aby powiększyć.</p>
+            <p class="promo-note">Aktualizacja: <strong>2026-10-02</strong> · Pozycji: <strong>30</strong><br>
+            Dostępność potwierdź telefonicznie: <a href="tel:696085262">696 085 262</a></p>
             <div class="legend">
                 <div class="legend-item"><span class="availability-dot dot-promo"></span> Promocja dnia</div>
-                <div class="legend-item"><span class="availability-dot dot-warehouse"></span> Magazyn</div>
-                <div class="legend-item"><span class="availability-dot dot-local"></span> Salon</div>
             </div>
             <div class="category-search">
                 <input type="text" id="catSearchInput" placeholder="Szukaj promocji (marka, model)..." oninput="filterCatProducts()" autocomplete="off">
@@ -72,270 +78,346 @@
             <div id="noResults" class="no-results">Brak pasujących promocji</div>
             <div class="products-grid" id="productGrid">
                 
-            <div class="product-card" data-title="rabat netto 290.33 zł" data-keywords="rabat netto 290.33 zł  rabat">
+            <div class="product-card" data-title="piekarnik elektryczny z funkcją pary whirlpool woi4s8cm0sba steam+ pizza 310°c airfry" data-keywords="piekarnik elektryczny z funkcją pary whirlpool woi4s8cm0sba steam+ pizza 310°c airfry whirlpool">
                 <div class="availability"><span class="availability-dot dot-promo"></span> Promocja dnia</div>
                 <div class="product-card-image">
-                    <img src="images/logo.png" alt="Rabat netto 290.33 zł" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
+                    <a href="images/promocje/Piekarnik_elektryczny_z_funkcja_pary_Whirlpool_WOI4S8CM0SBA_Steam_Pizza_310_C_Ai.jpg" class="zoom-link" data-full="images/promocje/Piekarnik_elektryczny_z_funkcja_pary_Whirlpool_WOI4S8CM0SBA_Steam_Pizza_310_C_Ai.jpg" data-caption="Piekarnik elektryczny z funkcją pary Whirlpool WOI4S8CM0SBA Steam+ Pizza 310°C AirFry" title="Kliknij aby powiekszyc">
+                        <img src="images/promocje/Piekarnik_elektryczny_z_funkcja_pary_Whirlpool_WOI4S8CM0SBA_Steam_Pizza_310_C_Ai.jpg" alt="Piekarnik elektryczny z funkcją pary Whirlpool WOI4S8CM0SBA Steam+ Pizza 310°C AirFry" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
+                    </a>
                 </div>
-                <h3>Rabat netto 290.33 zł</h3>
-                <p class="opis">Promocja dnia GT B2B. Cena detaliczna = 290 zł (hurt) + 200 zł marży.</p>
-                <div class="cena-wrap"><span class="cena">490 zł</span></div>
-            </div>
-            <div class="product-card" data-title="cena netto" data-keywords="cena netto  cena">
-                <div class="availability"><span class="availability-dot dot-promo"></span> Promocja dnia</div>
-                <div class="product-card-image">
-                    <img src="images/logo.png" alt="Cena NETTO" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
-                </div>
-                <h3>Cena NETTO</h3>
-                <p class="opis">Promocja dnia GT B2B. Cena detaliczna = 1100 zł (hurt) + 200 zł marży.</p>
-                <div class="cena-wrap"><span class="cena">1300 zł</span></div>
-            </div>
-            <div class="product-card" data-title="cena brutto" data-keywords="cena brutto  cena">
-                <div class="availability"><span class="availability-dot dot-promo"></span> Promocja dnia</div>
-                <div class="product-card-image">
-                    <img src="images/logo.png" alt="Cena BRUTTO" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
-                </div>
-                <h3>Cena BRUTTO</h3>
-                <p class="opis">Promocja dnia GT B2B. Cena detaliczna = 1353 zł (hurt) + 200 zł marży.</p>
+                <h3>Piekarnik elektryczny z funkcją pary Whirlpool WOI4S8CM0SBA Steam+ Pizza 310°C AirFry</h3>
+                <p class="opis">Piekarnik elektryczny z funkcją pary Whirlpool WOI4S8CM0SBA Steam+ Pizza 310°C AirFry</p>
                 <div class="cena-wrap"><span class="cena">1553 zł</span></div>
             </div>
-            <div class="product-card" data-title="rabat netto 234.3 zł" data-keywords="rabat netto 234.3 zł  rabat">
+            <div class="product-card" data-title="płyta indukcyjna whirlpool wsq2160ne 6. zmysł" data-keywords="płyta indukcyjna whirlpool wsq2160ne 6. zmysł whirlpool">
                 <div class="availability"><span class="availability-dot dot-promo"></span> Promocja dnia</div>
                 <div class="product-card-image">
-                    <img src="images/logo.png" alt="Rabat netto 234.3 zł" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
+                    <a href="images/promocje/Płyta_indukcyjna_Whirlpool_WSQ2160NE_6_Zmysł.jpg" class="zoom-link" data-full="images/promocje/Płyta_indukcyjna_Whirlpool_WSQ2160NE_6_Zmysł.jpg" data-caption="Płyta indukcyjna Whirlpool WSQ2160NE 6. Zmysł" title="Kliknij aby powiekszyc">
+                        <img src="images/promocje/Płyta_indukcyjna_Whirlpool_WSQ2160NE_6_Zmysł.jpg" alt="Płyta indukcyjna Whirlpool WSQ2160NE 6. Zmysł" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
+                    </a>
                 </div>
-                <h3>Rabat netto 234.3 zł</h3>
-                <p class="opis">Promocja dnia GT B2B. Cena detaliczna = 234 zł (hurt) + 200 zł marży.</p>
-                <div class="cena-wrap"><span class="cena">434 zł</span></div>
+                <h3>Płyta indukcyjna Whirlpool WSQ2160NE 6. Zmysł</h3>
+                <p class="opis">Płyta indukcyjna Whirlpool WSQ2160NE 6. Zmysł</p>
+                <div class="cena-wrap"><span class="cena">1086 zł</span></div>
             </div>
-            <div class="product-card" data-title="rabat netto 413.72 zł" data-keywords="rabat netto 413.72 zł  rabat">
+            <div class="product-card" data-title="zamrażarka szufladowa whirlpool whmff 6312 xp4 nofrost fast freeze 186,5cm inox" data-keywords="zamrażarka szufladowa whirlpool whmff 6312 xp4 nofrost fast freeze 186,5cm inox whirlpool">
                 <div class="availability"><span class="availability-dot dot-promo"></span> Promocja dnia</div>
                 <div class="product-card-image">
-                    <img src="images/logo.png" alt="Rabat netto 413.72 zł" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
+                    <a href="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2026/4/16/5ff7e704ea9001f07ee6392c8774f84d/jpg/gtpoland/listing_thumb/zamrazarka-szufladowa-whirlpool-whmff-6312-xp4-glowne.jpg" class="zoom-link" data-full="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2026/4/16/5ff7e704ea9001f07ee6392c8774f84d/jpg/gtpoland/listing_thumb/zamrazarka-szufladowa-whirlpool-whmff-6312-xp4-glowne.jpg" data-caption="Zamrażarka szufladowa Whirlpool WHMFF 6312 XP4 NoFrost Fast Freeze 186,5cm Inox" title="Kliknij aby powiekszyc">
+                        <img src="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2026/4/16/5ff7e704ea9001f07ee6392c8774f84d/jpg/gtpoland/listing_thumb/zamrazarka-szufladowa-whirlpool-whmff-6312-xp4-glowne.jpg" alt="Zamrażarka szufladowa Whirlpool WHMFF 6312 XP4 NoFrost Fast Freeze 186,5cm Inox" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
+                    </a>
                 </div>
-                <h3>Rabat netto 413.72 zł</h3>
-                <p class="opis">Promocja dnia GT B2B. Cena detaliczna = 414 zł (hurt) + 200 zł marży.</p>
-                <div class="cena-wrap"><span class="cena">614 zł</span></div>
+                <h3>Zamrażarka szufladowa Whirlpool WHMFF 6312 XP4 NoFrost Fast Freeze 186,5cm Inox</h3>
+                <p class="opis">Zamrażarka szufladowa Whirlpool WHMFF 6312 XP4 NoFrost Fast Freeze 186,5cm Inox</p>
+                <div class="cena-wrap"><span class="cena">2107 zł</span></div>
             </div>
-            <div class="product-card" data-title="rabat netto 302.8 zł" data-keywords="rabat netto 302.8 zł  rabat">
+            <div class="product-card" data-title="zmywarka whirlpool wfo3t133pfx powerclean pro autootwieranie multizone 60cm" data-keywords="zmywarka whirlpool wfo3t133pfx powerclean pro autootwieranie multizone 60cm whirlpool">
                 <div class="availability"><span class="availability-dot dot-promo"></span> Promocja dnia</div>
                 <div class="product-card-image">
-                    <img src="images/logo.png" alt="Rabat netto 302.8 zł" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
+                    <a href="images/promocje/Zmywarka_Whirlpool_WFO3T133PFX_PowerClean_Pro_Autootwieranie_Multizone_60cm.jpg" class="zoom-link" data-full="images/promocje/Zmywarka_Whirlpool_WFO3T133PFX_PowerClean_Pro_Autootwieranie_Multizone_60cm.jpg" data-caption="Zmywarka Whirlpool WFO3T133PFX PowerClean Pro Autootwieranie Multizone 60cm" title="Kliknij aby powiekszyc">
+                        <img src="images/promocje/Zmywarka_Whirlpool_WFO3T133PFX_PowerClean_Pro_Autootwieranie_Multizone_60cm.jpg" alt="Zmywarka Whirlpool WFO3T133PFX PowerClean Pro Autootwieranie Multizone 60cm" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
+                    </a>
                 </div>
-                <h3>Rabat netto 302.8 zł</h3>
-                <p class="opis">Promocja dnia GT B2B. Cena detaliczna = 303 zł (hurt) + 200 zł marży.</p>
-                <div class="cena-wrap"><span class="cena">503 zł</span></div>
+                <h3>Zmywarka Whirlpool WFO3T133PFX PowerClean Pro Autootwieranie Multizone 60cm</h3>
+                <p class="opis">Zmywarka Whirlpool WFO3T133PFX PowerClean Pro Autootwieranie Multizone 60cm</p>
+                <div class="cena-wrap"><span class="cena">1602 zł</span></div>
             </div>
-            <div class="product-card" data-title="rabat netto 127.4 zł" data-keywords="rabat netto 127.4 zł  rabat">
+            <div class="product-card" data-title="lodówka candy cm4se68w 82,6cm" data-keywords="lodówka candy cm4se68w 82,6cm candy">
                 <div class="availability"><span class="availability-dot dot-promo"></span> Promocja dnia</div>
                 <div class="product-card-image">
-                    <img src="images/logo.png" alt="Rabat netto 127.4 zł" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
+                    <a href="images/promocje/Lodowka_Candy_CM4SE68W_82_6cm.jpg" class="zoom-link" data-full="images/promocje/Lodowka_Candy_CM4SE68W_82_6cm.jpg" data-caption="Lodówka Candy CM4SE68W 82,6cm" title="Kliknij aby powiekszyc">
+                        <img src="images/promocje/Lodowka_Candy_CM4SE68W_82_6cm.jpg" alt="Lodówka Candy CM4SE68W 82,6cm" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
+                    </a>
                 </div>
-                <h3>Rabat netto 127.4 zł</h3>
-                <p class="opis">Promocja dnia GT B2B. Cena detaliczna = 127 zł (hurt) + 200 zł marży.</p>
-                <div class="cena-wrap"><span class="cena">327 zł</span></div>
+                <h3>Lodówka Candy CM4SE68W 82,6cm</h3>
+                <p class="opis">Lodówka Candy CM4SE68W 82,6cm</p>
+                <div class="cena-wrap"><span class="cena">1160 zł</span></div>
             </div>
-            <div class="product-card" data-title="rabat netto 166.88 zł" data-keywords="rabat netto 166.88 zł  rabat">
+            <div class="product-card" data-title="pralka candy prowash 300 tca283dr2-s 8kg 1200obr. antracyt" data-keywords="pralka candy prowash 300 tca283dr2-s 8kg 1200obr. antracyt candy">
                 <div class="availability"><span class="availability-dot dot-promo"></span> Promocja dnia</div>
                 <div class="product-card-image">
-                    <img src="images/logo.png" alt="Rabat netto 166.88 zł" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
+                    <a href="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2024/12/17/236ae9fd6ad93202ef2c6ec89819ceb6/jpg/gtpoland/listing_thumb/pralka-candy-prowash-300-tca283dr2-s-glowne.jpg" class="zoom-link" data-full="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2024/12/17/236ae9fd6ad93202ef2c6ec89819ceb6/jpg/gtpoland/listing_thumb/pralka-candy-prowash-300-tca283dr2-s-glowne.jpg" data-caption="Pralka Candy ProWash 300 TCA283DR2-S 8kg 1200obr. Antracyt" title="Kliknij aby powiekszyc">
+                        <img src="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2024/12/17/236ae9fd6ad93202ef2c6ec89819ceb6/jpg/gtpoland/listing_thumb/pralka-candy-prowash-300-tca283dr2-s-glowne.jpg" alt="Pralka Candy ProWash 300 TCA283DR2-S 8kg 1200obr. Antracyt" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
+                    </a>
                 </div>
-                <h3>Rabat netto 166.88 zł</h3>
-                <p class="opis">Promocja dnia GT B2B. Cena detaliczna = 167 zł (hurt) + 200 zł marży.</p>
-                <div class="cena-wrap"><span class="cena">367 zł</span></div>
+                <h3>Pralka Candy ProWash 300 TCA283DR2-S 8kg 1200obr. Antracyt</h3>
+                <p class="opis">Pralka Candy ProWash 300 TCA283DR2-S 8kg 1200obr. Antracyt</p>
+                <div class="cena-wrap"><span class="cena">1462 zł</span></div>
             </div>
-            <div class="product-card" data-title="rabat netto 65.04 zł" data-keywords="rabat netto 65.04 zł  rabat">
+            <div class="product-card" data-title="płyta gazowa beko higg 64123 sb" data-keywords="płyta gazowa beko higg 64123 sb beko">
                 <div class="availability"><span class="availability-dot dot-promo"></span> Promocja dnia</div>
                 <div class="product-card-image">
-                    <img src="images/logo.png" alt="Rabat netto 65.04 zł" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
+                    <a href="images/promocje/Płyta_gazowa_Beko_HIGG_64123_SB.jpg" class="zoom-link" data-full="images/promocje/Płyta_gazowa_Beko_HIGG_64123_SB.jpg" data-caption="Płyta gazowa Beko HIGG 64123 SB" title="Kliknij aby powiekszyc">
+                        <img src="images/promocje/Płyta_gazowa_Beko_HIGG_64123_SB.jpg" alt="Płyta gazowa Beko HIGG 64123 SB" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
+                    </a>
                 </div>
-                <h3>Rabat netto 65.04 zł</h3>
-                <p class="opis">Promocja dnia GT B2B. Cena detaliczna = 65 zł (hurt) + 200 zł marży.</p>
-                <div class="cena-wrap"><span class="cena">265 zł</span></div>
+                <h3>Płyta gazowa Beko HIGG 64123 SB</h3>
+                <p class="opis">Płyta gazowa Beko HIGG 64123 SB</p>
+                <div class="cena-wrap"><span class="cena">569 zł</span></div>
             </div>
-            <div class="product-card" data-title="rabat netto 219.51 zł" data-keywords="rabat netto 219.51 zł  rabat">
+            <div class="product-card" data-title="zmywarka beko bdin25330 hygieneintense quick&shine autootwieranie zawiasy ślizgowe 60cm" data-keywords="zmywarka beko bdin25330 hygieneintense quick&shine autootwieranie zawiasy ślizgowe 60cm beko">
                 <div class="availability"><span class="availability-dot dot-promo"></span> Promocja dnia</div>
                 <div class="product-card-image">
-                    <img src="images/logo.png" alt="Rabat netto 219.51 zł" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
+                    <a href="images/promocje/Zmywarka_Beko_BDIN25330_Hygieneintense_Quick_Shine_Autootwieranie_Zawiasy_slizgo.jpg" class="zoom-link" data-full="images/promocje/Zmywarka_Beko_BDIN25330_Hygieneintense_Quick_Shine_Autootwieranie_Zawiasy_slizgo.jpg" data-caption="Zmywarka Beko BDIN25330 Hygieneintense Quick&Shine Autootwieranie Zawiasy ślizgowe 60cm" title="Kliknij aby powiekszyc">
+                        <img src="images/promocje/Zmywarka_Beko_BDIN25330_Hygieneintense_Quick_Shine_Autootwieranie_Zawiasy_slizgo.jpg" alt="Zmywarka Beko BDIN25330 Hygieneintense Quick&Shine Autootwieranie Zawiasy ślizgowe 60cm" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
+                    </a>
                 </div>
-                <h3>Rabat netto 219.51 zł</h3>
-                <p class="opis">Promocja dnia GT B2B. Cena detaliczna = 220 zł (hurt) + 200 zł marży.</p>
-                <div class="cena-wrap"><span class="cena">420 zł</span></div>
+                <h3>Zmywarka Beko BDIN25330 Hygieneintense Quick&Shine Autootwieranie Zawiasy ślizgowe 60cm</h3>
+                <p class="opis">Zmywarka Beko BDIN25330 Hygieneintense Quick&Shine Autootwieranie Zawiasy ślizgowe 60cm</p>
+                <div class="cena-wrap"><span class="cena">1479 zł</span></div>
             </div>
-            <div class="product-card" data-title="rabat netto 121.95 zł" data-keywords="rabat netto 121.95 zł  rabat">
+            <div class="product-card" data-title="kuchnia gazowo-elektryczna beko fse52321dwd" data-keywords="kuchnia gazowo-elektryczna beko fse52321dwd beko">
                 <div class="availability"><span class="availability-dot dot-promo"></span> Promocja dnia</div>
                 <div class="product-card-image">
-                    <img src="images/logo.png" alt="Rabat netto 121.95 zł" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
+                    <a href="images/promocje/Kuchnia_gazowo-elektryczna_Beko_FSE52321DWD.png" class="zoom-link" data-full="images/promocje/Kuchnia_gazowo-elektryczna_Beko_FSE52321DWD.png" data-caption="Kuchnia gazowo-elektryczna Beko FSE52321DWD" title="Kliknij aby powiekszyc">
+                        <img src="images/promocje/Kuchnia_gazowo-elektryczna_Beko_FSE52321DWD.png" alt="Kuchnia gazowo-elektryczna Beko FSE52321DWD" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
+                    </a>
                 </div>
-                <h3>Rabat netto 121.95 zł</h3>
-                <p class="opis">Promocja dnia GT B2B. Cena detaliczna = 122 zł (hurt) + 200 zł marży.</p>
-                <div class="cena-wrap"><span class="cena">322 zł</span></div>
+                <h3>Kuchnia gazowo-elektryczna Beko FSE52321DWD</h3>
+                <p class="opis">Kuchnia gazowo-elektryczna Beko FSE52321DWD</p>
+                <div class="cena-wrap"><span class="cena">1199 zł</span></div>
             </div>
-            <div class="product-card" data-title="rabat netto 243.9 zł" data-keywords="rabat netto 243.9 zł  rabat">
+            <div class="product-card" data-title="piekarnik elektryczny z funkcją pary beko bbis7301wp aeroperfect steamadd grill pyroliza biały" data-keywords="piekarnik elektryczny z funkcją pary beko bbis7301wp aeroperfect steamadd grill pyroliza biały beko">
                 <div class="availability"><span class="availability-dot dot-promo"></span> Promocja dnia</div>
                 <div class="product-card-image">
-                    <img src="images/logo.png" alt="Rabat netto 243.9 zł" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
+                    <a href="images/promocje/Piekarnik_elektryczny_z_funkcja_pary_Beko_BBIS7301WP_AeroPerfect_SteamAdd_Grill.jpg" class="zoom-link" data-full="images/promocje/Piekarnik_elektryczny_z_funkcja_pary_Beko_BBIS7301WP_AeroPerfect_SteamAdd_Grill.jpg" data-caption="Piekarnik elektryczny z funkcją pary Beko BBIS7301WP AeroPerfect SteamAdd Grill Pyroliza Biały" title="Kliknij aby powiekszyc">
+                        <img src="images/promocje/Piekarnik_elektryczny_z_funkcja_pary_Beko_BBIS7301WP_AeroPerfect_SteamAdd_Grill.jpg" alt="Piekarnik elektryczny z funkcją pary Beko BBIS7301WP AeroPerfect SteamAdd Grill Pyroliza Biały" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
+                    </a>
                 </div>
-                <h3>Rabat netto 243.9 zł</h3>
-                <p class="opis">Promocja dnia GT B2B. Cena detaliczna = 244 zł (hurt) + 200 zł marży.</p>
-                <div class="cena-wrap"><span class="cena">444 zł</span></div>
+                <h3>Piekarnik elektryczny z funkcją pary Beko BBIS7301WP AeroPerfect SteamAdd Grill Pyroliza Biały</h3>
+                <p class="opis">Piekarnik elektryczny z funkcją pary Beko BBIS7301WP AeroPerfect SteamAdd Grill Pyroliza Biały</p>
+                <div class="cena-wrap"><span class="cena">1349 zł</span></div>
             </div>
-            <div class="product-card" data-title="rabat netto 252.03 zł" data-keywords="rabat netto 252.03 zł  rabat">
+            <div class="product-card" data-title="kuchenka mikrofalowa beko bmgb31443w" data-keywords="kuchenka mikrofalowa beko bmgb31443w beko">
                 <div class="availability"><span class="availability-dot dot-promo"></span> Promocja dnia</div>
                 <div class="product-card-image">
-                    <img src="images/logo.png" alt="Rabat netto 252.03 zł" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
+                    <a href="images/promocje/Kuchenka_mikrofalowa_Beko_BMGB31443W.jpg" class="zoom-link" data-full="images/promocje/Kuchenka_mikrofalowa_Beko_BMGB31443W.jpg" data-caption="Kuchenka mikrofalowa Beko BMGB31443W" title="Kliknij aby powiekszyc">
+                        <img src="images/promocje/Kuchenka_mikrofalowa_Beko_BMGB31443W.jpg" alt="Kuchenka mikrofalowa Beko BMGB31443W" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
+                    </a>
                 </div>
-                <h3>Rabat netto 252.03 zł</h3>
-                <p class="opis">Promocja dnia GT B2B. Cena detaliczna = 252 zł (hurt) + 200 zł marży.</p>
-                <div class="cena-wrap"><span class="cena">452 zł</span></div>
+                <h3>Kuchenka mikrofalowa Beko BMGB31443W</h3>
+                <p class="opis">Kuchenka mikrofalowa Beko BMGB31443W</p>
+                <div class="cena-wrap"><span class="cena">1499 zł</span></div>
             </div>
-            <div class="product-card" data-title="rabat netto 170.73 zł" data-keywords="rabat netto 170.73 zł  rabat">
+            <div class="product-card" data-title="zmywarka beko bdfs15021b hygieneintense quick&shine regulacja koszy 45cm" data-keywords="zmywarka beko bdfs15021b hygieneintense quick&shine regulacja koszy 45cm beko">
                 <div class="availability"><span class="availability-dot dot-promo"></span> Promocja dnia</div>
                 <div class="product-card-image">
-                    <img src="images/logo.png" alt="Rabat netto 170.73 zł" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
+                    <a href="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2025/3/10/f48c910c3499f553f56c6c534cd82058/jpg/gtpoland/listing_thumb/zmywarka-beko-bdfs15021b-glowne.jpg" class="zoom-link" data-full="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2025/3/10/f48c910c3499f553f56c6c534cd82058/jpg/gtpoland/listing_thumb/zmywarka-beko-bdfs15021b-glowne.jpg" data-caption="Zmywarka Beko BDFS15021B HygieneIntense Quick&Shine Regulacja koszy 45cm" title="Kliknij aby powiekszyc">
+                        <img src="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2025/3/10/f48c910c3499f553f56c6c534cd82058/jpg/gtpoland/listing_thumb/zmywarka-beko-bdfs15021b-glowne.jpg" alt="Zmywarka Beko BDFS15021B HygieneIntense Quick&Shine Regulacja koszy 45cm" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
+                    </a>
                 </div>
-                <h3>Rabat netto 170.73 zł</h3>
-                <p class="opis">Promocja dnia GT B2B. Cena detaliczna = 171 zł (hurt) + 200 zł marży.</p>
-                <div class="cena-wrap"><span class="cena">371 zł</span></div>
+                <h3>Zmywarka Beko BDFS15021B HygieneIntense Quick&Shine Regulacja koszy 45cm</h3>
+                <p class="opis">Zmywarka Beko BDFS15021B HygieneIntense Quick&Shine Regulacja koszy 45cm</p>
+                <div class="cena-wrap"><span class="cena">1379 zł</span></div>
             </div>
-            <div class="product-card" data-title="rabat netto 227.64 zł" data-keywords="rabat netto 227.64 zł  rabat">
+            <div class="product-card" data-title="lodówka beko b5rcna345hxb2" data-keywords="lodówka beko b5rcna345hxb2 beko">
                 <div class="availability"><span class="availability-dot dot-promo"></span> Promocja dnia</div>
                 <div class="product-card-image">
-                    <img src="images/logo.png" alt="Rabat netto 227.64 zł" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
+                    <a href="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2025/5/15/f4d84dcd74e7afdbd40d5d5294f210ff/jpg/gtpoland/listing_thumb/lodowka-beko-b5rcna345hxb2-glowne.jpg" class="zoom-link" data-full="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2025/5/15/f4d84dcd74e7afdbd40d5d5294f210ff/jpg/gtpoland/listing_thumb/lodowka-beko-b5rcna345hxb2-glowne.jpg" data-caption="Lodówka Beko B5RCNA345HXB2" title="Kliknij aby powiekszyc">
+                        <img src="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2025/5/15/f4d84dcd74e7afdbd40d5d5294f210ff/jpg/gtpoland/listing_thumb/lodowka-beko-b5rcna345hxb2-glowne.jpg" alt="Lodówka Beko B5RCNA345HXB2" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
+                    </a>
                 </div>
-                <h3>Rabat netto 227.64 zł</h3>
-                <p class="opis">Promocja dnia GT B2B. Cena detaliczna = 228 zł (hurt) + 200 zł marży.</p>
-                <div class="cena-wrap"><span class="cena">428 zł</span></div>
+                <h3>Lodówka Beko B5RCNA345HXB2</h3>
+                <p class="opis">Lodówka Beko B5RCNA345HXB2</p>
+                <div class="cena-wrap"><span class="cena">1799 zł</span></div>
             </div>
-            <div class="product-card" data-title="rabat netto 325.2 zł" data-keywords="rabat netto 325.2 zł  rabat">
+            <div class="product-card" data-title="kuchnia gazowo-elektryczna beko fse52135dcrsn retro" data-keywords="kuchnia gazowo-elektryczna beko fse52135dcrsn retro beko">
                 <div class="availability"><span class="availability-dot dot-promo"></span> Promocja dnia</div>
                 <div class="product-card-image">
-                    <img src="images/logo.png" alt="Rabat netto 325.2 zł" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
+                    <a href="images/promocje/Kuchnia_gazowo-elektryczna_Beko_FSE52135DCRSN_Retro.jpg" class="zoom-link" data-full="images/promocje/Kuchnia_gazowo-elektryczna_Beko_FSE52135DCRSN_Retro.jpg" data-caption="Kuchnia gazowo-elektryczna Beko FSE52135DCRSN Retro" title="Kliknij aby powiekszyc">
+                        <img src="images/promocje/Kuchnia_gazowo-elektryczna_Beko_FSE52135DCRSN_Retro.jpg" alt="Kuchnia gazowo-elektryczna Beko FSE52135DCRSN Retro" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
+                    </a>
                 </div>
-                <h3>Rabat netto 325.2 zł</h3>
-                <p class="opis">Promocja dnia GT B2B. Cena detaliczna = 325 zł (hurt) + 200 zł marży.</p>
-                <div class="cena-wrap"><span class="cena">525 zł</span></div>
+                <h3>Kuchnia gazowo-elektryczna Beko FSE52135DCRSN Retro</h3>
+                <p class="opis">Kuchnia gazowo-elektryczna Beko FSE52135DCRSN Retro</p>
+                <div class="cena-wrap"><span class="cena">1349 zł</span></div>
             </div>
-            <div class="product-card" data-title="rabat netto 162.6 zł" data-keywords="rabat netto 162.6 zł  rabat">
+            <div class="product-card" data-title="lodówka beko b1rcso264s komora świeżości minfrost 177cm srebrna" data-keywords="lodówka beko b1rcso264s komora świeżości minfrost 177cm srebrna beko">
                 <div class="availability"><span class="availability-dot dot-promo"></span> Promocja dnia</div>
                 <div class="product-card-image">
-                    <img src="images/logo.png" alt="Rabat netto 162.6 zł" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
+                    <a href="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2026/7/31/78dfbf885f2e57e164b8a775be5d5d2b/jpg/gtpoland/listing_thumb/lodowka-beko-b1rcso264s-glowne.jpg" class="zoom-link" data-full="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2026/7/31/78dfbf885f2e57e164b8a775be5d5d2b/jpg/gtpoland/listing_thumb/lodowka-beko-b1rcso264s-glowne.jpg" data-caption="Lodówka Beko B1RCSO264S Komora świeżości MinFrost 177cm Srebrna" title="Kliknij aby powiekszyc">
+                        <img src="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2026/7/31/78dfbf885f2e57e164b8a775be5d5d2b/jpg/gtpoland/listing_thumb/lodowka-beko-b1rcso264s-glowne.jpg" alt="Lodówka Beko B1RCSO264S Komora świeżości MinFrost 177cm Srebrna" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
+                    </a>
                 </div>
-                <h3>Rabat netto 162.6 zł</h3>
-                <p class="opis">Promocja dnia GT B2B. Cena detaliczna = 163 zł (hurt) + 200 zł marży.</p>
-                <div class="cena-wrap"><span class="cena">363 zł</span></div>
+                <h3>Lodówka Beko B1RCSO264S Komora świeżości MinFrost 177cm Srebrna</h3>
+                <p class="opis">Lodówka Beko B1RCSO264S Komora świeżości MinFrost 177cm Srebrna</p>
+                <div class="cena-wrap"><span class="cena">1499 zł</span></div>
             </div>
-            <div class="product-card" data-title="rabat netto 197.18 zł" data-keywords="rabat netto 197.18 zł  rabat">
+            <div class="product-card" data-title="piekarnik elektryczny amica eb7541db fine grill termoobieg" data-keywords="piekarnik elektryczny amica eb7541db fine grill termoobieg amica">
                 <div class="availability"><span class="availability-dot dot-promo"></span> Promocja dnia</div>
                 <div class="product-card-image">
-                    <img src="images/logo.png" alt="Rabat netto 197.18 zł" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
+                    <a href="images/promocje/Piekarnik_elektryczny_Amica_EB7541DB_FINE_Grill_Termoobieg.png" class="zoom-link" data-full="images/promocje/Piekarnik_elektryczny_Amica_EB7541DB_FINE_Grill_Termoobieg.png" data-caption="Piekarnik elektryczny Amica EB7541DB FINE Grill Termoobieg" title="Kliknij aby powiekszyc">
+                        <img src="images/promocje/Piekarnik_elektryczny_Amica_EB7541DB_FINE_Grill_Termoobieg.png" alt="Piekarnik elektryczny Amica EB7541DB FINE Grill Termoobieg" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
+                    </a>
                 </div>
-                <h3>Rabat netto 197.18 zł</h3>
-                <p class="opis">Promocja dnia GT B2B. Cena detaliczna = 197 zł (hurt) + 200 zł marży.</p>
-                <div class="cena-wrap"><span class="cena">397 zł</span></div>
+                <h3>Piekarnik elektryczny Amica EB7541DB FINE Grill Termoobieg</h3>
+                <p class="opis">Piekarnik elektryczny Amica EB7541DB FINE Grill Termoobieg</p>
+                <div class="cena-wrap"><span class="cena">949 zł</span></div>
             </div>
-            <div class="product-card" data-title="rabat netto 207.14 zł" data-keywords="rabat netto 207.14 zł  rabat">
+            <div class="product-card" data-title="lodówka gorenje nrk418ees4 nofrost szybkie mrożenie 197,7cm srebrna" data-keywords="lodówka gorenje nrk418ees4 nofrost szybkie mrożenie 197,7cm srebrna gorenje">
                 <div class="availability"><span class="availability-dot dot-promo"></span> Promocja dnia</div>
                 <div class="product-card-image">
-                    <img src="images/logo.png" alt="Rabat netto 207.14 zł" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
+                    <a href="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2026/9/24/be9a5c66749c32c8dc00a17b5081f6e3/jpg/gtpoland/listing_thumb/lodowka-gorenje-nrk418ees4-glowne.jpg" class="zoom-link" data-full="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2026/9/24/be9a5c66749c32c8dc00a17b5081f6e3/jpg/gtpoland/listing_thumb/lodowka-gorenje-nrk418ees4-glowne.jpg" data-caption="Lodówka Gorenje NRK418EES4 NoFrost Szybkie mrożenie 197,7cm Srebrna" title="Kliknij aby powiekszyc">
+                        <img src="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2026/9/24/be9a5c66749c32c8dc00a17b5081f6e3/jpg/gtpoland/listing_thumb/lodowka-gorenje-nrk418ees4-glowne.jpg" alt="Lodówka Gorenje NRK418EES4 NoFrost Szybkie mrożenie 197,7cm Srebrna" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
+                    </a>
                 </div>
-                <h3>Rabat netto 207.14 zł</h3>
-                <p class="opis">Promocja dnia GT B2B. Cena detaliczna = 207 zł (hurt) + 200 zł marży.</p>
-                <div class="cena-wrap"><span class="cena">407 zł</span></div>
+                <h3>Lodówka Gorenje NRK418EES4 NoFrost Szybkie mrożenie 197,7cm Srebrna</h3>
+                <p class="opis">Lodówka Gorenje NRK418EES4 NoFrost Szybkie mrożenie 197,7cm Srebrna</p>
+                <div class="cena-wrap"><span class="cena">1640 zł</span></div>
             </div>
-            <div class="product-card" data-title="rabat netto 35.68 zł" data-keywords="rabat netto 35.68 zł  rabat">
+            <div class="product-card" data-title="okap wkład ciarko design duo 55 black" data-keywords="okap wkład ciarko design duo 55 black ciarko">
                 <div class="availability"><span class="availability-dot dot-promo"></span> Promocja dnia</div>
                 <div class="product-card-image">
-                    <img src="images/logo.png" alt="Rabat netto 35.68 zł" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
+                    <a href="images/promocje/Okap_wkład_Ciarko_Design_Duo_55_Black.jpg" class="zoom-link" data-full="images/promocje/Okap_wkład_Ciarko_Design_Duo_55_Black.jpg" data-caption="Okap wkład Ciarko Design Duo 55 Black" title="Kliknij aby powiekszyc">
+                        <img src="images/promocje/Okap_wkład_Ciarko_Design_Duo_55_Black.jpg" alt="Okap wkład Ciarko Design Duo 55 Black" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
+                    </a>
                 </div>
-                <h3>Rabat netto 35.68 zł</h3>
-                <p class="opis">Promocja dnia GT B2B. Cena detaliczna = 36 zł (hurt) + 200 zł marży.</p>
-                <div class="cena-wrap"><span class="cena">236 zł</span></div>
+                <h3>Okap wkład Ciarko Design Duo 55 Black</h3>
+                <p class="opis">Okap wkład Ciarko Design Duo 55 Black</p>
+                <div class="cena-wrap"><span class="cena">1619 zł</span></div>
             </div>
-            <div class="product-card" data-title="rabat netto 28.86 zł" data-keywords="rabat netto 28.86 zł  rabat">
+            <div class="product-card" data-title="okap wkład ciarko design luno 52 615m3/h cook assist warm2cold 52cm biały" data-keywords="okap wkład ciarko design luno 52 615m3/h cook assist warm2cold 52cm biały ciarko">
                 <div class="availability"><span class="availability-dot dot-promo"></span> Promocja dnia</div>
                 <div class="product-card-image">
-                    <img src="images/logo.png" alt="Rabat netto 28.86 zł" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
+                    <a href="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2026/2/16/4a4bfb1e67f5b096fe39c491b2086546/jpg/gtpoland/listing_thumb/okap-wklad-ciarko-design-luno-white-52-nowe-glowne.jpg.jpg" class="zoom-link" data-full="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2026/2/16/4a4bfb1e67f5b096fe39c491b2086546/jpg/gtpoland/listing_thumb/okap-wklad-ciarko-design-luno-white-52-nowe-glowne.jpg.jpg" data-caption="Okap wkład Ciarko Design Luno 52 615m3/h Cook Assist Warm2Cold 52cm Biały" title="Kliknij aby powiekszyc">
+                        <img src="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2026/2/16/4a4bfb1e67f5b096fe39c491b2086546/jpg/gtpoland/listing_thumb/okap-wklad-ciarko-design-luno-white-52-nowe-glowne.jpg.jpg" alt="Okap wkład Ciarko Design Luno 52 615m3/h Cook Assist Warm2Cold 52cm Biały" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
+                    </a>
                 </div>
-                <h3>Rabat netto 28.86 zł</h3>
-                <p class="opis">Promocja dnia GT B2B. Cena detaliczna = 29 zł (hurt) + 200 zł marży.</p>
-                <div class="cena-wrap"><span class="cena">229 zł</span></div>
+                <h3>Okap wkład Ciarko Design Luno 52 615m3/h Cook Assist Warm2Cold 52cm Biały</h3>
+                <p class="opis">Okap wkład Ciarko Design Luno 52 615m3/h Cook Assist Warm2Cold 52cm Biały</p>
+                <div class="cena-wrap"><span class="cena">1348 zł</span></div>
             </div>
-            <div class="product-card" data-title="rabat netto 46.32 zł" data-keywords="rabat netto 46.32 zł  rabat">
+            <div class="product-card" data-title="okap wkład ciarko design uno 74 black" data-keywords="okap wkład ciarko design uno 74 black ciarko">
                 <div class="availability"><span class="availability-dot dot-promo"></span> Promocja dnia</div>
                 <div class="product-card-image">
-                    <img src="images/logo.png" alt="Rabat netto 46.32 zł" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
+                    <a href="images/promocje/Okap_wkład_Ciarko_Design_Uno_74_Black.jpg" class="zoom-link" data-full="images/promocje/Okap_wkład_Ciarko_Design_Uno_74_Black.jpg" data-caption="Okap wkład Ciarko Design Uno 74 Black" title="Kliknij aby powiekszyc">
+                        <img src="images/promocje/Okap_wkład_Ciarko_Design_Uno_74_Black.jpg" alt="Okap wkład Ciarko Design Uno 74 Black" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
+                    </a>
                 </div>
-                <h3>Rabat netto 46.32 zł</h3>
-                <p class="opis">Promocja dnia GT B2B. Cena detaliczna = 46 zł (hurt) + 200 zł marży.</p>
-                <div class="cena-wrap"><span class="cena">246 zł</span></div>
+                <h3>Okap wkład Ciarko Design Uno 74 Black</h3>
+                <p class="opis">Okap wkład Ciarko Design Uno 74 Black</p>
+                <div class="cena-wrap"><span class="cena">1619 zł</span></div>
             </div>
-            <div class="product-card" data-title="rabat netto 153.08 zł" data-keywords="rabat netto 153.08 zł  rabat">
+            <div class="product-card" data-title="okap wkład elica boxin lx/bl mat/a/60" data-keywords="okap wkład elica boxin lx/bl mat/a/60 elica">
                 <div class="availability"><span class="availability-dot dot-promo"></span> Promocja dnia</div>
                 <div class="product-card-image">
-                    <img src="images/logo.png" alt="Rabat netto 153.08 zł" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
+                    <a href="images/promocje/Okap_wkład_Elica_Boxin_LX_BL_MAT_A_60.jpg" class="zoom-link" data-full="images/promocje/Okap_wkład_Elica_Boxin_LX_BL_MAT_A_60.jpg" data-caption="Okap wkład Elica Boxin LX/BL MAT/A/60" title="Kliknij aby powiekszyc">
+                        <img src="images/promocje/Okap_wkład_Elica_Boxin_LX_BL_MAT_A_60.jpg" alt="Okap wkład Elica Boxin LX/BL MAT/A/60" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
+                    </a>
                 </div>
-                <h3>Rabat netto 153.08 zł</h3>
-                <p class="opis">Promocja dnia GT B2B. Cena detaliczna = 153 zł (hurt) + 200 zł marży.</p>
-                <div class="cena-wrap"><span class="cena">353 zł</span></div>
+                <h3>Okap wkład Elica Boxin LX/BL MAT/A/60</h3>
+                <p class="opis">Okap wkład Elica Boxin LX/BL MAT/A/60</p>
+                <div class="cena-wrap"><span class="cena">1567 zł</span></div>
             </div>
-            <div class="product-card" data-title="rabat netto 25.58 zł" data-keywords="rabat netto 25.58 zł  rabat">
+            <div class="product-card" data-title="okap wkład elica ciak 2.0 gr/a/60" data-keywords="okap wkład elica ciak 2.0 gr/a/60 elica">
                 <div class="availability"><span class="availability-dot dot-promo"></span> Promocja dnia</div>
                 <div class="product-card-image">
-                    <img src="images/logo.png" alt="Rabat netto 25.58 zł" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
+                    <a href="images/promocje/Okap_wkład_Elica_Ciak_2_0_GR_A_60.jpg" class="zoom-link" data-full="images/promocje/Okap_wkład_Elica_Ciak_2_0_GR_A_60.jpg" data-caption="Okap wkład Elica Ciak 2.0 GR/A/60" title="Kliknij aby powiekszyc">
+                        <img src="images/promocje/Okap_wkład_Elica_Ciak_2_0_GR_A_60.jpg" alt="Okap wkład Elica Ciak 2.0 GR/A/60" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
+                    </a>
                 </div>
-                <h3>Rabat netto 25.58 zł</h3>
-                <p class="opis">Promocja dnia GT B2B. Cena detaliczna = 26 zł (hurt) + 200 zł marży.</p>
-                <div class="cena-wrap"><span class="cena">226 zł</span></div>
+                <h3>Okap wkład Elica Ciak 2.0 GR/A/60</h3>
+                <p class="opis">Okap wkład Elica Ciak 2.0 GR/A/60</p>
+                <div class="cena-wrap"><span class="cena">761 zł</span></div>
             </div>
-            <div class="product-card" data-title="rabat netto 65.83 zł" data-keywords="rabat netto 65.83 zł  rabat">
+            <div class="product-card" data-title="okap wklad elica fold bl/a/72" data-keywords="okap wklad elica fold bl/a/72 elica">
                 <div class="availability"><span class="availability-dot dot-promo"></span> Promocja dnia</div>
                 <div class="product-card-image">
-                    <img src="images/logo.png" alt="Rabat netto 65.83 zł" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
+                    <a href="images/promocje/Okap_wklad_Elica_FOLD_BL_A_72.jpg" class="zoom-link" data-full="images/promocje/Okap_wklad_Elica_FOLD_BL_A_72.jpg" data-caption="Okap wklad Elica FOLD BL/A/72" title="Kliknij aby powiekszyc">
+                        <img src="images/promocje/Okap_wklad_Elica_FOLD_BL_A_72.jpg" alt="Okap wklad Elica FOLD BL/A/72" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
+                    </a>
                 </div>
-                <h3>Rabat netto 65.83 zł</h3>
-                <p class="opis">Promocja dnia GT B2B. Cena detaliczna = 66 zł (hurt) + 200 zł marży.</p>
-                <div class="cena-wrap"><span class="cena">266 zł</span></div>
+                <h3>Okap wklad Elica FOLD BL/A/72</h3>
+                <p class="opis">Okap wklad Elica FOLD BL/A/72</p>
+                <div class="cena-wrap"><span class="cena">955 zł</span></div>
             </div>
-            <div class="product-card" data-title="rabat netto 61.07 zł" data-keywords="rabat netto 61.07 zł  rabat">
+            <div class="product-card" data-title="płyta indukcyjna elica ratio connex 604 plus raw" data-keywords="płyta indukcyjna elica ratio connex 604 plus raw elica">
                 <div class="availability"><span class="availability-dot dot-promo"></span> Promocja dnia</div>
                 <div class="product-card-image">
-                    <img src="images/logo.png" alt="Rabat netto 61.07 zł" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
+                    <a href="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2026/2/13/79ff3111ea4525bb6f9b07e52badf8b3/jpg/gtpoland/listing_thumb/plyta-indukcyjna-elica-ratio-connex-604-plus-raw-glowne.jpg" class="zoom-link" data-full="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2026/2/13/79ff3111ea4525bb6f9b07e52badf8b3/jpg/gtpoland/listing_thumb/plyta-indukcyjna-elica-ratio-connex-604-plus-raw-glowne.jpg" data-caption="Płyta indukcyjna Elica Ratio Connex 604 Plus Raw" title="Kliknij aby powiekszyc">
+                        <img src="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2026/2/13/79ff3111ea4525bb6f9b07e52badf8b3/jpg/gtpoland/listing_thumb/plyta-indukcyjna-elica-ratio-connex-604-plus-raw-glowne.jpg" alt="Płyta indukcyjna Elica Ratio Connex 604 Plus Raw" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
+                    </a>
                 </div>
-                <h3>Rabat netto 61.07 zł</h3>
-                <p class="opis">Promocja dnia GT B2B. Cena detaliczna = 61 zł (hurt) + 200 zł marży.</p>
-                <div class="cena-wrap"><span class="cena">261 zł</span></div>
+                <h3>Płyta indukcyjna Elica Ratio Connex 604 Plus Raw</h3>
+                <p class="opis">Płyta indukcyjna Elica Ratio Connex 604 Plus Raw</p>
+                <div class="cena-wrap"><span class="cena">2143 zł</span></div>
             </div>
-            <div class="product-card" data-title="rabat netto 30.25 zł" data-keywords="rabat netto 30.25 zł  rabat">
+            <div class="product-card" data-title="okap wkład solgaz gest control 60" data-keywords="okap wkład solgaz gest control 60 solgaz">
                 <div class="availability"><span class="availability-dot dot-promo"></span> Promocja dnia</div>
                 <div class="product-card-image">
-                    <img src="images/logo.png" alt="Rabat netto 30.25 zł" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
+                    <a href="images/promocje/Okap_wkład_Solgaz_Gest_Control_60.jpg" class="zoom-link" data-full="images/promocje/Okap_wkład_Solgaz_Gest_Control_60.jpg" data-caption="Okap wkład Solgaz Gest Control 60" title="Kliknij aby powiekszyc">
+                        <img src="images/promocje/Okap_wkład_Solgaz_Gest_Control_60.jpg" alt="Okap wkład Solgaz Gest Control 60" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
+                    </a>
                 </div>
-                <h3>Rabat netto 30.25 zł</h3>
-                <p class="opis">Promocja dnia GT B2B. Cena detaliczna = 30 zł (hurt) + 200 zł marży.</p>
-                <div class="cena-wrap"><span class="cena">230 zł</span></div>
+                <h3>Okap wkład Solgaz Gest Control 60</h3>
+                <p class="opis">Okap wkład Solgaz Gest Control 60</p>
+                <div class="cena-wrap"><span class="cena">1620 zł</span></div>
             </div>
-            <div class="product-card" data-title="rabat netto 26.15 zł" data-keywords="rabat netto 26.15 zł  rabat">
+            <div class="product-card" data-title="bateria pyramis idea czarny mat" data-keywords="bateria pyramis idea czarny mat pyramis">
                 <div class="availability"><span class="availability-dot dot-promo"></span> Promocja dnia</div>
                 <div class="product-card-image">
-                    <img src="images/logo.png" alt="Rabat netto 26.15 zł" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
+                    <a href="images/promocje/Bateria_Pyramis_Idea_Czarny_mat.jpg" class="zoom-link" data-full="images/promocje/Bateria_Pyramis_Idea_Czarny_mat.jpg" data-caption="Bateria Pyramis Idea Czarny mat" title="Kliknij aby powiekszyc">
+                        <img src="images/promocje/Bateria_Pyramis_Idea_Czarny_mat.jpg" alt="Bateria Pyramis Idea Czarny mat" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
+                    </a>
                 </div>
-                <h3>Rabat netto 26.15 zł</h3>
-                <p class="opis">Promocja dnia GT B2B. Cena detaliczna = 26 zł (hurt) + 200 zł marży.</p>
-                <div class="cena-wrap"><span class="cena">226 zł</span></div>
+                <h3>Bateria Pyramis Idea Czarny mat</h3>
+                <p class="opis">Bateria Pyramis Idea Czarny mat</p>
+                <div class="cena-wrap"><span class="cena">435 zł</span></div>
             </div>
-            <div class="product-card" data-title="rabat netto 89.18 zł" data-keywords="rabat netto 89.18 zł  rabat">
+            <div class="product-card" data-title="bateria pyramis flessi black edition" data-keywords="bateria pyramis flessi black edition pyramis">
                 <div class="availability"><span class="availability-dot dot-promo"></span> Promocja dnia</div>
                 <div class="product-card-image">
-                    <img src="images/logo.png" alt="Rabat netto 89.18 zł" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
+                    <a href="images/promocje/Bateria_Pyramis_Flessi_Black_Edition.jpg" class="zoom-link" data-full="images/promocje/Bateria_Pyramis_Flessi_Black_Edition.jpg" data-caption="Bateria Pyramis Flessi Black Edition" title="Kliknij aby powiekszyc">
+                        <img src="images/promocje/Bateria_Pyramis_Flessi_Black_Edition.jpg" alt="Bateria Pyramis Flessi Black Edition" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
+                    </a>
                 </div>
-                <h3>Rabat netto 89.18 zł</h3>
-                <p class="opis">Promocja dnia GT B2B. Cena detaliczna = 89 zł (hurt) + 200 zł marży.</p>
-                <div class="cena-wrap"><span class="cena">289 zł</span></div>
+                <h3>Bateria Pyramis Flessi Black Edition</h3>
+                <p class="opis">Bateria Pyramis Flessi Black Edition</p>
+                <div class="cena-wrap"><span class="cena">408 zł</span></div>
+            </div>
+            <div class="product-card" data-title="zestaw granitowy pyramis zlewozmywak camea 79x50 1b1d l + bateria idea volcano" data-keywords="zestaw granitowy pyramis zlewozmywak camea 79x50 1b1d l + bateria idea volcano pyramis">
+                <div class="availability"><span class="availability-dot dot-promo"></span> Promocja dnia</div>
+                <div class="product-card-image">
+                    <a href="images/promocje/Zestaw_granitowy_Pyramis_Zlewozmywak_Camea_79x50_1B1D_L_Bateria_Idea_Volcano.jpg" class="zoom-link" data-full="images/promocje/Zestaw_granitowy_Pyramis_Zlewozmywak_Camea_79x50_1B1D_L_Bateria_Idea_Volcano.jpg" data-caption="Zestaw granitowy Pyramis Zlewozmywak Camea 79x50 1B1D L + Bateria Idea Volcano" title="Kliknij aby powiekszyc">
+                        <img src="images/promocje/Zestaw_granitowy_Pyramis_Zlewozmywak_Camea_79x50_1B1D_L_Bateria_Idea_Volcano.jpg" alt="Zestaw granitowy Pyramis Zlewozmywak Camea 79x50 1B1D L + Bateria Idea Volcano" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
+                    </a>
+                </div>
+                <h3>Zestaw granitowy Pyramis Zlewozmywak Camea 79x50 1B1D L + Bateria Idea Volcano</h3>
+                <p class="opis">Zestaw granitowy Pyramis Zlewozmywak Camea 79x50 1B1D L + Bateria Idea Volcano</p>
+                <div class="cena-wrap"><span class="cena">1093 zł</span></div>
+            </div>
+            <div class="product-card" data-title="zestaw granitowy pyramis zlewozmywak mido 62x50 1b 1d + bateria idea czarny" data-keywords="zestaw granitowy pyramis zlewozmywak mido 62x50 1b 1d + bateria idea czarny pyramis">
+                <div class="availability"><span class="availability-dot dot-promo"></span> Promocja dnia</div>
+                <div class="product-card-image">
+                    <a href="images/promocje/Zestaw_granitowy_Pyramis_Zlewozmywak_Mido_62x50_1B_1D_Bateria_Idea_Czarny.jpg" class="zoom-link" data-full="images/promocje/Zestaw_granitowy_Pyramis_Zlewozmywak_Mido_62x50_1B_1D_Bateria_Idea_Czarny.jpg" data-caption="Zestaw granitowy Pyramis Zlewozmywak Mido 62x50 1B 1D + Bateria Idea Czarny" title="Kliknij aby powiekszyc">
+                        <img src="images/promocje/Zestaw_granitowy_Pyramis_Zlewozmywak_Mido_62x50_1B_1D_Bateria_Idea_Czarny.jpg" alt="Zestaw granitowy Pyramis Zlewozmywak Mido 62x50 1B 1D + Bateria Idea Czarny" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
+                    </a>
+                </div>
+                <h3>Zestaw granitowy Pyramis Zlewozmywak Mido 62x50 1B 1D + Bateria Idea Czarny</h3>
+                <p class="opis">Zestaw granitowy Pyramis Zlewozmywak Mido 62x50 1B 1D + Bateria Idea Czarny</p>
+                <div class="cena-wrap"><span class="cena">972 zł</span></div>
+            </div>
+            <div class="product-card" data-title="frytkownica beztłuszczowa beko frl 5388 b" data-keywords="frytkownica beztłuszczowa beko frl 5388 b beko">
+                <div class="availability"><span class="availability-dot dot-promo"></span> Promocja dnia</div>
+                <div class="product-card-image">
+                    <a href="images/promocje/Frytkownica_beztłuszczowa_Beko_FRL_5388_B.jpg" class="zoom-link" data-full="images/promocje/Frytkownica_beztłuszczowa_Beko_FRL_5388_B.jpg" data-caption="Frytkownica beztłuszczowa Beko FRL 5388 B" title="Kliknij aby powiekszyc">
+                        <img src="images/promocje/Frytkownica_beztłuszczowa_Beko_FRL_5388_B.jpg" alt="Frytkownica beztłuszczowa Beko FRL 5388 B" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
+                    </a>
+                </div>
+                <h3>Frytkownica beztłuszczowa Beko FRL 5388 B</h3>
+                <p class="opis">Frytkownica beztłuszczowa Beko FRL 5388 B</p>
+                <div class="cena-wrap"><span class="cena">529 zł</span></div>
             </div>
             </div>
         </div>
     </section>
+
+    <div id="lightbox" onclick="closeLightbox(event)">
+        <span class="lb-close" onclick="closeLightbox(event)">&times;</span>
+        <img id="lightbox-img" src="" alt="">
+        <div class="lb-caption" id="lightbox-caption"></div>
+    </div>
+
     <script>
         function filterCatProducts() {
             const val = document.getElementById('catSearchInput').value.toLowerCase().trim();
@@ -354,6 +436,24 @@
             const noRes = document.getElementById('noResults');
             if (noRes) noRes.style.display = (visible === 0 && val) ? 'block' : 'none';
         }
+        document.querySelectorAll('.zoom-link').forEach(a => {
+            a.addEventListener('click', function(e) {
+                e.preventDefault();
+                const lb = document.getElementById('lightbox');
+                document.getElementById('lightbox-img').src = this.getAttribute('data-full') || this.href;
+                document.getElementById('lightbox-caption').textContent = this.getAttribute('data-caption') || '';
+                lb.classList.add('open');
+            });
+        });
+        function closeLightbox(e) {
+            if (e.target.id === 'lightbox' || e.target.classList.contains('lb-close')) {
+                document.getElementById('lightbox').classList.remove('open');
+                document.getElementById('lightbox-img').src = '';
+            }
+        }
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') document.getElementById('lightbox').classList.remove('open');
+        });
     </script>
     <footer>
         <div class="container footer-content">
