@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Domel Konin - Promocje dnia (2 szt.)</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.2rem; }
+        .product-card { background: #fff; border-radius: 8px; padding: 1.2rem; box-shadow: 0 2px 5px rgba(0,0,0,0.1); text-align: center; position: relative; }
+        .product-card-image { width: 100%; height: 180px; display: flex; align-items: center; justify-content: center; margin-bottom: 0.8rem; overflow: hidden; border-radius: 4px; background: #f5f5f5; }
+        .product-card-image img { max-width: 100%; max-height: 100%; object-fit: contain; }
+        .legend { display: flex; gap: 20px; justify-content: center; margin-bottom: 1.5rem; flex-wrap: wrap; }
+        .legend-item { display: flex; align-items: center; gap: 6px; font-size: 0.95rem; }
+        .product-count { text-align: center; color: #666; margin-bottom: 1rem; }
+        .availability-dot.dot-promo { background: #e11d48; box-shadow: 0 0 0 2px rgba(225,29,72,0.25); }
+        .cena-stara { text-decoration: line-through; color: #999; font-size: 0.95rem; margin-right: 0.4rem; }
+        .cena-wrap { margin-top: 0.4rem; }
+        .promo-note { max-width: 720px; margin: 0 auto 1.5rem; text-align: center; color: #555; font-size: 0.95rem; }
+    </style>
+</head>
+<body>
+    <div id="top">
+        <div class="container top-container">
+            <div class="top-info">
+                <a href="https://www.google.com/maps/place/Aleje+1+Maja+15,+62-510+Konin" target="_blank" class="top-link">
+                    <i class="fa-solid fa-location-dot"></i> al. 1 Maja 15 | 62-510 Konin
+                </a>
+                <a href="tel:696085262" class="top-link phone-link"><i class="fa-solid fa-phone"></i> 696 085 262</a>
+            </div>
+            <div class="top-social">
+                <a href="https://www.facebook.com/profile.php?id=61594405195116" target="_blank" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/outletdomel/" target="_blank" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+        </div>
+    </div>
+    <header id="border">
+        <div class="container header-container">
+            <div class="logo-wrapper">
+                <a href="index.html">
+                    <img src="images/logo.png" alt="Domel Konin Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <div class="fallback-logo" style="display:none;"><span class="domel-text">DOMEL</span><span class="sub-text">KONIN</span></div>
+                </a>
+            </div>
+            <nav id="menu">
+                <ul>
+                    <li><a href="index.html">STRONA GŁÓWNA</a></li>
+                    <li><a href="sprzedaz.html">SPRZEDAŻ AGD</a></li>
+                    <li><a href="magazyn.html">MAGAZYN</a></li>
+                    <li><a href="promocje.html" style="color: #e11d48;">PROMOCJE DNIA</a></li>
+                    <li><a href="index.html#contact">KONTAKT</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <section class="section-padding">
+        <div class="container">
+            <h2 class="page-title">Promocje dnia</h2>
+            <p class="section-desc">Oferty dnia z hurtowni partnerskiej. Ceny detaliczne = cena hurtowa + 200 zł marży.</p>
+            <p class="promo-note">Aktualizacja danych: <strong>2026-10-02</strong> · Liczba pozycji: <strong>2</strong><br>
+            Ostateczna dostępność i cena – potwierdź telefonicznie: <a href="tel:696085262">696 085 262</a></p>
+            <div class="legend">
+                <div class="legend-item"><span class="availability-dot dot-promo"></span> Promocja dnia</div>
+                <div class="legend-item"><span class="availability-dot dot-warehouse"></span> Magazyn</div>
+                <div class="legend-item"><span class="availability-dot dot-local"></span> Salon</div>
+            </div>
+            <div class="category-search">
+                <input type="text" id="catSearchInput" placeholder="Szukaj promocji (marka, model)..." oninput="filterCatProducts()" autocomplete="off">
+                <button onclick="filterCatProducts()"><i class="fa-solid fa-magnifying-glass"></i> Szukaj</button>
+            </div>
+            <div id="noResults" class="no-results">Brak pasujących promocji</div>
+            <div class="products-grid" id="productGrid">
+                
+            <div class="product-card" data-title="przykład – samsung nv75b5675kak" data-keywords="przykład – samsung nv75b5675kak piekarnik samsung">
+                <div class="availability"><span class="availability-dot dot-promo"></span> Promocja dnia</div>
+                <div class="product-card-image">
+                    <img src="images/categories/piekarniki.jpg" alt="Przykład – Samsung NV75B5675KAK" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
+                </div>
+                <h3>Przykład – Samsung NV75B5675KAK</h3>
+                <p class="opis">Promocja dnia z hurtowni GT (marża +200 zł).</p>
+                <div class="cena-wrap"><span class="cena-stara">2299 zł</span> <span class="cena">1999 zł</span></div>
+            </div>
+            <div class="product-card" data-title="przykład – candy ro16106dwmct" data-keywords="przykład – candy ro16106dwmct pralka candy">
+                <div class="availability"><span class="availability-dot dot-promo"></span> Promocja dnia</div>
+                <div class="product-card-image">
+                    <img src="images/magazyn/Candy_RO16106DWMCT.jpg" alt="Przykład – Candy RO16106DWMCT" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
+                </div>
+                <h3>Przykład – Candy RO16106DWMCT</h3>
+                <p class="opis">Promocja dnia z hurtowni GT (marża +200 zł).</p>
+                <div class="cena-wrap"><span class="cena">1499 zł</span></div>
+            </div>
+            </div>
+        </div>
+    </section>
+    <script>
+        function filterCatProducts() {
+            const val = document.getElementById('catSearchInput').value.toLowerCase().trim();
+            const cards = document.querySelectorAll('.product-card');
+            let visible = 0;
+            cards.forEach(card => {
+                const title = (card.getAttribute('data-title') || '').toLowerCase();
+                const keywords = (card.getAttribute('data-keywords') || '').toLowerCase();
+                if (!val || title.includes(val) || keywords.includes(val)) {
+                    card.style.display = '';
+                    visible++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+            const noRes = document.getElementById('noResults');
+            if (noRes) noRes.style.display = (visible === 0 && val) ? 'block' : 'none';
+        }
+    </script>
+    <footer>
+        <div class="container footer-content">
+            <p>&copy; 2026 DOMEL Konin - Sprzedaż i Serwis AGD. Wszelkie prawa zastrzeżone.</p>
+        </div>
+    </footer>
+</body>
+</html>

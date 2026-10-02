@@ -1,0 +1,28 @@
+[
+  {
+    "tytul": "Przykład – Samsung NV75B5675KAK",
+    "producent": "Samsung",
+    "model": "NV75B5675KAK",
+    "kategoria": "Piekarnik",
+    "cena_hurt": 1799,
+    "cena": "1999 zł",
+    "cena_stara": "2299 zł",
+    "opis": "Promocja dnia z hurtowni GT (marża +200 zł).",
+    "zdjecie": "images/categories/piekarniki.jpg",
+    "zrodlo": "GT B2B – promocje dnia",
+    "aktualizacja": "2026-10-02"
+  },
+  {
+    "tytul": "Przykład – Candy RO16106DWMCT",
+    "producent": "Candy",
+    "model": "RO16106DWMCT",
+    "kategoria": "Pralka",
+    "cena_hurt": 1299,
+    "cena": "1499 zł",
+    "cena_stara": "",
+    "opis": "Promocja dnia z hurtowni GT (marża +200 zł).",
+    "zdjecie": "images/magazyn/Candy_RO16106DWMCT.jpg",
+    "zrodlo": "GT B2B – promocje dnia",
+    "aktualizacja": "2026-10-02"
+  }
+]
