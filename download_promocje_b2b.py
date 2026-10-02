@@ -56,8 +56,8 @@ def parse_price(text: str) -> int | None:
         return None
 
 
-def retail_price(hurt: int) -> str:
-    return f"{hurt + MARGIN} zł"
+def retail_price(hurt: int, margin: int = 200) -> str:
+    return f"{hurt + margin} zł"
 
 
 def login(page, email: str, password: str) -> bool:
@@ -146,7 +146,7 @@ def login(page, email: str, password: str) -> bool:
     return True
 
 
-def scrape_products(page) -> list[dict]:
+def scrape_products(page, margin: int = 200) -> list[dict]:
     """Elastyczny zrzut kart produktów ze strony promocji."""
     # upewnij się że jesteśmy na promocjach
     if "promocje-dnia" not in page.url:
@@ -261,9 +261,9 @@ def scrape_products(page) -> list[dict]:
                 "model": model,
                 "kategoria": "",
                 "cena_hurt": hurt,
-                "cena": retail_price(hurt),
+                "cena": retail_price(hurt, margin),
                 "cena_stara": f"{old} zł" if old and old > hurt else "",
-                "opis": f"Promocja dnia GT B2B. Cena detaliczna = {hurt} zł (hurt) + {MARGIN} zł marży.",
+                "opis": f"Promocja dnia GT B2B. Cena detaliczna = {hurt} zł (hurt) + {margin} zł marży.",
                 "zdjecie": zdjecie,
                 "zrodlo": "GT B2B – promocje dnia",
                 "aktualizacja": today,
@@ -277,11 +277,10 @@ def main():
     ap.add_argument("--headed", action="store_true")
     ap.add_argument("--email", default=os.environ.get("GT_B2B_EMAIL", ""))
     ap.add_argument("--password", default=os.environ.get("GT_B2B_PASSWORD", ""))
-    ap.add_argument("--margin", type=int, default=MARGIN)
+    ap.add_argument("--margin", type=int, default=200)
     args = ap.parse_args()
 
-    global MARGIN
-    MARGIN = args.margin
+    margin = args.margin
 
     email = args.email.strip()
     password = args.password
@@ -294,7 +293,7 @@ def main():
         print("  python download_promocje_b2b.py --email ... --password ... --headed")
         sys.exit(1)
 
-    print(f"Marża detaliczna: +{MARGIN} zł")
+    print(f"Marza detaliczna: +{margin} zl")
     print(f"URL: {LOGIN_URL}")
 
     with sync_playwright() as p:
@@ -329,7 +328,7 @@ def main():
         except Exception:
             pass
 
-        products = scrape_products(page)
+        products = scrape_products(page, margin)
         browser.close()
 
     if not products:
