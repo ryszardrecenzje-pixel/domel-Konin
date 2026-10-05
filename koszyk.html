@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Domel Konin - Koszyk</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .cart-wrap { max-width: 900px; margin: 0 auto; }
+        .cart-empty { text-align: center; padding: 2.5rem 1rem; color: #666; }
+        .cart-item {
+            display: grid; grid-template-columns: 88px 1fr auto; gap: 1rem;
+            align-items: center; background: #fff; border-radius: 8px;
+            padding: 1rem; margin-bottom: 0.8rem; box-shadow: 0 2px 5px rgba(0,0,0,.08);
+        }
+        .cart-item img { width: 88px; height: 72px; object-fit: contain; background: #f5f5f5; border-radius: 4px; }
+        .cart-item h3 { font-size: 0.95rem; margin: 0 0 0.35rem; line-height: 1.35; }
+        .cart-item .cena { color: #e11d48; font-weight: 700; }
+        .cart-qty { display: flex; align-items: center; gap: 6px; margin-top: 0.4rem; }
+        .cart-qty button {
+            width: 28px; height: 28px; border: 1px solid #ddd; background: #f8fafc;
+            border-radius: 4px; cursor: pointer; font-weight: 700;
+        }
+        .cart-qty span { min-width: 24px; text-align: center; }
+        .cart-remove { background: none; border: none; color: #94a3b8; cursor: pointer; font-size: 1.1rem; padding: 0.4rem; }
+        .cart-remove:hover { color: #e11d48; }
+        .cart-summary {
+            background: #fff; border-radius: 8px; padding: 1.25rem; margin-top: 1.2rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,.08);
+        }
+        .cart-summary .row { display: flex; justify-content: space-between; margin-bottom: 0.6rem; }
+        .cart-summary .total { font-size: 1.25rem; font-weight: 700; }
+        .cart-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1rem; }
+        .btn-primary {
+            display: inline-flex; align-items: center; gap: 8px; padding: 0.75rem 1.25rem;
+            background: #0ea5e9; color: #fff; border: none; border-radius: 6px;
+            font-weight: 600; text-decoration: none; cursor: pointer;
+        }
+        .btn-primary:hover { background: #0284c7; color: #fff; }
+        .btn-secondary {
+            display: inline-flex; align-items: center; gap: 8px; padding: 0.75rem 1.25rem;
+            background: #f1f5f9; color: #0f172a; border: none; border-radius: 6px;
+            font-weight: 600; text-decoration: none; cursor: pointer;
+        }
+        .cart-note { font-size: 0.9rem; color: #64748b; margin-top: 0.75rem; }
+        .cart-badge {
+            display: none; min-width: 18px; height: 18px; padding: 0 5px;
+            background: #e11d48; color: #fff; border-radius: 999px;
+            font-size: 0.72rem; font-weight: 700; line-height: 18px; text-align: center;
+        }
+        .cart-link { display: inline-flex; align-items: center; gap: 6px; }
+        @media (max-width: 600px) {
+            .cart-item { grid-template-columns: 64px 1fr; }
+            .cart-item .cart-remove { grid-column: 2; justify-self: end; }
+        }
+    </style>
+</head>
+<body>
+    <div id="top">
+        <div class="container top-container">
+            <div class="top-info">
+                <a href="https://www.google.com/maps/place/Aleje+1+Maja+15,+62-510+Konin" target="_blank" class="top-link">
+                    <i class="fa-solid fa-location-dot"></i> al. 1 Maja 15 | 62-510 Konin
+                </a>
+                <a href="tel:696085262" class="top-link phone-link"><i class="fa-solid fa-phone"></i> 696 085 262</a>
+            </div>
+            <div class="top-social">
+                <a href="https://www.facebook.com/profile.php?id=61594405195116" target="_blank" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/outletdomel/" target="_blank" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+        </div>
+    </div>
+    <header id="border">
+        <div class="container header-container">
+            <div class="logo-wrapper">
+                <a href="index.html">
+                    <img src="images/logo.png" alt="Domel Konin Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <div class="fallback-logo" style="display:none;"><span class="domel-text">DOMEL</span><span class="sub-text">KONIN</span></div>
+                </a>
+            </div>
+            <nav id="menu">
+                <ul>
+                    <li><a href="index.html">STRONA GŁÓWNA</a></li>
+                    <li><a href="sprzedaz.html">SPRZEDAŻ AGD</a></li>
+                    <li><a href="magazyn.html">MAGAZYN</a></li>
+                    <li><a href="promocje.html">PROMOCJE DNIA</a></li>
+                    <li><a href="koszyk.html" class="cart-link" style="color:#0ea5e9;">KOSZYK <span class="cart-badge" data-cart-count>0</span></a></li>
+                    <li><a href="index.html#contact">KONTAKT</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="section-padding">
+        <div class="container cart-wrap">
+            <h2 class="page-title">Koszyk</h2>
+            <div id="cartEmpty" class="cart-empty" style="display:none;">
+                <p><i class="fa-solid fa-cart-shopping" style="font-size:2rem;opacity:.4;"></i></p>
+                <p>Koszyk jest pusty.</p>
+                <p><a href="promocje.html" class="btn-primary" style="margin-top:1rem;">Zobacz promocje dnia</a></p>
+            </div>
+            <div id="cartList"></div>
+            <div id="cartSummary" class="cart-summary" style="display:none;">
+                <div class="row"><span>Liczba sztuk</span><strong data-cart-count>0</strong></div>
+                <div class="row total"><span>Suma</span><span data-cart-total>0 zł</span></div>
+                <div class="cart-actions">
+                    <a class="btn-primary" id="btnWhatsApp" href="#" target="_blank" rel="noopener">
+                        <i class="fa-brands fa-whatsapp"></i> Zapytaj przez WhatsApp
+                    </a>
+                    <a class="btn-primary" href="tel:696085262" style="background:#16a34a;">
+                        <i class="fa-solid fa-phone"></i> Zadzwoń: 696 085 262
+                    </a>
+                    <button type="button" class="btn-secondary" id="btnClear"><i class="fa-solid fa-trash"></i> Wyczyść koszyk</button>
+                    <a class="btn-secondary" href="promocje.html">Kontynuuj zakupy</a>
+                </div>
+                <p class="cart-note">To zapytanie ofertowe – dostępność i ostateczną cenę potwierdzimy telefonicznie. Nie jest to płatność online.</p>
+            </div>
+        </div>
+    </section>
+
+    <script src="cart.js"></script>
+    <script>
+        function renderCart() {
+            const items = DomelCart.read();
+            const list = document.getElementById('cartList');
+            const empty = document.getElementById('cartEmpty');
+            const summary = document.getElementById('cartSummary');
+            list.innerHTML = '';
+            if (!items.length) {
+                empty.style.display = '';
+                summary.style.display = 'none';
+                DomelCart.updateBadge();
+                return;
+            }
+            empty.style.display = 'none';
+            summary.style.display = '';
+            items.forEach(it => {
+                const row = document.createElement('div');
+                row.className = 'cart-item';
+                row.innerHTML = `
+                    <img src="${it.zdjecie || 'images/logo.png'}" alt="" onerror="this.src='images/logo.png'">
+                    <div>
+                        <h3>${escapeHtml(it.tytul)}</h3>
+                        <div class="cena">${escapeHtml(it.cena || '')}</div>
+                        <div class="cart-qty">
+                            <button type="button" data-act="minus" data-id="${escapeHtml(it.id)}">−</button>
+                            <span>${it.qty || 1}</span>
+                            <button type="button" data-act="plus" data-id="${escapeHtml(it.id)}">+</button>
+                        </div>
+                    </div>
+                    <button type="button" class="cart-remove" title="Usuń" data-act="remove" data-id="${escapeHtml(it.id)}">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>`;
+                list.appendChild(row);
+            });
+            // WhatsApp message
+            const lines = items.map(it => `• ${it.tytul} × ${it.qty || 1} (${it.cena || ''})`);
+            const msg = encodeURIComponent(
+                'Dzień dobry, proszę o ofertę / rezerwację:\n' + lines.join('\n') +
+                '\nSuma orientacyjna: ' + DomelCart.total().toLocaleString('pl-PL') + ' zł'
+            );
+            document.getElementById('btnWhatsApp').href = 'https://wa.me/48696085262?text=' + msg;
+            DomelCart.updateBadge();
+        }
+        function escapeHtml(s) {
+            return String(s || '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+        }
+        document.getElementById('cartList').addEventListener('click', function(e) {
+            const btn = e.target.closest('[data-act]');
+            if (!btn) return;
+            const id = btn.getAttribute('data-id');
+            const act = btn.getAttribute('data-act');
+            const items = DomelCart.read();
+            const it = items.find(x => x.id === id);
+            if (act === 'remove') DomelCart.removeItem(id);
+            else if (act === 'plus' && it) DomelCart.setQty(id, (it.qty || 1) + 1);
+            else if (act === 'minus' && it) {
+                if ((it.qty || 1) <= 1) DomelCart.removeItem(id);
+                else DomelCart.setQty(id, (it.qty || 1) - 1);
+            }
+            renderCart();
+        });
+        document.getElementById('btnClear').addEventListener('click', function() {
+            if (confirm('Wyczyścić koszyk?')) {
+                DomelCart.clear();
+                renderCart();
+            }
+        });
+        document.addEventListener('DOMContentLoaded', renderCart);
+        document.addEventListener('domel-cart-changed', renderCart);
+    </script>
+    <footer>
+        <div class="container footer-content">
+            <p>&copy; 2026 DOMEL Konin - Sprzedaż i Serwis AGD. Wszelkie prawa zastrzeżone.</p>
+        </div>
+    </footer>
+</body>
+</html>

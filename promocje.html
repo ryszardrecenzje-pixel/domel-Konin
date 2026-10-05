@@ -3,23 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Domel Konin - Promocje dnia (37 szt.)</title>
+    <title>Domel Konin - Promocje dnia (30 szt.)</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.2rem; }
-        .product-card { background: #fff; border-radius: 8px; padding: 1.2rem; box-shadow: 0 2px 5px rgba(0,0,0,0.1); text-align: center; position: relative; }
+        .product-card { background: #fff; border-radius: 8px; padding: 1.2rem; box-shadow: 0 2px 5px rgba(0,0,0,0.1); text-align: center; position: relative; display: flex; flex-direction: column; }
         .product-card-image { width: 100%; height: 200px; display: flex; align-items: center; justify-content: center; margin-bottom: 0.8rem; overflow: hidden; border-radius: 4px; background: #f5f5f5; }
         .product-card-image img { max-width: 100%; max-height: 100%; object-fit: contain; cursor: zoom-in; transition: transform .2s; }
         .product-card-image a:hover img { transform: scale(1.04); }
         .product-card h3 { font-size: 0.98rem; line-height: 1.35; min-height: 2.7em; }
-        .opis { font-size: 0.88rem; color: #555; margin: 0.3rem 0 0.5rem; }
+        .opis { font-size: 0.88rem; color: #555; margin: 0.3rem 0 0.5rem; flex: 1; }
         .legend { display: flex; gap: 20px; justify-content: center; margin-bottom: 1.5rem; flex-wrap: wrap; }
         .legend-item { display: flex; align-items: center; gap: 6px; font-size: 0.95rem; }
         .availability-dot.dot-promo { background: #e11d48; box-shadow: 0 0 0 2px rgba(225,29,72,0.25); }
         .cena-stara { text-decoration: line-through; color: #999; font-size: 0.95rem; margin-right: 0.4rem; }
-        .cena-wrap { margin-top: 0.4rem; }
+        .cena-wrap { margin-top: 0.4rem; margin-bottom: 0.75rem; }
         .promo-note { max-width: 720px; margin: 0 auto 1.5rem; text-align: center; color: #555; font-size: 0.95rem; }
+        .btn-add-cart {
+            display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+            width: 100%; padding: 0.65rem 1rem; border: none; border-radius: 6px;
+            background: #0ea5e9; color: #fff; font-weight: 600; font-size: 0.95rem;
+            cursor: pointer; transition: background .15s, transform .1s;
+        }
+        .btn-add-cart:hover { background: #0284c7; }
+        .btn-add-cart:active { transform: scale(0.98); }
+        .btn-add-cart.added { background: #16a34a; }
+        .cart-link { position: relative; display: inline-flex; align-items: center; gap: 6px; }
+        .cart-badge {
+            display: none; min-width: 18px; height: 18px; padding: 0 5px;
+            background: #e11d48; color: #fff; border-radius: 999px;
+            font-size: 0.72rem; font-weight: 700; line-height: 18px; text-align: center;
+        }
         /* lightbox */
         #lightbox { display: none; position: fixed; z-index: 9999; inset: 0; background: rgba(0,0,0,.85); align-items: center; justify-content: center; padding: 1rem; }
         #lightbox.open { display: flex; }
@@ -40,6 +55,10 @@
             <div class="top-social">
                 <a href="https://www.facebook.com/profile.php?id=61594405195116" target="_blank" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
                 <a href="https://www.instagram.com/outletdomel/" target="_blank" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="koszyk.html" class="cart-link" title="Koszyk" style="margin-left:8px;color:inherit;">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="cart-badge" data-cart-count>0</span>
+                </a>
             </div>
         </div>
     </div>
@@ -57,6 +76,7 @@
                     <li><a href="sprzedaz.html">SPRZEDAŻ AGD</a></li>
                     <li><a href="magazyn.html">MAGAZYN</a></li>
                     <li><a href="promocje.html" style="color: #e11d48;">PROMOCJE DNIA</a></li>
+                    <li><a href="koszyk.html" class="cart-link">KOSZYK <span class="cart-badge" data-cart-count>0</span></a></li>
                     <li><a href="index.html#contact">KONTAKT</a></li>
                 </ul>
             </nav>
@@ -65,8 +85,8 @@
     <section class="section-padding">
         <div class="container">
             <h2 class="page-title">Promocje dnia</h2>
-            <p class="section-desc">Aktualne promocje AGD. Kliknij zdjęcie, aby powiększyć.</p>
-            <p class="promo-note">Aktualizacja: <strong>2026-10-05</strong> · Pozycji: <strong>37</strong><br>
+            <p class="section-desc">Aktualne promocje AGD. Dodaj produkty do koszyka i wyślij zapytanie.</p>
+            <p class="promo-note">Aktualizacja: <strong>2026-10-02</strong> · Pozycji: <strong>30</strong><br>
             Dostępność potwierdź telefonicznie: <a href="tel:696085262">696 085 262</a></p>
             <div class="legend">
                 <div class="legend-item"><span class="availability-dot dot-promo"></span> Promocja dnia</div>
@@ -78,412 +98,545 @@
             <div id="noResults" class="no-results">Brak pasujących promocji</div>
             <div class="products-grid" id="productGrid">
                 
-            <div class="product-card" data-title="piekarnik elektryczny z funkcją pary whirlpool woi4s8pm0sba steam+ pizza 310°c airfry" data-keywords="piekarnik elektryczny z funkcją pary whirlpool woi4s8pm0sba steam+ pizza 310°c airfry piekarnik">
+            <div class="product-card" data-title="piekarnik elektryczny z funkcją pary whirlpool woi4s8cm0sba steam+ pizza 310°c airfry" data-keywords="piekarnik elektryczny z funkcją pary whirlpool woi4s8cm0sba steam+ pizza 310°c airfry whirlpool">
                 <div class="availability"><span class="availability-dot dot-promo"></span> Promocja dnia</div>
                 <div class="product-card-image">
-                    <a href="images/promocje/Piekarnik_elektryczny_z_funkcja_pary_Whirlpool_WOI4S8PM0SBA_Steam_Pizza_310_C_Ai.jpg" class="zoom-link" data-full="images/promocje/Piekarnik_elektryczny_z_funkcja_pary_Whirlpool_WOI4S8PM0SBA_Steam_Pizza_310_C_Ai.jpg" data-caption="Piekarnik elektryczny z funkcją pary Whirlpool WOI4S8PM0SBA Steam+ Pizza 310°C AirFry" title="Kliknij aby powiekszyc">
-                        <img src="images/promocje/Piekarnik_elektryczny_z_funkcja_pary_Whirlpool_WOI4S8PM0SBA_Steam_Pizza_310_C_Ai.jpg" alt="Piekarnik elektryczny z funkcją pary Whirlpool WOI4S8PM0SBA Steam+ Pizza 310°C AirFry" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
+                    <a href="images/promocje/Piekarnik_elektryczny_z_funkcja_pary_Whirlpool_WOI4S8CM0SBA_Steam_Pizza_310_C_Ai.jpg" class="zoom-link" data-full="images/promocje/Piekarnik_elektryczny_z_funkcja_pary_Whirlpool_WOI4S8CM0SBA_Steam_Pizza_310_C_Ai.jpg" data-caption="Piekarnik elektryczny z funkcją pary Whirlpool WOI4S8CM0SBA Steam+ Pizza 310°C AirFry" title="Kliknij aby powiększyć">
+                        <img src="images/promocje/Piekarnik_elektryczny_z_funkcja_pary_Whirlpool_WOI4S8CM0SBA_Steam_Pizza_310_C_Ai.jpg" alt="Piekarnik elektryczny z funkcją pary Whirlpool WOI4S8CM0SBA Steam+ Pizza 310°C AirFry" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
                     </a>
                 </div>
-                <h3>Piekarnik elektryczny z funkcją pary Whirlpool WOI4S8PM0SBA Steam+ Pizza 310°C AirFry</h3>
-                <p class="opis">Piekarnik elektryczny z funkcją pary Whirlpool WOI4S8PM0SBA Steam+ Pizza 310°C AirFry</p>
-                <div class="cena-wrap"><span class="cena">2018 zł</span></div>
+                <h3>Piekarnik elektryczny z funkcją pary Whirlpool WOI4S8CM0SBA Steam+ Pizza 310°C AirFry</h3>
+                <p class="opis">Piekarnik elektryczny z funkcją pary Whirlpool WOI4S8CM0SBA Steam+ Pizza 310°C AirFry</p>
+                <div class="cena-wrap"><span class="cena">1453 zł</span></div>
+                <button type="button" class="btn-add-cart"
+                    data-add-to-cart
+                    data-title="Piekarnik elektryczny z funkcją pary Whirlpool WOI4S8CM0SBA Steam+ Pizza 310°C AirFry"
+                    data-price="1453 zł"
+                    data-image="images/promocje/Piekarnik_elektryczny_z_funkcja_pary_Whirlpool_WOI4S8CM0SBA_Steam_Pizza_310_C_Ai.jpg">
+                    <i class="fa-solid fa-cart-plus"></i> Dodaj do koszyka
+                </button>
             </div>
-            <div class="product-card" data-title="płyta gazowa whirlpool akt616nb żeliwne ruszty" data-keywords="płyta gazowa whirlpool akt616nb żeliwne ruszty płyta">
+            <div class="product-card" data-title="płyta indukcyjna whirlpool wsq2160ne 6. zmysł" data-keywords="płyta indukcyjna whirlpool wsq2160ne 6. zmysł whirlpool">
                 <div class="availability"><span class="availability-dot dot-promo"></span> Promocja dnia</div>
                 <div class="product-card-image">
-                    <a href="images/promocje/Płyta_gazowa_Whirlpool_AKT616NB_Zeliwne_ruszty.jpg" class="zoom-link" data-full="images/promocje/Płyta_gazowa_Whirlpool_AKT616NB_Zeliwne_ruszty.jpg" data-caption="Płyta gazowa Whirlpool AKT616NB Żeliwne ruszty" title="Kliknij aby powiekszyc">
-                        <img src="images/promocje/Płyta_gazowa_Whirlpool_AKT616NB_Zeliwne_ruszty.jpg" alt="Płyta gazowa Whirlpool AKT616NB Żeliwne ruszty" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
+                    <a href="images/promocje/Płyta_indukcyjna_Whirlpool_WSQ2160NE_6_Zmysł.jpg" class="zoom-link" data-full="images/promocje/Płyta_indukcyjna_Whirlpool_WSQ2160NE_6_Zmysł.jpg" data-caption="Płyta indukcyjna Whirlpool WSQ2160NE 6. Zmysł" title="Kliknij aby powiększyć">
+                        <img src="images/promocje/Płyta_indukcyjna_Whirlpool_WSQ2160NE_6_Zmysł.jpg" alt="Płyta indukcyjna Whirlpool WSQ2160NE 6. Zmysł" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
                     </a>
                 </div>
-                <h3>Płyta gazowa Whirlpool AKT616NB Żeliwne ruszty</h3>
-                <p class="opis">Płyta gazowa Whirlpool AKT616NB Żeliwne ruszty</p>
-                <div class="cena-wrap"><span class="cena">867 zł</span></div>
+                <h3>Płyta indukcyjna Whirlpool WSQ2160NE 6. Zmysł</h3>
+                <p class="opis">Płyta indukcyjna Whirlpool WSQ2160NE 6. Zmysł</p>
+                <div class="cena-wrap"><span class="cena">986 zł</span></div>
+                <button type="button" class="btn-add-cart"
+                    data-add-to-cart
+                    data-title="Płyta indukcyjna Whirlpool WSQ2160NE 6. Zmysł"
+                    data-price="986 zł"
+                    data-image="images/promocje/Płyta_indukcyjna_Whirlpool_WSQ2160NE_6_Zmysł.jpg">
+                    <i class="fa-solid fa-cart-plus"></i> Dodaj do koszyka
+                </button>
             </div>
-            <div class="product-card" data-title="pralka whirlpool ntdlr7220sspln 7kg 1200obr. 6. zmysł freshcare+ odświeżanie parowe" data-keywords="pralka whirlpool ntdlr7220sspln 7kg 1200obr. 6. zmysł freshcare+ odświeżanie parowe pralka">
+            <div class="product-card" data-title="zamrażarka szufladowa whirlpool whmff 6312 xp4 nofrost fast freeze 186,5cm inox" data-keywords="zamrażarka szufladowa whirlpool whmff 6312 xp4 nofrost fast freeze 186,5cm inox whirlpool">
                 <div class="availability"><span class="availability-dot dot-promo"></span> Promocja dnia</div>
                 <div class="product-card-image">
-                    <a href="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2026/4/3/58e71c3adcd0ab87e07abdf24216e78e/jpg/gtpoland/listing_thumb/pralka-whirlpool-ntdlr-7220ss-pl-n-nowe-glowne.jpg" class="zoom-link" data-full="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2026/4/3/58e71c3adcd0ab87e07abdf24216e78e/jpg/gtpoland/listing_thumb/pralka-whirlpool-ntdlr-7220ss-pl-n-nowe-glowne.jpg" data-caption="Pralka Whirlpool NTDLR7220SSPLN 7kg 1200obr. 6. Zmysł FreshCare+ Odświeżanie parowe" title="Kliknij aby powiekszyc">
-                        <img src="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2026/4/3/58e71c3adcd0ab87e07abdf24216e78e/jpg/gtpoland/listing_thumb/pralka-whirlpool-ntdlr-7220ss-pl-n-nowe-glowne.jpg" alt="Pralka Whirlpool NTDLR7220SSPLN 7kg 1200obr. 6. Zmysł FreshCare+ Odświeżanie parowe" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
+                    <a href="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2026/4/16/5ff7e704ea9001f07ee6392c8774f84d/jpg/gtpoland/listing_thumb/zamrazarka-szufladowa-whirlpool-whmff-6312-xp4-glowne.jpg" class="zoom-link" data-full="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2026/4/16/5ff7e704ea9001f07ee6392c8774f84d/jpg/gtpoland/listing_thumb/zamrazarka-szufladowa-whirlpool-whmff-6312-xp4-glowne.jpg" data-caption="Zamrażarka szufladowa Whirlpool WHMFF 6312 XP4 NoFrost Fast Freeze 186,5cm Inox" title="Kliknij aby powiększyć">
+                        <img src="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2026/4/16/5ff7e704ea9001f07ee6392c8774f84d/jpg/gtpoland/listing_thumb/zamrazarka-szufladowa-whirlpool-whmff-6312-xp4-glowne.jpg" alt="Zamrażarka szufladowa Whirlpool WHMFF 6312 XP4 NoFrost Fast Freeze 186,5cm Inox" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
                     </a>
                 </div>
-                <h3>Pralka Whirlpool NTDLR7220SSPLN 7kg 1200obr. 6. Zmysł FreshCare+ Odświeżanie parowe</h3>
-                <p class="opis">Pralka Whirlpool NTDLR7220SSPLN 7kg 1200obr. 6. Zmysł FreshCare+ Odświeżanie parowe</p>
-                <div class="cena-wrap"><span class="cena">1637 zł</span></div>
+                <h3>Zamrażarka szufladowa Whirlpool WHMFF 6312 XP4 NoFrost Fast Freeze 186,5cm Inox</h3>
+                <p class="opis">Zamrażarka szufladowa Whirlpool WHMFF 6312 XP4 NoFrost Fast Freeze 186,5cm Inox</p>
+                <div class="cena-wrap"><span class="cena">2007 zł</span></div>
+                <button type="button" class="btn-add-cart"
+                    data-add-to-cart
+                    data-title="Zamrażarka szufladowa Whirlpool WHMFF 6312 XP4 NoFrost Fast Freeze 186,5cm Inox"
+                    data-price="2007 zł"
+                    data-image="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2026/4/16/5ff7e704ea9001f07ee6392c8774f84d/jpg/gtpoland/listing_thumb/zamrazarka-szufladowa-whirlpool-whmff-6312-xp4-glowne.jpg">
+                    <i class="fa-solid fa-cart-plus"></i> Dodaj do koszyka
+                </button>
             </div>
-            <div class="product-card" data-title="zmywarka whirlpool w8iht58ts maxispace powerclean pro kosz spaceclean 60cm" data-keywords="zmywarka whirlpool w8iht58ts maxispace powerclean pro kosz spaceclean 60cm zmywarka">
+            <div class="product-card" data-title="zmywarka whirlpool wfo3t133pfx powerclean pro autootwieranie multizone 60cm" data-keywords="zmywarka whirlpool wfo3t133pfx powerclean pro autootwieranie multizone 60cm whirlpool">
                 <div class="availability"><span class="availability-dot dot-promo"></span> Promocja dnia</div>
                 <div class="product-card-image">
-                    <a href="images/promocje/Zmywarka_Whirlpool_W8IHT58TS_MaxiSpace_PowerClean_Pro_Kosz_SpaceClean_60cm.jpg" class="zoom-link" data-full="images/promocje/Zmywarka_Whirlpool_W8IHT58TS_MaxiSpace_PowerClean_Pro_Kosz_SpaceClean_60cm.jpg" data-caption="Zmywarka Whirlpool W8IHT58TS MaxiSpace PowerClean Pro Kosz SpaceClean 60cm" title="Kliknij aby powiekszyc">
-                        <img src="images/promocje/Zmywarka_Whirlpool_W8IHT58TS_MaxiSpace_PowerClean_Pro_Kosz_SpaceClean_60cm.jpg" alt="Zmywarka Whirlpool W8IHT58TS MaxiSpace PowerClean Pro Kosz SpaceClean 60cm" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
+                    <a href="images/promocje/Zmywarka_Whirlpool_WFO3T133PFX_PowerClean_Pro_Autootwieranie_Multizone_60cm.jpg" class="zoom-link" data-full="images/promocje/Zmywarka_Whirlpool_WFO3T133PFX_PowerClean_Pro_Autootwieranie_Multizone_60cm.jpg" data-caption="Zmywarka Whirlpool WFO3T133PFX PowerClean Pro Autootwieranie Multizone 60cm" title="Kliknij aby powiększyć">
+                        <img src="images/promocje/Zmywarka_Whirlpool_WFO3T133PFX_PowerClean_Pro_Autootwieranie_Multizone_60cm.jpg" alt="Zmywarka Whirlpool WFO3T133PFX PowerClean Pro Autootwieranie Multizone 60cm" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
                     </a>
                 </div>
-                <h3>Zmywarka Whirlpool W8IHT58TS MaxiSpace PowerClean Pro Kosz SpaceClean 60cm</h3>
-                <p class="opis">Zmywarka Whirlpool W8IHT58TS MaxiSpace PowerClean Pro Kosz SpaceClean 60cm</p>
-                <div class="cena-wrap"><span class="cena">2863 zł</span></div>
+                <h3>Zmywarka Whirlpool WFO3T133PFX PowerClean Pro Autootwieranie Multizone 60cm</h3>
+                <p class="opis">Zmywarka Whirlpool WFO3T133PFX PowerClean Pro Autootwieranie Multizone 60cm</p>
+                <div class="cena-wrap"><span class="cena">1502 zł</span></div>
+                <button type="button" class="btn-add-cart"
+                    data-add-to-cart
+                    data-title="Zmywarka Whirlpool WFO3T133PFX PowerClean Pro Autootwieranie Multizone 60cm"
+                    data-price="1502 zł"
+                    data-image="images/promocje/Zmywarka_Whirlpool_WFO3T133PFX_PowerClean_Pro_Autootwieranie_Multizone_60cm.jpg">
+                    <i class="fa-solid fa-cart-plus"></i> Dodaj do koszyka
+                </button>
             </div>
-            <div class="product-card" data-title="okap wkład ciarko design duo 55 white" data-keywords="okap wkład ciarko design duo 55 white okap">
+            <div class="product-card" data-title="lodówka candy cm4se68w 82,6cm" data-keywords="lodówka candy cm4se68w 82,6cm candy">
                 <div class="availability"><span class="availability-dot dot-promo"></span> Promocja dnia</div>
                 <div class="product-card-image">
-                    <a href="images/promocje/Okap_wkład_Ciarko_Design_Duo_55_White.jpg" class="zoom-link" data-full="images/promocje/Okap_wkład_Ciarko_Design_Duo_55_White.jpg" data-caption="Okap wkład Ciarko Design Duo 55 White" title="Kliknij aby powiekszyc">
-                        <img src="images/promocje/Okap_wkład_Ciarko_Design_Duo_55_White.jpg" alt="Okap wkład Ciarko Design Duo 55 White" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
+                    <a href="images/promocje/Lodowka_Candy_CM4SE68W_82_6cm.jpg" class="zoom-link" data-full="images/promocje/Lodowka_Candy_CM4SE68W_82_6cm.jpg" data-caption="Lodówka Candy CM4SE68W 82,6cm" title="Kliknij aby powiększyć">
+                        <img src="images/promocje/Lodowka_Candy_CM4SE68W_82_6cm.jpg" alt="Lodówka Candy CM4SE68W 82,6cm" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
                     </a>
                 </div>
-                <h3>Okap wkład Ciarko Design Duo 55 White</h3>
-                <p class="opis">Okap wkład Ciarko Design Duo 55 White</p>
-                <div class="cena-wrap"><span class="cena">1563 zł</span></div>
+                <h3>Lodówka Candy CM4SE68W 82,6cm</h3>
+                <p class="opis">Lodówka Candy CM4SE68W 82,6cm</p>
+                <div class="cena-wrap"><span class="cena">1060 zł</span></div>
+                <button type="button" class="btn-add-cart"
+                    data-add-to-cart
+                    data-title="Lodówka Candy CM4SE68W 82,6cm"
+                    data-price="1060 zł"
+                    data-image="images/promocje/Lodowka_Candy_CM4SE68W_82_6cm.jpg">
+                    <i class="fa-solid fa-cart-plus"></i> Dodaj do koszyka
+                </button>
             </div>
-            <div class="product-card" data-title="okap wkład ciarko design luno 52 615m3/h cook assist warm2cold 52cm czarny" data-keywords="okap wkład ciarko design luno 52 615m3/h cook assist warm2cold 52cm czarny okap">
+            <div class="product-card" data-title="pralka candy prowash 300 tca283dr2-s 8kg 1200obr. antracyt" data-keywords="pralka candy prowash 300 tca283dr2-s 8kg 1200obr. antracyt candy">
                 <div class="availability"><span class="availability-dot dot-promo"></span> Promocja dnia</div>
                 <div class="product-card-image">
-                    <a href="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2026/2/16/07cd201c563df3662155b2f0f46b04df/jpg/gtpoland/listing_thumb/okap-wklad-ciarko-design-luno-black-52-glowne.jpg" class="zoom-link" data-full="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2026/2/16/07cd201c563df3662155b2f0f46b04df/jpg/gtpoland/listing_thumb/okap-wklad-ciarko-design-luno-black-52-glowne.jpg" data-caption="Okap wkład Ciarko Design Luno 52 615m3/h Cook Assist Warm2Cold 52cm Czarny" title="Kliknij aby powiekszyc">
-                        <img src="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2026/2/16/07cd201c563df3662155b2f0f46b04df/jpg/gtpoland/listing_thumb/okap-wklad-ciarko-design-luno-black-52-glowne.jpg" alt="Okap wkład Ciarko Design Luno 52 615m3/h Cook Assist Warm2Cold 52cm Czarny" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
+                    <a href="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2024/12/17/236ae9fd6ad93202ef2c6ec89819ceb6/jpg/gtpoland/listing_thumb/pralka-candy-prowash-300-tca283dr2-s-glowne.jpg" class="zoom-link" data-full="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2024/12/17/236ae9fd6ad93202ef2c6ec89819ceb6/jpg/gtpoland/listing_thumb/pralka-candy-prowash-300-tca283dr2-s-glowne.jpg" data-caption="Pralka Candy ProWash 300 TCA283DR2-S 8kg 1200obr. Antracyt" title="Kliknij aby powiększyć">
+                        <img src="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2024/12/17/236ae9fd6ad93202ef2c6ec89819ceb6/jpg/gtpoland/listing_thumb/pralka-candy-prowash-300-tca283dr2-s-glowne.jpg" alt="Pralka Candy ProWash 300 TCA283DR2-S 8kg 1200obr. Antracyt" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
                     </a>
                 </div>
-                <h3>Okap wkład Ciarko Design Luno 52 615m3/h Cook Assist Warm2Cold 52cm Czarny</h3>
-                <p class="opis">Okap wkład Ciarko Design Luno 52 615m3/h Cook Assist Warm2Cold 52cm Czarny</p>
-                <div class="cena-wrap"><span class="cena">1283 zł</span></div>
+                <h3>Pralka Candy ProWash 300 TCA283DR2-S 8kg 1200obr. Antracyt</h3>
+                <p class="opis">Pralka Candy ProWash 300 TCA283DR2-S 8kg 1200obr. Antracyt</p>
+                <div class="cena-wrap"><span class="cena">1362 zł</span></div>
+                <button type="button" class="btn-add-cart"
+                    data-add-to-cart
+                    data-title="Pralka Candy ProWash 300 TCA283DR2-S 8kg 1200obr. Antracyt"
+                    data-price="1362 zł"
+                    data-image="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2024/12/17/236ae9fd6ad93202ef2c6ec89819ceb6/jpg/gtpoland/listing_thumb/pralka-candy-prowash-300-tca283dr2-s-glowne.jpg">
+                    <i class="fa-solid fa-cart-plus"></i> Dodaj do koszyka
+                </button>
             </div>
-            <div class="product-card" data-title="okap wkład ciarko design uno 55 white" data-keywords="okap wkład ciarko design uno 55 white okap">
+            <div class="product-card" data-title="płyta gazowa beko higg 64123 sb" data-keywords="płyta gazowa beko higg 64123 sb beko">
                 <div class="availability"><span class="availability-dot dot-promo"></span> Promocja dnia</div>
                 <div class="product-card-image">
-                    <a href="images/promocje/Okap_wkład_Ciarko_Design_Uno_55_White.jpg" class="zoom-link" data-full="images/promocje/Okap_wkład_Ciarko_Design_Uno_55_White.jpg" data-caption="Okap wkład Ciarko Design Uno 55 White" title="Kliknij aby powiekszyc">
-                        <img src="images/promocje/Okap_wkład_Ciarko_Design_Uno_55_White.jpg" alt="Okap wkład Ciarko Design Uno 55 White" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
+                    <a href="images/promocje/Płyta_gazowa_Beko_HIGG_64123_SB.jpg" class="zoom-link" data-full="images/promocje/Płyta_gazowa_Beko_HIGG_64123_SB.jpg" data-caption="Płyta gazowa Beko HIGG 64123 SB" title="Kliknij aby powiększyć">
+                        <img src="images/promocje/Płyta_gazowa_Beko_HIGG_64123_SB.jpg" alt="Płyta gazowa Beko HIGG 64123 SB" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
                     </a>
                 </div>
-                <h3>Okap wkład Ciarko Design Uno 55 White</h3>
-                <p class="opis">Okap wkład Ciarko Design Uno 55 White</p>
-                <div class="cena-wrap"><span class="cena">1493 zł</span></div>
+                <h3>Płyta gazowa Beko HIGG 64123 SB</h3>
+                <p class="opis">Płyta gazowa Beko HIGG 64123 SB</p>
+                <div class="cena-wrap"><span class="cena">469 zł</span></div>
+                <button type="button" class="btn-add-cart"
+                    data-add-to-cart
+                    data-title="Płyta gazowa Beko HIGG 64123 SB"
+                    data-price="469 zł"
+                    data-image="images/promocje/Płyta_gazowa_Beko_HIGG_64123_SB.jpg">
+                    <i class="fa-solid fa-cart-plus"></i> Dodaj do koszyka
+                </button>
             </div>
-            <div class="product-card" data-title="okap wkład elica lane wh/a/52" data-keywords="okap wkład elica lane wh/a/52 okap">
+            <div class="product-card" data-title="zmywarka beko bdin25330 hygieneintense quick&amp;shine autootwieranie zawiasy ślizgowe 60cm" data-keywords="zmywarka beko bdin25330 hygieneintense quick&amp;shine autootwieranie zawiasy ślizgowe 60cm beko">
                 <div class="availability"><span class="availability-dot dot-promo"></span> Promocja dnia</div>
                 <div class="product-card-image">
-                    <a href="images/promocje/Okap_wkład_Elica_Lane_WH_A_52.png" class="zoom-link" data-full="images/promocje/Okap_wkład_Elica_Lane_WH_A_52.png" data-caption="Okap wkład Elica Lane WH/A/52" title="Kliknij aby powiekszyc">
-                        <img src="images/promocje/Okap_wkład_Elica_Lane_WH_A_52.png" alt="Okap wkład Elica Lane WH/A/52" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
+                    <a href="images/promocje/Zmywarka_Beko_BDIN25330_Hygieneintense_Quick_Shine_Autootwieranie_Zawiasy_slizgo.jpg" class="zoom-link" data-full="images/promocje/Zmywarka_Beko_BDIN25330_Hygieneintense_Quick_Shine_Autootwieranie_Zawiasy_slizgo.jpg" data-caption="Zmywarka Beko BDIN25330 Hygieneintense Quick&amp;Shine Autootwieranie Zawiasy ślizgowe 60cm" title="Kliknij aby powiększyć">
+                        <img src="images/promocje/Zmywarka_Beko_BDIN25330_Hygieneintense_Quick_Shine_Autootwieranie_Zawiasy_slizgo.jpg" alt="Zmywarka Beko BDIN25330 Hygieneintense Quick&amp;Shine Autootwieranie Zawiasy ślizgowe 60cm" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
                     </a>
                 </div>
-                <h3>Okap wkład Elica Lane WH/A/52</h3>
-                <p class="opis">Okap wkład Elica Lane WH/A/52</p>
-                <div class="cena-wrap"><span class="cena">1299 zł</span></div>
+                <h3>Zmywarka Beko BDIN25330 Hygieneintense Quick&amp;Shine Autootwieranie Zawiasy ślizgowe 60cm</h3>
+                <p class="opis">Zmywarka Beko BDIN25330 Hygieneintense Quick&amp;Shine Autootwieranie Zawiasy ślizgowe 60cm</p>
+                <div class="cena-wrap"><span class="cena">1379 zł</span></div>
+                <button type="button" class="btn-add-cart"
+                    data-add-to-cart
+                    data-title="Zmywarka Beko BDIN25330 Hygieneintense Quick&amp;Shine Autootwieranie Zawiasy ślizgowe 60cm"
+                    data-price="1379 zł"
+                    data-image="images/promocje/Zmywarka_Beko_BDIN25330_Hygieneintense_Quick_Shine_Autootwieranie_Zawiasy_slizgo.jpg">
+                    <i class="fa-solid fa-cart-plus"></i> Dodaj do koszyka
+                </button>
             </div>
-            <div class="product-card" data-title="płyta indukcyjna zintegrowana z okapem elica nikolatesla fit xl bl/a/83" data-keywords="płyta indukcyjna zintegrowana z okapem elica nikolatesla fit xl bl/a/83 płyta">
+            <div class="product-card" data-title="kuchnia gazowo-elektryczna beko fse52321dwd" data-keywords="kuchnia gazowo-elektryczna beko fse52321dwd beko">
                 <div class="availability"><span class="availability-dot dot-promo"></span> Promocja dnia</div>
                 <div class="product-card-image">
-                    <a href="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2024/2/9/4c60da25b73e1db6e50406ded9701619/jpg/gtpoland/listing_thumb/plyta-z-okapem-elica-nicolatesla-fit-xl-bl-a-83-prf0179476-glowne.jpg" class="zoom-link" data-full="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2024/2/9/4c60da25b73e1db6e50406ded9701619/jpg/gtpoland/listing_thumb/plyta-z-okapem-elica-nicolatesla-fit-xl-bl-a-83-prf0179476-glowne.jpg" data-caption="Płyta indukcyjna zintegrowana z okapem Elica Nikolatesla Fit XL BL/A/83" title="Kliknij aby powiekszyc">
-                        <img src="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2024/2/9/4c60da25b73e1db6e50406ded9701619/jpg/gtpoland/listing_thumb/plyta-z-okapem-elica-nicolatesla-fit-xl-bl-a-83-prf0179476-glowne.jpg" alt="Płyta indukcyjna zintegrowana z okapem Elica Nikolatesla Fit XL BL/A/83" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
+                    <a href="images/promocje/Kuchnia_gazowo-elektryczna_Beko_FSE52321DWD.png" class="zoom-link" data-full="images/promocje/Kuchnia_gazowo-elektryczna_Beko_FSE52321DWD.png" data-caption="Kuchnia gazowo-elektryczna Beko FSE52321DWD" title="Kliknij aby powiększyć">
+                        <img src="images/promocje/Kuchnia_gazowo-elektryczna_Beko_FSE52321DWD.png" alt="Kuchnia gazowo-elektryczna Beko FSE52321DWD" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
                     </a>
                 </div>
-                <h3>Płyta indukcyjna zintegrowana z okapem Elica Nikolatesla Fit XL BL/A/83</h3>
-                <p class="opis">Płyta indukcyjna zintegrowana z okapem Elica Nikolatesla Fit XL BL/A/83</p>
-                <div class="cena-wrap"><span class="cena">5349 zł</span></div>
+                <h3>Kuchnia gazowo-elektryczna Beko FSE52321DWD</h3>
+                <p class="opis">Kuchnia gazowo-elektryczna Beko FSE52321DWD</p>
+                <div class="cena-wrap"><span class="cena">1099 zł</span></div>
+                <button type="button" class="btn-add-cart"
+                    data-add-to-cart
+                    data-title="Kuchnia gazowo-elektryczna Beko FSE52321DWD"
+                    data-price="1099 zł"
+                    data-image="images/promocje/Kuchnia_gazowo-elektryczna_Beko_FSE52321DWD.png">
+                    <i class="fa-solid fa-cart-plus"></i> Dodaj do koszyka
+                </button>
             </div>
-            <div class="product-card" data-title="okap wkład elica era c wh/a/52" data-keywords="okap wkład elica era c wh/a/52 okap">
+            <div class="product-card" data-title="piekarnik elektryczny z funkcją pary beko bbis7301wp aeroperfect steamadd grill pyroliza biały" data-keywords="piekarnik elektryczny z funkcją pary beko bbis7301wp aeroperfect steamadd grill pyroliza biały beko">
                 <div class="availability"><span class="availability-dot dot-promo"></span> Promocja dnia</div>
                 <div class="product-card-image">
-                    <a href="images/promocje/Okap_wkład_Elica_ERA_C_WH_A_52.jpg" class="zoom-link" data-full="images/promocje/Okap_wkład_Elica_ERA_C_WH_A_52.jpg" data-caption="Okap wkład Elica ERA C WH/A/52" title="Kliknij aby powiekszyc">
-                        <img src="images/promocje/Okap_wkład_Elica_ERA_C_WH_A_52.jpg" alt="Okap wkład Elica ERA C WH/A/52" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
+                    <a href="images/promocje/Piekarnik_elektryczny_z_funkcja_pary_Beko_BBIS7301WP_AeroPerfect_SteamAdd_Grill.jpg" class="zoom-link" data-full="images/promocje/Piekarnik_elektryczny_z_funkcja_pary_Beko_BBIS7301WP_AeroPerfect_SteamAdd_Grill.jpg" data-caption="Piekarnik elektryczny z funkcją pary Beko BBIS7301WP AeroPerfect SteamAdd Grill Pyroliza Biały" title="Kliknij aby powiększyć">
+                        <img src="images/promocje/Piekarnik_elektryczny_z_funkcja_pary_Beko_BBIS7301WP_AeroPerfect_SteamAdd_Grill.jpg" alt="Piekarnik elektryczny z funkcją pary Beko BBIS7301WP AeroPerfect SteamAdd Grill Pyroliza Biały" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
                     </a>
                 </div>
-                <h3>Okap wkład Elica ERA C WH/A/52</h3>
-                <p class="opis">Okap wkład Elica ERA C WH/A/52</p>
-                <div class="cena-wrap"><span class="cena">549 zł</span></div>
+                <h3>Piekarnik elektryczny z funkcją pary Beko BBIS7301WP AeroPerfect SteamAdd Grill Pyroliza Biały</h3>
+                <p class="opis">Piekarnik elektryczny z funkcją pary Beko BBIS7301WP AeroPerfect SteamAdd Grill Pyroliza Biały</p>
+                <div class="cena-wrap"><span class="cena">1249 zł</span></div>
+                <button type="button" class="btn-add-cart"
+                    data-add-to-cart
+                    data-title="Piekarnik elektryczny z funkcją pary Beko BBIS7301WP AeroPerfect SteamAdd Grill Pyroliza Biały"
+                    data-price="1249 zł"
+                    data-image="images/promocje/Piekarnik_elektryczny_z_funkcja_pary_Beko_BBIS7301WP_AeroPerfect_SteamAdd_Grill.jpg">
+                    <i class="fa-solid fa-cart-plus"></i> Dodaj do koszyka
+                </button>
             </div>
-            <div class="product-card" data-title="okap wkład elica lane wh/a/72" data-keywords="okap wkład elica lane wh/a/72 okap">
+            <div class="product-card" data-title="kuchenka mikrofalowa beko bmgb31443w" data-keywords="kuchenka mikrofalowa beko bmgb31443w beko">
                 <div class="availability"><span class="availability-dot dot-promo"></span> Promocja dnia</div>
                 <div class="product-card-image">
-                    <a href="images/promocje/Okap_wkład_Elica_Lane_WH_A_72.png" class="zoom-link" data-full="images/promocje/Okap_wkład_Elica_Lane_WH_A_72.png" data-caption="Okap wkład Elica Lane WH/A/72" title="Kliknij aby powiekszyc">
-                        <img src="images/promocje/Okap_wkład_Elica_Lane_WH_A_72.png" alt="Okap wkład Elica Lane WH/A/72" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
+                    <a href="images/promocje/Kuchenka_mikrofalowa_Beko_BMGB31443W.jpg" class="zoom-link" data-full="images/promocje/Kuchenka_mikrofalowa_Beko_BMGB31443W.jpg" data-caption="Kuchenka mikrofalowa Beko BMGB31443W" title="Kliknij aby powiększyć">
+                        <img src="images/promocje/Kuchenka_mikrofalowa_Beko_BMGB31443W.jpg" alt="Kuchenka mikrofalowa Beko BMGB31443W" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
                     </a>
                 </div>
-                <h3>Okap wkład Elica Lane WH/A/72</h3>
-                <p class="opis">Okap wkład Elica Lane WH/A/72</p>
-                <div class="cena-wrap"><span class="cena">1374 zł</span></div>
-            </div>
-            <div class="product-card" data-title="kuchnia gazowo-elektryczna amica 57geh2.33hzptaa(w)" data-keywords="kuchnia gazowo-elektryczna amica 57geh2.33hzptaa(w) kuchnia">
-                <div class="availability"><span class="availability-dot dot-promo"></span> Promocja dnia</div>
-                <div class="product-card-image">
-                    <a href="images/promocje/Kuchnia_gazowo-elektryczna_Amica_57GEH2_33HZpTaA_W.jpg" class="zoom-link" data-full="images/promocje/Kuchnia_gazowo-elektryczna_Amica_57GEH2_33HZpTaA_W.jpg" data-caption="Kuchnia gazowo-elektryczna Amica 57GEH2.33HZpTaA(W)" title="Kliknij aby powiekszyc">
-                        <img src="images/promocje/Kuchnia_gazowo-elektryczna_Amica_57GEH2_33HZpTaA_W.jpg" alt="Kuchnia gazowo-elektryczna Amica 57GEH2.33HZpTaA(W)" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
-                    </a>
-                </div>
-                <h3>Kuchnia gazowo-elektryczna Amica 57GEH2.33HZpTaA(W)</h3>
-                <p class="opis">Kuchnia gazowo-elektryczna Amica 57GEH2.33HZpTaA(W)</p>
-                <div class="cena-wrap"><span class="cena">1333 zł</span></div>
-            </div>
-            <div class="product-card" data-title="lodówka amica fk244.4(e)" data-keywords="lodówka amica fk244.4(e) lodówka">
-                <div class="availability"><span class="availability-dot dot-promo"></span> Promocja dnia</div>
-                <div class="product-card-image">
-                    <a href="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2024/6/20/5c404c56790fac1db39bcde1513cf094/webp/gtpoland/listing_thumb/lodowka-amica-fk244.4%28e%29-glowne.webp" class="zoom-link" data-full="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2024/6/20/5c404c56790fac1db39bcde1513cf094/webp/gtpoland/listing_thumb/lodowka-amica-fk244.4%28e%29-glowne.webp" data-caption="Lodówka Amica FK244.4(E)" title="Kliknij aby powiekszyc">
-                        <img src="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2024/6/20/5c404c56790fac1db39bcde1513cf094/webp/gtpoland/listing_thumb/lodowka-amica-fk244.4%28e%29-glowne.webp" alt="Lodówka Amica FK244.4(E)" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
-                    </a>
-                </div>
-                <h3>Lodówka Amica FK244.4(E)</h3>
-                <p class="opis">Lodówka Amica FK244.4(E)</p>
-                <div class="cena-wrap"><span class="cena">1409 zł</span></div>
-            </div>
-            <div class="product-card" data-title="lodówka gorenje nrk418eew4 nofrost szybkie mrożenie 179,7cm biała" data-keywords="lodówka gorenje nrk418eew4 nofrost szybkie mrożenie 179,7cm biała lodówka">
-                <div class="availability"><span class="availability-dot dot-promo"></span> Promocja dnia</div>
-                <div class="product-card-image">
-                    <a href="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2026/9/24/310e73edfdea1ce31570517ea05c2b5d/jpg/gtpoland/listing_thumb/lodowka-gorenje-nrk418eew4-glowne.jpg" class="zoom-link" data-full="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2026/9/24/310e73edfdea1ce31570517ea05c2b5d/jpg/gtpoland/listing_thumb/lodowka-gorenje-nrk418eew4-glowne.jpg" data-caption="Lodówka Gorenje NRK418EEW4 NoFrost Szybkie mrożenie 179,7cm Biała" title="Kliknij aby powiekszyc">
-                        <img src="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2026/9/24/310e73edfdea1ce31570517ea05c2b5d/jpg/gtpoland/listing_thumb/lodowka-gorenje-nrk418eew4-glowne.jpg" alt="Lodówka Gorenje NRK418EEW4 NoFrost Szybkie mrożenie 179,7cm Biała" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
-                    </a>
-                </div>
-                <h3>Lodówka Gorenje NRK418EEW4 NoFrost Szybkie mrożenie 179,7cm Biała</h3>
-                <p class="opis">Lodówka Gorenje NRK418EEW4 NoFrost Szybkie mrożenie 179,7cm Biała</p>
-                <div class="cena-wrap"><span class="cena">1707 zł</span></div>
-            </div>
-            <div class="product-card" data-title="okap kominowy gorenje whi649eb" data-keywords="okap kominowy gorenje whi649eb okap">
-                <div class="availability"><span class="availability-dot dot-promo"></span> Promocja dnia</div>
-                <div class="product-card-image">
-                    <a href="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2024/2/9/27313ff43b73266a9295ed7086a71d72/jpg/gtpoland/listing_thumb/okap-kominowy-gorenje-whi649eb-rzut-z-przodu.jpg" class="zoom-link" data-full="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2024/2/9/27313ff43b73266a9295ed7086a71d72/jpg/gtpoland/listing_thumb/okap-kominowy-gorenje-whi649eb-rzut-z-przodu.jpg" data-caption="Okap kominowy Gorenje WHI649EB" title="Kliknij aby powiekszyc">
-                        <img src="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2024/2/9/27313ff43b73266a9295ed7086a71d72/jpg/gtpoland/listing_thumb/okap-kominowy-gorenje-whi649eb-rzut-z-przodu.jpg" alt="Okap kominowy Gorenje WHI649EB" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
-                    </a>
-                </div>
-                <h3>Okap kominowy Gorenje WHI649EB</h3>
-                <p class="opis">Okap kominowy Gorenje WHI649EB</p>
-                <div class="cena-wrap"><span class="cena">795 zł</span></div>
-            </div>
-            <div class="product-card" data-title="lodówka bosch serie 4 kgn392wdf" data-keywords="lodówka bosch serie 4 kgn392wdf lodówka">
-                <div class="availability"><span class="availability-dot dot-promo"></span> Promocja dnia</div>
-                <div class="product-card-image">
-                    <a href="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2024/2/9/b2266b671ca4169aa6a70ad4748b613d/jpg/gtpoland/listing_thumb/lod%C3%B3wka-bosch-serie-4-kgn392wdf-glowne.jpg" class="zoom-link" data-full="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2024/2/9/b2266b671ca4169aa6a70ad4748b613d/jpg/gtpoland/listing_thumb/lod%C3%B3wka-bosch-serie-4-kgn392wdf-glowne.jpg" data-caption="Lodówka Bosch Serie 4 KGN392WDF" title="Kliknij aby powiekszyc">
-                        <img src="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2024/2/9/b2266b671ca4169aa6a70ad4748b613d/jpg/gtpoland/listing_thumb/lod%C3%B3wka-bosch-serie-4-kgn392wdf-glowne.jpg" alt="Lodówka Bosch Serie 4 KGN392WDF" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
-                    </a>
-                </div>
-                <h3>Lodówka Bosch Serie 4 KGN392WDF</h3>
-                <p class="opis">Lodówka Bosch Serie 4 KGN392WDF</p>
-                <div class="cena-wrap"><span class="cena">2849 zł</span></div>
-            </div>
-            <div class="product-card" data-title="płyta gazowa bosch serie 6 ppq7aai40 flameselect palnik wok żeliwne ruszty czarny mat" data-keywords="płyta gazowa bosch serie 6 ppq7aai40 flameselect palnik wok żeliwne ruszty czarny mat płyta">
-                <div class="availability"><span class="availability-dot dot-promo"></span> Promocja dnia</div>
-                <div class="product-card-image">
-                    <a href="images/promocje/Płyta_gazowa_Bosch_Serie_6_PPQ7AAI40_FlameSelect_Palnik_Wok_Zeliwne_ruszty_Czarn.jpg" class="zoom-link" data-full="images/promocje/Płyta_gazowa_Bosch_Serie_6_PPQ7AAI40_FlameSelect_Palnik_Wok_Zeliwne_ruszty_Czarn.jpg" data-caption="Płyta gazowa Bosch Serie 6 PPQ7AAI40 FlameSelect Palnik Wok Żeliwne ruszty Czarny mat" title="Kliknij aby powiekszyc">
-                        <img src="images/promocje/Płyta_gazowa_Bosch_Serie_6_PPQ7AAI40_FlameSelect_Palnik_Wok_Zeliwne_ruszty_Czarn.jpg" alt="Płyta gazowa Bosch Serie 6 PPQ7AAI40 FlameSelect Palnik Wok Żeliwne ruszty Czarny mat" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
-                    </a>
-                </div>
-                <h3>Płyta gazowa Bosch Serie 6 PPQ7AAI40 FlameSelect Palnik Wok Żeliwne ruszty Czarny mat</h3>
-                <p class="opis">Płyta gazowa Bosch Serie 6 PPQ7AAI40 FlameSelect Palnik Wok Żeliwne ruszty Czarny mat</p>
-                <div class="cena-wrap"><span class="cena">2140 zł</span></div>
-            </div>
-            <div class="product-card" data-title="zmywarka siemens iq300 sn63hx16ve variospeed plus szuflada vario3 infolight 60cm" data-keywords="zmywarka siemens iq300 sn63hx16ve variospeed plus szuflada vario3 infolight 60cm zmywarka">
-                <div class="availability"><span class="availability-dot dot-promo"></span> Promocja dnia</div>
-                <div class="product-card-image">
-                    <a href="images/promocje/Zmywarka_Siemens_iQ300_SN63HX16VE_varioSpeed_Plus_Szuflada_vario3_infoLight_60cm.jpg" class="zoom-link" data-full="images/promocje/Zmywarka_Siemens_iQ300_SN63HX16VE_varioSpeed_Plus_Szuflada_vario3_infoLight_60cm.jpg" data-caption="Zmywarka Siemens iQ300 SN63HX16VE varioSpeed Plus Szuflada vario3 infoLight 60cm" title="Kliknij aby powiekszyc">
-                        <img src="images/promocje/Zmywarka_Siemens_iQ300_SN63HX16VE_varioSpeed_Plus_Szuflada_vario3_infoLight_60cm.jpg" alt="Zmywarka Siemens iQ300 SN63HX16VE varioSpeed Plus Szuflada vario3 infoLight 60cm" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
-                    </a>
-                </div>
-                <h3>Zmywarka Siemens iQ300 SN63HX16VE varioSpeed Plus Szuflada vario3 infoLight 60cm</h3>
-                <p class="opis">Zmywarka Siemens iQ300 SN63HX16VE varioSpeed Plus Szuflada vario3 infoLight 60cm</p>
-                <div class="cena-wrap"><span class="cena">2220 zł</span></div>
-            </div>
-            <div class="product-card" data-title="lodówka candy fresco cncq2t620ew" data-keywords="lodówka candy fresco cncq2t620ew lodówka">
-                <div class="availability"><span class="availability-dot dot-promo"></span> Promocja dnia</div>
-                <div class="product-card-image">
-                    <a href="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2024/7/15/b6f4b8e0584d5c7d7469a80236070f61/jpg/gtpoland/listing_thumb/lodowka-candy-fresco-cncq2t620ew-glowne.jpg" class="zoom-link" data-full="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2024/7/15/b6f4b8e0584d5c7d7469a80236070f61/jpg/gtpoland/listing_thumb/lodowka-candy-fresco-cncq2t620ew-glowne.jpg" data-caption="Lodówka Candy Fresco CNCQ2T620EW" title="Kliknij aby powiekszyc">
-                        <img src="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2024/7/15/b6f4b8e0584d5c7d7469a80236070f61/jpg/gtpoland/listing_thumb/lodowka-candy-fresco-cncq2t620ew-glowne.jpg" alt="Lodówka Candy Fresco CNCQ2T620EW" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
-                    </a>
-                </div>
-                <h3>Lodówka Candy Fresco CNCQ2T620EW</h3>
-                <p class="opis">Lodówka Candy Fresco CNCQ2T620EW</p>
-                <div class="cena-wrap"><span class="cena">1912 zł</span></div>
-            </div>
-            <div class="product-card" data-title="lodówka candy ecnbqt3518e" data-keywords="lodówka candy ecnbqt3518e lodówka">
-                <div class="availability"><span class="availability-dot dot-promo"></span> Promocja dnia</div>
-                <div class="product-card-image">
-                    <a href="images/promocje/Lodowka_Candy_ECNBQT3518E.jpg" class="zoom-link" data-full="images/promocje/Lodowka_Candy_ECNBQT3518E.jpg" data-caption="Lodówka Candy ECNBQT3518E" title="Kliknij aby powiekszyc">
-                        <img src="images/promocje/Lodowka_Candy_ECNBQT3518E.jpg" alt="Lodówka Candy ECNBQT3518E" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
-                    </a>
-                </div>
-                <h3>Lodówka Candy ECNBQT3518E</h3>
-                <p class="opis">Lodówka Candy ECNBQT3518E</p>
-                <div class="cena-wrap"><span class="cena">1951 zł</span></div>
-            </div>
-            <div class="product-card" data-title="piekarnik elektryczny z funkcją pary candy bake 600 ca6 np3at3ehtb easysteam airfry termoobieg czarne szkło" data-keywords="piekarnik elektryczny z funkcją pary candy bake 600 ca6 np3at3ehtb easysteam airfry termoobieg czarne szkło piekarnik">
-                <div class="availability"><span class="availability-dot dot-promo"></span> Promocja dnia</div>
-                <div class="product-card-image">
-                    <a href="images/promocje/Piekarnik_elektryczny_z_funkcja_pary_Candy_Bake_600_CA6_NP3AT3EHTB_EasySteam_Air.jpg" class="zoom-link" data-full="images/promocje/Piekarnik_elektryczny_z_funkcja_pary_Candy_Bake_600_CA6_NP3AT3EHTB_EasySteam_Air.jpg" data-caption="Piekarnik elektryczny z funkcją pary Candy Bake 600 CA6 NP3AT3EHTB EasySteam AirFry Termoobieg Czarne szkło" title="Kliknij aby powiekszyc">
-                        <img src="images/promocje/Piekarnik_elektryczny_z_funkcja_pary_Candy_Bake_600_CA6_NP3AT3EHTB_EasySteam_Air.jpg" alt="Piekarnik elektryczny z funkcją pary Candy Bake 600 CA6 NP3AT3EHTB EasySteam AirFry Termoobieg Czarne szkło" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
-                    </a>
-                </div>
-                <h3>Piekarnik elektryczny z funkcją pary Candy Bake 600 CA6 NP3AT3EHTB EasySteam AirFry Termoobieg Czarne szkło</h3>
-                <p class="opis">Piekarnik elektryczny z funkcją pary Candy Bake 600 CA6 NP3AT3EHTB EasySteam AirFry Termoobieg Czarne szkło</p>
-                <div class="cena-wrap"><span class="cena">1354 zł</span></div>
-            </div>
-            <div class="product-card" data-title="płyta indukcyjna candy cook 600 ci642ca" data-keywords="płyta indukcyjna candy cook 600 ci642ca płyta">
-                <div class="availability"><span class="availability-dot dot-promo"></span> Promocja dnia</div>
-                <div class="product-card-image">
-                    <a href="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2025/11/17/444fca32c4bf403c2420945fcae00215/jpg/gtpoland/listing_thumb/plyta-indukcyjna-candy-cook-600-ci642ca-glowne.jpg" class="zoom-link" data-full="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2025/11/17/444fca32c4bf403c2420945fcae00215/jpg/gtpoland/listing_thumb/plyta-indukcyjna-candy-cook-600-ci642ca-glowne.jpg" data-caption="Płyta indukcyjna Candy Cook 600 CI642CA" title="Kliknij aby powiekszyc">
-                        <img src="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2025/11/17/444fca32c4bf403c2420945fcae00215/jpg/gtpoland/listing_thumb/plyta-indukcyjna-candy-cook-600-ci642ca-glowne.jpg" alt="Płyta indukcyjna Candy Cook 600 CI642CA" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
-                    </a>
-                </div>
-                <h3>Płyta indukcyjna Candy Cook 600 CI642CA</h3>
-                <p class="opis">Płyta indukcyjna Candy Cook 600 CI642CA</p>
-                <div class="cena-wrap"><span class="cena">830 zł</span></div>
-            </div>
-            <div class="product-card" data-title="pralka candy prowash 300 gd 410b8-s 10kg 1400obr. proactive system ai silent motion" data-keywords="pralka candy prowash 300 gd 410b8-s 10kg 1400obr. proactive system ai silent motion pralka">
-                <div class="availability"><span class="availability-dot dot-promo"></span> Promocja dnia</div>
-                <div class="product-card-image">
-                    <a href="images/promocje/Pralka_Candy_ProWash_300_GD_410B8-S_10kg_1400obr_ProActive_System_AI_Silent_Moti.jpg" class="zoom-link" data-full="images/promocje/Pralka_Candy_ProWash_300_GD_410B8-S_10kg_1400obr_ProActive_System_AI_Silent_Moti.jpg" data-caption="Pralka Candy ProWash 300 GD 410B8-S 10kg 1400obr. ProActive System AI Silent Motion" title="Kliknij aby powiekszyc">
-                        <img src="images/promocje/Pralka_Candy_ProWash_300_GD_410B8-S_10kg_1400obr_ProActive_System_AI_Silent_Moti.jpg" alt="Pralka Candy ProWash 300 GD 410B8-S 10kg 1400obr. ProActive System AI Silent Motion" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
-                    </a>
-                </div>
-                <h3>Pralka Candy ProWash 300 GD 410B8-S 10kg 1400obr. ProActive System AI Silent Motion</h3>
-                <p class="opis">Pralka Candy ProWash 300 GD 410B8-S 10kg 1400obr. ProActive System AI Silent Motion</p>
-                <div class="cena-wrap"><span class="cena">1340 zł</span></div>
-            </div>
-            <div class="product-card" data-title="suszarka candy gd 8n1b-s 8kg pompa ciepła ai smart move" data-keywords="suszarka candy gd 8n1b-s 8kg pompa ciepła ai smart move suszarka">
-                <div class="availability"><span class="availability-dot dot-promo"></span> Promocja dnia</div>
-                <div class="product-card-image">
-                    <a href="images/promocje/Suszarka_Candy_GD_8N1B-S_8kg_Pompa_ciepła_AI_Smart_Move.jpg" class="zoom-link" data-full="images/promocje/Suszarka_Candy_GD_8N1B-S_8kg_Pompa_ciepła_AI_Smart_Move.jpg" data-caption="Suszarka Candy GD 8N1B-S 8kg Pompa ciepła AI Smart Move" title="Kliknij aby powiekszyc">
-                        <img src="images/promocje/Suszarka_Candy_GD_8N1B-S_8kg_Pompa_ciepła_AI_Smart_Move.jpg" alt="Suszarka Candy GD 8N1B-S 8kg Pompa ciepła AI Smart Move" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
-                    </a>
-                </div>
-                <h3>Suszarka Candy GD 8N1B-S 8kg Pompa ciepła AI Smart Move</h3>
-                <p class="opis">Suszarka Candy GD 8N1B-S 8kg Pompa ciepła AI Smart Move</p>
-                <div class="cena-wrap"><span class="cena">1761 zł</span></div>
-            </div>
-            <div class="product-card" data-title="zmywarka samsung dw60dg790i00 waterjet clean ai flex load autootwieranie zawiasy ślizgowe 60cm" data-keywords="zmywarka samsung dw60dg790i00 waterjet clean ai flex load autootwieranie zawiasy ślizgowe 60cm zmywarka">
-                <div class="availability"><span class="availability-dot dot-promo"></span> Promocja dnia</div>
-                <div class="product-card-image">
-                    <a href="images/promocje/Zmywarka_Samsung_DW60DG790I00_WaterJet_Clean_AI_Flex_Load_Autootwieranie_Zawiasy.jpg" class="zoom-link" data-full="images/promocje/Zmywarka_Samsung_DW60DG790I00_WaterJet_Clean_AI_Flex_Load_Autootwieranie_Zawiasy.jpg" data-caption="Zmywarka Samsung DW60DG790I00 WaterJet Clean AI Flex Load Autootwieranie Zawiasy ślizgowe 60cm" title="Kliknij aby powiekszyc">
-                        <img src="images/promocje/Zmywarka_Samsung_DW60DG790I00_WaterJet_Clean_AI_Flex_Load_Autootwieranie_Zawiasy.jpg" alt="Zmywarka Samsung DW60DG790I00 WaterJet Clean AI Flex Load Autootwieranie Zawiasy ślizgowe 60cm" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
-                    </a>
-                </div>
-                <h3>Zmywarka Samsung DW60DG790I00 WaterJet Clean AI Flex Load Autootwieranie Zawiasy ślizgowe 60cm</h3>
-                <p class="opis">Zmywarka Samsung DW60DG790I00 WaterJet Clean AI Flex Load Autootwieranie Zawiasy ślizgowe 60cm</p>
-                <div class="cena-wrap"><span class="cena">3235 zł</span></div>
-            </div>
-            <div class="product-card" data-title="lodówka side by side samsung rs57dg410eb4eo" data-keywords="lodówka side by side samsung rs57dg410eb4eo lodówka">
-                <div class="availability"><span class="availability-dot dot-promo"></span> Promocja dnia</div>
-                <div class="product-card-image">
-                    <a href="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2026/1/14/824b37a2815922f83de52160f10e495d/jpg/gtpoland/listing_thumb/lodowka-side-by-side-samsung-rs57dg410eb4eo-glowne.jpg" class="zoom-link" data-full="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2026/1/14/824b37a2815922f83de52160f10e495d/jpg/gtpoland/listing_thumb/lodowka-side-by-side-samsung-rs57dg410eb4eo-glowne.jpg" data-caption="Lodówka side by side Samsung RS57DG410EB4EO" title="Kliknij aby powiekszyc">
-                        <img src="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2026/1/14/824b37a2815922f83de52160f10e495d/jpg/gtpoland/listing_thumb/lodowka-side-by-side-samsung-rs57dg410eb4eo-glowne.jpg" alt="Lodówka side by side Samsung RS57DG410EB4EO" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
-                    </a>
-                </div>
-                <h3>Lodówka side by side Samsung RS57DG410EB4EO</h3>
-                <p class="opis">Lodówka side by side Samsung RS57DG410EB4EO</p>
-                <div class="cena-wrap"><span class="cena">3542 zł</span></div>
-            </div>
-            <div class="product-card" data-title="lodówka side by side beko b3rgna354hxbr nofrost harvestfresh komora zero 203,5cm ciemny inox" data-keywords="lodówka side by side beko b3rgna354hxbr nofrost harvestfresh komora zero 203,5cm ciemny inox lodówka">
-                <div class="availability"><span class="availability-dot dot-promo"></span> Promocja dnia</div>
-                <div class="product-card-image">
-                    <a href="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2026/5/21/c3b7b551f0fc1c17011b76ee69436bf9/jpg/gtpoland/listing_thumb/lodowka-side-by-side-beko-b3rgna354hxbr-glowne.jpg" class="zoom-link" data-full="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2026/5/21/c3b7b551f0fc1c17011b76ee69436bf9/jpg/gtpoland/listing_thumb/lodowka-side-by-side-beko-b3rgna354hxbr-glowne.jpg" data-caption="Lodówka side by side Beko B3RGNA354HXBR NoFrost HarvestFresh Komora zero 203,5cm Ciemny inox" title="Kliknij aby powiekszyc">
-                        <img src="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2026/5/21/c3b7b551f0fc1c17011b76ee69436bf9/jpg/gtpoland/listing_thumb/lodowka-side-by-side-beko-b3rgna354hxbr-glowne.jpg" alt="Lodówka side by side Beko B3RGNA354HXBR NoFrost HarvestFresh Komora zero 203,5cm Ciemny inox" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
-                    </a>
-                </div>
-                <h3>Lodówka side by side Beko B3RGNA354HXBR NoFrost HarvestFresh Komora zero 203,5cm Ciemny inox</h3>
-                <p class="opis">Lodówka side by side Beko B3RGNA354HXBR NoFrost HarvestFresh Komora zero 203,5cm Ciemny inox</p>
-                <div class="cena-wrap"><span class="cena">2499 zł</span></div>
-            </div>
-            <div class="product-card" data-title="zamrażarka skrzyniowa beko cf200ewn" data-keywords="zamrażarka skrzyniowa beko cf200ewn zamrażarka">
-                <div class="availability"><span class="availability-dot dot-promo"></span> Promocja dnia</div>
-                <div class="product-card-image">
-                    <a href="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2024/3/20/b408a8dbfbe60ed9a3a359724dc738b7/jpg/gtpoland/listing_thumb/zamrazarka-skrzyniowa-beko-cf200ewn-glowne.jpg" class="zoom-link" data-full="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2024/3/20/b408a8dbfbe60ed9a3a359724dc738b7/jpg/gtpoland/listing_thumb/zamrazarka-skrzyniowa-beko-cf200ewn-glowne.jpg" data-caption="Zamrażarka skrzyniowa Beko CF200EWN" title="Kliknij aby powiekszyc">
-                        <img src="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2024/3/20/b408a8dbfbe60ed9a3a359724dc738b7/jpg/gtpoland/listing_thumb/zamrazarka-skrzyniowa-beko-cf200ewn-glowne.jpg" alt="Zamrażarka skrzyniowa Beko CF200EWN" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
-                    </a>
-                </div>
-                <h3>Zamrażarka skrzyniowa Beko CF200EWN</h3>
-                <p class="opis">Zamrażarka skrzyniowa Beko CF200EWN</p>
-                <div class="cena-wrap"><span class="cena">1139 zł</span></div>
-            </div>
-            <div class="product-card" data-title="zmywarka beko bdis35030 quick&shine autootwieranie ledspot 45cm" data-keywords="zmywarka beko bdis35030 quick&shine autootwieranie ledspot 45cm zmywarka">
-                <div class="availability"><span class="availability-dot dot-promo"></span> Promocja dnia</div>
-                <div class="product-card-image">
-                    <a href="images/promocje/Zmywarka_Beko_BDIS35030_Quick_Shine_Autootwieranie_LedSpot_45cm.jpg" class="zoom-link" data-full="images/promocje/Zmywarka_Beko_BDIS35030_Quick_Shine_Autootwieranie_LedSpot_45cm.jpg" data-caption="Zmywarka Beko BDIS35030 Quick&Shine Autootwieranie LedSpot 45cm" title="Kliknij aby powiekszyc">
-                        <img src="images/promocje/Zmywarka_Beko_BDIS35030_Quick_Shine_Autootwieranie_LedSpot_45cm.jpg" alt="Zmywarka Beko BDIS35030 Quick&Shine Autootwieranie LedSpot 45cm" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
-                    </a>
-                </div>
-                <h3>Zmywarka Beko BDIS35030 Quick&Shine Autootwieranie LedSpot 45cm</h3>
-                <p class="opis">Zmywarka Beko BDIS35030 Quick&Shine Autootwieranie LedSpot 45cm</p>
-                <div class="cena-wrap"><span class="cena">1599 zł</span></div>
-            </div>
-            <div class="product-card" data-title="pralka beko tb621dbespl 6kg 1200obr. energyspin stainexpert" data-keywords="pralka beko tb621dbespl 6kg 1200obr. energyspin stainexpert pralka">
-                <div class="availability"><span class="availability-dot dot-promo"></span> Promocja dnia</div>
-                <div class="product-card-image">
-                    <a href="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2026/5/14/06829c60883d417966fd4ec78b68373d/jpg/gtpoland/listing_thumb/pralka-beko-tb621dbespl-glowne.jpg" class="zoom-link" data-full="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2026/5/14/06829c60883d417966fd4ec78b68373d/jpg/gtpoland/listing_thumb/pralka-beko-tb621dbespl-glowne.jpg" data-caption="Pralka Beko TB621DBESPL 6kg 1200obr. EnergySpin StainExpert" title="Kliknij aby powiekszyc">
-                        <img src="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2026/5/14/06829c60883d417966fd4ec78b68373d/jpg/gtpoland/listing_thumb/pralka-beko-tb621dbespl-glowne.jpg" alt="Pralka Beko TB621DBESPL 6kg 1200obr. EnergySpin StainExpert" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
-                    </a>
-                </div>
-                <h3>Pralka Beko TB621DBESPL 6kg 1200obr. EnergySpin StainExpert</h3>
-                <p class="opis">Pralka Beko TB621DBESPL 6kg 1200obr. EnergySpin StainExpert</p>
-                <div class="cena-wrap"><span class="cena">1559 zł</span></div>
-            </div>
-            <div class="product-card" data-title="pralka beko bm3wfsu37015war 7kg 1000obr. optisense steamcure slim" data-keywords="pralka beko bm3wfsu37015war 7kg 1000obr. optisense steamcure slim pralka">
-                <div class="availability"><span class="availability-dot dot-promo"></span> Promocja dnia</div>
-                <div class="product-card-image">
-                    <a href="images/promocje/Pralka_Beko_BM3WFSU37015WAR_7kg_1000obr_OptiSense_SteamCure_Slim.jpg" class="zoom-link" data-full="images/promocje/Pralka_Beko_BM3WFSU37015WAR_7kg_1000obr_OptiSense_SteamCure_Slim.jpg" data-caption="Pralka Beko BM3WFSU37015WAR 7kg 1000obr. OptiSense SteamCure Slim" title="Kliknij aby powiekszyc">
-                        <img src="images/promocje/Pralka_Beko_BM3WFSU37015WAR_7kg_1000obr_OptiSense_SteamCure_Slim.jpg" alt="Pralka Beko BM3WFSU37015WAR 7kg 1000obr. OptiSense SteamCure Slim" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
-                    </a>
-                </div>
-                <h3>Pralka Beko BM3WFSU37015WAR 7kg 1000obr. OptiSense SteamCure Slim</h3>
-                <p class="opis">Pralka Beko BM3WFSU37015WAR 7kg 1000obr. OptiSense SteamCure Slim</p>
+                <h3>Kuchenka mikrofalowa Beko BMGB31443W</h3>
+                <p class="opis">Kuchenka mikrofalowa Beko BMGB31443W</p>
                 <div class="cena-wrap"><span class="cena">1399 zł</span></div>
+                <button type="button" class="btn-add-cart"
+                    data-add-to-cart
+                    data-title="Kuchenka mikrofalowa Beko BMGB31443W"
+                    data-price="1399 zł"
+                    data-image="images/promocje/Kuchenka_mikrofalowa_Beko_BMGB31443W.jpg">
+                    <i class="fa-solid fa-cart-plus"></i> Dodaj do koszyka
+                </button>
             </div>
-            <div class="product-card" data-title="zmywarka beko dvn05320s quick&shine 60cm srebrny" data-keywords="zmywarka beko dvn05320s quick&shine 60cm srebrny zmywarka">
+            <div class="product-card" data-title="zmywarka beko bdfs15021b hygieneintense quick&amp;shine regulacja koszy 45cm" data-keywords="zmywarka beko bdfs15021b hygieneintense quick&amp;shine regulacja koszy 45cm beko">
                 <div class="availability"><span class="availability-dot dot-promo"></span> Promocja dnia</div>
                 <div class="product-card-image">
-                    <a href="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2024/2/9/8941218a9fe5f56bd5546717039217f5/jpg/gtpoland/listing_thumb/7698763977_LO1_20200729_020548.jpg" class="zoom-link" data-full="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2024/2/9/8941218a9fe5f56bd5546717039217f5/jpg/gtpoland/listing_thumb/7698763977_LO1_20200729_020548.jpg" data-caption="Zmywarka Beko DVN05320S Quick&Shine 60cm Srebrny" title="Kliknij aby powiekszyc">
-                        <img src="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2024/2/9/8941218a9fe5f56bd5546717039217f5/jpg/gtpoland/listing_thumb/7698763977_LO1_20200729_020548.jpg" alt="Zmywarka Beko DVN05320S Quick&Shine 60cm Srebrny" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
+                    <a href="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2025/3/10/f48c910c3499f553f56c6c534cd82058/jpg/gtpoland/listing_thumb/zmywarka-beko-bdfs15021b-glowne.jpg" class="zoom-link" data-full="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2025/3/10/f48c910c3499f553f56c6c534cd82058/jpg/gtpoland/listing_thumb/zmywarka-beko-bdfs15021b-glowne.jpg" data-caption="Zmywarka Beko BDFS15021B HygieneIntense Quick&amp;Shine Regulacja koszy 45cm" title="Kliknij aby powiększyć">
+                        <img src="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2025/3/10/f48c910c3499f553f56c6c534cd82058/jpg/gtpoland/listing_thumb/zmywarka-beko-bdfs15021b-glowne.jpg" alt="Zmywarka Beko BDFS15021B HygieneIntense Quick&amp;Shine Regulacja koszy 45cm" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
                     </a>
                 </div>
-                <h3>Zmywarka Beko DVN05320S Quick&Shine 60cm Srebrny</h3>
-                <p class="opis">Zmywarka Beko DVN05320S Quick&Shine 60cm Srebrny</p>
-                <div class="cena-wrap"><span class="cena">1299 zł</span></div>
+                <h3>Zmywarka Beko BDFS15021B HygieneIntense Quick&amp;Shine Regulacja koszy 45cm</h3>
+                <p class="opis">Zmywarka Beko BDFS15021B HygieneIntense Quick&amp;Shine Regulacja koszy 45cm</p>
+                <div class="cena-wrap"><span class="cena">1279 zł</span></div>
+                <button type="button" class="btn-add-cart"
+                    data-add-to-cart
+                    data-title="Zmywarka Beko BDFS15021B HygieneIntense Quick&amp;Shine Regulacja koszy 45cm"
+                    data-price="1279 zł"
+                    data-image="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2025/3/10/f48c910c3499f553f56c6c534cd82058/jpg/gtpoland/listing_thumb/zmywarka-beko-bdfs15021b-glowne.jpg">
+                    <i class="fa-solid fa-cart-plus"></i> Dodaj do koszyka
+                </button>
             </div>
-            <div class="product-card" data-title="płyta indukcyjna beko hii64200fmtw" data-keywords="płyta indukcyjna beko hii64200fmtw płyta">
+            <div class="product-card" data-title="lodówka beko b5rcna345hxb2" data-keywords="lodówka beko b5rcna345hxb2 beko">
                 <div class="availability"><span class="availability-dot dot-promo"></span> Promocja dnia</div>
                 <div class="product-card-image">
-                    <a href="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2024/2/9/cdde73fdaf8d429368f5422160bf07fc/jpg/gtpoland/listing_thumb/P%C5%82yta-Indukcyjna-Beko-HII64200FMTW.jpg" class="zoom-link" data-full="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2024/2/9/cdde73fdaf8d429368f5422160bf07fc/jpg/gtpoland/listing_thumb/P%C5%82yta-Indukcyjna-Beko-HII64200FMTW.jpg" data-caption="Płyta indukcyjna Beko HII64200FMTW" title="Kliknij aby powiekszyc">
-                        <img src="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2024/2/9/cdde73fdaf8d429368f5422160bf07fc/jpg/gtpoland/listing_thumb/P%C5%82yta-Indukcyjna-Beko-HII64200FMTW.jpg" alt="Płyta indukcyjna Beko HII64200FMTW" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
+                    <a href="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2025/5/15/f4d84dcd74e7afdbd40d5d5294f210ff/jpg/gtpoland/listing_thumb/lodowka-beko-b5rcna345hxb2-glowne.jpg" class="zoom-link" data-full="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2025/5/15/f4d84dcd74e7afdbd40d5d5294f210ff/jpg/gtpoland/listing_thumb/lodowka-beko-b5rcna345hxb2-glowne.jpg" data-caption="Lodówka Beko B5RCNA345HXB2" title="Kliknij aby powiększyć">
+                        <img src="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2025/5/15/f4d84dcd74e7afdbd40d5d5294f210ff/jpg/gtpoland/listing_thumb/lodowka-beko-b5rcna345hxb2-glowne.jpg" alt="Lodówka Beko B5RCNA345HXB2" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
                     </a>
                 </div>
-                <h3>Płyta indukcyjna Beko HII64200FMTW</h3>
-                <p class="opis">Płyta indukcyjna Beko HII64200FMTW</p>
-                <div class="cena-wrap"><span class="cena">1529 zł</span></div>
+                <h3>Lodówka Beko B5RCNA345HXB2</h3>
+                <p class="opis">Lodówka Beko B5RCNA345HXB2</p>
+                <div class="cena-wrap"><span class="cena">1699 zł</span></div>
+                <button type="button" class="btn-add-cart"
+                    data-add-to-cart
+                    data-title="Lodówka Beko B5RCNA345HXB2"
+                    data-price="1699 zł"
+                    data-image="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2025/5/15/f4d84dcd74e7afdbd40d5d5294f210ff/jpg/gtpoland/listing_thumb/lodowka-beko-b5rcna345hxb2-glowne.jpg">
+                    <i class="fa-solid fa-cart-plus"></i> Dodaj do koszyka
+                </button>
             </div>
-            <div class="product-card" data-title="piekarnik elektryczny beko bbim14300wms aeroperfect pieczenie 3d grill biały" data-keywords="piekarnik elektryczny beko bbim14300wms aeroperfect pieczenie 3d grill biały piekarnik">
+            <div class="product-card" data-title="kuchnia gazowo-elektryczna beko fse52135dcrsn retro" data-keywords="kuchnia gazowo-elektryczna beko fse52135dcrsn retro beko">
                 <div class="availability"><span class="availability-dot dot-promo"></span> Promocja dnia</div>
                 <div class="product-card-image">
-                    <a href="images/promocje/Piekarnik_elektryczny_Beko_BBIM14300WMS_AeroPerfect_Pieczenie_3D_Grill_Biały.jpg" class="zoom-link" data-full="images/promocje/Piekarnik_elektryczny_Beko_BBIM14300WMS_AeroPerfect_Pieczenie_3D_Grill_Biały.jpg" data-caption="Piekarnik elektryczny Beko BBIM14300WMS AeroPerfect Pieczenie 3D Grill Biały" title="Kliknij aby powiekszyc">
-                        <img src="images/promocje/Piekarnik_elektryczny_Beko_BBIM14300WMS_AeroPerfect_Pieczenie_3D_Grill_Biały.jpg" alt="Piekarnik elektryczny Beko BBIM14300WMS AeroPerfect Pieczenie 3D Grill Biały" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
+                    <a href="images/promocje/Kuchnia_gazowo-elektryczna_Beko_FSE52135DCRSN_Retro.jpg" class="zoom-link" data-full="images/promocje/Kuchnia_gazowo-elektryczna_Beko_FSE52135DCRSN_Retro.jpg" data-caption="Kuchnia gazowo-elektryczna Beko FSE52135DCRSN Retro" title="Kliknij aby powiększyć">
+                        <img src="images/promocje/Kuchnia_gazowo-elektryczna_Beko_FSE52135DCRSN_Retro.jpg" alt="Kuchnia gazowo-elektryczna Beko FSE52135DCRSN Retro" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
                     </a>
                 </div>
-                <h3>Piekarnik elektryczny Beko BBIM14300WMS AeroPerfect Pieczenie 3D Grill Biały</h3>
-                <p class="opis">Piekarnik elektryczny Beko BBIM14300WMS AeroPerfect Pieczenie 3D Grill Biały</p>
-                <div class="cena-wrap"><span class="cena">1269 zł</span></div>
+                <h3>Kuchnia gazowo-elektryczna Beko FSE52135DCRSN Retro</h3>
+                <p class="opis">Kuchnia gazowo-elektryczna Beko FSE52135DCRSN Retro</p>
+                <div class="cena-wrap"><span class="cena">1249 zł</span></div>
+                <button type="button" class="btn-add-cart"
+                    data-add-to-cart
+                    data-title="Kuchnia gazowo-elektryczna Beko FSE52135DCRSN Retro"
+                    data-price="1249 zł"
+                    data-image="images/promocje/Kuchnia_gazowo-elektryczna_Beko_FSE52135DCRSN_Retro.jpg">
+                    <i class="fa-solid fa-cart-plus"></i> Dodaj do koszyka
+                </button>
             </div>
-            <div class="product-card" data-title="okap kominowy beko hca62320wh 305m3/h oświetlenie led 60cm biały" data-keywords="okap kominowy beko hca62320wh 305m3/h oświetlenie led 60cm biały okap">
+            <div class="product-card" data-title="lodówka beko b1rcso264s komora świeżości minfrost 177cm srebrna" data-keywords="lodówka beko b1rcso264s komora świeżości minfrost 177cm srebrna beko">
                 <div class="availability"><span class="availability-dot dot-promo"></span> Promocja dnia</div>
                 <div class="product-card-image">
-                    <a href="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2025/5/29/607d21ff5c5850a6b56d5c753c76209d/jpg/gtpoland/listing_thumb/okap-kominowy-beko-hca62320wh-glowne.jpg" class="zoom-link" data-full="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2025/5/29/607d21ff5c5850a6b56d5c753c76209d/jpg/gtpoland/listing_thumb/okap-kominowy-beko-hca62320wh-glowne.jpg" data-caption="Okap kominowy Beko HCA62320WH 305m3/h Oświetlenie LED 60cm Biały" title="Kliknij aby powiekszyc">
-                        <img src="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2025/5/29/607d21ff5c5850a6b56d5c753c76209d/jpg/gtpoland/listing_thumb/okap-kominowy-beko-hca62320wh-glowne.jpg" alt="Okap kominowy Beko HCA62320WH 305m3/h Oświetlenie LED 60cm Biały" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
+                    <a href="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2026/7/31/78dfbf885f2e57e164b8a775be5d5d2b/jpg/gtpoland/listing_thumb/lodowka-beko-b1rcso264s-glowne.jpg" class="zoom-link" data-full="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2026/7/31/78dfbf885f2e57e164b8a775be5d5d2b/jpg/gtpoland/listing_thumb/lodowka-beko-b1rcso264s-glowne.jpg" data-caption="Lodówka Beko B1RCSO264S Komora świeżości MinFrost 177cm Srebrna" title="Kliknij aby powiększyć">
+                        <img src="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2026/7/31/78dfbf885f2e57e164b8a775be5d5d2b/jpg/gtpoland/listing_thumb/lodowka-beko-b1rcso264s-glowne.jpg" alt="Lodówka Beko B1RCSO264S Komora świeżości MinFrost 177cm Srebrna" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
                     </a>
                 </div>
-                <h3>Okap kominowy Beko HCA62320WH 305m3/h Oświetlenie LED 60cm Biały</h3>
-                <p class="opis">Okap kominowy Beko HCA62320WH 305m3/h Oświetlenie LED 60cm Biały</p>
-                <div class="cena-wrap"><span class="cena">889 zł</span></div>
+                <h3>Lodówka Beko B1RCSO264S Komora świeżości MinFrost 177cm Srebrna</h3>
+                <p class="opis">Lodówka Beko B1RCSO264S Komora świeżości MinFrost 177cm Srebrna</p>
+                <div class="cena-wrap"><span class="cena">1399 zł</span></div>
+                <button type="button" class="btn-add-cart"
+                    data-add-to-cart
+                    data-title="Lodówka Beko B1RCSO264S Komora świeżości MinFrost 177cm Srebrna"
+                    data-price="1399 zł"
+                    data-image="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2026/7/31/78dfbf885f2e57e164b8a775be5d5d2b/jpg/gtpoland/listing_thumb/lodowka-beko-b1rcso264s-glowne.jpg">
+                    <i class="fa-solid fa-cart-plus"></i> Dodaj do koszyka
+                </button>
             </div>
-            <div class="product-card" data-title="uchwyt do telewizora king mount kg-1035 alabama" data-keywords="uchwyt do telewizora king mount kg-1035 alabama uchwyt">
+            <div class="product-card" data-title="piekarnik elektryczny amica eb7541db fine grill termoobieg" data-keywords="piekarnik elektryczny amica eb7541db fine grill termoobieg amica">
                 <div class="availability"><span class="availability-dot dot-promo"></span> Promocja dnia</div>
                 <div class="product-card-image">
-                    <a href="images/promocje/Uchwyt_do_telewizora_King_Mount_KG-1035_Alabama.jpg" class="zoom-link" data-full="images/promocje/Uchwyt_do_telewizora_King_Mount_KG-1035_Alabama.jpg" data-caption="Uchwyt do telewizora King Mount KG-1035 Alabama" title="Kliknij aby powiekszyc">
-                        <img src="images/promocje/Uchwyt_do_telewizora_King_Mount_KG-1035_Alabama.jpg" alt="Uchwyt do telewizora King Mount KG-1035 Alabama" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
+                    <a href="images/promocje/Piekarnik_elektryczny_Amica_EB7541DB_FINE_Grill_Termoobieg.png" class="zoom-link" data-full="images/promocje/Piekarnik_elektryczny_Amica_EB7541DB_FINE_Grill_Termoobieg.png" data-caption="Piekarnik elektryczny Amica EB7541DB FINE Grill Termoobieg" title="Kliknij aby powiększyć">
+                        <img src="images/promocje/Piekarnik_elektryczny_Amica_EB7541DB_FINE_Grill_Termoobieg.png" alt="Piekarnik elektryczny Amica EB7541DB FINE Grill Termoobieg" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
                     </a>
                 </div>
-                <h3>Uchwyt do telewizora King Mount KG-1035 Alabama</h3>
-                <p class="opis">Uchwyt do telewizora King Mount KG-1035 Alabama</p>
-                <div class="cena-wrap"><span class="cena">127 zł</span></div>
+                <h3>Piekarnik elektryczny Amica EB7541DB FINE Grill Termoobieg</h3>
+                <p class="opis">Piekarnik elektryczny Amica EB7541DB FINE Grill Termoobieg</p>
+                <div class="cena-wrap"><span class="cena">849 zł</span></div>
+                <button type="button" class="btn-add-cart"
+                    data-add-to-cart
+                    data-title="Piekarnik elektryczny Amica EB7541DB FINE Grill Termoobieg"
+                    data-price="849 zł"
+                    data-image="images/promocje/Piekarnik_elektryczny_Amica_EB7541DB_FINE_Grill_Termoobieg.png">
+                    <i class="fa-solid fa-cart-plus"></i> Dodaj do koszyka
+                </button>
             </div>
-            <div class="product-card" data-title="antena zewnętrzna dvb-t telkom-telmor digit activa 5g protected biała" data-keywords="antena zewnętrzna dvb-t telkom-telmor digit activa 5g protected biała antena">
+            <div class="product-card" data-title="lodówka gorenje nrk418ees4 nofrost szybkie mrożenie 197,7cm srebrna" data-keywords="lodówka gorenje nrk418ees4 nofrost szybkie mrożenie 197,7cm srebrna gorenje">
                 <div class="availability"><span class="availability-dot dot-promo"></span> Promocja dnia</div>
                 <div class="product-card-image">
-                    <a href="images/promocje/Antena_zewnetrzna_DVB-T_Telkom-Telmor_Digit_Activa_5G_Protected_Biała.jpg" class="zoom-link" data-full="images/promocje/Antena_zewnetrzna_DVB-T_Telkom-Telmor_Digit_Activa_5G_Protected_Biała.jpg" data-caption="Antena zewnętrzna DVB-T Telkom-Telmor Digit Activa 5G Protected Biała" title="Kliknij aby powiekszyc">
-                        <img src="images/promocje/Antena_zewnetrzna_DVB-T_Telkom-Telmor_Digit_Activa_5G_Protected_Biała.jpg" alt="Antena zewnętrzna DVB-T Telkom-Telmor Digit Activa 5G Protected Biała" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
+                    <a href="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2026/9/24/be9a5c66749c32c8dc00a17b5081f6e3/jpg/gtpoland/listing_thumb/lodowka-gorenje-nrk418ees4-glowne.jpg" class="zoom-link" data-full="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2026/9/24/be9a5c66749c32c8dc00a17b5081f6e3/jpg/gtpoland/listing_thumb/lodowka-gorenje-nrk418ees4-glowne.jpg" data-caption="Lodówka Gorenje NRK418EES4 NoFrost Szybkie mrożenie 197,7cm Srebrna" title="Kliknij aby powiększyć">
+                        <img src="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2026/9/24/be9a5c66749c32c8dc00a17b5081f6e3/jpg/gtpoland/listing_thumb/lodowka-gorenje-nrk418ees4-glowne.jpg" alt="Lodówka Gorenje NRK418EES4 NoFrost Szybkie mrożenie 197,7cm Srebrna" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
                     </a>
                 </div>
-                <h3>Antena zewnętrzna DVB-T Telkom-Telmor Digit Activa 5G Protected Biała</h3>
-                <p class="opis">Antena zewnętrzna DVB-T Telkom-Telmor Digit Activa 5G Protected Biała</p>
-                <div class="cena-wrap"><span class="cena">265 zł</span></div>
+                <h3>Lodówka Gorenje NRK418EES4 NoFrost Szybkie mrożenie 197,7cm Srebrna</h3>
+                <p class="opis">Lodówka Gorenje NRK418EES4 NoFrost Szybkie mrożenie 197,7cm Srebrna</p>
+                <div class="cena-wrap"><span class="cena">1540 zł</span></div>
+                <button type="button" class="btn-add-cart"
+                    data-add-to-cart
+                    data-title="Lodówka Gorenje NRK418EES4 NoFrost Szybkie mrożenie 197,7cm Srebrna"
+                    data-price="1540 zł"
+                    data-image="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2026/9/24/be9a5c66749c32c8dc00a17b5081f6e3/jpg/gtpoland/listing_thumb/lodowka-gorenje-nrk418ees4-glowne.jpg">
+                    <i class="fa-solid fa-cart-plus"></i> Dodaj do koszyka
+                </button>
+            </div>
+            <div class="product-card" data-title="okap wkład ciarko design duo 55 black" data-keywords="okap wkład ciarko design duo 55 black ciarko">
+                <div class="availability"><span class="availability-dot dot-promo"></span> Promocja dnia</div>
+                <div class="product-card-image">
+                    <a href="images/promocje/Okap_wkład_Ciarko_Design_Duo_55_Black.jpg" class="zoom-link" data-full="images/promocje/Okap_wkład_Ciarko_Design_Duo_55_Black.jpg" data-caption="Okap wkład Ciarko Design Duo 55 Black" title="Kliknij aby powiększyć">
+                        <img src="images/promocje/Okap_wkład_Ciarko_Design_Duo_55_Black.jpg" alt="Okap wkład Ciarko Design Duo 55 Black" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
+                    </a>
+                </div>
+                <h3>Okap wkład Ciarko Design Duo 55 Black</h3>
+                <p class="opis">Okap wkład Ciarko Design Duo 55 Black</p>
+                <div class="cena-wrap"><span class="cena">1519 zł</span></div>
+                <button type="button" class="btn-add-cart"
+                    data-add-to-cart
+                    data-title="Okap wkład Ciarko Design Duo 55 Black"
+                    data-price="1519 zł"
+                    data-image="images/promocje/Okap_wkład_Ciarko_Design_Duo_55_Black.jpg">
+                    <i class="fa-solid fa-cart-plus"></i> Dodaj do koszyka
+                </button>
+            </div>
+            <div class="product-card" data-title="okap wkład ciarko design luno 52 615m3/h cook assist warm2cold 52cm biały" data-keywords="okap wkład ciarko design luno 52 615m3/h cook assist warm2cold 52cm biały ciarko">
+                <div class="availability"><span class="availability-dot dot-promo"></span> Promocja dnia</div>
+                <div class="product-card-image">
+                    <a href="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2026/2/16/4a4bfb1e67f5b096fe39c491b2086546/jpg/gtpoland/listing_thumb/okap-wklad-ciarko-design-luno-white-52-nowe-glowne.jpg.jpg" class="zoom-link" data-full="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2026/2/16/4a4bfb1e67f5b096fe39c491b2086546/jpg/gtpoland/listing_thumb/okap-wklad-ciarko-design-luno-white-52-nowe-glowne.jpg.jpg" data-caption="Okap wkład Ciarko Design Luno 52 615m3/h Cook Assist Warm2Cold 52cm Biały" title="Kliknij aby powiększyć">
+                        <img src="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2026/2/16/4a4bfb1e67f5b096fe39c491b2086546/jpg/gtpoland/listing_thumb/okap-wklad-ciarko-design-luno-white-52-nowe-glowne.jpg.jpg" alt="Okap wkład Ciarko Design Luno 52 615m3/h Cook Assist Warm2Cold 52cm Biały" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
+                    </a>
+                </div>
+                <h3>Okap wkład Ciarko Design Luno 52 615m3/h Cook Assist Warm2Cold 52cm Biały</h3>
+                <p class="opis">Okap wkład Ciarko Design Luno 52 615m3/h Cook Assist Warm2Cold 52cm Biały</p>
+                <div class="cena-wrap"><span class="cena">1248 zł</span></div>
+                <button type="button" class="btn-add-cart"
+                    data-add-to-cart
+                    data-title="Okap wkład Ciarko Design Luno 52 615m3/h Cook Assist Warm2Cold 52cm Biały"
+                    data-price="1248 zł"
+                    data-image="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2026/2/16/4a4bfb1e67f5b096fe39c491b2086546/jpg/gtpoland/listing_thumb/okap-wklad-ciarko-design-luno-white-52-nowe-glowne.jpg.jpg">
+                    <i class="fa-solid fa-cart-plus"></i> Dodaj do koszyka
+                </button>
+            </div>
+            <div class="product-card" data-title="okap wkład ciarko design uno 74 black" data-keywords="okap wkład ciarko design uno 74 black ciarko">
+                <div class="availability"><span class="availability-dot dot-promo"></span> Promocja dnia</div>
+                <div class="product-card-image">
+                    <a href="images/promocje/Okap_wkład_Ciarko_Design_Uno_74_Black.jpg" class="zoom-link" data-full="images/promocje/Okap_wkład_Ciarko_Design_Uno_74_Black.jpg" data-caption="Okap wkład Ciarko Design Uno 74 Black" title="Kliknij aby powiększyć">
+                        <img src="images/promocje/Okap_wkład_Ciarko_Design_Uno_74_Black.jpg" alt="Okap wkład Ciarko Design Uno 74 Black" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
+                    </a>
+                </div>
+                <h3>Okap wkład Ciarko Design Uno 74 Black</h3>
+                <p class="opis">Okap wkład Ciarko Design Uno 74 Black</p>
+                <div class="cena-wrap"><span class="cena">1519 zł</span></div>
+                <button type="button" class="btn-add-cart"
+                    data-add-to-cart
+                    data-title="Okap wkład Ciarko Design Uno 74 Black"
+                    data-price="1519 zł"
+                    data-image="images/promocje/Okap_wkład_Ciarko_Design_Uno_74_Black.jpg">
+                    <i class="fa-solid fa-cart-plus"></i> Dodaj do koszyka
+                </button>
+            </div>
+            <div class="product-card" data-title="okap wkład elica boxin lx/bl mat/a/60" data-keywords="okap wkład elica boxin lx/bl mat/a/60 elica">
+                <div class="availability"><span class="availability-dot dot-promo"></span> Promocja dnia</div>
+                <div class="product-card-image">
+                    <a href="images/promocje/Okap_wkład_Elica_Boxin_LX_BL_MAT_A_60.jpg" class="zoom-link" data-full="images/promocje/Okap_wkład_Elica_Boxin_LX_BL_MAT_A_60.jpg" data-caption="Okap wkład Elica Boxin LX/BL MAT/A/60" title="Kliknij aby powiększyć">
+                        <img src="images/promocje/Okap_wkład_Elica_Boxin_LX_BL_MAT_A_60.jpg" alt="Okap wkład Elica Boxin LX/BL MAT/A/60" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
+                    </a>
+                </div>
+                <h3>Okap wkład Elica Boxin LX/BL MAT/A/60</h3>
+                <p class="opis">Okap wkład Elica Boxin LX/BL MAT/A/60</p>
+                <div class="cena-wrap"><span class="cena">1467 zł</span></div>
+                <button type="button" class="btn-add-cart"
+                    data-add-to-cart
+                    data-title="Okap wkład Elica Boxin LX/BL MAT/A/60"
+                    data-price="1467 zł"
+                    data-image="images/promocje/Okap_wkład_Elica_Boxin_LX_BL_MAT_A_60.jpg">
+                    <i class="fa-solid fa-cart-plus"></i> Dodaj do koszyka
+                </button>
+            </div>
+            <div class="product-card" data-title="okap wkład elica ciak 2.0 gr/a/60" data-keywords="okap wkład elica ciak 2.0 gr/a/60 elica">
+                <div class="availability"><span class="availability-dot dot-promo"></span> Promocja dnia</div>
+                <div class="product-card-image">
+                    <a href="images/promocje/Okap_wkład_Elica_Ciak_2_0_GR_A_60.jpg" class="zoom-link" data-full="images/promocje/Okap_wkład_Elica_Ciak_2_0_GR_A_60.jpg" data-caption="Okap wkład Elica Ciak 2.0 GR/A/60" title="Kliknij aby powiększyć">
+                        <img src="images/promocje/Okap_wkład_Elica_Ciak_2_0_GR_A_60.jpg" alt="Okap wkład Elica Ciak 2.0 GR/A/60" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
+                    </a>
+                </div>
+                <h3>Okap wkład Elica Ciak 2.0 GR/A/60</h3>
+                <p class="opis">Okap wkład Elica Ciak 2.0 GR/A/60</p>
+                <div class="cena-wrap"><span class="cena">661 zł</span></div>
+                <button type="button" class="btn-add-cart"
+                    data-add-to-cart
+                    data-title="Okap wkład Elica Ciak 2.0 GR/A/60"
+                    data-price="661 zł"
+                    data-image="images/promocje/Okap_wkład_Elica_Ciak_2_0_GR_A_60.jpg">
+                    <i class="fa-solid fa-cart-plus"></i> Dodaj do koszyka
+                </button>
+            </div>
+            <div class="product-card" data-title="okap wklad elica fold bl/a/72" data-keywords="okap wklad elica fold bl/a/72 elica">
+                <div class="availability"><span class="availability-dot dot-promo"></span> Promocja dnia</div>
+                <div class="product-card-image">
+                    <a href="images/promocje/Okap_wklad_Elica_FOLD_BL_A_72.jpg" class="zoom-link" data-full="images/promocje/Okap_wklad_Elica_FOLD_BL_A_72.jpg" data-caption="Okap wklad Elica FOLD BL/A/72" title="Kliknij aby powiększyć">
+                        <img src="images/promocje/Okap_wklad_Elica_FOLD_BL_A_72.jpg" alt="Okap wklad Elica FOLD BL/A/72" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
+                    </a>
+                </div>
+                <h3>Okap wklad Elica FOLD BL/A/72</h3>
+                <p class="opis">Okap wklad Elica FOLD BL/A/72</p>
+                <div class="cena-wrap"><span class="cena">855 zł</span></div>
+                <button type="button" class="btn-add-cart"
+                    data-add-to-cart
+                    data-title="Okap wklad Elica FOLD BL/A/72"
+                    data-price="855 zł"
+                    data-image="images/promocje/Okap_wklad_Elica_FOLD_BL_A_72.jpg">
+                    <i class="fa-solid fa-cart-plus"></i> Dodaj do koszyka
+                </button>
+            </div>
+            <div class="product-card" data-title="płyta indukcyjna elica ratio connex 604 plus raw" data-keywords="płyta indukcyjna elica ratio connex 604 plus raw elica">
+                <div class="availability"><span class="availability-dot dot-promo"></span> Promocja dnia</div>
+                <div class="product-card-image">
+                    <a href="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2026/2/13/79ff3111ea4525bb6f9b07e52badf8b3/jpg/gtpoland/listing_thumb/plyta-indukcyjna-elica-ratio-connex-604-plus-raw-glowne.jpg" class="zoom-link" data-full="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2026/2/13/79ff3111ea4525bb6f9b07e52badf8b3/jpg/gtpoland/listing_thumb/plyta-indukcyjna-elica-ratio-connex-604-plus-raw-glowne.jpg" data-caption="Płyta indukcyjna Elica Ratio Connex 604 Plus Raw" title="Kliknij aby powiększyć">
+                        <img src="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2026/2/13/79ff3111ea4525bb6f9b07e52badf8b3/jpg/gtpoland/listing_thumb/plyta-indukcyjna-elica-ratio-connex-604-plus-raw-glowne.jpg" alt="Płyta indukcyjna Elica Ratio Connex 604 Plus Raw" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
+                    </a>
+                </div>
+                <h3>Płyta indukcyjna Elica Ratio Connex 604 Plus Raw</h3>
+                <p class="opis">Płyta indukcyjna Elica Ratio Connex 604 Plus Raw</p>
+                <div class="cena-wrap"><span class="cena">2043 zł</span></div>
+                <button type="button" class="btn-add-cart"
+                    data-add-to-cart
+                    data-title="Płyta indukcyjna Elica Ratio Connex 604 Plus Raw"
+                    data-price="2043 zł"
+                    data-image="https://b2bgt.gtpoland.eu/storage/image/pimcore_import/2026/2/13/79ff3111ea4525bb6f9b07e52badf8b3/jpg/gtpoland/listing_thumb/plyta-indukcyjna-elica-ratio-connex-604-plus-raw-glowne.jpg">
+                    <i class="fa-solid fa-cart-plus"></i> Dodaj do koszyka
+                </button>
+            </div>
+            <div class="product-card" data-title="okap wkład solgaz gest control 60" data-keywords="okap wkład solgaz gest control 60 solgaz">
+                <div class="availability"><span class="availability-dot dot-promo"></span> Promocja dnia</div>
+                <div class="product-card-image">
+                    <a href="images/promocje/Okap_wkład_Solgaz_Gest_Control_60.jpg" class="zoom-link" data-full="images/promocje/Okap_wkład_Solgaz_Gest_Control_60.jpg" data-caption="Okap wkład Solgaz Gest Control 60" title="Kliknij aby powiększyć">
+                        <img src="images/promocje/Okap_wkład_Solgaz_Gest_Control_60.jpg" alt="Okap wkład Solgaz Gest Control 60" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
+                    </a>
+                </div>
+                <h3>Okap wkład Solgaz Gest Control 60</h3>
+                <p class="opis">Okap wkład Solgaz Gest Control 60</p>
+                <div class="cena-wrap"><span class="cena">1520 zł</span></div>
+                <button type="button" class="btn-add-cart"
+                    data-add-to-cart
+                    data-title="Okap wkład Solgaz Gest Control 60"
+                    data-price="1520 zł"
+                    data-image="images/promocje/Okap_wkład_Solgaz_Gest_Control_60.jpg">
+                    <i class="fa-solid fa-cart-plus"></i> Dodaj do koszyka
+                </button>
+            </div>
+            <div class="product-card" data-title="bateria pyramis idea czarny mat" data-keywords="bateria pyramis idea czarny mat pyramis">
+                <div class="availability"><span class="availability-dot dot-promo"></span> Promocja dnia</div>
+                <div class="product-card-image">
+                    <a href="images/promocje/Bateria_Pyramis_Idea_Czarny_mat.jpg" class="zoom-link" data-full="images/promocje/Bateria_Pyramis_Idea_Czarny_mat.jpg" data-caption="Bateria Pyramis Idea Czarny mat" title="Kliknij aby powiększyć">
+                        <img src="images/promocje/Bateria_Pyramis_Idea_Czarny_mat.jpg" alt="Bateria Pyramis Idea Czarny mat" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
+                    </a>
+                </div>
+                <h3>Bateria Pyramis Idea Czarny mat</h3>
+                <p class="opis">Bateria Pyramis Idea Czarny mat</p>
+                <div class="cena-wrap"><span class="cena">335 zł</span></div>
+                <button type="button" class="btn-add-cart"
+                    data-add-to-cart
+                    data-title="Bateria Pyramis Idea Czarny mat"
+                    data-price="335 zł"
+                    data-image="images/promocje/Bateria_Pyramis_Idea_Czarny_mat.jpg">
+                    <i class="fa-solid fa-cart-plus"></i> Dodaj do koszyka
+                </button>
+            </div>
+            <div class="product-card" data-title="bateria pyramis flessi black edition" data-keywords="bateria pyramis flessi black edition pyramis">
+                <div class="availability"><span class="availability-dot dot-promo"></span> Promocja dnia</div>
+                <div class="product-card-image">
+                    <a href="images/promocje/Bateria_Pyramis_Flessi_Black_Edition.jpg" class="zoom-link" data-full="images/promocje/Bateria_Pyramis_Flessi_Black_Edition.jpg" data-caption="Bateria Pyramis Flessi Black Edition" title="Kliknij aby powiększyć">
+                        <img src="images/promocje/Bateria_Pyramis_Flessi_Black_Edition.jpg" alt="Bateria Pyramis Flessi Black Edition" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
+                    </a>
+                </div>
+                <h3>Bateria Pyramis Flessi Black Edition</h3>
+                <p class="opis">Bateria Pyramis Flessi Black Edition</p>
+                <div class="cena-wrap"><span class="cena">308 zł</span></div>
+                <button type="button" class="btn-add-cart"
+                    data-add-to-cart
+                    data-title="Bateria Pyramis Flessi Black Edition"
+                    data-price="308 zł"
+                    data-image="images/promocje/Bateria_Pyramis_Flessi_Black_Edition.jpg">
+                    <i class="fa-solid fa-cart-plus"></i> Dodaj do koszyka
+                </button>
+            </div>
+            <div class="product-card" data-title="zestaw granitowy pyramis zlewozmywak camea 79x50 1b1d l + bateria idea volcano" data-keywords="zestaw granitowy pyramis zlewozmywak camea 79x50 1b1d l + bateria idea volcano pyramis">
+                <div class="availability"><span class="availability-dot dot-promo"></span> Promocja dnia</div>
+                <div class="product-card-image">
+                    <a href="images/promocje/Zestaw_granitowy_Pyramis_Zlewozmywak_Camea_79x50_1B1D_L_Bateria_Idea_Volcano.jpg" class="zoom-link" data-full="images/promocje/Zestaw_granitowy_Pyramis_Zlewozmywak_Camea_79x50_1B1D_L_Bateria_Idea_Volcano.jpg" data-caption="Zestaw granitowy Pyramis Zlewozmywak Camea 79x50 1B1D L + Bateria Idea Volcano" title="Kliknij aby powiększyć">
+                        <img src="images/promocje/Zestaw_granitowy_Pyramis_Zlewozmywak_Camea_79x50_1B1D_L_Bateria_Idea_Volcano.jpg" alt="Zestaw granitowy Pyramis Zlewozmywak Camea 79x50 1B1D L + Bateria Idea Volcano" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
+                    </a>
+                </div>
+                <h3>Zestaw granitowy Pyramis Zlewozmywak Camea 79x50 1B1D L + Bateria Idea Volcano</h3>
+                <p class="opis">Zestaw granitowy Pyramis Zlewozmywak Camea 79x50 1B1D L + Bateria Idea Volcano</p>
+                <div class="cena-wrap"><span class="cena">993 zł</span></div>
+                <button type="button" class="btn-add-cart"
+                    data-add-to-cart
+                    data-title="Zestaw granitowy Pyramis Zlewozmywak Camea 79x50 1B1D L + Bateria Idea Volcano"
+                    data-price="993 zł"
+                    data-image="images/promocje/Zestaw_granitowy_Pyramis_Zlewozmywak_Camea_79x50_1B1D_L_Bateria_Idea_Volcano.jpg">
+                    <i class="fa-solid fa-cart-plus"></i> Dodaj do koszyka
+                </button>
+            </div>
+            <div class="product-card" data-title="zestaw granitowy pyramis zlewozmywak mido 62x50 1b 1d + bateria idea czarny" data-keywords="zestaw granitowy pyramis zlewozmywak mido 62x50 1b 1d + bateria idea czarny pyramis">
+                <div class="availability"><span class="availability-dot dot-promo"></span> Promocja dnia</div>
+                <div class="product-card-image">
+                    <a href="images/promocje/Zestaw_granitowy_Pyramis_Zlewozmywak_Mido_62x50_1B_1D_Bateria_Idea_Czarny.jpg" class="zoom-link" data-full="images/promocje/Zestaw_granitowy_Pyramis_Zlewozmywak_Mido_62x50_1B_1D_Bateria_Idea_Czarny.jpg" data-caption="Zestaw granitowy Pyramis Zlewozmywak Mido 62x50 1B 1D + Bateria Idea Czarny" title="Kliknij aby powiększyć">
+                        <img src="images/promocje/Zestaw_granitowy_Pyramis_Zlewozmywak_Mido_62x50_1B_1D_Bateria_Idea_Czarny.jpg" alt="Zestaw granitowy Pyramis Zlewozmywak Mido 62x50 1B 1D + Bateria Idea Czarny" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
+                    </a>
+                </div>
+                <h3>Zestaw granitowy Pyramis Zlewozmywak Mido 62x50 1B 1D + Bateria Idea Czarny</h3>
+                <p class="opis">Zestaw granitowy Pyramis Zlewozmywak Mido 62x50 1B 1D + Bateria Idea Czarny</p>
+                <div class="cena-wrap"><span class="cena">872 zł</span></div>
+                <button type="button" class="btn-add-cart"
+                    data-add-to-cart
+                    data-title="Zestaw granitowy Pyramis Zlewozmywak Mido 62x50 1B 1D + Bateria Idea Czarny"
+                    data-price="872 zł"
+                    data-image="images/promocje/Zestaw_granitowy_Pyramis_Zlewozmywak_Mido_62x50_1B_1D_Bateria_Idea_Czarny.jpg">
+                    <i class="fa-solid fa-cart-plus"></i> Dodaj do koszyka
+                </button>
+            </div>
+            <div class="product-card" data-title="frytkownica beztłuszczowa beko frl 5388 b" data-keywords="frytkownica beztłuszczowa beko frl 5388 b beko">
+                <div class="availability"><span class="availability-dot dot-promo"></span> Promocja dnia</div>
+                <div class="product-card-image">
+                    <a href="images/promocje/Frytkownica_beztłuszczowa_Beko_FRL_5388_B.jpg" class="zoom-link" data-full="images/promocje/Frytkownica_beztłuszczowa_Beko_FRL_5388_B.jpg" data-caption="Frytkownica beztłuszczowa Beko FRL 5388 B" title="Kliknij aby powiększyć">
+                        <img src="images/promocje/Frytkownica_beztłuszczowa_Beko_FRL_5388_B.jpg" alt="Frytkownica beztłuszczowa Beko FRL 5388 B" loading="lazy" onerror="this.onerror=null;this.src='images/logo.png';">
+                    </a>
+                </div>
+                <h3>Frytkownica beztłuszczowa Beko FRL 5388 B</h3>
+                <p class="opis">Frytkownica beztłuszczowa Beko FRL 5388 B</p>
+                <div class="cena-wrap"><span class="cena">429 zł</span></div>
+                <button type="button" class="btn-add-cart"
+                    data-add-to-cart
+                    data-title="Frytkownica beztłuszczowa Beko FRL 5388 B"
+                    data-price="429 zł"
+                    data-image="images/promocje/Frytkownica_beztłuszczowa_Beko_FRL_5388_B.jpg">
+                    <i class="fa-solid fa-cart-plus"></i> Dodaj do koszyka
+                </button>
             </div>
             </div>
         </div>
@@ -495,6 +648,7 @@
         <div class="lb-caption" id="lightbox-caption"></div>
     </div>
 
+    <script src="cart.js"></script>
     <script>
         function filterCatProducts() {
             const val = document.getElementById('catSearchInput').value.toLowerCase().trim();
