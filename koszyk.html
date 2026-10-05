@@ -43,6 +43,13 @@
             background: #f1f5f9; color: #0f172a; border: none; border-radius: 6px;
             font-weight: 600; text-decoration: none; cursor: pointer;
         }
+        .btn-quote {
+            display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+            width: 100%; padding: 0.85rem 1.25rem; margin-top: 0.5rem;
+            background: #e11d48; color: #fff; border: none; border-radius: 6px;
+            font-weight: 700; font-size: 1.05rem; cursor: pointer;
+        }
+        .btn-quote:hover { background: #be123c; }
         .cart-note { font-size: 0.9rem; color: #64748b; margin-top: 0.75rem; }
         .cart-badge {
             display: none; min-width: 18px; height: 18px; padding: 0 5px;
@@ -50,6 +57,19 @@
             font-size: 0.72rem; font-weight: 700; line-height: 18px; text-align: center;
         }
         .cart-link { display: inline-flex; align-items: center; gap: 6px; }
+        .quote-box {
+            background: #fff; border-radius: 8px; padding: 1.5rem; margin-top: 1.5rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,.08); border-top: 4px solid #e11d48;
+        }
+        .quote-box h3 { margin: 0 0 0.5rem; font-size: 1.2rem; }
+        .quote-box .section-desc { margin-bottom: 1rem; color: #555; font-size: 0.95rem; }
+        .quote-box .form-group { margin-bottom: 0.9rem; text-align: left; }
+        .quote-box label { display: block; margin-bottom: 0.3rem; font-weight: 600; font-size: 0.9rem; }
+        .quote-box input, .quote-box textarea {
+            width: 100%; padding: 0.65rem 0.75rem; border: 1px solid #d1d5db;
+            border-radius: 6px; font-size: 1rem; box-sizing: border-box;
+        }
+        .quote-box textarea { resize: vertical; min-height: 140px; font-family: inherit; }
         @media (max-width: 600px) {
             .cart-item { grid-template-columns: 64px 1fr; }
             .cart-item .cart-remove { grid-column: 2; justify-self: end; }
@@ -103,38 +123,86 @@
             <div id="cartList"></div>
             <div id="cartSummary" class="cart-summary" style="display:none;">
                 <div class="row"><span>Liczba sztuk</span><strong data-cart-count>0</strong></div>
-                <div class="row total"><span>Suma</span><span data-cart-total>0 zł</span></div>
+                <div class="row total"><span>Suma orientacyjna</span><span data-cart-total>0 zł</span></div>
                 <div class="cart-actions">
-                    <a class="btn-primary" id="btnWhatsApp" href="#" target="_blank" rel="noopener">
-                        <i class="fa-brands fa-whatsapp"></i> Zapytaj przez WhatsApp
+                    <a class="btn-primary" href="#quoteForm" onclick="document.getElementById('quoteForm').scrollIntoView({behavior:'smooth'})">
+                        <i class="fa-solid fa-envelope"></i> Poproś o wycenę
                     </a>
-                    <a class="btn-primary" href="tel:696085262" style="background:#16a34a;">
-                        <i class="fa-solid fa-phone"></i> Zadzwoń: 696 085 262
+                    <a class="btn-primary" id="btnWhatsApp" href="#" target="_blank" rel="noopener" style="background:#16a34a;">
+                        <i class="fa-brands fa-whatsapp"></i> WhatsApp
                     </a>
-                    <button type="button" class="btn-secondary" id="btnClear"><i class="fa-solid fa-trash"></i> Wyczyść koszyk</button>
+                    <a class="btn-primary" href="tel:696085262" style="background:#0f172a;">
+                        <i class="fa-solid fa-phone"></i> 696 085 262
+                    </a>
+                    <button type="button" class="btn-secondary" id="btnClear"><i class="fa-solid fa-trash"></i> Wyczyść</button>
                     <a class="btn-secondary" href="promocje.html">Kontynuuj zakupy</a>
                 </div>
-                <p class="cart-note">To zapytanie ofertowe – dostępność i ostateczną cenę potwierdzimy telefonicznie. Nie jest to płatność online.</p>
+                <p class="cart-note">Ceny są orientacyjne. Po wysłaniu zapytania potwierdzimy dostępność i ostateczną ofertę.</p>
+            </div>
+
+            <!-- Formularz wyceny = ten sam Formspree co „Zamów serwis lub wycenę” na stronie głównej -->
+            <div id="quoteBox" class="quote-box" style="display:none;">
+                <h3><i class="fa-solid fa-file-invoice"></i> Poproś o wycenę</h3>
+                <p class="section-desc">Wypełnij dane kontaktowe. Treść zapytania uzupełnimy automatycznie produktami z koszyka — zgłoszenie trafi na e-mail Domel (jak formularz na stronie głównej).</p>
+                <form id="quoteForm" action="https://formspree.io/f/mrpglqgz" method="POST" class="repair-form">
+                    <input type="hidden" name="_subject" value="Zapytanie o wycenę z koszyka – Domel Konin">
+                    <input type="hidden" name="typ" value="Wycena z koszyka">
+                    <div class="form-group">
+                        <label for="name">Imię i nazwisko:</label>
+                        <input type="text" id="name" name="name" required placeholder="np. Jan Kowalski">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Numer telefonu:</label>
+                        <input type="tel" id="phone" name="phone" required placeholder="np. 600 000 000">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Adres e-mail (opcjonalnie):</label>
+                        <input type="email" id="email" name="email" placeholder="np. jan@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Treść zapytania (produkty z koszyka):</label>
+                        <textarea id="message" name="message" rows="8" required></textarea>
+                    </div>
+                    <button type="submit" class="btn-quote">
+                        <i class="fa-solid fa-paper-plane"></i> Wyślij prośbę o wycenę
+                    </button>
+                    <p class="cart-note">Używamy tego samego formularza co sekcja „Zamów serwis lub wycenę” na stronie głównej.</p>
+                </form>
             </div>
         </div>
     </section>
 
     <script src="cart.js"></script>
     <script>
+        function buildQuoteMessage(items) {
+            const lines = items.map(it =>
+                '• ' + it.tytul + ' × ' + (it.qty || 1) + ' — ' + (it.cena || 'cena do ustalenia')
+            );
+            return (
+                'Proszę o wycenę / rezerwację następujących produktów z koszyka na stronie Domel Konin:\n\n' +
+                lines.join('\n') +
+                '\n\nSuma orientacyjna: ' + DomelCart.total().toLocaleString('pl-PL') + ' zł' +
+                '\n\nProszę o kontakt w sprawie dostępności i ostatecznej oferty.'
+            );
+        }
+
         function renderCart() {
             const items = DomelCart.read();
             const list = document.getElementById('cartList');
             const empty = document.getElementById('cartEmpty');
             const summary = document.getElementById('cartSummary');
+            const quoteBox = document.getElementById('quoteBox');
             list.innerHTML = '';
             if (!items.length) {
                 empty.style.display = '';
                 summary.style.display = 'none';
+                quoteBox.style.display = 'none';
                 DomelCart.updateBadge();
                 return;
             }
             empty.style.display = 'none';
             summary.style.display = '';
+            quoteBox.style.display = '';
             items.forEach(it => {
                 const row = document.createElement('div');
                 row.className = 'cart-item';
@@ -154,13 +222,13 @@
                     </button>`;
                 list.appendChild(row);
             });
-            // WhatsApp message
-            const lines = items.map(it => `• ${it.tytul} × ${it.qty || 1} (${it.cena || ''})`);
-            const msg = encodeURIComponent(
-                'Dzień dobry, proszę o ofertę / rezerwację:\n' + lines.join('\n') +
-                '\nSuma orientacyjna: ' + DomelCart.total().toLocaleString('pl-PL') + ' zł'
-            );
+            const msg = encodeURIComponent(buildQuoteMessage(items));
             document.getElementById('btnWhatsApp').href = 'https://wa.me/48696085262?text=' + msg;
+            const ta = document.getElementById('message');
+            if (ta && (ta.value.trim() === '' || ta.dataset.auto === '1')) {
+                ta.value = buildQuoteMessage(items);
+                ta.dataset.auto = '1';
+            }
             DomelCart.updateBadge();
         }
         function escapeHtml(s) {
@@ -179,12 +247,24 @@
                 if ((it.qty || 1) <= 1) DomelCart.removeItem(id);
                 else DomelCart.setQty(id, (it.qty || 1) - 1);
             }
+            const ta = document.getElementById('message');
+            if (ta) ta.dataset.auto = '1';
             renderCart();
         });
         document.getElementById('btnClear').addEventListener('click', function() {
             if (confirm('Wyczyścić koszyk?')) {
                 DomelCart.clear();
                 renderCart();
+            }
+        });
+        document.getElementById('message').addEventListener('input', function() {
+            this.dataset.auto = '0';
+        });
+        document.getElementById('quoteForm').addEventListener('submit', function() {
+            // odśwież treść na wypadek ręcznej edycji koszyka bez focusa
+            const ta = document.getElementById('message');
+            if (ta && ta.dataset.auto === '1') {
+                ta.value = buildQuoteMessage(DomelCart.read());
             }
         });
         document.addEventListener('DOMContentLoaded', renderCart);
