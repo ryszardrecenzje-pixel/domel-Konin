@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Pobieranie promocji dnia z B2B GT Poland.
-Cena na stronie = Cena BRUTTO z B2B + 200 zl (marza niewidoczna dla klienta).
+Cena na stronie = Cena BRUTTO z B2B + 100 zl (marza niewidoczna dla klienta).
 
   set GT_B2B_EMAIL=...
   set GT_B2B_PASSWORD=...
@@ -30,7 +30,7 @@ JSON_PATH = ROOT / "promocje.json"
 IMG_DIR = ROOT / "images" / "promocje"
 IMG_DIR.mkdir(parents=True, exist_ok=True)
 LOGIN_URL = "https://b2bgt.gtpoland.eu/strefa-ofert/promocje-dnia-b2b"
-DEFAULT_MARGIN = 200
+DEFAULT_MARGIN = 100
 
 
 def parse_price(text: str):
@@ -217,10 +217,33 @@ def scrape_raw(page):
 
                 let brutto = null;
                 let netto = null;
+                let oldBrutto = null;
                 const bruttoM = text.match(/Cena\\s*BRUTTO\\s*([0-9\\s]+[,.]?[0-9]*)/i);
                 const nettoM = text.match(/Cena\\s*NETTO\\s*([0-9\\s]+[,.]?[0-9]*)/i);
                 if (bruttoM) brutto = bruttoM[1];
                 if (nettoM) netto = nettoM[1];
+
+                // kwota SPRZED promocji – przekreslone ceny / old-price
+                const oldNodes = card.querySelectorAll('s, del, .old-price, .price-old, [class*="old-price"], [class*="was-price"]');
+                const oldCandidates = [];
+                oldNodes.forEach(n => {
+                    const t = (n.innerText || '').trim();
+                    if (/\\d/.test(t)) oldCandidates.push(t);
+                });
+                // czasem przekreslone ceny sa w tekscie pod BRUTTO (druga liczba po etykiecie)
+                // zbierz wszystkie kwoty z karty
+                const allPrices = [];
+                const rePrice = /(\\d[\\d\\s]*[,.]\\d{2}|\\d[\\d\\s]*\\s\\d{2})\\s*z[lł]/gi;
+                let mm;
+                const tcopy = text;
+                while ((mm = rePrice.exec(tcopy)) !== null) {
+                    allPrices.push(mm[1]);
+                }
+                // typowy uklad GT: NETTO, BRUTTO (aktualne), potem stare NETTO, stare BRUTTO
+                // bierzemy najwyzsza kwote jako "sprzed promocji" jesli > aktualne BRUTTO
+                if (oldCandidates.length) {
+                    oldBrutto = oldCandidates[oldCandidates.length - 1];
+                }
 
                 let img = '';
                 let bestArea = 0;
@@ -237,8 +260,8 @@ def scrape_raw(page):
                     }
                 });
 
-                if (name && (brutto || netto)) {
-                    out.push({ name, brutto, netto, img, snippet: text.slice(0, 400) });
+                if (name && (brutto || netto || oldBrutto)) {
+                    out.push({ name, brutto, netto, oldBrutto, allPrices, img, snippet: text.slice(0, 400) });
                 }
             });
             return out;
@@ -281,13 +304,38 @@ def build_products(raw, page, margin: int):
         if re.match(r"^(rabat|cena)\b", name, re.I):
             continue
 
+        # aktualna cena promocyjna BRUTTO
         brutto = parse_price(it.get("brutto") or "")
         if brutto is None:
             brutto = parse_price(it.get("netto") or "")
-        if brutto is None:
+
+        # kwota SPRZED promocji (przekreslona) – baza do ceny detalicznej
+        before = parse_price(it.get("oldBrutto") or "")
+        candidates = []
+        for ap in (it.get("allPrices") or []):
+            v = parse_price(ap)
+            if v is not None and v >= 50:
+                candidates.append(v)
+        # dodatkowo ze snippetu HTML/tekstu karty
+        for ap in re.findall(r"(\d[\d\s]{0,6}[,.]\d{2})", it.get("snippet") or ""):
+            v = parse_price(ap)
+            if v is not None and v >= 50:
+                candidates.append(v)
+        if before is None:
+            if brutto is not None:
+                higher = [v for v in candidates if v > brutto + 5]
+                if higher:
+                    before = max(higher)
+            if before is None and candidates:
+                # najwyzsza kwota na karcie = zwykle cena regularna
+                before = max(candidates)
+
+        # baza: sprzed promocji, fallback: aktualne BRUTTO
+        base = before if before is not None else brutto
+        if base is None:
             continue
 
-        detal = brutto + margin
+        detal = base + margin
         seen.add(name.lower())
 
         img_url = it.get("img") or ""
@@ -317,6 +365,7 @@ def build_products(raw, page, margin: int):
                 "model": "",
                 "kategoria": "",
                 "cena_brutto_hurt": brutto,
+                "cena_przed_promocja": before,
                 "cena": f"{detal} zł",
                 "cena_stara": "",
                 "opis": opis,
@@ -345,7 +394,7 @@ def main():
         print("  python download_promocje_b2b.py --headed")
         sys.exit(1)
 
-    print(f"Cena klienta = BRUTTO + {margin} zl (marza ukryta)")
+    print(f"Cena klienta = kwota SPRZED promocji + {margin} zl")
     print(f"URL: {LOGIN_URL}")
 
     with sync_playwright() as p:
@@ -385,8 +434,12 @@ def main():
 
     JSON_PATH.write_text(json.dumps(products, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"Zapisano {len(products)} promocji -> promocje.json")
-    for p in products[:8]:
-        print(f"  - {p['tytul'][:55]}: {p['cena']}")
+    print("Regula: cena = (kwota SPRZED promocji lub BRUTTO) + marza")
+    for p in products[:12]:
+        before = p.get("cena_przed_promocja")
+        hurt = p.get("cena_brutto_hurt")
+        print(f"  - {p['tytul'][:48]}")
+        print(f"      przed={before}  brutto={hurt}  -> strona {p['cena']}")
     print("\nUruchom: python regenerate_promocje_html.py")
 
 

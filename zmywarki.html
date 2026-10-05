@@ -192,6 +192,22 @@
         }
         .product-card-image img:hover { opacity: 0.85; }
 
+    
+        .btn-add-cart {
+            display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+            width: 100%; margin-top: 0.75rem; padding: 0.65rem 1rem; border: none; border-radius: 6px;
+            background: #0ea5e9; color: #fff; font-weight: 600; font-size: 0.95rem;
+            cursor: pointer; transition: background .15s, transform .1s;
+        }
+        .btn-add-cart:hover { background: #0284c7; }
+        .btn-add-cart.added { background: #16a34a; }
+        .cart-badge {
+            display: none; min-width: 18px; height: 18px; padding: 0 5px;
+            background: #e11d48; color: #fff; border-radius: 999px;
+            font-size: 0.72rem; font-weight: 700; line-height: 18px; text-align: center;
+        }
+        .cart-link { display: inline-flex; align-items: center; gap: 6px; }
+
     </style>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -253,6 +269,13 @@
                 <h3>DO ZABUDOWY BEKO BDIN38543P</h3>
                 <p class="opis">Produkt DO ZABUDOWY BEKO BDIN38543P dostępny w salonie Domel Konin. Zapraszamy do kontaktu po szczegóły i aktualną cenę.</p>
                 <span class="cena">Cena na zapytanie</span>
+                <button type="button" class="btn-add-cart"
+                    data-add-to-cart
+                    data-title="DO ZABUDOWY BEKO BDIN38543P"
+                    data-price="Cena na zapytanie"
+                    data-image="images/zdjęcia produktów/zmywarki/DO ZABUDOWY BEKO BDIN38543P.jpg">
+                    <i class="fa-solid fa-cart-plus"></i> Dodaj do koszyka
+                </button>
             </div>
 
             <div class="product-card" data-title="electrolux esa421105w" data-keywords="electrolux esa421105w produkt electrolux esa421105w dostępny w salonie domel konin. zapraszamy do kontaktu po szczegóły i aktualną cenę.">
@@ -264,6 +287,13 @@
                 <h3>Electrolux ESA421105W</h3>
                 <p class="opis">Produkt Electrolux ESA421105W dostępny w salonie Domel Konin. Zapraszamy do kontaktu po szczegóły i aktualną cenę.</p>
                 <span class="cena">Cena na zapytanie</span>
+                <button type="button" class="btn-add-cart"
+                    data-add-to-cart
+                    data-title="Electrolux ESA421105W"
+                    data-price="Cena na zapytanie"
+                    data-image="images/zdjęcia produktów/zmywarki/Electrolux ESA421105W.jpg">
+                    <i class="fa-solid fa-cart-plus"></i> Dodaj do koszyka
+                </button>
             </div>
 
             <div class="product-card" data-title="samsung dw50dg450fsr" data-keywords="samsung dw50dg450fsr produkt samsung dw50dg450fsr dostępny w salonie domel konin. zapraszamy do kontaktu po szczegóły i aktualną cenę.">
@@ -275,6 +305,13 @@
                 <h3>SAMSUNG DW50DG450FSR</h3>
                 <p class="opis">Produkt SAMSUNG DW50DG450FSR dostępny w salonie Domel Konin. Zapraszamy do kontaktu po szczegóły i aktualną cenę.</p>
                 <span class="cena">Cena na zapytanie</span>
+                <button type="button" class="btn-add-cart"
+                    data-add-to-cart
+                    data-title="SAMSUNG DW50DG450FSR"
+                    data-price="Cena na zapytanie"
+                    data-image="images/zdjęcia produktów/zmywarki/SAMSUNG DW50DG450FSR.jpg">
+                    <i class="fa-solid fa-cart-plus"></i> Dodaj do koszyka
+                </button>
             </div>
 
             <div class="product-card" data-title="zmywarka electrolux" data-keywords="zmywarka electrolux produkt zmywarka electrolux dostępny w salonie domel konin. zapraszamy do kontaktu po szczegóły i aktualną cenę.">
@@ -286,6 +323,13 @@
                 <h3>Zmywarka Electrolux</h3>
                 <p class="opis">Produkt Zmywarka Electrolux dostępny w salonie Domel Konin. Zapraszamy do kontaktu po szczegóły i aktualną cenę.</p>
                 <span class="cena">Cena na zapytanie</span>
+                <button type="button" class="btn-add-cart"
+                    data-add-to-cart
+                    data-title="Zmywarka Electrolux"
+                    data-price="Cena na zapytanie"
+                    data-image="images/zdjęcia produktów/zmywarki/Zmywarka Electrolux.jpg">
+                    <i class="fa-solid fa-cart-plus"></i> Dodaj do koszyka
+                </button>
             </div>
 
 <!-- KONIEC_PRODUKTOW -->
@@ -340,5 +384,6 @@
         }
     </script>
 
+    <script src="cart.js"></script>
 </body>
 </html>

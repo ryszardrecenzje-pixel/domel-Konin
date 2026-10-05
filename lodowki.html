@@ -192,6 +192,22 @@
         }
         .product-card-image img:hover { opacity: 0.85; }
 
+    
+        .btn-add-cart {
+            display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+            width: 100%; margin-top: 0.75rem; padding: 0.65rem 1rem; border: none; border-radius: 6px;
+            background: #0ea5e9; color: #fff; font-weight: 600; font-size: 0.95rem;
+            cursor: pointer; transition: background .15s, transform .1s;
+        }
+        .btn-add-cart:hover { background: #0284c7; }
+        .btn-add-cart.added { background: #16a34a; }
+        .cart-badge {
+            display: none; min-width: 18px; height: 18px; padding: 0 5px;
+            background: #e11d48; color: #fff; border-radius: 999px;
+            font-size: 0.72rem; font-weight: 700; line-height: 18px; text-align: center;
+        }
+        .cart-link { display: inline-flex; align-items: center; gap: 6px; }
+
     </style>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -253,6 +269,13 @@
                 <h3>Candy CCG1L314EW</h3>
                 <p class="opis">Produkt Candy CCG1L314EW dostępny w salonie Domel Konin. Zapraszamy do kontaktu po szczegóły i aktualną cenę.</p>
                 <span class="cena">Cena na zapytanie</span>
+                <button type="button" class="btn-add-cart"
+                    data-add-to-cart
+                    data-title="Candy CCG1L314EW"
+                    data-price="Cena na zapytanie"
+                    data-image="images/zdjęcia produktów/lodówki/Candy CCG1L314EW.jpg">
+                    <i class="fa-solid fa-cart-plus"></i> Dodaj do koszyka
+                </button>
             </div>
 
             <div class="product-card" data-title="kernau kfrc 13153.3 lf w" data-keywords="kernau kfrc 13153.3 lf w produkt kernau kfrc 13153.3 lf w dostępny w salonie domel konin. zapraszamy do kontaktu po szczegóły i aktualną cenę.">
@@ -264,6 +287,13 @@
                 <h3>Kernau KFRC 13153.3 LF W</h3>
                 <p class="opis">Produkt Kernau KFRC 13153.3 LF W dostępny w salonie Domel Konin. Zapraszamy do kontaktu po szczegóły i aktualną cenę.</p>
                 <span class="cena">Cena na zapytanie</span>
+                <button type="button" class="btn-add-cart"
+                    data-add-to-cart
+                    data-title="Kernau KFRC 13153.3 LF W"
+                    data-price="Cena na zapytanie"
+                    data-image="images/zdjęcia produktów/lodówki/Kernau KFRC 13153.3 LF W/Kernau KFRC 13153.3 LF W1.jpg">
+                    <i class="fa-solid fa-cart-plus"></i> Dodaj do koszyka
+                </button>
             </div>
 
             <div class="product-card" data-title="kernau kfrc 18153 w" data-keywords="kernau kfrc 18153 w produkt kernau kfrc 18153 w dostępny w salonie domel konin. zapraszamy do kontaktu po szczegóły i aktualną cenę.">
@@ -275,6 +305,13 @@
                 <h3>Kernau KFRC 18153 W</h3>
                 <p class="opis">Produkt Kernau KFRC 18153 W dostępny w salonie Domel Konin. Zapraszamy do kontaktu po szczegóły i aktualną cenę.</p>
                 <span class="cena">Cena na zapytanie</span>
+                <button type="button" class="btn-add-cart"
+                    data-add-to-cart
+                    data-title="Kernau KFRC 18153 W"
+                    data-price="Cena na zapytanie"
+                    data-image="images/zdjęcia produktów/lodówki/Kernau KFRC 18153 W.jpg">
+                    <i class="fa-solid fa-cart-plus"></i> Dodaj do koszyka
+                </button>
             </div>
 
             <div class="product-card" data-title="samsung rb38c605cb1" data-keywords="samsung rb38c605cb1 produkt samsung rb38c605cb1 dostępny w salonie domel konin. zapraszamy do kontaktu po szczegóły i aktualną cenę.">
@@ -286,6 +323,13 @@
                 <h3>SAMSUNG RB38C605CB1</h3>
                 <p class="opis">Produkt SAMSUNG RB38C605CB1 dostępny w salonie Domel Konin. Zapraszamy do kontaktu po szczegóły i aktualną cenę.</p>
                 <span class="cena">Cena na zapytanie</span>
+                <button type="button" class="btn-add-cart"
+                    data-add-to-cart
+                    data-title="SAMSUNG RB38C605CB1"
+                    data-price="Cena na zapytanie"
+                    data-image="images/zdjęcia produktów/lodówki/SAMSUNG RB38C605CB1.jpg">
+                    <i class="fa-solid fa-cart-plus"></i> Dodaj do koszyka
+                </button>
             </div>
 
             <div class="product-card" data-title="samsung combi max rb53dg706ab1eo" data-keywords="samsung combi max rb53dg706ab1eo produkt samsung combi max rb53dg706ab1eo dostępny w salonie domel konin. zapraszamy do kontaktu po szczegóły i aktualną cenę.">
@@ -297,6 +341,13 @@
                 <h3>Samsung Combi Max RB53DG706AB1EO</h3>
                 <p class="opis">Produkt Samsung Combi Max RB53DG706AB1EO dostępny w salonie Domel Konin. Zapraszamy do kontaktu po szczegóły i aktualną cenę.</p>
                 <span class="cena">Cena na zapytanie</span>
+                <button type="button" class="btn-add-cart"
+                    data-add-to-cart
+                    data-title="Samsung Combi Max RB53DG706AB1EO"
+                    data-price="Cena na zapytanie"
+                    data-image="images/zdjęcia produktów/lodówki/Samsung Combi Max RB53DG706AB1EO.jpg">
+                    <i class="fa-solid fa-cart-plus"></i> Dodaj do koszyka
+                </button>
             </div>
 
             <div class="product-card" data-title="samsung french door" data-keywords="samsung french door produkt samsung french door dostępny w salonie domel konin. zapraszamy do kontaktu po szczegóły i aktualną cenę.">
@@ -308,6 +359,13 @@
                 <h3>Samsung French Door</h3>
                 <p class="opis">Produkt Samsung French Door dostępny w salonie Domel Konin. Zapraszamy do kontaktu po szczegóły i aktualną cenę.</p>
                 <span class="cena">Cena na zapytanie</span>
+                <button type="button" class="btn-add-cart"
+                    data-add-to-cart
+                    data-title="Samsung French Door"
+                    data-price="Cena na zapytanie"
+                    data-image="images/zdjęcia produktów/lodówki/Samsung French Door.png">
+                    <i class="fa-solid fa-cart-plus"></i> Dodaj do koszyka
+                </button>
             </div>
 
             <div class="product-card" data-title="samsung rb33b610eww" data-keywords="samsung rb33b610eww produkt samsung rb33b610eww dostępny w salonie domel konin. zapraszamy do kontaktu po szczegóły i aktualną cenę.">
@@ -319,6 +377,13 @@
                 <h3>Samsung RB33B610EWW</h3>
                 <p class="opis">Produkt Samsung RB33B610EWW dostępny w salonie Domel Konin. Zapraszamy do kontaktu po szczegóły i aktualną cenę.</p>
                 <span class="cena">Cena na zapytanie</span>
+                <button type="button" class="btn-add-cart"
+                    data-add-to-cart
+                    data-title="Samsung RB33B610EWW"
+                    data-price="Cena na zapytanie"
+                    data-image="images/zdjęcia produktów/lodówki/Samsung RB33B610EWW..jpg">
+                    <i class="fa-solid fa-cart-plus"></i> Dodaj do koszyka
+                </button>
             </div>
 
             <div class="product-card" data-title="samsung rb38c776cb1ef" data-keywords="samsung rb38c776cb1ef produkt samsung rb38c776cb1ef dostępny w salonie domel konin. zapraszamy do kontaktu po szczegóły i aktualną cenę.">
@@ -330,6 +395,13 @@
                 <h3>Samsung RB38C776CB1EF</h3>
                 <p class="opis">Produkt Samsung RB38C776CB1EF dostępny w salonie Domel Konin. Zapraszamy do kontaktu po szczegóły i aktualną cenę.</p>
                 <span class="cena">Cena na zapytanie</span>
+                <button type="button" class="btn-add-cart"
+                    data-add-to-cart
+                    data-title="Samsung RB38C776CB1EF"
+                    data-price="Cena na zapytanie"
+                    data-image="images/zdjęcia produktów/lodówki/Samsung RB38C776CB1EF.jpg">
+                    <i class="fa-solid fa-cart-plus"></i> Dodaj do koszyka
+                </button>
             </div>
 
             <div class="product-card" data-title="samsung rb7300t rb38c762cww" data-keywords="samsung rb7300t rb38c762cww produkt samsung rb7300t rb38c762cww dostępny w salonie domel konin. zapraszamy do kontaktu po szczegóły i aktualną cenę.">
@@ -341,6 +413,13 @@
                 <h3>Samsung RB7300T Rb38C762CWW</h3>
                 <p class="opis">Produkt Samsung RB7300T Rb38C762CWW dostępny w salonie Domel Konin. Zapraszamy do kontaktu po szczegóły i aktualną cenę.</p>
                 <span class="cena">Cena na zapytanie</span>
+                <button type="button" class="btn-add-cart"
+                    data-add-to-cart
+                    data-title="Samsung RB7300T Rb38C762CWW"
+                    data-price="Cena na zapytanie"
+                    data-image="images/zdjęcia produktów/lodówki/Samsung RB7300T Rb38C762CWW.jpg">
+                    <i class="fa-solid fa-cart-plus"></i> Dodaj do koszyka
+                </button>
             </div>
 
             <div class="product-card" data-title="samsung rb38c776cb1" data-keywords="samsung rb38c776cb1 produkt samsung rb38c776cb1 dostępny w salonie domel konin. zapraszamy do kontaktu po szczegóły i aktualną cenę.">
@@ -352,6 +431,13 @@
                 <h3>samsung RB38C776CB1</h3>
                 <p class="opis">Produkt samsung RB38C776CB1 dostępny w salonie Domel Konin. Zapraszamy do kontaktu po szczegóły i aktualną cenę.</p>
                 <span class="cena">Cena na zapytanie</span>
+                <button type="button" class="btn-add-cart"
+                    data-add-to-cart
+                    data-title="samsung RB38C776CB1"
+                    data-price="Cena na zapytanie"
+                    data-image="images/zdjęcia produktów/lodówki/samsung RB38C776CB1.jpg">
+                    <i class="fa-solid fa-cart-plus"></i> Dodaj do koszyka
+                </button>
             </div>
 
 <!-- KONIEC_PRODUKTOW -->
@@ -406,5 +492,6 @@
         }
     </script>
 
+    <script src="cart.js"></script>
 </body>
 </html>

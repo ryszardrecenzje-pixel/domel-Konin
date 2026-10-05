@@ -192,6 +192,22 @@
         }
         .product-card-image img:hover { opacity: 0.85; }
 
+    
+        .btn-add-cart {
+            display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+            width: 100%; margin-top: 0.75rem; padding: 0.65rem 1rem; border: none; border-radius: 6px;
+            background: #0ea5e9; color: #fff; font-weight: 600; font-size: 0.95rem;
+            cursor: pointer; transition: background .15s, transform .1s;
+        }
+        .btn-add-cart:hover { background: #0284c7; }
+        .btn-add-cart.added { background: #16a34a; }
+        .cart-badge {
+            display: none; min-width: 18px; height: 18px; padding: 0 5px;
+            background: #e11d48; color: #fff; border-radius: 999px;
+            font-size: 0.72rem; font-weight: 700; line-height: 18px; text-align: center;
+        }
+        .cart-link { display: inline-flex; align-items: center; gap: 6px; }
+
     </style>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -253,6 +269,13 @@
                 <h3>Amica 6018GG4.43HZpFQ(Xx)</h3>
                 <p class="opis">Produkt Amica 6018GG4.43HZpFQ(Xx) dostępny w salonie Domel Konin. Zapraszamy do kontaktu po szczegóły i aktualną cenę.</p>
                 <span class="cena">Cena na zapytanie</span>
+                <button type="button" class="btn-add-cart"
+                    data-add-to-cart
+                    data-title="Amica 6018GG4.43HZpFQ(Xx)"
+                    data-price="Cena na zapytanie"
+                    data-image="images/zdjęcia produktów/piekarniki/Amica 6018GG4.43HZpFQ(Xx).jpg">
+                    <i class="fa-solid fa-cart-plus"></i> Dodaj do koszyka
+                </button>
             </div>
 
             <div class="product-card" data-title="electrolux lkk640221w" data-keywords="electrolux lkk640221w produkt electrolux lkk640221w dostępny w salonie domel konin. zapraszamy do kontaktu po szczegóły i aktualną cenę.">
@@ -264,6 +287,13 @@
                 <h3>Electrolux LKK640221W</h3>
                 <p class="opis">Produkt Electrolux LKK640221W dostępny w salonie Domel Konin. Zapraszamy do kontaktu po szczegóły i aktualną cenę.</p>
                 <span class="cena">Cena na zapytanie</span>
+                <button type="button" class="btn-add-cart"
+                    data-add-to-cart
+                    data-title="Electrolux LKK640221W"
+                    data-price="Cena na zapytanie"
+                    data-image="images/zdjęcia produktów/piekarniki/Electrolux LKK640221W.jpg">
+                    <i class="fa-solid fa-cart-plus"></i> Dodaj do koszyka
+                </button>
             </div>
 
             <div class="product-card" data-title="gorenje gks5c71xf (g600)" data-keywords="gorenje gks5c71xf (g600) produkt gorenje gks5c71xf (g600) dostępny w salonie domel konin. zapraszamy do kontaktu po szczegóły i aktualną cenę.">
@@ -275,6 +305,13 @@
                 <h3>Gorenje GKS5C71XF (G600)</h3>
                 <p class="opis">Produkt Gorenje GKS5C71XF (G600) dostępny w salonie Domel Konin. Zapraszamy do kontaktu po szczegóły i aktualną cenę.</p>
                 <span class="cena">Cena na zapytanie</span>
+                <button type="button" class="btn-add-cart"
+                    data-add-to-cart
+                    data-title="Gorenje GKS5C71XF (G600)"
+                    data-price="Cena na zapytanie"
+                    data-image="images/zdjęcia produktów/piekarniki/Gorenje GKS5C71XF (G600).jpg">
+                    <i class="fa-solid fa-cart-plus"></i> Dodaj do koszyka
+                </button>
             </div>
 
 <!-- KONIEC_PRODUKTOW -->
@@ -329,5 +366,6 @@
         }
     </script>
 
+    <script src="cart.js"></script>
 </body>
 </html>
