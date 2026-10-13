@@ -1,0 +1,56 @@
+name: Aktualizacja promocji dnia (B2B GT)
+
+on:
+  schedule:
+    # Codziennie o 6:00 UTC = 8:00 czasu polskiego (CET) / 7:00 (CEST)
+    - cron: '0 6 * * *'
+  workflow_dispatch:  # Ręczne uruchomienie z przycisku w GitHubie
+
+permissions:
+  contents: write
+
+jobs:
+  aktualizuj-promocje:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Pobierz kod repozytorium
+        uses: actions/checkout@v4
+
+      - name: Konfiguracja Pythona
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Instalacja Playwright i zależności
+        run: |
+          pip install --upgrade pip
+          pip install playwright
+          playwright install chromium --with-deps
+
+      - name: Pobieranie promocji z B2B GT
+        env:
+          GT_B2B_EMAIL: ${{ secrets.GT_B2B_EMAIL }}
+          GT_B2B_PASSWORD: ${{ secrets.GT_B2B_PASSWORD }}
+        run: |
+          python download_promocje_b2b.py --margin 200
+
+      - name: Generowanie promocje.html
+        run: |
+          python regenerate_promocje_html.py
+
+      - name: Commit i push zmian
+        run: |
+          git config --global user.name "GitHub Actions Bot"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+          git add promocje.json promocje.html images/promocje/ || true
+
+          if git diff --staged --quiet; then
+            echo "Brak zmian w promocjach – pomijam commit."
+          else
+            git commit -m "Automatyczna aktualizacja promocji dnia $(date -u +%Y-%m-%d)"
+            git push
+            echo "Push OK – strona na GitHub Pages odświeży się za 1–2 min."
+          fi
