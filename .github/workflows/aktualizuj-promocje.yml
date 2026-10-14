@@ -3,7 +3,7 @@ name: Aktualizacja promocji dnia (B2B GT)
 on:
   schedule:
     # Codziennie o 6:00 UTC = 8:00 czasu polskiego (CET) / 7:00 (CEST)
-    - cron: '0 6 * * *'
+    - cron: '0 4 * * *'
   workflow_dispatch:  # Ręczne uruchomienie z przycisku w GitHubie
 
 permissions:
