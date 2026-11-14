@@ -1,0 +1,21 @@
+backend:
+  name: github
+  repo: ryszardrecenzje-pixel/domel-Konin
+  branch: main
+  base_url: https://your-oauth-proxy.example.com   # patrz niżej
+media_folder: "images/products"
+public_folder: "/images/products"
+
+collections:
+  - name: "products"
+    label: "Produkty"
+    folder: "data"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Nazwa", name: "name", widget: "string" }
+      - { label: "Cena", name: "price", widget: "number" }
+      - { label: "Kategoria", name: "category", widget: "select", options: [lodowki, pralki, zmywarki, piekarniki, plyty, male_agd, suszarki, zamrazarki] }
+      - { label: "Dostępny", name: "available", widget: "boolean", default: true }
+      - { label: "Opis", name: "description", widget: "text", required: false }
+      - { label: "Zdjęcie", name: "image", widget: "image", required: false }
