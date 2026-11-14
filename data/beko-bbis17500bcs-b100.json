@@ -1,0 +1,14 @@
+{
+  "producent": "Beko",
+  "model": "BBIS17500BCS b100",
+  "kategoria": "Piekarnik",
+  "wymiary": "60 x 60 x 55 cm",
+  "klasa": "A",
+  "cena": "1600 zł",
+  "tytul": "Beko BBIS17500BCS b100",
+  "opis": "Piekarnik. Wymiary: 60 x 60 x 55 cm. Klasa energetyczna: A.",
+  "dostepnosc": "magazyn",
+  "zdjecia": [
+    "images/magazyn/oven2.jpg"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "producent": "Candy",
+  "model": "CF AE7LOA",
+  "kategoria": "Zmywarka",
+  "wymiary": "45 x 85 x 60 cm",
+  "klasa": "E",
+  "cena": "1300 zł",
+  "tytul": "Candy CF AE7LOA",
+  "opis": "Zmywarka. Wymiary: 45 x 85 x 60 cm. Klasa energetyczna: E.",
+  "dostepnosc": "magazyn",
+  "zdjecia": [
+    "images/categories/zmywarki.jpg"
+  ]
+}

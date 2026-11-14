@@ -1,0 +1,14 @@
+{
+  "producent": "Bosch",
+  "model": "SMISHCBIME series 4",
+  "kategoria": "Zmywarka",
+  "wymiary": "60 x 81.5 x 55 cm",
+  "klasa": "D",
+  "cena": "2600 zł",
+  "tytul": "Bosch SMISHCBIME series 4",
+  "opis": "Zmywarka. Wymiary: 60 x 81.5 x 55 cm. Klasa energetyczna: D.",
+  "dostepnosc": "magazyn",
+  "zdjecia": [
+    "images/magazyn/dishwasher1.jpg"
+  ]
+}

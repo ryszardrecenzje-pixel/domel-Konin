@@ -1,0 +1,14 @@
+{
+  "producent": "Electrolux",
+  "model": "EOD3C70TX",
+  "kategoria": "Piekarnik do zabudowy",
+  "wymiary": "59.5 x 45.5 x 56.9 cm",
+  "klasa": "A",
+  "cena": "1449 zł",
+  "tytul": "Electrolux EOD3C70TX",
+  "opis": "Piekarnik do zabudowy. Wymiary: 59.5 x 45.5 x 56.9 cm. Klasa energetyczna: A.",
+  "dostepnosc": "magazyn",
+  "zdjecia": [
+    "images/categories/piekarniki.jpg"
+  ]
+}

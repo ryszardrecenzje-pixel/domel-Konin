@@ -1,0 +1,14 @@
+{
+  "producent": "Candy",
+  "model": "CSOH8A3TE-S",
+  "kategoria": "Suszarka do ubrań 8kg",
+  "wymiary": "60 x 85 x 58 cm",
+  "klasa": "A+++",
+  "cena": "1799 zł",
+  "tytul": "Candy CSOH8A3TE-S",
+  "opis": "Suszarka do ubrań 8kg. Wymiary: 60 x 85 x 58 cm. Klasa energetyczna: A+++.",
+  "dostepnosc": "magazyn",
+  "zdjecia": [
+    "images/categories/suszarki.jpg"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "producent": "Bosch",
+  "model": "WAN28209FR",
+  "kategoria": "Pralka",
+  "wymiary": "59.8 x 84.5 x 59 cm",
+  "klasa": "A",
+  "cena": "2300 zł",
+  "tytul": "Bosch WAN28209FR",
+  "opis": "Pralka. Wymiary: 59.8 x 84.5 x 59 cm. Klasa energetyczna: A.",
+  "dostepnosc": "magazyn",
+  "zdjecia": [
+    "images/categories/pralki.jpg"
+  ]
+}

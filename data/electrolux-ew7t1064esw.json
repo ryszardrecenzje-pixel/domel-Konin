@@ -1,0 +1,14 @@
+{
+  "producent": "Electrolux",
+  "model": "EW7T1064ESW",
+  "kategoria": "Pralka ładowana od góry 6kg",
+  "wymiary": "40 x 89 x 60 cm",
+  "klasa": "C",
+  "cena": "1599 zł",
+  "tytul": "Electrolux EW7T1064ESW",
+  "opis": "Pralka ładowana od góry 6kg. Wymiary: 40 x 89 x 60 cm. Klasa energetyczna: C.",
+  "dostepnosc": "magazyn",
+  "zdjecia": [
+    "images/magazyn/washer2.jpg"
+  ]
+}

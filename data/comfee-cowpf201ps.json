@@ -1,0 +1,14 @@
+{
+  "producent": "Comfee",
+  "model": "COWPF201PS",
+  "kategoria": "Zmywarka",
+  "wymiary": "59.8 x 84.5 x 60 cm",
+  "klasa": "E",
+  "cena": "1450 zł",
+  "tytul": "Comfee COWPF201PS",
+  "opis": "Zmywarka. Wymiary: 59.8 x 84.5 x 60 cm. Klasa energetyczna: E.",
+  "dostepnosc": "magazyn",
+  "zdjecia": [
+    "images/categories/zmywarki.jpg"
+  ]
+}

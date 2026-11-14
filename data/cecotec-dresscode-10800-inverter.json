@@ -1,0 +1,14 @@
+{
+  "producent": "Cecotec",
+  "model": "DressCode 10800 inverter",
+  "kategoria": "Pralka",
+  "wymiary": "60 x 85 x 55 cm",
+  "klasa": "A",
+  "cena": "1800 zł",
+  "tytul": "Cecotec DressCode 10800 inverter",
+  "opis": "Pralka. Wymiary: 60 x 85 x 55 cm. Klasa energetyczna: A.",
+  "dostepnosc": "magazyn",
+  "zdjecia": [
+    "images/magazyn/washer2.jpg"
+  ]
+}

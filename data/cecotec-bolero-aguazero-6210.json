@@ -1,0 +1,14 @@
+{
+  "producent": "Cecotec",
+  "model": "BOLERO Aguazero 6210",
+  "kategoria": "Zmywarka",
+  "wymiary": "60 x 85 x 60 cm",
+  "klasa": "E",
+  "cena": "1300 zł",
+  "tytul": "Cecotec BOLERO Aguazero 6210",
+  "opis": "Zmywarka. Wymiary: 60 x 85 x 60 cm. Klasa energetyczna: E.",
+  "dostepnosc": "magazyn",
+  "zdjecia": [
+    "images/magazyn/dishwasher1.jpg"
+  ]
+}

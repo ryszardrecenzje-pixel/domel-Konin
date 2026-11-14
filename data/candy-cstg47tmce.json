@@ -1,0 +1,14 @@
+{
+  "producent": "Candy",
+  "model": "CSTG47TMCE",
+  "kategoria": "Pralka ładowana od góry 7kg",
+  "wymiary": "41 x 86 x 60 cm",
+  "klasa": "B",
+  "cena": "1499 zł",
+  "tytul": "Candy CSTG47TMCE",
+  "opis": "Pralka ładowana od góry 7kg. Wymiary: 41 x 86 x 60 cm. Klasa energetyczna: B.",
+  "dostepnosc": "magazyn",
+  "zdjecia": [
+    "images/magazyn/washer1.jpg"
+  ]
+}

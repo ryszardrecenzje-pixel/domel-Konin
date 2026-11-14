@@ -1,0 +1,14 @@
+{
+  "producent": "Cecotec",
+  "model": "DressCode 7410 inverter",
+  "kategoria": "Pralka",
+  "wymiary": "60 x 85 x 50 cm",
+  "klasa": "A",
+  "cena": "1300 zł",
+  "tytul": "Cecotec DressCode 7410 inverter",
+  "opis": "Pralka. Wymiary: 60 x 85 x 50 cm. Klasa energetyczna: A.",
+  "dostepnosc": "magazyn",
+  "zdjecia": [
+    "images/categories/pralki.jpg"
+  ]
+}

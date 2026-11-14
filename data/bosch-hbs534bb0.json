@@ -1,0 +1,14 @@
+{
+  "producent": "Bosch",
+  "model": "HBS534BB0",
+  "kategoria": "Piekarnik",
+  "wymiary": "60 x 60 x 55 cm",
+  "klasa": "A",
+  "cena": "2400 zł",
+  "tytul": "Bosch HBS534BB0",
+  "opis": "Piekarnik. Wymiary: 60 x 60 x 55 cm. Klasa energetyczna: A.",
+  "dostepnosc": "magazyn",
+  "zdjecia": [
+    "images/categories/piekarniki.jpg"
+  ]
+}

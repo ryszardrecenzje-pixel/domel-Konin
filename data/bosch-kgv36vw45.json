@@ -1,0 +1,14 @@
+{
+  "producent": "Bosch",
+  "model": "KGV36VW45",
+  "kategoria": "Lodówka",
+  "wymiary": "60 x 191 x 65 cm",
+  "klasa": "E",
+  "cena": "2600 zł",
+  "tytul": "Bosch KGV36VW45",
+  "opis": "Lodówka. Wymiary: 60 x 191 x 65 cm. Klasa energetyczna: E.",
+  "dostepnosc": "magazyn",
+  "zdjecia": [
+    "images/magazyn/fridge1.jpg"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "producent": "Bomann",
+  "model": "VS2195-1",
+  "kategoria": "Lodówka",
+  "wymiary": "55 x 144 x 55 cm",
+  "klasa": "E",
+  "cena": "1000 zł",
+  "tytul": "Bomann VS2195-1",
+  "opis": "Lodówka. Wymiary: 55 x 144 x 55 cm. Klasa energetyczna: E.",
+  "dostepnosc": "magazyn",
+  "zdjecia": [
+    "images/categories/lodowki.jpg"
+  ]
+}

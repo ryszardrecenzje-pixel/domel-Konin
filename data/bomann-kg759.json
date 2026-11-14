@@ -1,0 +1,14 @@
+{
+  "producent": "Bomann",
+  "model": "KG759",
+  "kategoria": "Lodówka-zamrażarka",
+  "wymiary": "55 x 180 x 60 cm",
+  "klasa": "E",
+  "cena": "1400 zł",
+  "tytul": "Bomann KG759",
+  "opis": "Lodówka-zamrażarka. Wymiary: 55 x 180 x 60 cm. Klasa energetyczna: E.",
+  "dostepnosc": "magazyn",
+  "zdjecia": [
+    "images/magazyn/fridge2.jpg"
+  ]
+}

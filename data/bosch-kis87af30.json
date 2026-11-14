@@ -1,0 +1,14 @@
+{
+  "producent": "Bosch",
+  "model": "KIS87AF30",
+  "kategoria": "Lodówka",
+  "wymiary": "54.1 x 177.2 x 54.8 cm",
+  "klasa": "E",
+  "cena": "3000 zł",
+  "tytul": "Bosch KIS87AF30",
+  "opis": "Lodówka. Wymiary: 54.1 x 177.2 x 54.8 cm. Klasa energetyczna: E.",
+  "dostepnosc": "magazyn",
+  "zdjecia": [
+    "images/magazyn/fridge2.jpg"
+  ]
+}

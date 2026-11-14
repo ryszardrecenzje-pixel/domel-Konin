@@ -1,0 +1,14 @@
+{
+  "producent": "Comfee",
+  "model": "FDL455EX",
+  "kategoria": "Zmywarka",
+  "wymiary": "60 x 85 x 60 cm",
+  "klasa": "E",
+  "cena": "1200 zł",
+  "tytul": "Comfee FDL455EX",
+  "opis": "Zmywarka. Wymiary: 60 x 85 x 60 cm. Klasa energetyczna: E.",
+  "dostepnosc": "magazyn",
+  "zdjecia": [
+    "images/categories/zmywarki.jpg"
+  ]
+}

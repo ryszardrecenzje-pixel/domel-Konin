@@ -1,0 +1,14 @@
+{
+  "producent": "Candy",
+  "model": "TCAS284TM4-S",
+  "kategoria": "Pralka",
+  "wymiary": "41 x 86 x 60 cm",
+  "klasa": "B",
+  "cena": "1400 zł",
+  "tytul": "Candy TCAS284TM4-S",
+  "opis": "Pralka. Wymiary: 41 x 86 x 60 cm. Klasa energetyczna: B.",
+  "dostepnosc": "magazyn",
+  "zdjecia": [
+    "images/magazyn/washer1.jpg"
+  ]
+}

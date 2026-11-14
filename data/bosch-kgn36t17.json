@@ -1,0 +1,14 @@
+{
+  "producent": "Bosch",
+  "model": "KGN36T17",
+  "kategoria": "Lodówka",
+  "wymiary": "60 x 186 x 66.5 cm",
+  "klasa": "D",
+  "cena": "2500 zł",
+  "tytul": "Bosch KGN36T17",
+  "opis": "Lodówka. Wymiary: 60 x 186 x 66.5 cm. Klasa energetyczna: D.",
+  "dostepnosc": "magazyn",
+  "zdjecia": [
+    "images/magazyn/fridge1.jpg"
+  ]
+}

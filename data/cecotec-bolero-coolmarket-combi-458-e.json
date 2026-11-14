@@ -1,0 +1,14 @@
+{
+  "producent": "Cecotec",
+  "model": "Bolero CoolMarket Combi 458 E",
+  "kategoria": "Lodówka",
+  "wymiary": "60 x 200 x 60 cm",
+  "klasa": "E",
+  "cena": "2700 zł",
+  "tytul": "Cecotec Bolero CoolMarket Combi 458 E",
+  "opis": "Lodówka. Wymiary: 60 x 200 x 60 cm. Klasa energetyczna: E.",
+  "dostepnosc": "magazyn",
+  "zdjecia": [
+    "images/categories/lodowki.jpg"
+  ]
+}

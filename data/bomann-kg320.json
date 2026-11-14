@@ -1,0 +1,14 @@
+{
+  "producent": "Bomann",
+  "model": "KG320",
+  "kategoria": "Lodówka",
+  "wymiary": "49.5 x 143 x 56.2 cm",
+  "klasa": "E",
+  "cena": "900 zł",
+  "tytul": "Bomann KG320",
+  "opis": "Lodówka. Wymiary: 49.5 x 143 x 56.2 cm. Klasa energetyczna: E.",
+  "dostepnosc": "magazyn",
+  "zdjecia": [
+    "images/magazyn/fridge2.jpg"
+  ]
+}

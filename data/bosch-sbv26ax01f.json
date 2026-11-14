@@ -1,0 +1,14 @@
+{
+  "producent": "Bosch",
+  "model": "SBV26AX01F",
+  "kategoria": "Zmywarka",
+  "wymiary": "60 x 84.5 x 55 cm",
+  "klasa": "E",
+  "cena": "2000 zł",
+  "tytul": "Bosch SBV26AX01F",
+  "opis": "Zmywarka. Wymiary: 60 x 84.5 x 55 cm. Klasa energetyczna: E.",
+  "dostepnosc": "magazyn",
+  "zdjecia": [
+    "images/categories/zmywarki.jpg"
+  ]
+}

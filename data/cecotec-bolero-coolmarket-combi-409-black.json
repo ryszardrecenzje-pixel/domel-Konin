@@ -1,0 +1,14 @@
+{
+  "producent": "Cecotec",
+  "model": "Bolero CoolMarket Combi 409 Black",
+  "kategoria": "Lodówka",
+  "wymiary": "60 x 200 x 60 cm",
+  "klasa": "E",
+  "cena": "2300 zł",
+  "tytul": "Cecotec Bolero CoolMarket Combi 409 Black",
+  "opis": "Lodówka. Wymiary: 60 x 200 x 60 cm. Klasa energetyczna: E.",
+  "dostepnosc": "magazyn",
+  "zdjecia": [
+    "images/magazyn/fridge2.jpg"
+  ]
+}

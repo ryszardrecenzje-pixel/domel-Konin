@@ -1,0 +1,14 @@
+{
+  "producent": "Cecotec",
+  "model": "Bolero CoolMarket Origin 30C",
+  "kategoria": "Lodówka",
+  "wymiary": "55 x 180 x 55 cm",
+  "klasa": "E",
+  "cena": "1700 zł",
+  "tytul": "Cecotec Bolero CoolMarket Origin 30C",
+  "opis": "Lodówka. Wymiary: 55 x 180 x 55 cm. Klasa energetyczna: E.",
+  "dostepnosc": "magazyn",
+  "zdjecia": [
+    "images/magazyn/fridge1.jpg"
+  ]
+}

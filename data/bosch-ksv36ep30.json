@@ -1,0 +1,14 @@
+{
+  "producent": "Bosch",
+  "model": "KSV36EP30",
+  "kategoria": "Lodówka",
+  "wymiary": "60 x 176 x 65 cm",
+  "klasa": "E",
+  "cena": "2900 zł",
+  "tytul": "Bosch KSV36EP30",
+  "opis": "Lodówka. Wymiary: 60 x 176 x 65 cm. Klasa energetyczna: E.",
+  "dostepnosc": "magazyn",
+  "zdjecia": [
+    "images/categories/lodowki.jpg"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "producent": "Cecotec",
+  "model": "Bolero Aguazero 6700 B",
+  "kategoria": "Zmywarka",
+  "wymiary": "60 x 85 x 60 cm",
+  "klasa": "E",
+  "cena": "1400 zł",
+  "tytul": "Cecotec Bolero Aguazero 6700 B",
+  "opis": "Zmywarka. Wymiary: 60 x 85 x 60 cm. Klasa energetyczna: E.",
+  "dostepnosc": "magazyn",
+  "zdjecia": [
+    "images/categories/zmywarki.jpg"
+  ]
+}

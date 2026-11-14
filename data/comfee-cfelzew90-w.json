@@ -1,0 +1,14 @@
+{
+  "producent": "Comfee",
+  "model": "CFELZEW90-W",
+  "kategoria": "Pralka",
+  "wymiary": "60 x 85 x 55 cm",
+  "klasa": "A",
+  "cena": "1400 zł",
+  "tytul": "Comfee CFELZEW90-W",
+  "opis": "Pralka. Wymiary: 60 x 85 x 55 cm. Klasa energetyczna: A.",
+  "dostepnosc": "magazyn",
+  "zdjecia": [
+    "images/magazyn/washer2.jpg"
+  ]
+}

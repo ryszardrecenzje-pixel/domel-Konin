@@ -1,0 +1,14 @@
+{
+  "producent": "Cecotec",
+  "model": "CoolMarket 40-400 Dark E",
+  "kategoria": "Lodówka",
+  "wymiary": "60 x 185 x 60 cm",
+  "klasa": "E",
+  "cena": "2600 zł",
+  "tytul": "Cecotec CoolMarket 40-400 Dark E",
+  "opis": "Lodówka. Wymiary: 60 x 185 x 60 cm. Klasa energetyczna: E.",
+  "dostepnosc": "magazyn",
+  "zdjecia": [
+    "images/categories/lodowki.jpg"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "producent": "Comfee",
+  "model": "KWH-TD60ZE-W-FR",
+  "kategoria": "Zmywarka",
+  "wymiary": "60 x 85 x 60 cm",
+  "klasa": "E",
+  "cena": "1300 zł",
+  "tytul": "Comfee KWH-TD60ZE-W-FR",
+  "opis": "Zmywarka. Wymiary: 60 x 85 x 60 cm. Klasa energetyczna: E.",
+  "dostepnosc": "magazyn",
+  "zdjecia": [
+    "images/magazyn/dishwasher1.jpg"
+  ]
+}

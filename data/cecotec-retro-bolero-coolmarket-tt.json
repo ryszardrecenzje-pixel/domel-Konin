@@ -1,0 +1,14 @@
+{
+  "producent": "Cecotec",
+  "model": "Retro Bolero CoolMarket TT",
+  "kategoria": "Lodówka",
+  "wymiary": "45 x 85 x 60 cm",
+  "klasa": "E",
+  "cena": "600 zł",
+  "tytul": "Cecotec Retro Bolero CoolMarket TT",
+  "opis": "Lodówka. Wymiary: 45 x 85 x 60 cm. Klasa energetyczna: E.",
+  "dostepnosc": "magazyn",
+  "zdjecia": [
+    "images/magazyn/fridge1.jpg"
+  ]
+}

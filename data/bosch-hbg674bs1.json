@@ -1,0 +1,14 @@
+{
+  "producent": "Bosch",
+  "model": "HBG674BS1",
+  "kategoria": "Piekarnik do zabudowy",
+  "wymiary": "59.5 x 59.5 x 54.8 cm",
+  "klasa": "A",
+  "cena": "1699 zł",
+  "tytul": "Bosch HBG674BS1",
+  "opis": "Piekarnik do zabudowy. Wymiary: 59.5 x 59.5 x 54.8 cm. Klasa energetyczna: A.",
+  "dostepnosc": "magazyn",
+  "zdjecia": [
+    "images/categories/piekarniki.jpg"
+  ]
+}

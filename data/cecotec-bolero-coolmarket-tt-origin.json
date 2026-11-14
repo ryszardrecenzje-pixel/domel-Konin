@@ -1,0 +1,14 @@
+{
+  "producent": "Cecotec",
+  "model": "Bolero CoolMarket TT Origin",
+  "kategoria": "Lodówka",
+  "wymiary": "48 x 85 x 60 cm",
+  "klasa": "E",
+  "cena": "700 zł",
+  "tytul": "Cecotec Bolero CoolMarket TT Origin",
+  "opis": "Lodówka. Wymiary: 48 x 85 x 60 cm. Klasa energetyczna: E.",
+  "dostepnosc": "magazyn",
+  "zdjecia": [
+    "images/magazyn/fridge2.jpg"
+  ]
+}

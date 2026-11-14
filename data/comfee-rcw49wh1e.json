@@ -1,0 +1,14 @@
+{
+  "producent": "Comfee",
+  "model": "RCW49WH1E",
+  "kategoria": "Lodówka",
+  "wymiary": "55 x 175 x 55 cm",
+  "klasa": "E",
+  "cena": "1300 zł",
+  "tytul": "Comfee RCW49WH1E",
+  "opis": "Lodówka. Wymiary: 55 x 175 x 55 cm. Klasa energetyczna: E.",
+  "dostepnosc": "magazyn",
+  "zdjecia": [
+    "images/magazyn/fridge1.jpg"
+  ]
+}

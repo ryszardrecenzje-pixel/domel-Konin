@@ -1,0 +1,14 @@
+{
+  "producent": "Electrolux",
+  "model": "EKC6150AOW",
+  "kategoria": "Kuchenka wolnostojąca gazowo-elektryczna",
+  "wymiary": "50 x 85 x 60 cm",
+  "klasa": "A",
+  "cena": "1399 zł",
+  "tytul": "Electrolux EKC6150AOW",
+  "opis": "Kuchenka wolnostojąca gazowo-elektryczna. Wymiary: 50 x 85 x 60 cm. Klasa energetyczna: A.",
+  "dostepnosc": "magazyn",
+  "zdjecia": [
+    "images/magazyn/oven1.jpg"
+  ]
+}

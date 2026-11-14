@@ -1,0 +1,14 @@
+{
+  "producent": "Bosch",
+  "model": "WGG2440FR",
+  "kategoria": "Pralka",
+  "wymiary": "60 x 85 x 60 cm",
+  "klasa": "A",
+  "cena": "3000 zł",
+  "tytul": "Bosch WGG2440FR",
+  "opis": "Pralka. Wymiary: 60 x 85 x 60 cm. Klasa energetyczna: A.",
+  "dostepnosc": "magazyn",
+  "zdjecia": [
+    "images/magazyn/washer1.jpg"
+  ]
+}
