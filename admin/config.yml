@@ -1,8 +1,7 @@
 backend:
-  name: github
+  name: git-gateway
   repo: ryszardrecenzje-pixel/domel-Konin
   branch: main
-  base_url: https://your-oauth-proxy.example.com   # patrz niżej
 media_folder: "images/products"
 public_folder: "/images/products"
 
