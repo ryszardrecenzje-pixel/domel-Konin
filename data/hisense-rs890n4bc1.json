@@ -1,0 +1,14 @@
+{
+  "producent": "Hisense",
+  "model": "RS890N4BC1",
+  "kategoria": "Lodówka",
+  "wymiary": "90 x 180 x 59 cm",
+  "klasa": "E",
+  "cena": "2200 zł",
+  "tytul": "Hisense RS890N4BC1",
+  "opis": "Lodówka. Wymiary: 90 x 180 x 59 cm. Klasa energetyczna: E.",
+  "dostepnosc": "magazyn",
+  "zdjecia": [
+    "images/magazyn/fridge1.jpg"
+  ]
+}

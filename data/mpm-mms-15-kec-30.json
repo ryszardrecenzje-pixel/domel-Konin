@@ -1,0 +1,14 @@
+{
+  "producent": "MPM",
+  "model": "MMS-15-KEC-30",
+  "kategoria": "Kuchenka wolnostojąca ceramiczna",
+  "wymiary": "50 x 85 x 60 cm",
+  "klasa": "A",
+  "cena": "999 zł",
+  "tytul": "MPM MMS-15-KEC-30",
+  "opis": "Kuchenka wolnostojąca ceramiczna. Wymiary: 50 x 85 x 60 cm. Klasa energetyczna: A.",
+  "dostepnosc": "magazyn",
+  "zdjecia": [
+    "images/categories/kuchenki.jpg"
+  ]
+}

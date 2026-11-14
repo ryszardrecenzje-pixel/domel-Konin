@@ -1,0 +1,14 @@
+{
+  "producent": "FIRST ONE",
+  "model": "FLL71200WH",
+  "kategoria": "Pralka",
+  "wymiary": "60 x 85 x 55 cm",
+  "klasa": "A",
+  "cena": "1000 zł",
+  "tytul": "FIRST ONE FLL71200WH",
+  "opis": "Pralka. Wymiary: 60 x 85 x 55 cm. Klasa energetyczna: A.",
+  "dostepnosc": "magazyn",
+  "zdjecia": [
+    "images/categories/pralki.jpg"
+  ]
+}

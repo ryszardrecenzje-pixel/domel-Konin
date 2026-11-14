@@ -1,0 +1,14 @@
+{
+  "producent": "Haier",
+  "model": "HD90-A2979",
+  "kategoria": "Suszarka do ubrań 9kg",
+  "wymiary": "60 x 85 x 61 cm",
+  "klasa": "A+++",
+  "cena": "1999 zł",
+  "tytul": "Haier HD90-A2979",
+  "opis": "Suszarka do ubrań 9kg. Wymiary: 60 x 85 x 61 cm. Klasa energetyczna: A+++.",
+  "dostepnosc": "magazyn",
+  "zdjecia": [
+    "images/categories/suszarki.jpg"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "producent": "Moulinex",
+  "model": "Optimo BC 16495",
+  "kategoria": "Piekarnik",
+  "wymiary": "40 x 40 x 50 cm",
+  "klasa": "A",
+  "cena": "600 zł",
+  "tytul": "Moulinex Optimo BC 16495",
+  "opis": "Piekarnik. Wymiary: 40 x 40 x 50 cm. Klasa energetyczna: A.",
+  "dostepnosc": "magazyn",
+  "zdjecia": [
+    "images/categories/piekarniki.jpg"
+  ]
+}

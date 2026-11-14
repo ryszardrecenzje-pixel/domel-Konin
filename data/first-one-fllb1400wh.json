@@ -1,0 +1,14 @@
+{
+  "producent": "FIRST ONE",
+  "model": "FLLB1400WH",
+  "kategoria": "Pralka",
+  "wymiary": "60 x 85 x 55 cm",
+  "klasa": "A",
+  "cena": "1100 zł",
+  "tytul": "FIRST ONE FLLB1400WH",
+  "opis": "Pralka. Wymiary: 60 x 85 x 55 cm. Klasa energetyczna: A.",
+  "dostepnosc": "magazyn",
+  "zdjecia": [
+    "images/magazyn/washer1.jpg"
+  ]
+}

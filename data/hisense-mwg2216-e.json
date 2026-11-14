@@ -1,0 +1,14 @@
+{
+  "producent": "Hisense",
+  "model": "MWG2216-E",
+  "kategoria": "Mikrofala",
+  "wymiary": "50 x 30 x 40 cm",
+  "klasa": "E",
+  "cena": "300 zł",
+  "tytul": "Hisense MWG2216-E",
+  "opis": "Mikrofala. Wymiary: 50 x 30 x 40 cm. Klasa energetyczna: E.",
+  "dostepnosc": "magazyn",
+  "zdjecia": [
+    "images/categories/male-agd.jpg"
+  ]
+}

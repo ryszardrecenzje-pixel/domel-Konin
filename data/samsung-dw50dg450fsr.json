@@ -1,0 +1,14 @@
+{
+  "producent": "Samsung",
+  "model": "DW50DG450FSR",
+  "kategoria": "Zmywarka do zabudowy 45cm",
+  "wymiary": "44.8 x 81.5 x 55 cm",
+  "klasa": "E",
+  "cena": "1599 zł",
+  "tytul": "Samsung DW50DG450FSR",
+  "opis": "Zmywarka do zabudowy 45cm. Wymiary: 44.8 x 81.5 x 55 cm. Klasa energetyczna: E.",
+  "dostepnosc": "magazyn",
+  "zdjecia": [
+    "images/categories/zmywarki.jpg"
+  ]
+}

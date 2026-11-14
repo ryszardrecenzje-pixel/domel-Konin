@@ -1,0 +1,14 @@
+{
+  "producent": "Samsung",
+  "model": "WW81M6420PW",
+  "kategoria": "Pralka wolnostojąca 8kg",
+  "wymiary": "60 x 85 x 45 cm",
+  "klasa": "A",
+  "cena": "1699 zł",
+  "tytul": "Samsung WW81M6420PW",
+  "opis": "Pralka wolnostojąca 8kg. Wymiary: 60 x 85 x 45 cm. Klasa energetyczna: A.",
+  "dostepnosc": "magazyn",
+  "zdjecia": [
+    "images/magazyn/washer2.jpg"
+  ]
+}

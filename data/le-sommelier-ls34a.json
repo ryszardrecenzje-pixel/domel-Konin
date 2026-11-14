@@ -1,0 +1,14 @@
+{
+  "producent": "Le Sommelier",
+  "model": "LS34A",
+  "kategoria": "Chłodziarka do wina",
+  "wymiary": "48 x 85 x 43 cm",
+  "klasa": "G",
+  "cena": "2100 zł",
+  "tytul": "Le Sommelier LS34A",
+  "opis": "Chłodziarka do wina. Wymiary: 48 x 85 x 43 cm. Klasa energetyczna: G.",
+  "dostepnosc": "magazyn",
+  "zdjecia": [
+    "images/categories/lodowki.jpg"
+  ]
+}

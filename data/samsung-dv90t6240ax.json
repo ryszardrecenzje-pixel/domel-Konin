@@ -1,0 +1,14 @@
+{
+  "producent": "Samsung",
+  "model": "DV90T6240AX",
+  "kategoria": "Suszarka do ubrań 9kg",
+  "wymiary": "60 x 85 x 60 cm",
+  "klasa": "A+++",
+  "cena": "3899 zł",
+  "tytul": "Samsung DV90T6240AX",
+  "opis": "Suszarka do ubrań 9kg. Wymiary: 60 x 85 x 60 cm. Klasa energetyczna: A+++.",
+  "dostepnosc": "magazyn",
+  "zdjecia": [
+    "images/categories/suszarki.jpg"
+  ]
+}

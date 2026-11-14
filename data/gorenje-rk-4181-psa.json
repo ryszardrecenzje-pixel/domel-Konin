@@ -1,0 +1,14 @@
+{
+  "producent": "Gorenje",
+  "model": "RK 4181 PSA",
+  "kategoria": "Lodówka",
+  "wymiary": "55 x 180 x 55 cm",
+  "klasa": "E",
+  "cena": "1600 zł",
+  "tytul": "Gorenje RK 4181 PSA",
+  "opis": "Lodówka. Wymiary: 55 x 180 x 55 cm. Klasa energetyczna: E.",
+  "dostepnosc": "magazyn",
+  "zdjecia": [
+    "images/categories/lodowki.jpg"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "producent": "Samsung",
+  "model": "WD80M64A0OX",
+  "kategoria": "Pralka-suszarka 8/5kg",
+  "wymiary": "60 x 85 x 60 cm",
+  "klasa": "E",
+  "cena": "3199 zł",
+  "tytul": "Samsung WD80M64A0OX",
+  "opis": "Pralka-suszarka 8/5kg. Wymiary: 60 x 85 x 60 cm. Klasa energetyczna: E.",
+  "dostepnosc": "magazyn",
+  "zdjecia": [
+    "images/categories/pralki.jpg"
+  ]
+}

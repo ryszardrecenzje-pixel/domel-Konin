@@ -1,0 +1,14 @@
+{
+  "producent": "Samsung",
+  "model": "WD10N64A0AX",
+  "kategoria": "Pralka-suszarka 10/6kg",
+  "wymiary": "60 x 85 x 60 cm",
+  "klasa": "E",
+  "cena": "3999 zł",
+  "tytul": "Samsung WD10N64A0AX",
+  "opis": "Pralka-suszarka 10/6kg. Wymiary: 60 x 85 x 60 cm. Klasa energetyczna: E.",
+  "dostepnosc": "magazyn",
+  "zdjecia": [
+    "images/categories/pralki.jpg"
+  ]
+}

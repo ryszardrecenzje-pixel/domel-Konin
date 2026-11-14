@@ -1,0 +1,14 @@
+{
+  "producent": "Hisense",
+  "model": "B16421FX",
+  "kategoria": "Piekarnik",
+  "wymiary": "60 x 60 x 55 cm",
+  "klasa": "A+",
+  "cena": "1800 zł",
+  "tytul": "Hisense B16421FX",
+  "opis": "Piekarnik. Wymiary: 60 x 60 x 55 cm. Klasa energetyczna: A+.",
+  "dostepnosc": "magazyn",
+  "zdjecia": [
+    "images/magazyn/oven2.jpg"
+  ]
+}
