@@ -14,6 +14,21 @@ HEADERS = {
     "Accept-Language": "pl-PL,pl;q=0.9,en;q=0.8",
 }
 
+def safe_name(text: str) -> str:
+    """Bezpieczna nazwa pliku: #, ?, spacje i inne znaki specjalne -> _"""
+    import unicodedata
+    text = unicodedata.normalize("NFKD", text or "")
+    text = "".join(c for c in text if not unicodedata.combining(c))
+    for ch in (
+        "#", "?", " ", "/", "\\", ":", "*", '"', "<", ">", "|",
+        "(", ")", "[", "]", "{", "}", "'", ",", ";", "&", "%", "+", "=",
+    ):
+        text = text.replace(ch, "_")
+    text = re.sub(r"[^\w\-]+", "_", text, flags=re.UNICODE)
+    text = re.sub(r"_+", "_", text)
+    return text[:90].strip("._") or "produkt"
+
+
 def get_image_from_allegro(query):
     url = f"https://allegro.pl/listing?string={quote(query)}"
     try:
@@ -51,14 +66,14 @@ def main():
     with open("magazyn.json", encoding="utf-8") as f:
         products = json.load(f)
 
-    os.makedirs("images/zdjęcia produktów/magazyn", exist_ok=True)
+    os.makedirs("images/magazyn", exist_ok=True)
     ok = 0
     for i, p in enumerate(products):
         if p.get("zdjecia"):
             continue
         query = f"{p['producent']} {p['model']}"
-        safe = re.sub(r'[^\w\-]', '_', query)[:80]
-        path = f"images/zdjęcia produktów/magazyn/{safe}.jpg"
+        safe = safe_name(query)
+        path = f"images/magazyn/{safe}.jpg"
         if os.path.exists(path) and os.path.getsize(path) > 3000:
             p["zdjecia"] = [path]
             ok += 1
