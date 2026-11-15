@@ -14,7 +14,7 @@ collections:
     fields:
       - { label: "Producent", name: "producent", widget: "string" }
       - { label: "Model", name: "model", widget: "string" }
-      - { label: "Kategoria", name: "kategoria", widget: "string" }
+      - { label: "Kategoria", name: "category", widget: "select", options: [lodowki, pralki, zmywarki, piekarniki, plyty, male_agd, suszarki, zamrazarki] }
       - { label: "Wymiary", name: "wymiary", widget: "string" }
       - { label: "Klasa", name: "klasa", widget: "string" }
       - { label: "Cena", name: "cena", widget: "string" }
