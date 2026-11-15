@@ -1,6 +1,5 @@
 backend:
   name: git-gateway
-  repo: ryszardrecenzje-pixel/domel-Konin
   branch: main
 media_folder: "images/products"
 public_folder: "/images/products"
@@ -10,11 +9,16 @@ collections:
     label: "Produkty"
     folder: "data"
     create: true
-    slug: "{{slug}}"
+    identifier_field: "model"
+    slug: "{{producent}}-{{model}}"
     fields:
-      - { label: "Nazwa", name: "name", widget: "string" }
-      - { label: "Cena", name: "price", widget: "number" }
-      - { label: "Kategoria", name: "category", widget: "select", options: [lodowki, pralki, zmywarki, piekarniki, plyty, male_agd, suszarki, zamrazarki] }
-      - { label: "Dostępny", name: "available", widget: "boolean", default: true }
-      - { label: "Opis", name: "description", widget: "text", required: false }
-      - { label: "Zdjęcie", name: "image", widget: "image", required: false }
+      - { label: "Producent", name: "producent", widget: "string" }
+      - { label: "Model", name: "model", widget: "string" }
+      - { label: "Kategoria", name: "kategoria", widget: "string" }
+      - { label: "Wymiary", name: "wymiary", widget: "string" }
+      - { label: "Klasa", name: "klasa", widget: "string" }
+      - { label: "Cena", name: "cena", widget: "string" }
+      - { label: "Tytuł", name: "tytul", widget: "string" }
+      - { label: "Opis", name: "opis", widget: "text" }
+      - { label: "Dostępność", name: "dostepnosc", widget: "select", options: [magazyn, salon] }
+      - { label: "Zdjęcia", name: "zdjecia", widget: "list", field: { label: "Zdjęcie", name: "image", widget: "image" } }
