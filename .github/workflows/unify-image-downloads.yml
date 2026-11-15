@@ -1,0 +1,121 @@
+name: Unifikuj skrypty download z image_utils
+
+on:
+  workflow_dispatch:
+
+jobs:
+  unify:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Patch download scripts
+        run: |
+          python3 << 'PY'
+          from pathlib import Path
+          import re
+
+          IMPORT = '''from image_utils import (
+              PRODUCTS_DIR,
+              already_have_product_image,
+              download_with_retry,
+              ensure_zdjecia,
+              ext_from_magic,
+              is_image_magic,
+              placeholder_for,
+              product_path,
+              relative_path,
+              safe_name,
+              update_json_files,
+              verify_image_file,
+          )
+          '''
+
+          def patch(path: Path, promocje: bool = False) -> None:
+              if not path.exists():
+                  print('missing', path)
+                  return
+              text = path.read_text(encoding='utf-8')
+              # drop local safe_name
+              text = re.sub(
+                  r"\ndef safe_name\(text: str\) -> str:.*?(?=\ndef |\nclass |\nif __name__)",
+                  "\n",
+                  text,
+                  count=1,
+                  flags=re.DOTALL,
+              )
+              if 'from image_utils import' not in text:
+                  text = re.sub(
+                      r"(ROOT = Path\(__file__\)[^\n]*\n)",
+                      r"\1" + IMPORT,
+                      text,
+                      count=1,
+                  )
+              if not promocje:
+                  text = text.replace('OUT_DIR = ROOT / "images" / "magazyn"', 'OUT_DIR = PRODUCTS_DIR')
+                  text = text.replace('OUT_DIR.mkdir(parents=True, exist_ok=True)', 'PRODUCTS_DIR.mkdir(parents=True, exist_ok=True)')
+                  text = text.replace('OUT_DIR', 'PRODUCTS_DIR')
+                  text = text.replace('PRODUCTS_DIR = PRODUCTS_DIR\n', '')
+                  text = text.replace('images/magazyn/', 'images/products/')
+                  text = text.replace(
+                      'prod["zdjecia"] = [f"images/products/{dest.name}"]',
+                      'ensure_zdjecia(prod, dest)',
+                  )
+                  text = text.replace(
+                      'prod["zdjecia"] = [f"images/products/{existing.name}"]',
+                      'ensure_zdjecia(prod, existing)',
+                  )
+                  text = re.sub(
+                      r'(fail \+= 1\n\s+print\("  FAIL[^\"]*"\))',
+                      r'ensure_zdjecia(prod, None)\n                \1',
+                      text,
+                  )
+                  text = text.replace(
+                      'JSON_PATH.write_text(json.dumps(products, ensure_ascii=False, indent=2), encoding="utf-8")',
+                      'update_json_files(products, magazyn_path=JSON_PATH)',
+                  )
+                  text = text.replace(
+                      'JSON_PATH.write_text(\n                    json.dumps(products, ensure_ascii=False, indent=2), encoding="utf-8"\n                )',
+                      'update_json_files(products, magazyn_path=JSON_PATH)',
+                  )
+                  # is_real_image / ext_for / already_ok thin wrappers
+                  text = re.sub(
+                      r"\ndef is_real_image\(data: bytes\) -> bool:.*?(?=\ndef )",
+                      "\ndef is_real_image(data: bytes) -> bool:\n    return is_image_magic(data) and len(data) >= 3000\n\n\n",
+                      text, count=1, flags=re.DOTALL,
+                  )
+                  text = re.sub(
+                      r"\ndef ext_for\(data: bytes\) -> str:.*?(?=\ndef )",
+                      "\ndef ext_for(data: bytes) -> str:\n    return ext_from_magic(data)\n\n\n",
+                      text, count=1, flags=re.DOTALL,
+                  )
+                  text = re.sub(
+                      r"\ndef already_ok\(path.*?(?=\ndef )",
+                      "\ndef already_ok(path):\n    return verify_image_file(Path(path))\n\n\n",
+                      text, count=1, flags=re.DOTALL,
+                  )
+              path.write_text(text, encoding='utf-8')
+              print('patched', path.name)
+
+          for name in [
+              'download_images_producers.py',
+              'download_images_playwright.py',
+              'download_images_me_ceneo.py',
+          ]:
+              patch(Path(name))
+          patch(Path('download_promocje_b2b.py'), promocje=True)
+          # ensure products dir placeholder
+          Path('images/products').mkdir(parents=True, exist_ok=True)
+          keep = Path('images/products/.gitkeep')
+          if not keep.exists():
+              keep.write_text('')
+          print('done')
+          PY
+      - uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "refactor: download_* → image_utils + images/products"
+          branch: main
