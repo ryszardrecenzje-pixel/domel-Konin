@@ -27,45 +27,38 @@ except ImportError:
     sys.exit(1)
 
 ROOT = Path(__file__).resolve().parent
+from image_utils import (
+    PRODUCTS_DIR,
+    already_have_product_image,
+    download_with_retry,
+    ensure_zdjecia,
+    ext_from_magic,
+    is_image_magic,
+    placeholder_for,
+    product_path,
+    relative_path,
+    safe_name,
+    update_json_files,
+    verify_image_file,
+)
 JSON_PATH = ROOT / "magazyn.json"
-OUT_DIR = ROOT / "images" / "magazyn"
-OUT_DIR.mkdir(parents=True, exist_ok=True)
+PRODUCTS_DIR.mkdir(parents=True, exist_ok=True)
 
-
-def safe_name(text: str) -> str:
-    text = re.sub(r"[^\w\-]+", "_", text, flags=re.UNICODE)
-    return text[:90].strip("_")
 
 
 def is_real_image(data: bytes) -> bool:
-    if not data or len(data) < 12000:
-        return False
-    if data[:3] == b"\xff\xd8\xff":
-        return True
-    if data[:8] == b"\x89PNG\r\n\x1a\n":
-        return True
-    if data[:4] == b"RIFF" and data[8:12] == b"WEBP":
-        return True
-    return False
+    return is_image_magic(data) and len(data) >= 3000
+
 
 
 def ext_for(data: bytes) -> str:
-    if data[:3] == b"\xff\xd8\xff":
-        return ".jpg"
-    if data[:8] == b"\x89PNG\r\n\x1a\n":
-        return ".png"
-    if data[:4] == b"RIFF" and data[8:12] == b"WEBP":
-        return ".webp"
-    return ".jpg"
+    return ext_from_magic(data)
 
 
-def already_ok(path: Path) -> bool:
-    if not path.exists():
-        return False
-    try:
-        return is_real_image(path.read_bytes())
-    except Exception:
-        return False
+
+def already_ok(path):
+    return verify_image_file(Path(path))
+
 
 
 def accept_cookies(page) -> None:
@@ -352,12 +345,12 @@ def main():
 
             existing = None
             for ext in (".jpg", ".png", ".webp"):
-                cand = OUT_DIR / f"{base}{ext}"
+                cand = PRODUCTS_DIR / f"{base}{ext}"
                 if already_ok(cand):
                     existing = cand
                     break
             if existing:
-                prod["zdjecia"] = [f"images/magazyn/{existing.name}"]
+                ensure_zdjecia(prod, existing)
                 skip += 1
                 print(f"[{idx+1}/147] SKIP {title}")
                 continue
@@ -371,24 +364,23 @@ def main():
 
             if data:
                 ext = ext_for(data)
-                dest = OUT_DIR / f"{base}{ext}"
+                dest = PRODUCTS_DIR / f"{base}{ext}"
                 dest.write_bytes(data)
-                prod["zdjecia"] = [f"images/magazyn/{dest.name}"]
+                ensure_zdjecia(prod, dest)
                 ok += 1
                 print(f"  OK {dest.name} ({len(data)} B)")
             else:
+                ensure_zdjecia(prod, None)
                 fail += 1
                 print("  FAIL")
 
             if n % 3 == 0:
-                JSON_PATH.write_text(
-                    json.dumps(products, ensure_ascii=False, indent=2), encoding="utf-8"
-                )
+                update_json_files(products, magazyn_path=JSON_PATH)
             time.sleep(2.0)
 
         browser.close()
 
-    JSON_PATH.write_text(json.dumps(products, ensure_ascii=False, indent=2), encoding="utf-8")
+    update_json_files(products, magazyn_path=JSON_PATH)
     print("\n=== PODSUMOWANIE ===")
     print(f"Pobrane:   {ok}")
     print(f"Pominięte: {skip}")

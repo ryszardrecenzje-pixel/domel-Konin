@@ -26,6 +26,20 @@ except ImportError:
     sys.exit(1)
 
 ROOT = Path(__file__).resolve().parent
+from image_utils import (
+    PRODUCTS_DIR,
+    already_have_product_image,
+    download_with_retry,
+    ensure_zdjecia,
+    ext_from_magic,
+    is_image_magic,
+    placeholder_for,
+    product_path,
+    relative_path,
+    safe_name,
+    update_json_files,
+    verify_image_file,
+)
 JSON_PATH = ROOT / "promocje.json"
 IMG_DIR = ROOT / "images" / "promocje"
 IMG_DIR.mkdir(parents=True, exist_ok=True)
@@ -63,20 +77,6 @@ def parse_price(text: str):
     except ValueError:
         return None
 
-
-def safe_name(text: str) -> str:
-    """Bezpieczna nazwa pliku: #, ?, spacje i inne znaki specjalne -> _"""
-    import unicodedata
-    text = unicodedata.normalize("NFKD", text or "")
-    text = "".join(c for c in text if not unicodedata.combining(c))
-    for ch in (
-        "#", "?", " ", "/", "\\", ":", "*", '"', "<", ">", "|",
-        "(", ")", "[", "]", "{", "}", "'", ",", ";", "&", "%", "+", "=",
-    ):
-        text = text.replace(ch, "_")
-    text = re.sub(r"[^\w\-]+", "_", text, flags=re.UNICODE)
-    text = re.sub(r"_+", "_", text)
-    return text[:90].strip("._") or "produkt"
 
 
 def login(page, email: str, password: str) -> bool:
