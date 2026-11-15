@@ -1,9 +1,12 @@
 #!/usr/bin/env python3
-"""Dodaje przycisk 'Zapytaj o cene' pod span.cena w kartach produktow."""
+"""
+Zamiast linku do formularza – przycisk „Dodaj do koszyka” (cart.js / data-add-to-cart).
+Usuwa stare linki .btn-ask jeśli są.
+"""
 from __future__ import annotations
 import re
 from pathlib import Path
-from urllib.parse import quote
+from html import escape
 
 ROOT = Path(__file__).resolve().parent
 CATEGORY_FILES = [
@@ -11,44 +14,75 @@ CATEGORY_FILES = [
     "male_agd.html", "male_AGD.html", "male_agd_1.html",
     "kuchenki.html", "plyty_grzewcze.html", "suszarki.html", "zamrazarki.html",
 ]
-BTN_CSS = """
-        .btn-ask {
-            display: inline-block;
-            margin-top: 0.6rem;
-            padding: 0.45rem 0.9rem;
-            background-color: #ff6600;
-            color: #fff !important;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: background 0.2s;
-        }
-        .btn-ask:hover { background-color: #e55a00; }
-"""
 
-def add_buttons(html: str) -> tuple[str, int]:
+
+def make_button(title: str, price: str = "Cena na zapytanie") -> str:
+    t = escape(title, quote=True)
+    p = escape(price, quote=True)
+    return (
+        f'<button type="button" class="btn-add-cart" data-add-to-cart '
+        f'data-title="{t}" data-price="{p}">'
+        f'\n                    <i class="fa-solid fa-cart-plus"></i> Dodaj do koszyka'
+        f'\n                </button>'
+    )
+
+
+def process(html: str) -> tuple[str, int]:
+    html = re.sub(
+        r'\s*<a\s+class="btn btn-ask"[^>]*>.*?</a>',
+        "",
+        html,
+        flags=re.DOTALL | re.IGNORECASE,
+    )
+
     count = 0
     parts = []
     last_h3 = ""
+    last_price = "Cena na zapytanie"
+
     for line in html.splitlines(keepends=True):
         hm = re.search(r"<h3[^>]*>(.*?)</h3>", line)
         if hm:
             last_h3 = re.sub(r"<[^>]+>", "", hm.group(1)).strip()
-        if 'class="cena"' in line and "btn-ask" not in line and last_h3:
-            if "</span>" in line:
-                href = f"index.html?produkt={quote(last_h3)}#repair"
-                line = line.replace(
-                    "</span>",
-                    f'</span>\n                <a class="btn btn-ask" href="{href}">Zapytaj o cenę</a>',
-                    1,
-                )
-                count += 1
+
+        cm = re.search(r'<span class="cena">([^<]*)</span>', line)
+        if cm:
+            last_price = cm.group(1).strip() or "Cena na zapytanie"
+            if "data-add-to-cart" not in line and last_h3:
+                if "</span>" in line:
+                    line = line.replace(
+                        "</span>",
+                        "</span>\n                " + make_button(last_h3, last_price),
+                        1,
+                    )
+                    count += 1
         parts.append(line)
+
     new_html = "".join(parts)
-    if count and ".btn-ask" not in new_html:
-        new_html = re.sub(r"(</style>)", BTN_CSS + r"\1", new_html, count=1)
+
+    if "cart.js" not in new_html and "</body>" in new_html:
+        new_html = new_html.replace(
+            "</body>",
+            '    <script src="cart.js"></script>\n</body>',
+            1,
+        )
+
+    if 'href="koszyk.html"' not in new_html and "</nav>" in new_html:
+        nav_item = (
+            '                <li><a href="koszyk.html" class="cart-link">'
+            'KOSZYK <span class="cart-badge" data-cart-count>0</span></a></li>\n'
+        )
+        if "</ul>\n        </nav>" in new_html:
+            new_html = new_html.replace(
+                "</ul>\n        </nav>",
+                nav_item + "            </ul>\n        </nav>",
+                1,
+            )
+        elif 'href="koszyk.html"' not in new_html:
+            new_html = new_html.replace("</nav>", nav_item + "        </nav>", 1)
+
     return new_html, count
+
 
 def main() -> None:
     total = 0
@@ -58,17 +92,18 @@ def main() -> None:
             print("SKIP missing", fn)
             continue
         text = p.read_text(encoding="utf-8")
-        if 'class="cena"' not in text:
-            print("SKIP no cena", fn)
+        if 'class="cena"' not in text and "btn-ask" not in text:
+            print("SKIP no products", fn)
             continue
-        if "btn-ask" in text and text.count("btn-ask") >= text.count('class="cena"'):
-            print("OK already", fn)
-            continue
-        new_text, n = add_buttons(text)
-        p.write_text(new_text, encoding="utf-8")
-        total += n
-        print(f"{fn}: +{n}")
+        new_text, n = process(text)
+        if new_text != text:
+            p.write_text(new_text, encoding="utf-8")
+            total += n
+            print(f"{fn}: +{n} cart buttons")
+        else:
+            print(f"{fn}: no change")
     print("TOTAL", total)
+
 
 if __name__ == "__main__":
     main()

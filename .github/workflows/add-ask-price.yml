@@ -1,4 +1,4 @@
-name: Dodaj przyciski Zapytaj o cene
+name: Dodaj przyciski do koszyka
 
 on:
   workflow_dispatch:
@@ -16,5 +16,5 @@ jobs:
       - run: python add_ask_price_buttons.py
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "feat: przycisk Zapytaj o cene na kartach produktow"
+          commit_message: "feat: przyciski Dodaj do koszyka zamiast Zapytaj o cene"
           branch: main
