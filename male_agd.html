@@ -240,6 +240,7 @@
                 <li><a href="#">PORADY</a></li>
                 <li><a href="index.html#kontakt">KONTAKT</a></li>
                 <li><a href="index.html#serwis" class="btn-zglos">ZGŁOŚ NAPRAWĘ</a></li>
+                            <li><a href="koszyk.html" class="cart-link">KOSZYK <span class="cart-badge" data-cart-count>0</span></a></li>
             </ul>
         </nav>
     </header>
@@ -267,7 +268,9 @@
                 <h3>SIEMENS EQ 700 CLASSIC</h3>
                 <p class="opis">Produkt SIEMENS EQ 700 CLASSIC dostępny w salonie Domel Konin. Zapraszamy do kontaktu po szczegóły i aktualną cenę.</p>
                 <span class="cena">Cena na zapytanie</span>
-                <a class="btn btn-ask" href="index.html?produkt=SIEMENS%20EQ%20700%20CLASSIC#repair">Zapytaj o cenę</a>
+                <button type="button" class="btn-add-cart" data-add-to-cart data-title="SIEMENS EQ 700 CLASSIC" data-price="Cena na zapytanie">
+                    <i class="fa-solid fa-cart-plus"></i> Dodaj do koszyka
+                </button>
             </div>
 
 <!-- KONIEC_PRODUKTOW -->
@@ -322,5 +325,6 @@
         }
     </script>
 
+    <script src="cart.js"></script>
 </body>
 </html>
