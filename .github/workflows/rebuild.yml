@@ -1,14 +1,18 @@
 name: Rebuild site
 on:
   push:
-    paths: ['data/**', 'magazyn.json', 'produkty.json', 'promocje.json']
+    paths: ['data/**', 'images/**', 'magazyn.json', 'produkty.json', 'promocje.json']
+permissions:
+  contents: write
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
-        with: { python-version: '3.x' }
-      - run: python merge_data.py && python regenerate_magazyn_html.py && python regenerate_promocje_html.py
+        with:
+          python-version: '3.x'
+      - run: python merge_data.py && python regeneruj_magazyn_html.py && python regeneruj_promocje_html.py
       - uses: stefanzweifel/git-auto-commit-action@v5
-        with: { commit_message: "Auto-rebuild HTML" }
+        with:
+          commit_message: "Auto-rebuild HTML"
