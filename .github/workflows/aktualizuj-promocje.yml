@@ -25,9 +25,10 @@ jobs:
 
       - name: Instalacja Playwright i zależności
         run: |
-          pip install --upgrade pip
-          pip install playwright
-          playwright install chromium --with-deps
+         pip install --upgrade pip
+         pip install playwright
+         pip install requests
+         playwright install chromium --with-deps
 
       - name: Pobieranie promocji z B2B GT
         env:
